@@ -51,8 +51,10 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : 'design-templates/header/_header-appsembler-01.html', ## required
-    'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
+    'header_template' : 'design-templates/header/_header-appsembler-{}.html'.format(
+      get_current_site_configuration().page_elements.get('header_template_type', '01')), ## required
+    'footer_template' : 'design-templates/footer/_footer-appsembler-{}.html'.format(
+      get_current_site_configuration().page_elements.get('footer_template_type', '01')), ## required
   }
   %>
 </%def>
@@ -62,11 +64,7 @@
 
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
-    return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      ['Menu item 1', '#', '', ''],
-      ['Menu item 2', '#', '', '']
-    ]
+    return get_current_site_configuration().page_elements.get('header', {}).get('logged_out_items', [])
   %>
 </%def>
 
@@ -75,10 +73,7 @@
 
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
-    return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      ['Menu item 1', '#', '', '']
-    ]
+    return get_current_site_configuration().page_elements.get('header', {}).get('logged_in_items', [])
   %>
 </%def>
 
@@ -87,15 +82,7 @@
 
 <%def name="get_footer_menu_items()">
   <%
-    return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      ['Example item', '#', '', 'target="_blank"'],
-      ['Help', reverse('help'), '', ''],
-      ['FAQ', marketing_link('FAQ'), '', ''],
-      ['Contact', reverse('contact'), '', ''],
-      ['Conditions of Use', reverse('tos'), '', ''],
-      ['Copyright', marketing_link('copyright'), '', '']
-    ]
+    return get_current_site_configuration().page_elements.get('footer', {}).get('items', [])
   %>
 </%def>
 
@@ -104,15 +91,9 @@
 
 <%def name="get_footer_settings()">
   <%
-    return {
-      'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2016 Company Name. All rights reserved.',  ## leave value empty if you don't want it displayed.
-      'display_edx_disclaimer' : True, ## bool value required
-      'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.', ## leave value empty if you don't want it displayed.
-      'display_poweredby' : True, ## bool value required
-      'display_app_link' : True,
-      'app_url' : 'https://itunes.apple.com/app/id1044418100'
-    }
+    footer_settings = get_current_site_configuration().page_elements.get('footer', {}).get('settings', {})
+    footer_settings['footer_logo'] = get_brand_logos()['icon_black']
+    return footer_settings
   %>
 </%def>
 
@@ -122,78 +103,14 @@
 
 <%def name="get_index_content()">
   <%
-    return [
-        #[
-        #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-        #     'template_setting_01': "value",
-        #     'template_setting_02': "value2",
-        #     ...
-        #   }
-        #]
-        [
-          'static-block', 'static-blocks/_hero-section-01.html', {
-            # template settings
-            'hero_title' : "Example title of the hero section", ## leave value empty if you don't want it displayed.
-            'hero_subtitle' : "This is the hero subtitle. Below this you can have a CTA button. You can choose what it says and what it does - it can either lead to another page, or it can open a YouTube video popup. Or you can have both those buttons at the same time!", ## leave value empty if you don't want it displayed.
-            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '/static/themes/dogwood-theme-codebase/images/hero--example-background.jpg', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_heading-plus-text-plus-cta.html', {
-            # template settings
-            'heading' : "Heading for an additional text block", ## leave value empty if you don't want it displayed.
-            'text' : "<p>You can have additional text blocks on the landing page.</p><p>It can have solid background with white text on it (see the one below on this page), or one like this which is white with standard text color. You can have a CTA below this text chunk that leads to another page, with custom button text.</p><p>The text can be aligned left or centered.</p>", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'optional_classes' : "centered", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_line-separator.html', {
-            # template settings
-            'optional_classes' : "", ## if none line will have height of 0.1rem (1px by default), can be set to "2px", "5px" or "8px"
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'courses-list', 'live-blocks/course-listing/_course-listing-01.html', {
-            # template settings
-            'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
-            'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
-            'course_template' : 'single-course/_course-tile-01.html', ## required
-            'section_heading' : "Our latest courses:", ## leave value empty if you don't want it displayed.
-            'section_text' : "The title above for the courses listing is customisable, as well sa this piece of text. There are three different types of course tiles (all three types displayed). Text can be aligned left or centered.", ## leave value empty if you don't want it displayed.
-            'optional_classes' : "centered", ## can be "centered" to have all text centered
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_line-separator.html', {
-            # template settings
-            'optional_classes' : "", ## if none line will have height of 0.1rem (1px by default), can be set to "2px", "5px" or "8px"
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_heading-plus-text-plus-cta.html', {
-            # template settings
-            'heading' : "Additional text block headline", ## leave value empty if you don't want it displayed.
-            'text' : "<p>This one's aligned left.</p><p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius.</p>", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'optional_classes' : "negative", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ]
-    ]
+    #[
+    #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
+    #     'template_setting_01': "value",
+    #     'template_setting_02': "value2",
+    #     ...
+    #   }
+    #]
+    return get_current_site_configuration().page_elements.get('index', [])
   %>
 </%def>
 
