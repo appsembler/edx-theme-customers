@@ -52,9 +52,9 @@
   <%
   return {
     'header_template' : 'design-templates/header/_header-appsembler-{}.html'.format(
-      get_current_site_configuration().page_elements.get('header_template_type', '01')), ## required
+      get_current_site_configuration().page_elements.get('header', {}).get('type', '01')), ## required
     'footer_template' : 'design-templates/footer/_footer-appsembler-{}.html'.format(
-      get_current_site_configuration().page_elements.get('footer_template_type', '01')), ## required
+      get_current_site_configuration().page_elements.get('footer', {}).get('type', '01')), ## required
   }
   %>
 </%def>
