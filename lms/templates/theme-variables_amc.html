@@ -23,7 +23,7 @@
   <%
   return {
     'enable_registration_button' : True,
-    'google_fonts_to_import' : 'https://fonts.googleapis.com/css?family=Bungee|Roboto:300,300i,400,400i,700,700i,900&amp;subset=latin-ext',
+    'google_fonts_to_import' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
     'apple_app_id' : '',
     ##'header_logo_target' : ''
   }
@@ -51,8 +51,10 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : 'design-templates/header/_header-appsembler-01.html', ## required
-    'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
+    'header_template' : 'design-templates/header/_header-appsembler-{}.html'.format(
+      get_current_site_configuration().page_elements.get('header', {}).get('type', '01')), ## required
+    'footer_template' : 'design-templates/footer/_footer-appsembler-{}.html'.format(
+      get_current_site_configuration().page_elements.get('footer', {}).get('type', '01')), ## required
   }
   %>
 </%def>
@@ -62,21 +64,7 @@
 
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
-    return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      {
-        'link_title': 'Test',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': false,
-      },
-      {
-        'link_title': 'Test2',
-        'link_URL': 'www.appsembler.com',
-        'special_class': 'button',
-        'open_in_new_tab': True,
-      },
-    ]
+    return get_current_site_configuration().page_elements.get('header', {}).get('logged_out_items', [])
   %>
 </%def>
 
@@ -85,21 +73,7 @@
 
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
-    return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      {
-        'link_title': 'Test auth',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': false,
-      },
-      {
-        'link_title': 'Test2 auth',
-        'link_URL': 'www.appsembler.com',
-        'special_class': 'a--button',
-        'open_in_new_tab': true,
-      },
-    ]
+    return get_current_site_configuration().page_elements.get('header', {}).get('logged_in_items', [])
   %>
 </%def>
 
@@ -108,15 +82,7 @@
 
 <%def name="get_footer_menu_items()">
   <%
-    return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      ['Example item', '#', '', 'target="_blank"'],
-      ['Help', reverse('help'), '', ''],
-      ['FAQ', marketing_link('FAQ'), '', ''],
-      ['Contact', reverse('contact'), '', ''],
-      ['Conditions of Use', reverse('tos'), '', ''],
-      ['Copyright', marketing_link('copyright'), '', '']
-    ]
+    return get_current_site_configuration().page_elements.get('footer', {}).get('items', [])
   %>
 </%def>
 
@@ -125,15 +91,9 @@
 
 <%def name="get_footer_settings()">
   <%
-    return {
-      'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2016 Company Name. All rights reserved.',  ## leave value empty if you don't want it displayed.
-      'display_edx_disclaimer' : True, ## bool value required
-      'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.', ## leave value empty if you don't want it displayed.
-      'display_poweredby' : True, ## bool value required
-      'display_app_link' : True,
-      'app_url' : 'https://itunes.apple.com/app/id1044418100'
-    }
+    footer_settings = get_current_site_configuration().page_elements.get('footer', {}).get('settings', {})
+    footer_settings['footer_logo'] = get_brand_logos()['icon_black']
+    return footer_settings
   %>
 </%def>
 
@@ -143,345 +103,14 @@
 
 <%def name="get_index_content()">
   <%
-    return [
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-50-50.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test testis",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          {
-            "element-type":"paragraph-text",
-            "element-path":"page-builder/elements/_paragraph.html",
-            "options":{
-              "font-size":"font-size--14px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#323232",
-              "margin-top":"marg-t-5",
-              "margin-left":"marg-l-0",
-              "text-content":"Test testis",
-              "font-family":"font--primary--regular",
-              "text-alignment":"text-align--left"
-            }
-          },
-          {
-            "element-type":"cta-button",
-            "element-path":"page-builder/elements/_cta-button.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "border-color":"#0090c1",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-5",
-              "padding-right":"padd-r-15",
-              "margin-left":"marg-l-0",
-              "url":"www.google.com",
-              "padding-bottom":"padd-b-10",
-              "text-content":"Test testis",
-              "padding-top":"padd-t-10",
-              "font-family":"font--primary--regular",
-              "border-width":"border-width--1px",
-              "background-color":"#fff",
-              "padding-left":"padd-l-15"
-            }
-          },
-          {
-            "element-type":"popup-video-cta-button",
-            "element-path":"page-builder/elements/_popup-video-cta-button.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "border-color":"#0090c1",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-5",
-              "padding-right":"padd-r-15",
-              "margin-left":"marg-l-0",
-              "url":"www.google.com",
-              "padding-bottom":"padd-b-10",
-              "text-content":"Launch video",
-              "padding-top":"padd-t-10",
-              "font-family":"font--primary--regular",
-              "border-width":"border-width--1px",
-              "background-color":"#fff",
-              "padding-left":"padd-l-15",
-              "youtube-video-id":"bJNNp7HNFZw"
-            }
-          }
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-0",
-                "margin-right":"marg-r-auto",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "element-type":"layout",
-        "element-path":"page-builder/layouts/_single-col.html",
-        "options":{
-          "layout-bg-image":"http://meormd.org/wp-content/uploads/2014/08/bokeh-background-32257-32996-hd-wallpapers.jpg",
-          "bg-color":"#fff",
-          "margin-right":"marg-r-0",
-          "margin-bottom":"marg-b-0",
-          "layout-bg-image-size":"bg-img-size--cover",
-          "text-color":"#000",
-          "margin-top":"marg-t-0",
-          "padding-right":"padd-r-0",
-          "margin-left":"marg-l-0",
-          "padding-bottom":"padd-b-100",
-          "padding-top":"padd-t-100",
-          "text-alignment":"text-align--left",
-          "padding-left":"padd-l-0",
-          "align-content":"align-content-center",
-        },
-        "children":{
-          "column-1":[
-            {
-              "element-type":"heading",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--32px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-0",
-                "text-color":"#fff",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Ovo je single column layout",
-                "font-family":"font--primary--bold",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ]
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-33-66.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#0090c1",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#fff",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#fff",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Ovdje treba biti plava pozadina",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-0",
-                "margin-right":"marg-r-auto",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-66-33.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test testis",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-0",
-                "margin-right":"marg-r-auto",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_three-col.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"Col1/3",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0000ff",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test testis",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          ],
-          "column-2":[
-            {
-              "element-type":"Col2/3",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--24px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-20",
-                "text-color":"#00ff00",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Test testis",
-                "font-family":"font--primary--bold",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ],
-          "column-3":[
-            {
-              "element-type":"Col3/3",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--12px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-20",
-                "text-color":"#ff0000",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Test testis",
-                "font-family":"font--primary--bold",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ]
-        }
-      },
-    ]
+    #[
+    #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
+    #     'template_setting_01': "value",
+    #     'template_setting_02': "value2",
+    #     ...
+    #   }
+    #]
+    return get_current_site_configuration().page_elements.get('index', [])
   %>
 </%def>
 
