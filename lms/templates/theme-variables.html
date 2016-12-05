@@ -23,7 +23,8 @@
   <%
   return {
     'enable_registration_button' : True,
-    'google_fonts_to_import' : 'https://fonts.googleapis.com/css?family=Bungee|Roboto:300,300i,400,400i,700,700i,900&amp;subset=latin-ext',
+    'primary_font_to_import' : 'https://fonts.googleapis.com/css?family=Bungee|Roboto:300,300i,400,400i,700,700i,900&amp;subset=latin-ext',
+    'accent_font_to_import' : 'https://fonts.googleapis.com/css?family=Bungee|Roboto:300,300i,400,400i,700,700i,900&amp;subset=latin-ext',
     'apple_app_id' : '',
     ##'header_logo_target' : ''
   }
@@ -63,19 +64,7 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      {
-        'link_title': 'Test',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': false,
-      },
-      {
-        'link_title': 'Test2',
-        'link_URL': 'www.appsembler.com',
-        'special_class': 'button',
-        'open_in_new_tab': True,
-      },
+
     ]
   %>
 </%def>
@@ -86,19 +75,7 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      {
-        'link_title': 'Test auth',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': false,
-      },
-      {
-        'link_title': 'Test2 auth',
-        'link_URL': 'www.appsembler.com',
-        'special_class': 'a--button',
-        'open_in_new_tab': true,
-      },
+
     ]
   %>
 </%def>
@@ -109,13 +86,12 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
-      #['LINK_TEXT', 'LINK_URL', 'LINK_CLASS', 'ADDITIONAL_ATTRIBUTES']
-      ['Example item', '#', '', 'target="_blank"'],
-      ['Help', reverse('help'), '', ''],
-      ['FAQ', marketing_link('FAQ'), '', ''],
-      ['Contact', reverse('contact'), '', ''],
-      ['Conditions of Use', reverse('tos'), '', ''],
-      ['Copyright', marketing_link('copyright'), '', '']
+      {
+        'link_title': 'Example item',
+        'link_URL': '#',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
     ]
   %>
 </%def>
@@ -145,10 +121,64 @@
   <%
     return [
       {
+        "element-type":"layout",
+        "element-path":"page-builder/layouts/_single-col.html",
+        "options":{
+          "layout-bg-image":"https://upload.wikimedia.org/wikipedia/commons/c/c2/Glorious-blue-mountain-range.jpg",
+          "bg-color":"#fff",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-300",
+          "padding-top":"padd-t-300",
+          "text-alignment":"text-align--center",
+          "padding-left":"padd-l-0",
+          "align-content":"align-content-center",
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"heading",
+              "element-path":"page-builder/elements/_heading.html",
+              "options":{
+                "font-size":"font-size--48px",
+                "margin-right":"marg-r-20",
+                "margin-bottom":"marg-b-0",
+                "text-color":"#fff",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-20",
+                "text-content":"Welcome to your new Open edX site!",
+                "font-family":"font--primary--black",
+                "text-alignment":"text-align--center"
+              }
+            },
+            {
+              "element-type":"paragraph-text",
+              "element-path":"page-builder/elements/_paragraph.html",
+              "options":{
+                "font-size":"font-size--24px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-5",
+                "text-color":"#fff",
+                "margin-top":"marg-t-20",
+                "margin-left":"marg-l-0",
+                "text-content":"Congratulations! Your new Open edX site is ready to start delivering your courses to students worldwide!",
+                "font-family":"font--primary--light",
+                "text-alignment":"text-align--center"
+              }
+            },
+          ]
+        }
+      },
+      {
       "element-type":"layout",
       "element-path":"page-builder/layouts/_two-col-50-50.html",
       "options":{
-        "layout-bg-image":"../path/to/image.jpg",
+        "layout-bg-image":"https://upload.wikimedia.org/wikipedia/commons/c/c2/Glorious-blue-mountain-range.jpg",
         "bg-color":"#fff",
         "margin-right":"marg-r-0",
         "margin-bottom":"marg-b-0",
@@ -159,7 +189,7 @@
         "margin-left":"marg-l-0",
         "padding-bottom":"padd-b-20",
         "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
+        "text-alignment":"text-align--center",
         "padding-left":"padd-l-0",
         "align-content":"align-content-center",
         },
@@ -175,7 +205,7 @@
               "text-color":"#0090c1",
               "margin-top":"marg-t-0",
               "margin-left":"marg-l-0",
-              "text-content":"Test testis",
+              "text-content":"Test heading",
               "font-family":"font--primary--bold",
               "text-alignment":"text-align--left"
             }
@@ -190,7 +220,7 @@
               "text-color":"#323232",
               "margin-top":"marg-t-5",
               "margin-left":"marg-l-0",
-              "text-content":"Test testis",
+              "text-content":"Test heading",
               "font-family":"font--primary--regular",
               "text-alignment":"text-align--left"
             }
@@ -199,22 +229,22 @@
             "element-type":"cta-button",
             "element-path":"page-builder/elements/_cta-button.html",
             "options":{
-              "font-size":"font-size--16px",
+              "font-size":"font-size--24px",
               "border-color":"#0090c1",
               "margin-right":"marg-r-0",
               "margin-bottom":"marg-b-5",
-              "text-color":"#0090c1",
+              "text-color":"#fff",
               "margin-top":"marg-t-5",
-              "padding-right":"padd-r-15",
+              "padding-right":"padd-r-30",
               "margin-left":"marg-l-0",
               "url":"www.google.com",
               "padding-bottom":"padd-b-10",
-              "text-content":"Test testis",
+              "text-content":"Test button",
               "padding-top":"padd-t-10",
-              "font-family":"font--primary--regular",
-              "border-width":"border-width--1px",
-              "background-color":"#fff",
-              "padding-left":"padd-l-15"
+              "font-family":"font--primary--light-italic",
+              "border-width":"border-width--none",
+              "bg-color":"#0090c1",
+              "padding-left":"padd-l-30"
             }
           },
           {
@@ -235,7 +265,7 @@
               "padding-top":"padd-t-10",
               "font-family":"font--primary--regular",
               "border-width":"border-width--1px",
-              "background-color":"#fff",
+              "bg-color":"#fff",
               "padding-left":"padd-l-15",
               "youtube-video-id":"bJNNp7HNFZw"
             }
@@ -384,7 +414,7 @@
               "text-color":"#0090c1",
               "margin-top":"marg-t-0",
               "margin-left":"marg-l-0",
-              "text-content":"Test testis",
+              "text-content":"Test heading",
               "font-family":"font--primary--bold",
               "text-alignment":"text-align--left"
             }
@@ -439,7 +469,7 @@
               "text-color":"#0000ff",
               "margin-top":"marg-t-0",
               "margin-left":"marg-l-0",
-              "text-content":"Test testis",
+              "text-content":"Test heading",
               "font-family":"font--primary--bold",
               "text-alignment":"text-align--left"
             }
@@ -456,7 +486,7 @@
                 "text-color":"#00ff00",
                 "margin-top":"marg-t-0",
                 "margin-left":"marg-l-0",
-                "text-content":"Test testis",
+                "text-content":"Test heading",
                 "font-family":"font--primary--bold",
                 "text-alignment":"text-align--left"
               }
@@ -473,7 +503,7 @@
                 "text-color":"#ff0000",
                 "margin-top":"marg-t-0",
                 "margin-left":"marg-l-0",
-                "text-content":"Test testis",
+                "text-content":"Test heading",
                 "font-family":"font--primary--bold",
                 "text-alignment":"text-align--left"
               }
@@ -491,38 +521,52 @@
 <%def name="get_course_about_content()">
   <%
     return [
-        #[
-        #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-        #     'template_setting_01': "value",
-        #     'template_setting_02': "value2",
-        #     ...
-        #   }
-        #]
-        [
-          'about-course-template', 'pages/course-about/_course-about-01.html', {
-            # template settings
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'courses-list', 'static-blocks/_line-separator.html', {
-            # template settings
-            'optional_classes' : "", ## if none line will have height of 0.1rem (1px by default), can be set to "2px", "5px" or "8px"
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_heading-plus-text-plus-cta.html', {
-            # template settings
-            'heading' : "Optional content title", ## leave value empty if you don't want it displayed.
-            'text' : "<p>You can add some additional content here. You can add a CTA under this section as well.</p><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA button", ## leave value empty if you don't want a CTA button displayed.
-            'optional_classes' : "centered", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ]
+      {
+        "element-type":"course-about-template",
+        "element-path":"design-templates/pages/course-about/_course-about-01.html",
+        "options":{
+
+        }
+      },
+      {
+        "element-type":"layout",
+        "element-path":"page-builder/layouts/_single-col.html",
+        "options":{
+          "layout-bg-image":"http://meormd.org/wp-content/uploads/2014/08/bokeh-background-32257-32996-hd-wallpapers.jpg",
+          "bg-color":"#fff",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-100",
+          "padding-top":"padd-t-100",
+          "text-alignment":"text-align--left",
+          "padding-left":"padd-l-0",
+          "align-content":"align-content-center",
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"heading",
+              "element-path":"page-builder/elements/_heading.html",
+              "options":{
+                "font-size":"font-size--32px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-0",
+                "text-color":"#fff",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":"Example heading",
+                "font-family":"font--primary--bold",
+                "text-alignment":"text-align--left"
+              }
+            },
+          ]
+        }
+      },
     ]
   %>
 </%def>
@@ -549,51 +593,167 @@
 <%def name="get_course_catalogue_content()">
   <%
     return [
-      #[
-      #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-      #     'template_setting_01': "value",
-      #     'template_setting_02': "value2",
-      #     ...
-      #   }
-      #]
-      [
-        'static-block', 'static-blocks/_hero-section-01.html', {
-          # template settings
-          'hero_title' : "Your custom title", ## leave value empty if you don't want it displayed.
-          'hero_subtitle' : "You can change the text that goes here. You can also change the background image of this area.", ## leave value empty if you don't want it displayed.
-          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
-          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-          'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-          'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-          'text_color' : "#fff",
-          'bg_image_url' : "", ## leave empty if you want just a full color background
-          'extra_css' : "padding-top: 5rem; padding-bottom: 5rem;" ## add custom css to be added inline to the wrapper element
-         }
-      ],
-      [
-        'course-catalogue', 'pages/course-catalogue/_course-catalogue-01.html', {
-          # just include the course-catalogue template with the search, facets and results/listing at a place on the page
+      {
+        "element-type":"layout",
+        "element-path":"page-builder/layouts/_single-col.html",
+        "options":{
+          "layout-bg-image":"http://meormd.org/wp-content/uploads/2014/08/bokeh-background-32257-32996-hd-wallpapers.jpg",
+          "bg-color":"#fff",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-100",
+          "padding-top":"padd-t-100",
+          "text-alignment":"text-align--left",
+          "padding-left":"padd-l-0",
+          "align-content":"align-content-center",
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"heading",
+              "element-path":"page-builder/elements/_heading.html",
+              "options":{
+                "font-size":"font-size--32px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-0",
+                "text-color":"#fff",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":"Example heading",
+                "font-family":"font--primary--regular-italic",
+                "text-alignment":"text-align--left"
+              }
+            },
+          ]
         }
-      ],
-      [
-        'courses-list', 'static-blocks/_line-separator.html', {
-          # template settings
-          'optional_classes' : "", ## if none line will have height of 0.1rem (1px by default), can be set to "2px", "5px" or "8px"
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+      },
+      {
+        "element-type":"course-catalogue-template",
+        "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
+        "options":{
+
         }
-      ],
-      [
-        'static-block', 'static-blocks/_heading-plus-text-plus-cta.html', {
-          # template settings
-          'heading' : "Optional content can go here", ## leave value empty if you don't want it displayed.
-          'text' : "<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>", ## leave value empty if you don't want it displayed.
-          'cta_link' : "http://www.appsembler.com", ## leave value empty if you don't want a CTA button displayed.
-          'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-          'optional_classes' : "", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+      },
+      {
+      "element-type":"layout",
+      "element-path":"page-builder/layouts/_two-col-50-50.html",
+      "options":{
+        "layout-bg-image":"../path/to/image.jpg",
+        "bg-color":"#fff",
+        "margin-right":"marg-r-0",
+        "margin-bottom":"marg-b-0",
+        "layout-bg-image-size":"bg-img-size--cover",
+        "text-color":"#000",
+        "margin-top":"marg-t-0",
+        "padding-right":"padd-r-0",
+        "margin-left":"marg-l-0",
+        "padding-bottom":"padd-b-20",
+        "padding-top":"padd-t-20",
+        "text-alignment":"text-align--left",
+        "padding-left":"padd-l-0",
+        "align-content":"align-content-center",
+        },
+      "children":{
+        "column-1":[
+          {
+            "element-type":"heading",
+            "element-path":"page-builder/elements/_heading.html",
+            "options":{
+              "font-size":"font-size--32px",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-20",
+              "text-color":"#0090c1",
+              "margin-top":"marg-t-0",
+              "margin-left":"marg-l-0",
+              "text-content":"Test heading",
+              "font-family":"font--primary--bold",
+              "text-alignment":"text-align--left"
+            }
+          },
+          {
+            "element-type":"paragraph-text",
+            "element-path":"page-builder/elements/_paragraph.html",
+            "options":{
+              "font-size":"font-size--14px",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-5",
+              "text-color":"#323232",
+              "margin-top":"marg-t-5",
+              "margin-left":"marg-l-0",
+              "text-content":"Test heading",
+              "font-family":"font--primary--regular",
+              "text-alignment":"text-align--left"
+            }
+          },
+          {
+            "element-type":"cta-button",
+            "element-path":"page-builder/elements/_cta-button.html",
+            "options":{
+              "font-size":"font-size--16px",
+              "border-color":"#0090c1",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-5",
+              "text-color":"#0090c1",
+              "margin-top":"marg-t-5",
+              "padding-right":"padd-r-15",
+              "margin-left":"marg-l-0",
+              "url":"www.google.com",
+              "padding-bottom":"padd-b-10",
+              "text-content":"Test heading",
+              "padding-top":"padd-t-10",
+              "font-family":"font--primary--regular",
+              "border-width":"border-width--1px",
+              "bg-color":"#fff",
+              "padding-left":"padd-l-15"
+            }
+          },
+          {
+            "element-type":"popup-video-cta-button",
+            "element-path":"page-builder/elements/_popup-video-cta-button.html",
+            "options":{
+              "font-size":"font-size--16px",
+              "border-color":"#0090c1",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-5",
+              "text-color":"#0090c1",
+              "margin-top":"marg-t-5",
+              "padding-right":"padd-r-15",
+              "margin-left":"marg-l-0",
+              "url":"www.google.com",
+              "padding-bottom":"padd-b-10",
+              "text-content":"Launch video",
+              "padding-top":"padd-t-10",
+              "font-family":"font--primary--regular",
+              "border-width":"border-width--1px",
+              "bg-color":"#fff",
+              "padding-left":"padd-l-15",
+              "youtube-video-id":"bJNNp7HNFZw"
+            }
+          }
+          ],
+          "column-2":[
+            {
+              "element-type":"image-graphic",
+              "element-path":"page-builder/elements/_image-graphic.html",
+              "options":{
+                "margin-left":"marg-l-auto",
+                "image-alt-text":"Eto ga",
+                "margin-bottom":"marg-b-0",
+                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
+                "margin-top":"marg-t-100",
+                "margin-right":"marg-r-auto",
+                "link-url":"",
+                "image-width":"set-width--100percent"
+              }
+            }
+          ]
         }
-      ]
+      },
     ]
   %>
 </%def>
@@ -623,80 +783,243 @@
 <%def name="get_dashboard_content()">
   <%
     return [
-      #[
-      #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-      #     'template_setting_01': "value",
-      #     'template_setting_02': "value2",
-      #     ...
-      #   }
-      #]
-      [
-        'dashboard', 'pages/dashboard/_dashboard-01.html', {
-          # just include the course-catalogue template with the search, facets and results/listing at a place on the page
+      {
+        "element-type":"dashboard-template",
+        "element-path":"design-templates/pages/dashboard/_dashboard-01.html",
+        "options":{
+
         }
-      ]
+      },
+      {
+      "element-type":"layout",
+      "element-path":"page-builder/layouts/_two-col-50-50.html",
+      "options":{
+        "layout-bg-image":"../path/to/image.jpg",
+        "bg-color":"#fff",
+        "margin-right":"marg-r-0",
+        "margin-bottom":"marg-b-0",
+        "layout-bg-image-size":"bg-img-size--cover",
+        "text-color":"#000",
+        "margin-top":"marg-t-0",
+        "padding-right":"padd-r-0",
+        "margin-left":"marg-l-0",
+        "padding-bottom":"padd-b-20",
+        "padding-top":"padd-t-20",
+        "text-alignment":"text-align--left",
+        "padding-left":"padd-l-0",
+        "align-content":"align-content-center",
+        },
+      "children":{
+        "column-1":[
+          {
+            "element-type":"heading",
+            "element-path":"page-builder/elements/_heading.html",
+            "options":{
+              "font-size":"font-size--32px",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-20",
+              "text-color":"#0090c1",
+              "margin-top":"marg-t-0",
+              "margin-left":"marg-l-0",
+              "text-content":"Test heading",
+              "font-family":"font--primary--bold",
+              "text-alignment":"text-align--left"
+            }
+          },
+          {
+            "element-type":"paragraph-text",
+            "element-path":"page-builder/elements/_paragraph.html",
+            "options":{
+              "font-size":"font-size--14px",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-5",
+              "text-color":"#323232",
+              "margin-top":"marg-t-5",
+              "margin-left":"marg-l-0",
+              "text-content":"Test heading",
+              "font-family":"font--primary--regular",
+              "text-alignment":"text-align--left"
+            }
+          },
+          {
+            "element-type":"cta-button",
+            "element-path":"page-builder/elements/_cta-button.html",
+            "options":{
+              "font-size":"font-size--16px",
+              "border-color":"#0090c1",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-5",
+              "text-color":"#0090c1",
+              "margin-top":"marg-t-5",
+              "padding-right":"padd-r-15",
+              "margin-left":"marg-l-0",
+              "url":"www.google.com",
+              "padding-bottom":"padd-b-10",
+              "text-content":"Test heading",
+              "padding-top":"padd-t-10",
+              "font-family":"font--primary--regular",
+              "border-width":"border-width--1px",
+              "bg-color":"#fff",
+              "padding-left":"padd-l-15"
+            }
+          },
+          {
+            "element-type":"popup-video-cta-button",
+            "element-path":"page-builder/elements/_popup-video-cta-button.html",
+            "options":{
+              "font-size":"font-size--16px",
+              "border-color":"#0090c1",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-5",
+              "text-color":"#0090c1",
+              "margin-top":"marg-t-5",
+              "padding-right":"padd-r-15",
+              "margin-left":"marg-l-0",
+              "url":"www.google.com",
+              "padding-bottom":"padd-b-10",
+              "text-content":"Launch video",
+              "padding-top":"padd-t-10",
+              "font-family":"font--primary--regular",
+              "border-width":"border-width--1px",
+              "bg-color":"#fff",
+              "padding-left":"padd-l-15",
+              "youtube-video-id":"bJNNp7HNFZw"
+            }
+          }
+          ],
+          "column-2":[
+            {
+              "element-type":"image-graphic",
+              "element-path":"page-builder/elements/_image-graphic.html",
+              "options":{
+                "margin-left":"marg-l-auto",
+                "image-alt-text":"Eto ga",
+                "margin-bottom":"marg-b-0",
+                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
+                "margin-top":"marg-t-0",
+                "margin-right":"marg-r-0",
+                "link-url":"",
+                "image-width":"set-width--100percent"
+              }
+            }
+          ]
+        }
+      },
     ]
   %>
 </%def>
+
+
+## dummy static page content for testing
+
+<%def name="dummy_data()">
+  <%
+    return [
+      {
+        "element-type":"layout",
+        "element-path":"page-builder/layouts/_single-col.html",
+        "options":{
+          "layout-bg-image":"http://meormd.org/wp-content/uploads/2014/08/bokeh-background-32257-32996-hd-wallpapers.jpg",
+          "bg-color":"#fff",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-100",
+          "padding-top":"padd-t-100",
+          "text-alignment":"text-align--left",
+          "padding-left":"padd-l-0",
+          "align-content":"align-content-center",
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"heading",
+              "element-path":"page-builder/elements/_heading.html",
+              "options":{
+                "font-size":"font-size--32px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-0",
+                "text-color":"#fff",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":"Example title of a static page",
+                "font-family":"font--primary--bold",
+                "text-alignment":"text-align--left"
+              }
+            },
+          ]
+        }
+      },
+      {
+      "element-type":"layout",
+      "element-path":"page-builder/layouts/_two-col-50-50.html",
+      "options":{
+        "layout-bg-image":"../path/to/image.jpg",
+        "bg-color":"#fff",
+        "margin-right":"marg-r-0",
+        "margin-bottom":"marg-b-0",
+        "layout-bg-image-size":"bg-img-size--cover",
+        "text-color":"#000",
+        "margin-top":"marg-t-0",
+        "padding-right":"padd-r-0",
+        "margin-left":"marg-l-0",
+        "padding-bottom":"padd-b-20",
+        "padding-top":"padd-t-20",
+        "text-alignment":"text-align--left",
+        "padding-left":"padd-l-0",
+        "align-content":"align-content-center",
+        },
+      "children":{
+        "column-1":[
+          {
+            "element-type":"heading",
+            "element-path":"page-builder/elements/_heading.html",
+            "options":{
+              "font-size":"font-size--32px",
+              "margin-right":"marg-r-0",
+              "margin-bottom":"marg-b-20",
+              "text-color":"#0090c1",
+              "margin-top":"marg-t-0",
+              "margin-left":"marg-l-0",
+              "text-content":"Test heading",
+              "font-family":"font--primary--bold",
+              "text-alignment":"text-align--left"
+            }
+          },
+          ],
+          "column-2":[
+            {
+              "element-type":"image-graphic",
+              "element-path":"page-builder/elements/_image-graphic.html",
+              "options":{
+                "margin-left":"marg-l-auto",
+                "image-alt-text":"Eto ga",
+                "margin-bottom":"marg-b-0",
+                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
+                "margin-top":"marg-t-0",
+                "margin-right":"marg-r-auto",
+                "link-url":"",
+                "image-width":"set-width--100percent"
+              }
+            }
+          ]
+        }
+      },
+    ]
+  %>
+</%def>
+
 
 
 ## faq page content
 
 <%def name="get_faq_content()">
   <%
-    return [
-        #[
-        #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-        #     'template_setting_01': "value",
-        #     'template_setting_02': "value2",
-        #     ...
-        #   }
-        #]
-        [
-          'static-block', 'static-blocks/_hero-section-01.html', {
-            # template settings
-            'hero_title' : "This is the title for the FAQ static page", ## leave value empty if you don't want it displayed.
-            'hero_subtitle' : "Got any questions for us? Check out the ones we already have answered below, and if you don't find yours - click to contact us!", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "Contact us", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'extra_css' : "", ## add custom css to be added inline to the wrapper element
-            'bg_image_url' : '' ## leave empty if you want just a full color background
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_plain-content-01.html', {
-            # template settings
-            'content' : '<h1>FAQ</h1><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. </p><h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p><h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<h3>Subheading here</h3><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<h3>Subheading here</h3><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus.<h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_expanding-sections-list-01.html', {
-            # template settings
-            'content' : [
-              ## ['Title', 'Expanded content'],
-              ['Does Open edX have an intuitive, polished interface: it should look modern and be easy to use.', 'This is one of the first things that strike people who use Open edX; as one person put it, "unlike many other learning management systems it actually looks like it was developed in the 21st Century." In less than four years over five million people have taken edX courses.'],
-              ['Can we visually brand our Open edX site, an individual course or series of courses through graphics, color, typography?', 'Yes, you can brand -- "theme" -- your Open edX instance. And you can give unique looks to groups of courses, such as those from a particular division or geography, using the Open edX microsites functionality. Finally, you can make modest modifications to individual courses and alter their navigation options, too.'],
-              ['Does Open edX functions fluidly on conventional web browsers for Windows, OSX and mobile platforms?', 'Open edX can be used on current versions of the Chrome, Safari, Firefox and Internet Explorer browsers.'],
-              ['How can students track activity and performance?', 'Students can take quizzes and tests and upload files. Using the Staff Graded Assignment feature developed by Appsemblers sister company Jazkarta, and added to the core edX code in 2014, instructors can grade and comment on student submissions. Using the Open Response Assessment (ORA) feature developed by Appsembler students can grade the essays of their peers.'],
-              ['How do students know where they left off within the course?', 'Open edX automatically returns the students to the place they were in the course when they last closed it.'],
-              ['Is there a mechanism to allow submission of documents and files from students?', 'Yes, using the Staff Graded Assignment feature students can upload and instructors can grade assignments. This is a feature commissioned by MIT that the Appsembler team built and has now been incorporated as a core feature of the edX platform.'],
-              ['Can you group all course downloads, handouts, etc. all together in a ‘library’, as well as embed them individually with lesson content?', 'You can upload files into a library and reference them in any course content: <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/course_files.html">http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/course_files.html</a> &nbsp; There is a handouts feature. <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/handouts_updates.html">http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/handouts_updates.html</a> Open edX provides a <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/creating_content/libraries.html">content libraries</a> feature which lets you create a library of content that can be re-used across multiple courses. When you change the content in the library the content is updated in all the courses.'],
-              ['Can you import and export content from other online education systems?', 'Appsembler has provided Open edX SCORM support using SCORM Cloud as described<a href="http://blog.jazkarta.com/2015/02/08/adding-scorm-packages-to-open-edx-via-scormcloud-and-lti/%27"> in this blog post</a>, and are working on deeper native SCORM support for a client that we will deliver this winter. Open edX is an LTI provider and consumer.'],
-              ['Can instructors create simple or complex quizzes or tests using text, images or video clips as needed?', 'Yes, here is information on tests and quizzes. Use of images and video is fundamental to edX <a href="http://open-edx-building-and-running-a-course.readthedocs.org/en/latest/exercises_tools/index.html">http://open-edx-building-and-running-a-course.readthedocs.org/en/latest/exercises_tools/index.html</a> &nbsp; The<a href="https://github.com/open-craft/problem-builder"> Problem Builder XBlock</a> has capabilities that can help you provide feedback and hints to the student. &nbsp; Some of the hundreds of other XBlocks available for Open edX include:<ul><li>Integration with cloud storage services such as Google Drive and Dropbox</li><li>Student polls</li><li>Integration with third-party video hosting services such as Brightcove</li><li>Ask questions during playback of YouTube videos</li><li>Mathematical physics simulations</li><li>Adding hotspots to course images</li><li>Drag and Drop questions</li><li>Awarding digital badges</li></ul>Appsembler could create a custom XBlock to support any content, exercise or test type that’s not currently provided.'],
-              ['We want students to be able to practice on our software. Could Open edX support this?', 'Yes, Appsembler has developed a custom virtual software lab for our clients that lets students instantly spin up a copy of their software to work on.'],
-              ['How can students communicate with instructors?', 'The instructor and students in a course can communicate with one another in course discussion areas, and instructors and individual students can communicate directly via a one-to-one discussion thread and email. Instructors can email students individual or as a group.']
-            ],
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ]
-    ]
+    return dummy_data();
   %>
 </%def>
 
@@ -705,38 +1028,7 @@
 
 <%def name="get_tos_content()">
   <%
-    return [
-        #[
-        #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-        #     'template_setting_01': "value",
-        #     'template_setting_02': "value2",
-        #     ...
-        #   }
-        #]
-        [
-          'static-block', 'static-blocks/_hero-section-01.html', {
-            # template settings
-            'hero_title' : "Static page title", ## leave value empty if you don't want it displayed.
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_plain-content-01.html', {
-            # template settings
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ]
-    ]
+    return dummy_data();
   %>
 </%def>
 
@@ -745,38 +1037,7 @@
 
 <%def name="get_copyright_content()">
   <%
-    return [
-        #[
-        #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-        #     'template_setting_01': "value",
-        #     'template_setting_02': "value2",
-        #     ...
-        #   }
-        #]
-        [
-          'static-block', 'static-blocks/_hero-section-01.html', {
-            # template settings
-            'hero_title' : "Static page title", ## leave value empty if you don't want it displayed.
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_plain-content-01.html', {
-            # template settings
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ]
-    ]
+    return dummy_data();
   %>
 </%def>
 
@@ -785,38 +1046,7 @@
 
 <%def name="get_about_content()">
   <%
-    return [
-        #[
-        #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-        #     'template_setting_01': "value",
-        #     'template_setting_02': "value2",
-        #     ...
-        #   }
-        #]
-        [
-          'static-block', 'static-blocks/_hero-section-01.html', {
-            # template settings
-            'hero_title' : "Static page title", ## leave value empty if you don't want it displayed.
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_plain-content-01.html', {
-            # template settings
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ]
-    ]
+    return dummy_data();
   %>
 </%def>
 
@@ -825,38 +1055,7 @@
 
 <%def name="get_help_content()">
   <%
-    return [
-        #[
-        #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-        #     'template_setting_01': "value",
-        #     'template_setting_02': "value2",
-        #     ...
-        #   }
-        #]
-        [
-          'static-block', 'static-blocks/_hero-section-01.html', {
-            # template settings
-            'hero_title' : "Static page title", ## leave value empty if you don't want it displayed.
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_plain-content-01.html', {
-            # template settings
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ]
-    ]
+    return dummy_data();
   %>
 </%def>
 
@@ -865,37 +1064,6 @@
 
 <%def name="get_contact_content()">
   <%
-    return [
-        #[
-        #   'TEMPLATE_TYPE', 'TEMPLATE_URL', {
-        #     'template_setting_01': "value",
-        #     'template_setting_02': "value2",
-        #     ...
-        #   }
-        #]
-        [
-          'static-block', 'static-blocks/_hero-section-01.html', {
-            # template settings
-            'hero_title' : "Static page title", ## leave value empty if you don't want it displayed.
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)", ## leave value empty if you don't want it displayed.
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ],
-        [
-          'static-block', 'static-blocks/_plain-content-01.html', {
-            # template settings
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        ]
-    ]
+    return dummy_data();
   %>
 </%def>
