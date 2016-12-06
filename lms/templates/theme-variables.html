@@ -52,8 +52,10 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : 'design-templates/header/_header-appsembler-01.html', ## required
-    'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
+    'header_template' : 'design-templates/header/_header-appsembler-{}.html'.format(
+      get_current_site_configuration().page_elements.get('header', {}).get('type', '01')), ## required
+    'footer_template' : 'design-templates/footer/_footer-appsembler-{}.html'.format(
+      get_current_site_configuration().page_elements.get('footer', {}).get('type', '01')), ## required
   }
   %>
 </%def>
@@ -63,9 +65,7 @@
 
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
-    return [
-
-    ]
+    return get_current_site_configuration().page_elements.get('header', {}).get('loggedOutItems', [])
   %>
 </%def>
 
@@ -74,9 +74,7 @@
 
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
-    return [
-
-    ]
+    return get_current_site_configuration().page_elements.get('header', {}).get('loggedInItems', [])
   %>
 </%def>
 
@@ -85,14 +83,7 @@
 
 <%def name="get_footer_menu_items()">
   <%
-    return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
-    ]
+    return get_current_site_configuration().page_elements.get('footer', {}).get('items', [])
   %>
 </%def>
 
@@ -119,399 +110,7 @@
 
 <%def name="get_index_content()">
   <%
-    return [
-      {
-        "element-type":"layout",
-        "element-path":"page-builder/layouts/_single-col.html",
-        "options":{
-          "layout-bg-image":"https://upload.wikimedia.org/wikipedia/commons/c/c2/Glorious-blue-mountain-range.jpg",
-          "bg-color":"#fff",
-          "margin-right":"marg-r-0",
-          "margin-bottom":"marg-b-0",
-          "layout-bg-image-size":"bg-img-size--cover",
-          "text-color":"#000",
-          "margin-top":"marg-t-0",
-          "padding-right":"padd-r-0",
-          "margin-left":"marg-l-0",
-          "padding-bottom":"padd-b-300",
-          "padding-top":"padd-t-300",
-          "text-alignment":"text-align--center",
-          "padding-left":"padd-l-0",
-          "align-content":"align-content-center",
-        },
-        "children":{
-          "column-1":[
-            {
-              "element-type":"heading",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--48px",
-                "margin-right":"marg-r-20",
-                "margin-bottom":"marg-b-0",
-                "text-color":"#fff",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-20",
-                "text-content":"Welcome to your new Open edX site!",
-                "font-family":"font--primary--black",
-                "text-alignment":"text-align--center"
-              }
-            },
-            {
-              "element-type":"paragraph-text",
-              "element-path":"page-builder/elements/_paragraph.html",
-              "options":{
-                "font-size":"font-size--24px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-5",
-                "text-color":"#fff",
-                "margin-top":"marg-t-20",
-                "margin-left":"marg-l-0",
-                "text-content":"Congratulations! Your new Open edX site is ready to start delivering your courses to students worldwide!",
-                "font-family":"font--primary--light",
-                "text-alignment":"text-align--center"
-              }
-            },
-          ]
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-50-50.html",
-      "options":{
-        "layout-bg-image":"https://upload.wikimedia.org/wikipedia/commons/c/c2/Glorious-blue-mountain-range.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--center",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          {
-            "element-type":"paragraph-text",
-            "element-path":"page-builder/elements/_paragraph.html",
-            "options":{
-              "font-size":"font-size--14px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#323232",
-              "margin-top":"marg-t-5",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--regular",
-              "text-alignment":"text-align--left"
-            }
-          },
-          {
-            "element-type":"cta-button",
-            "element-path":"page-builder/elements/_cta-button.html",
-            "options":{
-              "font-size":"font-size--24px",
-              "border-color":"#0090c1",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#fff",
-              "margin-top":"marg-t-5",
-              "padding-right":"padd-r-30",
-              "margin-left":"marg-l-0",
-              "url":"www.google.com",
-              "padding-bottom":"padd-b-10",
-              "text-content":"Test button",
-              "padding-top":"padd-t-10",
-              "font-family":"font--primary--light-italic",
-              "border-width":"border-width--none",
-              "bg-color":"#0090c1",
-              "padding-left":"padd-l-30"
-            }
-          },
-          {
-            "element-type":"popup-video-cta-button",
-            "element-path":"page-builder/elements/_popup-video-cta-button.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "border-color":"#0090c1",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-5",
-              "padding-right":"padd-r-15",
-              "margin-left":"marg-l-0",
-              "url":"www.google.com",
-              "padding-bottom":"padd-b-10",
-              "text-content":"Launch video",
-              "padding-top":"padd-t-10",
-              "font-family":"font--primary--regular",
-              "border-width":"border-width--1px",
-              "bg-color":"#fff",
-              "padding-left":"padd-l-15",
-              "youtube-video-id":"bJNNp7HNFZw"
-            }
-          }
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-0",
-                "margin-right":"marg-r-auto",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-      {
-        "element-type":"layout",
-        "element-path":"page-builder/layouts/_single-col.html",
-        "options":{
-          "layout-bg-image":"http://meormd.org/wp-content/uploads/2014/08/bokeh-background-32257-32996-hd-wallpapers.jpg",
-          "bg-color":"#fff",
-          "margin-right":"marg-r-0",
-          "margin-bottom":"marg-b-0",
-          "layout-bg-image-size":"bg-img-size--cover",
-          "text-color":"#000",
-          "margin-top":"marg-t-0",
-          "padding-right":"padd-r-0",
-          "margin-left":"marg-l-0",
-          "padding-bottom":"padd-b-100",
-          "padding-top":"padd-t-100",
-          "text-alignment":"text-align--left",
-          "padding-left":"padd-l-0",
-          "align-content":"align-content-center",
-        },
-        "children":{
-          "column-1":[
-            {
-              "element-type":"heading",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--32px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-0",
-                "text-color":"#fff",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Ovo je single column layout",
-                "font-family":"font--primary--bold",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ]
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-33-66.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#0090c1",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#fff",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#fff",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Ovdje treba biti plava pozadina",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-0",
-                "margin-right":"marg-r-auto",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-66-33.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-0",
-                "margin-right":"marg-r-auto",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_three-col.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"Col1/3",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0000ff",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          ],
-          "column-2":[
-            {
-              "element-type":"Col2/3",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--24px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-20",
-                "text-color":"#00ff00",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Test heading",
-                "font-family":"font--primary--bold",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ],
-          "column-3":[
-            {
-              "element-type":"Col3/3",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--12px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-20",
-                "text-color":"#ff0000",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Test heading",
-                "font-family":"font--primary--bold",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ]
-        }
-      },
-    ]
+    return get_current_site_configuration().page_elements.get('index', {}).get('content', [])
   %>
 </%def>
 
@@ -520,54 +119,7 @@
 
 <%def name="get_course_about_content()">
   <%
-    return [
-      {
-        "element-type":"course-about-template",
-        "element-path":"design-templates/pages/course-about/_course-about-01.html",
-        "options":{
-
-        }
-      },
-      {
-        "element-type":"layout",
-        "element-path":"page-builder/layouts/_single-col.html",
-        "options":{
-          "layout-bg-image":"http://meormd.org/wp-content/uploads/2014/08/bokeh-background-32257-32996-hd-wallpapers.jpg",
-          "bg-color":"#fff",
-          "margin-right":"marg-r-0",
-          "margin-bottom":"marg-b-0",
-          "layout-bg-image-size":"bg-img-size--cover",
-          "text-color":"#000",
-          "margin-top":"marg-t-0",
-          "padding-right":"padd-r-0",
-          "margin-left":"marg-l-0",
-          "padding-bottom":"padd-b-100",
-          "padding-top":"padd-t-100",
-          "text-alignment":"text-align--left",
-          "padding-left":"padd-l-0",
-          "align-content":"align-content-center",
-        },
-        "children":{
-          "column-1":[
-            {
-              "element-type":"heading",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--32px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-0",
-                "text-color":"#fff",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Example heading",
-                "font-family":"font--primary--bold",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ]
-        }
-      },
-    ]
+    return get_current_site_configuration().page_elements.get('course_about', {}).get('content', [])
   %>
 </%def>
 
@@ -592,169 +144,7 @@
 
 <%def name="get_course_catalogue_content()">
   <%
-    return [
-      {
-        "element-type":"layout",
-        "element-path":"page-builder/layouts/_single-col.html",
-        "options":{
-          "layout-bg-image":"http://meormd.org/wp-content/uploads/2014/08/bokeh-background-32257-32996-hd-wallpapers.jpg",
-          "bg-color":"#fff",
-          "margin-right":"marg-r-0",
-          "margin-bottom":"marg-b-0",
-          "layout-bg-image-size":"bg-img-size--cover",
-          "text-color":"#000",
-          "margin-top":"marg-t-0",
-          "padding-right":"padd-r-0",
-          "margin-left":"marg-l-0",
-          "padding-bottom":"padd-b-100",
-          "padding-top":"padd-t-100",
-          "text-alignment":"text-align--left",
-          "padding-left":"padd-l-0",
-          "align-content":"align-content-center",
-        },
-        "children":{
-          "column-1":[
-            {
-              "element-type":"heading",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--32px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-0",
-                "text-color":"#fff",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Example heading",
-                "font-family":"font--primary--regular-italic",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ]
-        }
-      },
-      {
-        "element-type":"course-catalogue-template",
-        "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
-        "options":{
-
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-50-50.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          {
-            "element-type":"paragraph-text",
-            "element-path":"page-builder/elements/_paragraph.html",
-            "options":{
-              "font-size":"font-size--14px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#323232",
-              "margin-top":"marg-t-5",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--regular",
-              "text-alignment":"text-align--left"
-            }
-          },
-          {
-            "element-type":"cta-button",
-            "element-path":"page-builder/elements/_cta-button.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "border-color":"#0090c1",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-5",
-              "padding-right":"padd-r-15",
-              "margin-left":"marg-l-0",
-              "url":"www.google.com",
-              "padding-bottom":"padd-b-10",
-              "text-content":"Test heading",
-              "padding-top":"padd-t-10",
-              "font-family":"font--primary--regular",
-              "border-width":"border-width--1px",
-              "bg-color":"#fff",
-              "padding-left":"padd-l-15"
-            }
-          },
-          {
-            "element-type":"popup-video-cta-button",
-            "element-path":"page-builder/elements/_popup-video-cta-button.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "border-color":"#0090c1",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-5",
-              "padding-right":"padd-r-15",
-              "margin-left":"marg-l-0",
-              "url":"www.google.com",
-              "padding-bottom":"padd-b-10",
-              "text-content":"Launch video",
-              "padding-top":"padd-t-10",
-              "font-family":"font--primary--regular",
-              "border-width":"border-width--1px",
-              "bg-color":"#fff",
-              "padding-left":"padd-l-15",
-              "youtube-video-id":"bJNNp7HNFZw"
-            }
-          }
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-100",
-                "margin-right":"marg-r-auto",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-    ]
+    return get_current_site_configuration().page_elements.get('course_catalogue', {}).get('content', [])
   %>
 </%def>
 
@@ -782,244 +172,16 @@
 
 <%def name="get_dashboard_content()">
   <%
-    return [
-      {
-        "element-type":"dashboard-template",
-        "element-path":"design-templates/pages/dashboard/_dashboard-01.html",
-        "options":{
-
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-50-50.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          {
-            "element-type":"paragraph-text",
-            "element-path":"page-builder/elements/_paragraph.html",
-            "options":{
-              "font-size":"font-size--14px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#323232",
-              "margin-top":"marg-t-5",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--regular",
-              "text-alignment":"text-align--left"
-            }
-          },
-          {
-            "element-type":"cta-button",
-            "element-path":"page-builder/elements/_cta-button.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "border-color":"#0090c1",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-5",
-              "padding-right":"padd-r-15",
-              "margin-left":"marg-l-0",
-              "url":"www.google.com",
-              "padding-bottom":"padd-b-10",
-              "text-content":"Test heading",
-              "padding-top":"padd-t-10",
-              "font-family":"font--primary--regular",
-              "border-width":"border-width--1px",
-              "bg-color":"#fff",
-              "padding-left":"padd-l-15"
-            }
-          },
-          {
-            "element-type":"popup-video-cta-button",
-            "element-path":"page-builder/elements/_popup-video-cta-button.html",
-            "options":{
-              "font-size":"font-size--16px",
-              "border-color":"#0090c1",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-5",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-5",
-              "padding-right":"padd-r-15",
-              "margin-left":"marg-l-0",
-              "url":"www.google.com",
-              "padding-bottom":"padd-b-10",
-              "text-content":"Launch video",
-              "padding-top":"padd-t-10",
-              "font-family":"font--primary--regular",
-              "border-width":"border-width--1px",
-              "bg-color":"#fff",
-              "padding-left":"padd-l-15",
-              "youtube-video-id":"bJNNp7HNFZw"
-            }
-          }
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-0",
-                "margin-right":"marg-r-0",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-    ]
+    return get_current_site_configuration().page_elements.get('dashboard', {}).get('content', [])
   %>
 </%def>
-
-
-## dummy static page content for testing
-
-<%def name="dummy_data()">
-  <%
-    return [
-      {
-        "element-type":"layout",
-        "element-path":"page-builder/layouts/_single-col.html",
-        "options":{
-          "layout-bg-image":"http://meormd.org/wp-content/uploads/2014/08/bokeh-background-32257-32996-hd-wallpapers.jpg",
-          "bg-color":"#fff",
-          "margin-right":"marg-r-0",
-          "margin-bottom":"marg-b-0",
-          "layout-bg-image-size":"bg-img-size--cover",
-          "text-color":"#000",
-          "margin-top":"marg-t-0",
-          "padding-right":"padd-r-0",
-          "margin-left":"marg-l-0",
-          "padding-bottom":"padd-b-100",
-          "padding-top":"padd-t-100",
-          "text-alignment":"text-align--left",
-          "padding-left":"padd-l-0",
-          "align-content":"align-content-center",
-        },
-        "children":{
-          "column-1":[
-            {
-              "element-type":"heading",
-              "element-path":"page-builder/elements/_heading.html",
-              "options":{
-                "font-size":"font-size--32px",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-0",
-                "text-color":"#fff",
-                "margin-top":"marg-t-0",
-                "margin-left":"marg-l-0",
-                "text-content":"Example title of a static page",
-                "font-family":"font--primary--bold",
-                "text-alignment":"text-align--left"
-              }
-            },
-          ]
-        }
-      },
-      {
-      "element-type":"layout",
-      "element-path":"page-builder/layouts/_two-col-50-50.html",
-      "options":{
-        "layout-bg-image":"../path/to/image.jpg",
-        "bg-color":"#fff",
-        "margin-right":"marg-r-0",
-        "margin-bottom":"marg-b-0",
-        "layout-bg-image-size":"bg-img-size--cover",
-        "text-color":"#000",
-        "margin-top":"marg-t-0",
-        "padding-right":"padd-r-0",
-        "margin-left":"marg-l-0",
-        "padding-bottom":"padd-b-20",
-        "padding-top":"padd-t-20",
-        "text-alignment":"text-align--left",
-        "padding-left":"padd-l-0",
-        "align-content":"align-content-center",
-        },
-      "children":{
-        "column-1":[
-          {
-            "element-type":"heading",
-            "element-path":"page-builder/elements/_heading.html",
-            "options":{
-              "font-size":"font-size--32px",
-              "margin-right":"marg-r-0",
-              "margin-bottom":"marg-b-20",
-              "text-color":"#0090c1",
-              "margin-top":"marg-t-0",
-              "margin-left":"marg-l-0",
-              "text-content":"Test heading",
-              "font-family":"font--primary--bold",
-              "text-alignment":"text-align--left"
-            }
-          },
-          ],
-          "column-2":[
-            {
-              "element-type":"image-graphic",
-              "element-path":"page-builder/elements/_image-graphic.html",
-              "options":{
-                "margin-left":"marg-l-auto",
-                "image-alt-text":"Eto ga",
-                "margin-bottom":"marg-b-0",
-                "image-file":"http://i.giphy.com/k39w535jFPYrK.gif",
-                "margin-top":"marg-t-0",
-                "margin-right":"marg-r-auto",
-                "link-url":"",
-                "image-width":"set-width--100percent"
-              }
-            }
-          ]
-        }
-      },
-    ]
-  %>
-</%def>
-
 
 
 ## faq page content
 
 <%def name="get_faq_content()">
   <%
-    return dummy_data();
+    return get_current_site_configuration().page_elements.get('faq', {}).get('content', [])
   %>
 </%def>
 
@@ -1028,7 +190,7 @@
 
 <%def name="get_tos_content()">
   <%
-    return dummy_data();
+    return get_current_site_configuration().page_elements.get('tos', {}).get('content', [])
   %>
 </%def>
 
@@ -1037,7 +199,7 @@
 
 <%def name="get_copyright_content()">
   <%
-    return dummy_data();
+    return get_current_site_configuration().page_elements.get('copyright', {}).get('content', [])
   %>
 </%def>
 
@@ -1046,7 +208,7 @@
 
 <%def name="get_about_content()">
   <%
-    return dummy_data();
+    return get_current_site_configuration().page_elements.get('about', {}).get('content', [])
   %>
 </%def>
 
@@ -1055,7 +217,7 @@
 
 <%def name="get_help_content()">
   <%
-    return dummy_data();
+    return get_current_site_configuration().page_elements.get('help', {}).get('content', [])
   %>
 </%def>
 
@@ -1064,6 +226,6 @@
 
 <%def name="get_contact_content()">
   <%
-    return dummy_data();
+    return get_current_site_configuration().page_elements.get('contact', {}).get('content', [])
   %>
 </%def>
