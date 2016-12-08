@@ -1,0 +1,150 @@
+//# leaving these two lines empty so that line numbers match the
+//# ones in brand.scss for easier comparison (# has to be here)
+//# leave this here as well.
+//#
+
+$brand-primary-color: #34495e;
+$brand-accent-color: #7f8c8d;
+$navbar-style: "white";  // brand or white
+$base-text-color: #2C2A2F;
+
+$primary-font-name: "Open Sans";
+$primary-font-weight-light: 300;
+$primary-font-weight-regular: 400;
+$primary-font-weight-bold: 700;
+$primary-font-weight-black: 800;
+$accent-font-name: "Bebas";
+
+$global-font-h1: "primary-font-light";
+$global-font-h2: "primary-font-light";
+$global-font-h3: "primary-font-bold";
+$global-font-h4: "primary-font-black";
+$global-font-base-body: "primary-font-regular";
+$global-font-header-links: "primary-font-regular";
+$global-font-cta-buttons: "primary-font-regular";
+
+$cta-button-bg: $brand-accent-color;
+$cta-button-text-color: #fff;
+$cta-button-border: none;
+$buttons-border-radius: 0.5rem;
+
+$header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
+$header-logo-height: 4.8rem;
+$header-padding-top: 1.5rem;
+$header-padding-bottom: $header-padding-top;
+$header-padding-sm-top: 1.5rem;
+$header-padding-sm-bottom: 1.5rem;
+$header-group-separation: 4rem;
+$header-font-size: 1.6rem;
+$header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
+$navbar-button-border: calcNavbarButtonBorder($navbar-style);
+$navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
+$navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
+$navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
+
+$display-navbar-logo-positive: calcDisplayLogoPositive($navbar-style);
+$display-navbar-logo-negative: calcDisplayLogoNegative($navbar-style);
+
+$nav-toggle-bar-width: 3.6rem;
+$nav-toggle-bar-height: 0.4rem;
+$nav-toggle-bar-radius: 0.4rem;
+$nav-toggle-bar-margin: 2rem;
+$nav-toggle-bar-color: $header-text-color;
+$nav-toggle-bar-separation: 1rem;
+$nav-toggle-bar-pulsar-color: $brand-primary-color;
+$nav-toggle-bar-pulsar-visible: false;
+
+$slideout-menu-text-color: #fff;
+$slideout-menu-background-color: $brand-primary-color;
+$slideout-menu-text-size: 1.6rem;
+$slideout-menu-item-padding: 1.4rem;
+
+$base-letter-spacing: 0;
+
+
+$footer-padding-top: 4rem;
+$footer-padding-bottom: 1.5*$footer-padding-top;
+$footer-bg-color: #eee;
+$footer-top-border: none;
+$footer-text-color: lighten($base-text-color, 15%);
+$footer-link-color: $footer-text-color;
+$footer-link-hover-color: lighten($footer-text-color, 15%);
+$footer-link-breathe-space: 1.5rem;
+$footer-logo-breathe-space: 3rem;
+$footer-logo-padding-vertical: 1rem;
+$footer-logo-width: 4rem;
+$footer-logo-opacity: 0.5;
+$footer-copyright-text-size: 1.2rem;
+$footer-copyright-text-color: lighten($footer-text-color, 15%);
+$footer-copyright-breathe-space: 1rem;
+
+
+// search elements settings
+$search-bar-vertical-margin: 3rem;
+$search-bar-wrapper-padding: 0 2rem;
+$search-bar-bottom-border: 0.1rem solid rgba($base-text-color, 0.25);
+$search-bar-inner-container-padding: 3rem 0;
+$search-bar-big-message-text-size: 2.4rem;
+$search-bar-big-message-text-color: rgba($base-text-color, 0.7);
+$search-bar-icon-button-color: rgba($base-text-color, 0.7);
+$search-bar-icon-button-color-lighter: rgba($base-text-color, 0.3);
+$search-bar-icon-button-font-size: 2rem;
+$search-filter-padding: 1rem 1.5rem;
+$search-filter-margin: 0.75rem;
+$search-filter-bg-color: rgba($base-text-color, 0.4);
+$search-filter-text-color: rgba($base-text-color, 0.8);
+$facets-big-heading-font-size: 2rem;
+$facets-big-heading-margin: 0 0 2rem;
+$facets-big-heading-padding: $facets-big-heading-margin;
+$facets-group-title-font-size: 1.6rem;
+$facets-group-title-margin: 1.5rem 0 1.5rem;
+$facets-group-title-color: $brand-primary-color;
+$facets-group-list-padding: 0 0 1.5rem;
+$single-facet-bottom-border: 0.1rem solid rgba($base-text-color, 0.2);
+$single-facet-padding: 0.75rem 0;
+$single-facet-selected-opacity: 0.6;
+$facet-font-size: 1.6rem;
+$facet-results-count-font-size: 1.2rem;
+$facet-results-count-bg-color: $brand-accent-color;
+$facet-results-count-text-color: #fff;
+$facet-results-count-padding: 0.3rem 0.8rem;
+$facet-results-count-border-radius: 1rem;
+
+
+// login-register settings
+$login-register-wrapper-margin: 3rem auto 5rem;
+$login-register-section-title-spacing: 4rem;
+$login-register-section-title-border-bottom: 0.1rem solid rgba($base-text-color, 0.2);
+$login-register-section-title-font-size: 4.2rem;
+$login-register-section-title-color: $brand-primary-color;
+$login-register-section-title-alignment: center;
+$login-register-single-input-wrapper-margin: 1rem 0 2rem;
+$login-register-label-font-size: 1.4rem;
+$login-register-input-padding: 1rem 0.5rem;
+$login-register-input-border: 0.1rem solid rgba($base-text-color, 0.4);
+$login-register-input-border-bottom: $login-register-input-border;
+$login-register-input-border-top: none;
+$login-register-input-border-left: none;
+$login-register-input-border-right: none;
+$login-register-hover-border-color: $brand-accent-color;
+$login-register-textarea-min-height: 10rem;
+$login-register-input-text-size: 1.4rem;
+$login-register-tip-text-color: rgba($base-text-color, 0.7);
+$login-register-tip-top-spacing: 1rem;
+$login-register-field-link-font-size: $login-register-input-text-size;
+$login-register-field-link-color: $brand-primary-color;
+$login-register-toggle-title-font-size: 2rem;
+$login-register-toggle-title-color: rgba($base-text-color, 0.7);
+
+
+// courseware
+
+$courseware-top-nav-top-margin: 1rem;
+$courseware-top-nav-bottom-margin: 2rem;
+
+$sequence-nav-bottom-padding: 1.6rem;
+$courseware-content-bottom-nav-width: 30%;
+
+$courseware-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
+$courseware-content-font-size: 16px;
+$courseware-content-line-height: 20px;
