@@ -172,7 +172,15 @@
 
 <%def name="get_dashboard_content()">
   <%
-    return get_current_site_configuration().page_elements.get('dashboard', {}).get('content', [])
+    return [
+      {
+        "element-type":"dashboard-template",
+        "element-path":"design-templates/pages/dashboard/_dashboard-01.html",
+        "options":{
+
+        }
+      }
+    ]
   %>
 </%def>
 
