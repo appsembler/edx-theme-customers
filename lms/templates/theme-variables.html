@@ -49,7 +49,7 @@
 <%def name="get_brand_favicon()">
   <%
   return {
-    'brand_favicon' : static('images/favicon.ico'),
+    'brand_favicon' : get_value('brand_favicon', '') or static('images/favicon.ico'),
   }
   %>
 </%def>
