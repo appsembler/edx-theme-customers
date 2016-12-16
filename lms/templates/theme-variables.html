@@ -152,7 +152,15 @@
 
 <%def name="get_course_catalogue_content()">
   <%
-    return get_current_site_configuration().page_elements.get('course_catalogue', {}).get('content', [])
+    return [
+      {
+        "element-type":"course-catalogue-template",
+        "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
+        "options":{
+
+        }
+      },
+    ]
   %>
 </%def>
 
