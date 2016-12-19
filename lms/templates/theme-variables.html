@@ -131,40 +131,16 @@
 
 <%def name="get_course_about_content()">
   <%
-    return get_current_site_configuration().page_elements.get('course_about', {}).get('content', [])
+    return get_current_site_configuration().page_elements.get('course-about', {}).get('content', [])
   %>
 </%def>
 
-
-## course catalogue page settings
-
-<%def name="get_course_catalogue_settings()">
-  <%
-    return {
-      'default_edx_view' : false, ## required boolean value. Set to "true" if you want the default edX look and feel.
-      'discovery_course_card' : '_course-tile-02.underscore', ## define which tile template to use for results
-      'discovery_facet' : '_facet-01.underscore', ## define which template for facets to use
-      'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
-      'course_template_class' : 'a--course-tile-02', ## required, defined as "a--{template-name}"
-      'course_template' : 'live-blocks/single-course/_course-tile-02.html', ## required
-      'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html' ## design which discovery-search block design to use
-    }
-  %>
-</%def>
 
 ## course catalogue page content
 
 <%def name="get_course_catalogue_content()">
   <%
-    return [
-      {
-        "element-type":"course-catalogue-template",
-        "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
-        "options":{
-
-        }
-      },
-    ]
+    return get_current_site_configuration().page_elements.get('courses', {}).get('content', [])
   %>
 </%def>
 
@@ -255,5 +231,61 @@
 <%def name="get_contact_content()">
   <%
     return get_current_site_configuration().page_elements.get('contact', {}).get('content', [])
+  %>
+</%def>
+
+## blog page content
+
+<%def name="get_blog_content()">
+  <%
+    return get_current_site_configuration().page_elements.get('blog', {}).get('content', [])
+  %>
+</%def>
+
+## donate page content
+
+<%def name="get_donate_content()">
+  <%
+    return get_current_site_configuration().page_elements.get('donate', {}).get('content', [])
+  %>
+</%def>
+
+## honor page content
+
+<%def name="get_honor_content()">
+  <%
+    return get_current_site_configuration().page_elements.get('honor', {}).get('content', [])
+  %>
+</%def>
+
+## jobs page content
+
+<%def name="get_jobs_content()">
+  <%
+    return get_current_site_configuration().page_elements.get('jobs', {}).get('content', [])
+  %>
+</%def>
+
+## news page content
+
+<%def name="get_news_content()">
+  <%
+    return get_current_site_configuration().page_elements.get('news', {}).get('content', [])
+  %>
+</%def>
+
+## press page content
+
+<%def name="get_press_content()">
+  <%
+    return get_current_site_configuration().page_elements.get('press', {}).get('content', [])
+  %>
+</%def>
+
+## privacy page content
+
+<%def name="get_privacy_content()">
+  <%
+    return get_current_site_configuration().page_elements.get('privacy', {}).get('content', [])
   %>
 </%def>
