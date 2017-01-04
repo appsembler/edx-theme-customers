@@ -1,3 +1,21 @@
 .a--header-design-01.a--site-nav .a--site-nav__logo {
   height: 7rem;
 }
+
+.a--hero-section-01 {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+  h1,
+  h4 {
+    color: black;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 1350px) {
+  .a--hero-section-01 {
+    background-size: inherit;
+  }
+}
