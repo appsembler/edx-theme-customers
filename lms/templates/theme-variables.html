@@ -72,8 +72,8 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'About Us',
+        'link_URL': '/about',
         'special_class': '',
         'open_in_new_tab': False,
       },
@@ -88,8 +88,8 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'About Us',
+        'link_URL': '/about',
         'special_class': '',
         'open_in_new_tab': False,
       },
@@ -104,8 +104,14 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'About Us',
+        'link_URL': '/about',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Contact',
+        'link_URL': '/contact',
         'special_class': '',
         'open_in_new_tab': False,
       },
@@ -382,15 +388,15 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "About Us",
+            'hero_subtitle' : "DHIS2 Online Academy, the training path to DHIS2 expertise for everyone, from everywhere and at anytime.",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
+            'bg_image_url' : '/static/edx-theme-codebase/images/hero.jpg', ## leave empty if you want just a full color background
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
         },
@@ -398,9 +404,9 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
+            'content' : '<h2>Our Mission</h2><p>We want users of DHIS2 from all over the world to be able to learn DHIS2 at their own pace and in their own time.</p><p>We want users of DHIS2 to connect to other users and teachers to share their experiences and knowledge.</p><p>We want users to understand how DHIS2 can fit into their wider health information system.</p><h2>The Health Information Systems Programme</h2><p>DHIS2 Online Academy is being launched by the Health Information Systems Program (<a href="http://www.mn.uio.no/ifi/english/research/networks/hisp/">HISP</a>) at University of Oslo (<a href="http://www.uio.no/english/">UiO</a>) to strengthen capacity to successfully set up, design and maintain DHIS2 systems, anywhere, anytime. With more than 20 years of experience in the development and use of information and communication technology for health management, HISP wants to use online training to increase capacities both in countries and of organisations who adopted DHIS2. <a href="http://online.dhis2academy.org/register">Enroll today and learn about DHIS2</a>.</p><h2>DHIS2</h2><p>DHIS2 is a free and open source based software platform. It is used in more than 60 countries and organisations as a tool for collection, validation, analysis, and presentation of aggregate and transactional data, tailored (but not limited) to integrated health information management activities. Being a platform, it is highly configurable and customizable, and has extensive interfaces allowing for integration with other systems. It is also a platform for innovation, enabling the development of apps by a global network of software developers.</p><p><a href="https://www.dhis2.org">Read more</a></p><h2>DHIS2 Academy</h2><p>The DHIS2 Academies aim to strengthen national and regional capacity to successfully set up, design and maintain DHIS2 systems.</p><p>Through an intensive training combining theoretical and practical sessions, you will become a DHIS2 expert ready to support your organisation&#39;s data collection, analysis, and reporting needs using DHIS2. This capacity building is providing a better understanding of the available DHIS 2 tools and their best practices.</p><p><a href="https://www.dhis2.org/academy">Read more</a><p/>', ## block content, place iline HTML here
             'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+            'extra_css' : "text-align: center;" ## add custom css to be added inline to the wrapper element
           }
         },
     ]
@@ -412,7 +418,9 @@
 
 <%def name="get_help_content()">
   <%
-    return []
+    return [
+
+    ]
   %>
 </%def>
 
@@ -421,7 +429,33 @@
 
 <%def name="get_contact_content()">
   <%
-    return []
+    return [
+        {
+          "element-type":"static-block",
+          "element-path":"design-templates/static-blocks/_hero-section-01.html",
+          "options":{
+            'hero_title' : "Contact",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
+            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
+            'text_color' : "#fff",
+            'bg_image_url' : '/static/edx-theme-codebase/images/hero.jpg', ## leave empty if you want just a full color background
+            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+          }
+        },
+        {
+          "element-type":"static-block",
+          "element-path":"design-templates/static-blocks/_plain-content-01.html",
+          "options":{
+            'content' : '<p>For any questions feel free to send an email to <a href="mailto:contact@dhis2academy.org">contact@dhis2academy.org</a>.</p>', ## block content, place iline HTML here
+            'optional_classes' : "", ##
+            'extra_css' : "text-align: center;" ## add custom css to be added inline to the wrapper element
+          }
+        },
+    ]
   %>
 </%def>
 
