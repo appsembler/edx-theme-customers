@@ -25,7 +25,7 @@
     'enable_registration_button' : True,
     'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
     'apple_app_id' : '',
-    ##'header_logo_target' : ''
+    'header_logo_target' : 'http://www.open.ac.uk'
   }
   %>
 </%def>
@@ -72,10 +72,10 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'StudentHome',
+        'link_URL': 'https://msds.open.ac.uk/students/index.aspx',
         'special_class': '',
-        'open_in_new_tab': False,
+        'open_in_new_tab': True,
       },
     ]
   %>
@@ -88,10 +88,10 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'StudentHome',
+        'link_URL': 'https://msds.open.ac.uk/students/index.aspx',
         'special_class': '',
-        'open_in_new_tab': False,
+        'open_in_new_tab': True,
       },
     ]
   %>
@@ -104,8 +104,32 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'StudentHome',
+        'link_URL': 'https://msds.open.ac.uk/students/index.aspx',
+        'special_class': '',
+        'open_in_new_tab': True,
+      },
+      {
+        'link_title': 'Help',
+        'link_URL': '/help',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'FAQ',
+        'link_URL': '/faq',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Conditions of Use',
+        'link_URL': '/tos',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Copyright',
+        'link_URL': '/copyright',
         'special_class': '',
         'open_in_new_tab': False,
       },
@@ -120,7 +144,7 @@
   <%
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2016 Company Name. All rights reserved.',
+      'footer_copyright_text' : '© 2017 Open University. All rights reserved.',
       'display_edx_disclaimer' : True, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
@@ -142,15 +166,15 @@
         "element-path":"design-templates/static-blocks/_hero-section-01.html",
         "options":{
           # template settings
-          'hero_title' : "Welcome to our online courses!",
-          'hero_subtitle' : "We deliver our courses using Open edX, an open source software that powers edX.org and hundreds of other online learning sites around the world.",
+          'hero_title' : "Welcome to Open University Open edX!",
+          'hero_subtitle' : "Every year, thousands of students like you decide to study with us. With over 120 highly respected qualifications, you can be confident we’ve got the right course for you.",
           'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
           'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+          'popup_video_url' : "ktAnpf_nu5c", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
           'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
           'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
           'text_color' : "#fff",
-          'bg_image_url' : '/static/themes/edx-theme-codebase/images/hero--example-background.jpg', ## leave empty if you want just a full color background
+          'bg_image_url' : static('images/ou-hero-bg-01.jpg'), ## leave empty if you want just a full color background
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
         }
       },
@@ -159,8 +183,8 @@
         "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
         "options":{
           'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
-          'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
-          'course_template' : 'single-course/_course-tile-01.html', ## required
+          'course_template_class' : 'a--course-tile-02', ## required, defined as "a--{template-name}"
+          'course_template' : 'single-course/_course-tile-02.html', ## required
           'section_heading' : "Our latest courses:",
           'section_text' : "",
           'optional_classes' : "centered", ## can be "centered" to have all text centered
@@ -199,7 +223,7 @@
         "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
         "options":{
           "discovery-facet-option":"facet_option-01",
-          "course-card":"course-tile-01",
+          "course-card":"course-tile-02",
           "search-enabled":True,
           "discovery-facet":"facet-01"
         }
@@ -255,25 +279,16 @@
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
             # template settings
-            'hero_title' : "This is the title for the FAQ static page",
+            'hero_title' : "This is our sites FAQ section",
             'hero_subtitle' : "Got any questions for us? Check out the ones we already have answered below, and if you don't find yours - click to contact us!",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link' : "http://www2.open.ac.uk/students/help/your-contacts", ## leave value empty if you don't want a CTA button displayed.
             'cta_link_text' : "Contact us", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
-            'extra_css' : "", ## add custom css to be added inline to the wrapper element
+            'extra_css' : "text-align:left;", ## add custom css to be added inline to the wrapper element
             'bg_image_url' : '' ## leave empty if you want just a full color background
-          }
-        },
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_plain-content-01.html",
-          "options":{
-            'content' : '<h1>FAQ</h1><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. </p><h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p><h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<h3>Subheading here</h3><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<h3>Subheading here</h3><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus.<h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
         },
         {
@@ -282,17 +297,11 @@
           "options":{
             'content' : [
               ## ['Title', 'Expanded content'],
-              ['Does Open edX have an intuitive, polished interface: it should look modern and be easy to use.', 'This is one of the first things that strike people who use Open edX; as one person put it, "unlike many other learning management systems it actually looks like it was developed in the 21st Century." In less than four years over five million people have taken edX courses.'],
-              ['Can we visually brand our Open edX site, an individual course or series of courses through graphics, color, typography?', 'Yes, you can brand -- "theme" -- your Open edX instance. And you can give unique looks to groups of courses, such as those from a particular division or geography, using the Open edX microsites functionality. Finally, you can make modest modifications to individual courses and alter their navigation options, too.'],
-              ['Does Open edX functions fluidly on conventional web browsers for Windows, OSX and mobile platforms?', 'Open edX can be used on current versions of the Chrome, Safari, Firefox and Internet Explorer browsers.'],
-              ['How can students track activity and performance?', 'Students can take quizzes and tests and upload files. Using the Staff Graded Assignment feature developed by Appsemblers sister company Jazkarta, and added to the core edX code in 2014, instructors can grade and comment on student submissions. Using the Open Response Assessment (ORA) feature developed by Appsembler students can grade the essays of their peers.'],
-              ['How do students know where they left off within the course?', 'Open edX automatically returns the students to the place they were in the course when they last closed it.'],
-              ['Is there a mechanism to allow submission of documents and files from students?', 'Yes, using the Staff Graded Assignment feature students can upload and instructors can grade assignments. This is a feature commissioned by MIT that the Appsembler team built and has now been incorporated as a core feature of the edX platform.'],
-              ['Can you group all course downloads, handouts, etc. all together in a ‘library’, as well as embed them individually with lesson content?', 'You can upload files into a library and reference them in any course content: <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/course_files.html">http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/course_files.html</a> &nbsp; There is a handouts feature. <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/handouts_updates.html">http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/handouts_updates.html</a> Open edX provides a <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/creating_content/libraries.html">content libraries</a> feature which lets you create a library of content that can be re-used across multiple courses. When you change the content in the library the content is updated in all the courses.'],
-              ['Can you import and export content from other online education systems?', 'Appsembler has provided Open edX SCORM support using SCORM Cloud as described<a href="http://blog.jazkarta.com/2015/02/08/adding-scorm-packages-to-open-edx-via-scormcloud-and-lti/%27"> in this blog post</a>, and are working on deeper native SCORM support for a client that we will deliver this winter. Open edX is an LTI provider and consumer.'],
-              ['Can instructors create simple or complex quizzes or tests using text, images or video clips as needed?', 'Yes, here is information on tests and quizzes. Use of images and video is fundamental to edX <a href="http://open-edx-building-and-running-a-course.readthedocs.org/en/latest/exercises_tools/index.html">http://open-edx-building-and-running-a-course.readthedocs.org/en/latest/exercises_tools/index.html</a> &nbsp; The<a href="https://github.com/open-craft/problem-builder"> Problem Builder XBlock</a> has capabilities that can help you provide feedback and hints to the student. &nbsp; Some of the hundreds of other XBlocks available for Open edX include:<ul><li>Integration with cloud storage services such as Google Drive and Dropbox</li><li>Student polls</li><li>Integration with third-party video hosting services such as Brightcove</li><li>Ask questions during playback of YouTube videos</li><li>Mathematical physics simulations</li><li>Adding hotspots to course images</li><li>Drag and Drop questions</li><li>Awarding digital badges</li></ul>Appsembler could create a custom XBlock to support any content, exercise or test type that’s not currently provided.'],
-              ['We want students to be able to practice on our software. Could Open edX support this?', 'Yes, Appsembler has developed a custom virtual software lab for our clients that lets students instantly spin up a copy of their software to work on.'],
-              ['How can students communicate with instructors?', 'The instructor and students in a course can communicate with one another in course discussion areas, and instructors and individual students can communicate directly via a one-to-one discussion thread and email. Instructors can email students individual or as a group.']
+              ['I get a sign in screen when accessing specific resources in my module website. I enter my email address and password but it tells me there is a sign in error?', '<p>Some of the resources on the Module websites are located within the standard Open University environment which means they need your OU Computer Username (OUCU) and password to be entered rather than your module website sign in details. This is the same user name and password that you use for StudentHome.</p><p>If you were not already signed into StudentHome at www.open.ac.uk/students before you accessed your module website then you will encounter this error.</p>'],
+              ['I am new to Google Chrome and I use a screen reader, and when I navigate the site all I hear is ‘Tab’. How do I find out where I am on the site?', '<p>Please ensure you have Caret browsing switched on. To do this in Google Chrome you need the download the Caret Browsing extension by clicking on the Customize and control Google Chrome menu near the top right of the browser window. From there select More Tools and then click on Extensions.</p><p>On the page that appears, in the left hand menu select Settings. At the bottom of the page that appears there is ‘Show advanced settings’, select this and then scroll down to Accessibility section and click on Add additional accessibility features. In the Search field type Caret Browsing and press the Enter key. Click on the ‘Add to Chrome’ button next to the Caret Browsing option provided by Google Accessibility or if you have another Caret Browsing extension that you would prefer to use then click on the Add to Chrome button next to that option. Follow the on screen prompts to complete the addition of the extension.</p><p>To enable the Google Accessibility version of Caret Browsing press the F7 key.</p></br></p>Please note – Caret browsing also enables the cursor visibility on the webpage to show you where the focus of your navigation currently is.</p>'],
+              ['I have signed into my module website, where do I go from here?', '<p>Once you have signed into your module website you will arrive on the Course info tab.<br>The <b>Course info tab</b> is equivalent to a noticeboard or news section in other OU modules you have studied, and your module team will update this area with things you need to know or that should be of interest to you.</p><p>The <b>Courseware tab</b> displays the majority of your module content. In the left hand menu on the Courseware tab you can navigate through the weeks/subjects and access your assignment questions.</p><p>There is an introductory video on the Help page in the footer of the website that takes you through navigating the site.</p>'],
+              ['How do I access Discussions on this module?', '<p>There are two ways that you can access your discussions. The main way is through the Discussion tab which appears next to Course info.</p><p>This tab provides you with access to all the discussion topics that exist on this module, both subject specific and general discussion.</p><p>You will encounter subject specific Discussions embedded in your module content as you progress through it.</p><p>For more help on Discussions please refer to the short Discussions video on the Help page in the footer of the website.</p>'],
+              ['How do I find my assignment questions?', 'Your TMA and EMA questions are available from the Courseware tab. Assessment questions will appear in the left hand navigation menu.']
             ],
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
@@ -312,25 +321,25 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "Conditions of use of Open University websites",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
             'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+            'extra_css' : "text-align:left;" ## add custom css to be added inline to the wrapper element
           }
         },
         {
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
+            'content' : '<p>The Open University (“OU”, “we” or “us”) is a company incorporated by Royal Charter in England and Wales. Our main office is at Walton Hall, Milton Keynes MK7 6AA.</p><p>Please read these Conditions of Use carefully. They apply to the website you were using which linked to these Conditions of Use (the “Site”). They govern your use of the Site and of all other Open University websites.</p><p>In addition, please read our <a href="/about/main/management/policies-and-statements/website-privacy-ou">Privacy policy</a>. It applies to our collection and use of your personal information in relation to the Site. Users with an OU account are also bound by the Terms and Conditions agreed to during account creation. These can be found at:</p><ul class="ou-list"><li><a href="http://www.open.ac.uk/university-documents/computing-code-of-conduct.htm">Staff computing code of conduct</a></li><li><a href="http://learn1.open.ac.uk/mod/oucontent/view.php?id=95">Student computing code of conduct</a></li><li><a href="https://msds.open.ac.uk/SAMSWebSelfRegistrationNet/SRUTermsAndConditions.pdf">Terms and conditions for self-registered users</a>&nbsp;(pdf)</li></ul><p>We may change these Conditions of Use from time to time by updating this page. You should review this page regularly. Your continued use of the Site after changes have been made will be taken to indicate that you have read and accepted those changes. You should not use the Site if you are not happy with any changes to these Conditions of Use.</p><p>Access to and use of the Site is provided by The Open University on the following terms. By using the Site you are acknowledging that you have read and accepted these Conditions of Use, the Privacy Policy and (if you have an OU account) the Terms and Conditions agreed during OU account creation.</p><h2>Conditions of Use</h2><p>1. You agree to use the Site only in accordance with these Conditions of Use, the Terms and Conditions agreed during OU account creation, for lawful purposes, and in a way that does not infringe the rights of, restrict or inhibit anyone else’s use and enjoyment of the Site.</p><p>Prohibited behaviour includes (this list is not exhaustive) harassing or causing distress or inconvenience to any person, transmitting obscene or offensive content or disrupting the normal flow of dialogue within the Site and impersonating another person (for example, by using their login details to access the pages of the Site which are for OU staff and students only).</p><p>If you are under 16 please get a parent’s or guardian’s permission before creating your OU account. Users without this consent are not allowed to provide us with personal information.</p><h2>Intellectual Property</h2><p>2. All copyright, trademarks, design rights, patents and other intellectual property rights (registered and unregistered) and all content located on the Site shall remain vested in The Open University or its licensors (which includes other users).</p><p>Unless specifically stated in a Creative Commons licence which may be attached to some Open University content (“<a href="http://creativecommons.org/licenses/by-nc-sa/2.0/uk">Creative Commons Licence</a>”), you may not copy, reproduce, republish, disassemble, decompile, reverse engineer, download, post, broadcast, transmit, make available to the public, or otherwise use Open University content in any way except for your own personal, non-commercial use.</p><p>Please read the Creative Commons licence in full before downloading or otherwise making use of Open University content. If you have any questions please go to the “Contact Us” page of the Site using the link above.</p><p>3. You must however read these intellectual property rights as being subject to any restrictions on use applying to any materials or content on the Site including (this list is not exhaustive) photographic images, videos and text whether directly on a page of the Site or contained in a document (e.g. a pdf) accessible from a page of the Site) (“Materials”) or part of them such as video and photographic images which are subject to the special restrictions set out in the Creative Commons Licence (“Special Restrictions”).</p><p>If you do not agree to be bound by the Creative Commons Licence or any Special Restriction then you must not use Open University Materials made available under these terms.</p><p>4. When using Materials you must attribute us and any identified author in accordance with the terms of the Creative Commons Licence. Each of the Materials has an “Acknowledgements” section which will identify the author/owner(s) and any Special Restriction(s) applying. You must take account of and abide by any restrictions set out in this section in using any of the Materials.</p><h2>Your content and information</h2><p>5. Certain pages of the Site permit you to post, send or upload content and information. If you do this we will take this to mean that you have read and accepted these Conditions of Use and (to the extent that these are relevant) the Terms and Conditions agreed during OU account creation.</p><p>6. You must not post, send or upload any such content or information:</p><p>(a) unless you own or have appropriate rights to use the intellectual property rights subsisting in or relating to that content and information and unless you are sure that posting, sending or uploading the same does not infringe the rights (including but not limited to the intellectual property rights) of any other person or organisation;</p><p>(b) which is or could be considered defamatory, derogatory or in appropriate with regard to the OU, its customers or clients or any other person or organisation;</p><p>(c) which contains any confidential information about OU or another person or organisation (unless you have our permission or that of the other person or organisation);</p><p>(d) which contains any offensive, obscene or criminal content or any other content which may cause embarrassment to the OU, its customers or clients or any other person or organisation; and</p><p>(e) which contains any personal data about another person including (this list is not exhaustive) names, contact details and sensitive personal data (for example, information about an identified or identifiable individual’s mental or physical health, racial or ethnic origin, religious or other beliefs). The Information Commissioner’s website provides more guidance on what is personal data and sensitive personal data.</p><p>7. We are not responsible for any content and/or information which you post, send or upload onto the Site. We reserve the right to withdraw any such content and/or information without notice and at our sole discretion and to pursue any cause of action against you available to us under applicable laws.</p><p>The Open University is under a statutory duty to have regard to the need to prevent people being drawn into terrorism.&nbsp; If the use of OU computer equipment, information and systems gives rise to a concern that a person may be at risk, this may result in action being taken in accordance with the&nbsp;<a href="http://www.open.ac.uk/about/main/management/policies-and-statements/prevent-counter-terrorism-duty">OU Prevent strategy</a></p><h2>Accuracy of Content and Information on the Site</h2><p>8. The Open University does not represent that information contained on or available via the Site is accurate or complete and accordingly it should not be relied on as such. You should not rely on any such information. Any arrangements made between you and any other person, using or named on the Site are entirely at your sole risk and responsibility.</p><p>9. Information contained in or accessible via the Site changes on a regular basis. We may make improvements or alterations to the Site at any time and without notice.</p><p>10. Addresses of or links to other websites may appear on the Site for your convenience. The Open University does not operate or monitor other websites and we accept no responsibility or liability for the content of other websites. Any link is not intended to be, nor should be construed as, an endorsement of any kind by us of another website.</p><p>11. Should we link to other website we will try to make it as clear as possible that you are leaving the Site. It is your responsibility to check the terms and conditions and privacy policy on any other website that you visit.</p><h2>Liability</h2><p>12. We do not guarantee that:</p><p>(a) use of the Site will be compatible with all hardware and software,<br>(b) use of the Site will be uninterrupted or error or virus free,<br>(c) use of the Site will deliver any specific outcome for its users, or<br>(d) defects on the Site will be corrected (save for those defects which the OU is obliged to correct by law.</p><p>You must take appropriate steps to ensure that you regularly check for and protect against viruses when using the Site on any device.</p><p>13. We make no statement about the suitability of the content, information and services contained on, or accessed via, the Site. All warranties, terms and conditions in this regard, including all warranties, terms and conditions implied by statute or otherwise, of satisfactory quality and fitness for purpose are excluded to the fullest extent permitted by law (please see directly below for more details). For the avoidance of doubt this includes materials accessed via links to websites (including home pages, web pages or documents they contain) operated by any other person or organisation.</p><p>14. We further exclude to the fullest extent permissible by law (please see directly below for more details) all liability for damages and direct, indirect or consequential loss (all three of which terms include pure economic loss, loss of profits, loss of business, business interruption, depletion of goodwill and like loss) or otherwise incurred by you or any other person or organisation and arising out of or in any way connected with the use of the Site or its content, whether based on contract, tort, strict liability or otherwise.</p><p>We do not exclude or limit our liability (if any) to you:</p><p>(a) for any breach of obligations arising under section 12 Sale of Goods Act 1979 or section 2 Supply of Goods and Services Act 1982;<br>(b) for personal injury or death resulting from negligence;<br>(c) under section 2 (3) Consumer Protection Act 1987<br>(d) for any matter for which it would be illegal for us to exclude or to attempt to exclude liability; or<br>(e) for fraud.</p><p>15. You will defend, indemnify and hold harmless us, our affiliates and our officers, directors, employees and agents from and against any and all claims, liabilities, damages, losses or expenses, including reasonable legal costs, arising out of or in any way connected with any breach by you of these Conditions of Use.</p><p>16. The internet is not a secure means of communication. Emails may be intercepted by other people or organisations.</p><p>You should not send any communication to us through the Site or by email, in particular which contains personal data (including sensitive personal data) and/or confidential information about you or any other person, unless you accept that any such communication would be sent at your own risk and on the understanding that we would not be liable for any loss that you might suffer as a result (except for losses which cannot be excluded or limited at law, as referred to directly above).</p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+            'extra_css' : "text-align:left;" ## add custom css to be added inline to the wrapper element
           }
         },
     ]
@@ -347,8 +356,8 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
+            'hero_title' : "Copyright of OU websites",
+            'hero_subtitle' : "",
             'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
             'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
@@ -356,16 +365,16 @@
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
             'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+            'extra_css' : "text-align:left;" ## add custom css to be added inline to the wrapper element
           }
         },
         {
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
+            'content' : '<p>All rights, including copyright, in the content and design of these web pages are owned or controlled for these purposes by The Open University.</p><p>In accessing these web pages, you agree that you may only download the content for your own personal non-commercial use.</p><p>You are not permitted to copy, broadcast, download, store (in any medium), transmit, show or play in public, adapt or change in any way the content of these web pages for any other purpose whatsoever without the prior written permission of The Open University</p><p>This site provides access via hypertext links to resources in other web sites for browsing only and in so doing we are not endorsing any linked entities nor authorising any act which may be in breach of copyright or any other third party rights which are protected in law or by international treaties world-wide.</p><p>We do not accept any responsibility or liability for any of the material contained on any third party web page.</p><p>The contents of this web site are only for general information or use. They do not constitute advice and should not be relied upon in making (or refraining from making) any decision.&nbsp;</p><p>We use reasonable care to make sure that the information appearing on our web site is accurate and up to date. However, errors and omissions do occur and you should not take the accuracy of the information for granted.</p><p>Because we do not have control over the use to which the information should be put, we exclude any warranty, express or implied, as to the quality, accuracy, timeliness, completeness, performance, fitness for a particular purpose of the web site or any of its contents.</p><p>We will not be liable for any damages (including without limitation damages for loss of profit, revenue or anticipated savings) arising in contract, tort or otherwise from the use of or inability to use the web site or any of its contents or from any action taken (or refrained from being taken) as a result of using the web site or any such contents.</p><p>We make no warranty that the contents of the web site are free from infection by viruses or anything else which has contaminating or destructive properties.</p><p>Head of Intellectual Property<br>The Open University<br>Walton Hall<br>Milton Keynes<br>MK7 6AA</p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+            'extra_css' : "text-align:left;" ## add custom css to be added inline to the wrapper element
           }
         },
     ]
@@ -382,16 +391,16 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "About us",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
             'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+            'extra_css' : "text-align:left;" ## add custom css to be added inline to the wrapper element
           }
         },
         {
@@ -412,7 +421,33 @@
 
 <%def name="get_help_content()">
   <%
-    return []
+    return [
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_hero-section-01.html",
+        "options":{
+          'hero_title' : "Help",
+          'hero_subtitle' : "This page is intended to help you get started with Open University Open edX site. If you have any additional questions, feel free to contact us!",
+          'cta_link' : "http://www2.open.ac.uk/students/help/your-contacts", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "Contact us", ## leave value empty if you don't want a CTA button displayed.
+          'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+          'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+          'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
+          'text_color' : "#fff",
+          'bg_image_url' : '', ## leave empty if you want just a full color background
+          'extra_css' : "text-align:left;" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_plain-content-01.html",
+        "options":{
+          'content' : '<h2>1. Signing in</h2><p>You will initially sign in to your Student Homepage using your OU Computer username and password. You can access this from the following link: <a href="www.open.ac.uk/students">www.open.ac.uk/students</a>.</p><p><img src="' + static('images/customer/help-page/help--sign-in.png') + '" style="max-width: 100%; height: auto; display: block; margin: 1rem auto;" alt="OU sign in page screenshot" role="presentation" /></p><p>Once you have signed in you will be presented with your Student Home page.</p><p>Click on your Module website link, this will take you to the module website login screen which is being presented in a new environment shown below.</p><p>You will need to enter your <b>OU registered email address</b> and the password sent to you specifically for signing into your module website.</p><p><img src="' + static('images/customer/help-page/help--module-sign-in.png') + '" style="max-width: 100%; height: auto; display: block; margin: 1rem auto;" alt="Module sign in page screenshot" role="presentation" /></p><h2>2. Accessibility</h2><p>If you are using keyboard navigation or certain types of Assistive technologies to access this website then we recommend having Caret Browsing switched on in your web browsers setting. This will show you where the current focus is as you navigate through the web page.</p><h2>3. Navigation</h2><p>Navigation in this module website will be different to previous modules that you have studied with the Open University. There is a short video on navigating your module website below:</p><p style="text-align: center"><script src="//fast.wistia.com/embed/medias/nhlt45nuy2.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_nhlt45nuy2 seo=false videoFoam=true" style="height:100%;width:100%">&nbsp;</div></div></div></p><h2>4. Discussion/Forums</h2><p>The discussion area allows you to discuss the content of the Module amongst Student’s and with the staff, ask the staff questions, and chat. This area is important as it will be the main form of communication. The short video below will take you through using Discussions.</p><p style="text-align: center"><script src="//fast.wistia.com/embed/medias/h4a2ks9txj.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_h4a2ks9txj seo=false videoFoam=true" style="height:100%;width:100%">&nbsp;</div></div></div></p><h2>5. Study resources and assessments</h2><p>Module materials are found on the Courseware tab, where provided additional or alternative formats of module materials can be found in the Bookshelf/Resources tab at the top of the navigation bar.</p><p>Assessments will be a part of the main study content and will be visible in the left hand navigation menu.</p><h2>6. Your data and Privacy</h2><p>The new module website environment is provided by a partner company of the Open University. We would like to reassure you that all your data is held within the EU and will not be used for marketing purposes by third parties.</p>', ## block content, place iline HTML here
+          'optional_classes' : "", ##
+          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+        }
+      },
+    ]
   %>
 </%def>
 

@@ -3,10 +3,10 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
+$brand-primary-color: #0B55A8;
+$brand-accent-color: #FFC23D;
 $navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$base-text-color: #424242;
 
 $primary-font-name: "Open Sans";
 $primary-font-weight-light: 300;
@@ -15,7 +15,7 @@ $primary-font-weight-bold: 700;
 $primary-font-weight-black: 800;
 $accent-font-name: "Bebas";
 
-$font-size-base-body: 14px;
+$font-size-base-body: 16px;
 $line-height-base-body: 150%;
 $font-size-h1: 32px;
 $line-height-h1: 130%;
@@ -35,12 +35,12 @@ $global-font-header-links: "primary-font-regular";
 $global-font-cta-buttons: "primary-font-regular";
 
 $cta-button-bg: $brand-accent-color;
-$cta-button-text-color: #fff;
+$cta-button-text-color: #0B55A8;
 $cta-button-border: none;
 $buttons-border-radius: 0.5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
+$header-logo-height: 6rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;

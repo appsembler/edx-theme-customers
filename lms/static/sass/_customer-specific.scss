@@ -1,0 +1,118 @@
+.a--course-content__main-content {
+  .xblock, .xmodule_display.xmodule_HtmlModule {
+    font-size: 14px;
+    line-height: 1.65em;
+
+    h1 {
+      font-size: 2.5em;
+      color: #0b55a8;
+    }
+
+    h2 {
+      font-size: 2.1em;
+      margin-bottom: 1.12em;
+      text-transform: none !important;
+    }
+
+    h3 {
+      font-size: 1.65em;
+      margin-bottom: 1.12em;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 1.12em;
+      line-height: 1.65em !important;
+    }
+
+    ul li {
+      font-size: 1.12em;
+    }
+
+    label {
+      font-size: 1.12em !important;
+    }
+
+
+  }
+}
+
+.a--courseware-wrapper__content, div.book-wrapper {
+  font-size: 14px;
+}
+
+.a--courseware-wrapper__content__main-content {
+
+  font-size: 1.12em;
+
+  p {
+    font-size: 1.12em;
+    margin-bottom: 1.12em;
+  }
+}
+
+.a--course-content {
+
+  .accordion {
+
+    .course-navigation {
+
+      .button-chapter {
+        border-bottom: 0.1rem solid #d9d1d1;
+      }
+
+      .chapter-content-container {
+
+        &.is-open {
+          border-bottom: 0.1rem solid #d9d1d1;
+        }
+      }
+    }
+  }
+}
+
+.a--course-progress__info {
+  border-color: #d9d1d1;
+}
+
+.a--course-progress__chapter__info {
+  border-color: #d9d1d1;
+}
+
+.grade-detail-graph {
+
+  .tickLabels {
+
+    .tickLabel {
+      font-size: 1.2em;
+      line-height: 1.12em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.a--course-progress__chapter__data .chapter-scores ol li {
+  font-weight: 600;
+}
+
+.button-reset, .light-button, div.history-controls input[type="submit"], a.light-button, .gray-button, input[type="reset"], input[type="submit"], input[type="button"], button, .button, form input[type="reset"], form input[type="submit"], form input[type="button"], form button, form .button, .xmodule_display.xmodule_LTIModule div.lti .wrapper-lti-link .lti-link .link_lti_new_window, .blue-button, .xmodule_display.xmodule_CapaModule div.problem .action .save, .xmodule_display.xmodule_ConditionalModule div.problem .action .save, .pink-button, .instructor-dashboard-content-2 input[type="button"], .idash-section .message-actions .action-primary, .instructor-dashboard-wrapper-2 section.idash-section#membership .member-lists-management .auth-list-container .member-list-widget input[type="button"].add, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .form-submit, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .cohort-management-nav .action-create, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .cohort-management .message .action-create, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .cohort-management-group-header .action-edit-name, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .file-upload-form .action-submit, .ecommerce-wrapper span.tip .add, #e-commerce #add-coupon-modal input[type="button"]#update_coupon_button, #e-commerce #add-coupon-modal input[type="button"]#add_coupon_button, #e-commerce #add-coupon-modal input[type="button"]#set_course_button, #e-commerce #add-coupon-modal input[type="button"]#lookup_regcode, #e-commerce #invalidate_registration_code_modal input[type="button"]#update_coupon_button, #e-commerce #invalidate_registration_code_modal input[type="button"]#add_coupon_button, #e-commerce #invalidate_registration_code_modal input[type="button"]#set_course_button, #e-commerce #invalidate_registration_code_modal input[type="button"]#lookup_regcode, #e-commerce #edit-coupon-modal input[type="button"]#update_coupon_button, #e-commerce #edit-coupon-modal input[type="button"]#add_coupon_button, #e-commerce #edit-coupon-modal input[type="button"]#set_course_button, #e-commerce #edit-coupon-modal input[type="button"]#lookup_regcode, #e-commerce #set-course-mode-price-modal input[type="button"]#update_coupon_button, #e-commerce #set-course-mode-price-modal input[type="button"]#add_coupon_button, #e-commerce #set-course-mode-price-modal input[type="button"]#set_course_button, #e-commerce #set-course-mode-price-modal input[type="button"]#lookup_regcode, #e-commerce #registration_code_generation_modal input[type="button"]#update_coupon_button, #e-commerce #registration_code_generation_modal input[type="button"]#add_coupon_button, #e-commerce #registration_code_generation_modal input[type="button"]#set_course_button, #e-commerce #registration_code_generation_modal input[type="button"]#lookup_regcode, #e-commerce #add-coupon-modal input[name="generate-registration-codes-csv"], #e-commerce #invalidate_registration_code_modal input[name="generate-registration-codes-csv"], #e-commerce #edit-coupon-modal input[name="generate-registration-codes-csv"], #e-commerce #set-course-mode-price-modal input[name="generate-registration-codes-csv"], #e-commerce #registration_code_generation_modal input[name="generate-registration-codes-csv"], .proctoring-wrapper span.tip .add, .ecommerce-wrapper span.code_tip .add, .proctoring-wrapper span.code_tip .add, .ecommerce-wrapper span.invalid_sale .add, .proctoring-wrapper span.invalid_sale .add {
+  letter-spacing: 0.1rem;
+}
+
+.vert-mod .vert {
+  border-bottom: 0.1rem solid #d9d1d1;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+// discussions quickfix (temp only)
+
+.discussion-module .discussion-response {
+  position: relative;
+}
+
+.xmodule_display.xmodule_HtmlModule table td, .xmodule_display.xmodule_HtmlModule table th {
+  font-size: 1.4rem;
+}
