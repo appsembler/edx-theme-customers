@@ -3,8 +3,8 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
+$brand-primary-color: #1F427C;
+$brand-accent-color: #EFC900;
 $navbar-style: "white";  // brand or white
 $base-text-color: #2C2A2F;
 
@@ -37,19 +37,19 @@ $global-font-cta-buttons: "primary-font-regular";
 $cta-button-bg: $brand-accent-color;
 $cta-button-text-color: #fff;
 $cta-button-border: none;
-$buttons-border-radius: 0.5rem;
+$buttons-border-radius: 0.2rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
+$header-logo-height: 7rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
 $header-padding-sm-bottom: 1.5rem;
 $header-group-separation: 4rem;
-$header-font-size: 1.6rem;
+$header-font-size: 1.4rem;
 $header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
-$navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
+$navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-primary-color);
 $navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
 $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
