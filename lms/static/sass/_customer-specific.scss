@@ -1,0 +1,25 @@
+.a--hero-section-01 {
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: 90%;
+  height: 250px;
+  padding: 1rem;
+}
+
+@media (min-width: 650px) {
+  .a--hero-section-01 {
+    height: 400px;
+  }
+}
+
+@media (min-width: 1300px) {
+  .a--hero-section-01 {
+    background-size: 60%;
+  }
+}
+
+@media (min-width: 2000px) {
+  .a--hero-section-01 {
+    height: 500px;
+  }
+}
