@@ -37,10 +37,10 @@
   <%
   return {
     'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.jpg'), ## required
-    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.jpg'), ## required
-    'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.svg'), ## required
-    'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.svg'), ## required
-    'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.svg'), ## required
+    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo.jpg'), ## required
+    'icon_color' : get_value('icon_color', '') or static('images/branding/brand-logo.jpg'), ## required
+    'icon_white' : get_value('icon_white', '') or static('images/branding/brand-logo.jpg'), ## required
+    'icon_black' : get_value('icon_black', '') or static('images/branding/brand-logo.jpg'), ## required
   }
   %>
 </%def>
@@ -104,7 +104,7 @@
   <%
     return [
       {
-        'link_title': 'Example item',
+        'link_title': '',
         'link_URL': '#',
         'special_class': '',
         'open_in_new_tab': False,

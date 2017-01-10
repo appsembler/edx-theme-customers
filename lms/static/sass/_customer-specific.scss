@@ -6,6 +6,33 @@
   padding: 1rem;
 }
 
+.a--footer__logo img {
+  width: 5rem;
+}
+
+.a--footer__links-container {
+  display: none;
+}
+
+.a--footer__copyright-text {
+  margin: 0;
+}
+
+// Account page
+.account-settings-sections .section .account-settings-section-body .u-field .field .u-field-link {
+  border: 1px solid $brand-primary-color;
+  color: $brand-primary-color;
+
+  &:hover {
+    background-color: $brand-primary-color;
+  }
+}
+
+.account-settings-sections .section .account-settings-section-body .u-field .field select ~ .icon-caret-down:after {
+  border-top: 7px solid $brand-primary-color;
+}
+
+// Responsive hero image
 @media (min-width: 650px) {
   .a--hero-section-01 {
     height: 400px;
