@@ -1,4 +1,6 @@
 .a--hero-section-01 {
+  background-size: 100%;
+  background-repeat: no-repeat;
 
   h4 {
     opacity: 1;
@@ -8,4 +10,8 @@
 
 .a--footer__logo img {
   width: 6rem;
+}
+
+.a--footer__copyright-text {
+  margin: 0;
 }
