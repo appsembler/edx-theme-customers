@@ -49,7 +49,7 @@ $header-group-separation: 4rem;
 $header-font-size: 1.6rem;
 $header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
-$navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
+$navbar-button-bg: calcNavbarButtonBg($navbar-style, $cta-button-bg);
 $navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
 $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
