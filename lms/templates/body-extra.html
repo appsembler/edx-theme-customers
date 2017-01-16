@@ -10,7 +10,8 @@
         created_at: ${user.date_joined.strftime("%s")}, // Signup date as a Unix timestamp
         user_hash: "${intercom_user_hash}",
       %endif
-      app_id: "${intercom_app_id}"
+      app_id: "${intercom_app_id}",
+      "LMS_URL": "${intercom_lms_url}"
     };
 </script>
 <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/e4awi275';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
