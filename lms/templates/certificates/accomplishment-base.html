@@ -18,10 +18,18 @@ course_mode_class = course_mode if course_mode else ''
     <title>${document_title}</title>
 
     <%static:css group='style-certificates'/>
+    <style type="text/css">
+        .psu--certificates__certificate .btn,
+        .psu--certificates__certificate .btn:hover
+         {
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+    </style>
 
 </head>
 
-<body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} nyif--certificates__certificate certificate-${course_mode_class}" data-view="valid-accomplishment">
+<body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} psu--certificates__certificate certificate-${course_mode_class}" data-view="valid-accomplishment">
 
     <div class="wrapper-view" dir="${dir_rtl}">
 
