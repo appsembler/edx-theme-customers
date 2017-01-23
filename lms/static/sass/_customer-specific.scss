@@ -2,6 +2,14 @@
   opacity: 1;
   line-height: 1.5;
   font-size: 1.9rem;
+
+  @media (max-width: 650px) {
+    font-size: 1.5rem;
+
+    blockquote {
+      margin: 0;
+    }
+  }
 }
 
 .a--footer__logo img {
