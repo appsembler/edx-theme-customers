@@ -77,12 +77,12 @@
         'special_class': '',
         'open_in_new_tab': False,
       },
-      {
-        'link_title': 'FAQ',
-        'link_URL': '/faq',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
+      #{
+        #'link_title': 'FAQ',
+        #'link_URL': '/faq',
+        #'special_class': '',
+        #'open_in_new_tab': False,
+      #},
     ]
   %>
 </%def>
@@ -99,12 +99,12 @@
         'special_class': '',
         'open_in_new_tab': False,
       },
-      {
-        'link_title': 'FAQ',
-        'link_URL': '/faq',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
+      #{
+        #'link_title': 'FAQ',
+        #'link_URL': '/faq',
+        #'special_class': '',
+        #'open_in_new_tab': False,
+      #},
     ]
   %>
 </%def>
@@ -115,18 +115,18 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
-      {
-        'link_title': 'Contact',
-        'link_URL': '/contact',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
-      {
-        'link_title': 'FAQ',
-        'link_URL': '/faq',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
+      #{
+        #'link_title': 'Contact',
+        #'link_URL': '/contact',
+        #'special_class': '',
+        #'open_in_new_tab': False,
+      #},
+      #{
+        #'link_title': 'FAQ',
+        #'link_URL': '/faq',
+        #'special_class': '',
+        #'open_in_new_tab': False,
+      #},
       {
         'link_title': 'Twitter',
         'link_URL': 'https://twitter.com/Greenpeace',
@@ -182,11 +182,11 @@
           'hero_subtitle' : "<blockquote>&ldquo;If you give me a fish, you have fed me for a day. If you teach me to fish, then you have fed me until the river is contaminated or the shoreline seized for development. But if you teach me how to organise, then whatever the challenge, I can join together with my peers and we will fashion our own solution.&rdquo;</blockquote> <p>Ricardo Levins Morales &mdash; Art for Social Justice</p>",
           'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
           'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-          'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
-          'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
+          'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+          'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+          'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
           'text_color' : "#fff",
-          'bg_image_url' : '/static/edx-theme-codebase/images/hero.jpg', ## leave empty if you want just a full color background
+          'bg_image_url' : static('images/hero.jpg'), ## leave empty if you want just a full color background
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
         }
       },
