@@ -36,11 +36,11 @@
 <%def name="get_brand_logos()">
   <%
   return {
-    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
-    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.svg'), ## required
-    'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.svg'), ## required
-    'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.svg'), ## required
-    'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.svg'), ## required
+    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.png'), ## required
+    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.png'), ## required
+    'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.png'), ## required
+    'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.png'), ## required
+    'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.png'), ## required
   }
   %>
 </%def>
@@ -71,12 +71,12 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
+      #{
+        #'link_title': 'Example item',
+        #'link_URL': '#',
+        #'special_class': '',
+        #'open_in_new_tab': False,
+      #},
     ]
   %>
 </%def>
@@ -87,12 +87,12 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
+      #{
+        #'link_title': 'Example item',
+        #'link_URL': '#',
+        #'special_class': '',
+        #'open_in_new_tab': False,
+      #},
     ]
   %>
 </%def>
@@ -103,12 +103,12 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
+      #{
+        #'link_title': 'Example item',
+        #'link_URL': '#',
+        #'special_class': '',
+        #'open_in_new_tab': False,
+      #},
     ]
   %>
 </%def>
@@ -120,7 +120,7 @@
   <%
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2016 Company Name. All rights reserved.',
+      'footer_copyright_text' : '2017 Arizona Board of Regents. All rights reserved.',
       'display_edx_disclaimer' : True, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
@@ -146,11 +146,11 @@
           'hero_subtitle' : "We deliver our courses using Open edX, an open source software that powers edX.org and hundreds of other online learning sites around the world.",
           'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
           'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-          'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
-          'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
+          'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+          'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+          'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
           'text_color' : "#fff",
-          'bg_image_url' : '/static/themes/edx-theme-codebase/images/hero--example-background.jpg', ## leave empty if you want just a full color background
+          'bg_image_url' : static('images/hero.jpg'), ## leave empty if you want just a full color background
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
         }
       },
