@@ -1,11 +1,66 @@
+// Header
 .a--header-design-01.a--site-nav .a--site-nav__logo {
   height: 6.8rem;
 }
 
-.a--hero-section-01 h1 {
-  margin: 30px 0 0;
+.a--hero-section-01 {
+  padding: 13rem 0;
+
+  h1 {
+    margin: 30px 0 0;
+    padding: 2.7rem;
+    background: $brand-primary-color;
+    opacity: .9;
+  }
+
+  @media (max-width: 600px) {
+    padding: 6rem 0;
+  }
 }
 
+.a--course-tile-01__start-date {
+  color: $brand-accent-color;
+}
+
+// Temp static course list, move to new Sass file when ready
+.a--course-listing-04__wrapper {
+  padding-bottom: 4rem;
+  background: #353535;
+
+  .a--course-tile-01__image {
+    border-color: #8c1d40;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  .a--course-tile-01__title {
+    color: #8c1d40;
+  }
+
+  .a--course-tile-01__start-date {
+    color: $brand-accent-color;
+  }
+}
+// End temp static course list
+
+// Footer
 .a--footer__copyright-text {
   margin: 0;
+}
+
+.a--footer__logo {
+  opacity: 1;
+
+  img {
+    width: 16rem;
+  }
+}
+
+.a--footer__powered-by {
+
+  #footer-openedx-logo {
+    margin-bottom: 8px;
+  }
 }

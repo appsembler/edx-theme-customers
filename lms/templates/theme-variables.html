@@ -36,9 +36,9 @@
 <%def name="get_brand_logos()">
   <%
   return {
-    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
-    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.png'), ## required
-    'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.png'), ## required
+    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.png'), ## required
+    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo.png'), ## required
+    'icon_color' : get_value('icon_color', '') or static('images/branding/brand-logo.png'), ## required
     'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.png'), ## required
     'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.png'), ## required
   }
@@ -150,7 +150,7 @@
           'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
           'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
           'text_color' : "#fff",
-          'bg_image_url' : static(''), ## leave empty if you want just a full color background
+          'bg_image_url' : static('images/hero.jpg'), ## leave empty if you want just a full color background
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
         }
       },
@@ -161,7 +161,20 @@
           'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
           'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
           'course_template' : 'single-course/_course-tile-01.html', ## required
-          'section_heading' : "Our latest courses:",
+          'section_heading' : "Our Latest Academy Courses:",
+          'section_text' : "",
+          'optional_classes' : "centered", ## can be "centered" to have all text centered
+          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
+        "element-type":"courses-list",
+        "element-path":"design-templates/live-blocks/course-listing/_course-listing-04.html",
+        "options":{
+          'max_courses' : 14, ## required, sets max number of courses to be displayed in the block
+          'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
+          'course_template' : 'single-course/_course-tile-01.html', ## required
+          'section_heading' : "ASUx Open Online Courses:",
           'section_text' : "",
           'optional_classes' : "centered", ## can be "centered" to have all text centered
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
