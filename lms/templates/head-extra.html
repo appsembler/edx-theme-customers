@@ -11,12 +11,12 @@
   <link rel="stylesheet" type="text/css" href="${static('css/main.css')}">
 % endif
 <link rel="stylesheet" type="text/css" href="${static('font-awesome/css/font-awesome.min.css')}">
-<link href="${get_global_settings()['primary_font_to_import']}" rel="stylesheet">
-<link href="${get_global_settings()['accent_font_to_import']}" rel="stylesheet">
+<link href="${get_global_settings()['fonts_url']}" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 % if apple_app_id:
   <meta name="apple-itunes-app" content="app-id=${get_global_settings()['apple_app_id']}">
 % endif
+
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
