@@ -1,0 +1,27 @@
+## mako
+
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_global_settings" />
+<%! from openedx.core.djangoapps.site_configuration.helpers import get_value %>
+<%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<% style_overrides_file = get_value('css_overrides_file') %>
+% if style_overrides_file:
+  <link rel="stylesheet" type="text/css" href="${static(style_overrides_file)}" />
+% else:
+  <link rel="stylesheet" type="text/css" href="${static('css/main.css')}">
+% endif
+<link rel="stylesheet" type="text/css" href="${static('font-awesome/css/font-awesome.min.css')}">
+<link href="${get_global_settings()['fonts_url']}" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+% if apple_app_id:
+  <meta name="apple-itunes-app" content="app-id=${get_global_settings()['apple_app_id']}">
+% endif
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TTKDJ7Z');</script>
+<!-- End Google Tag Manager —>
