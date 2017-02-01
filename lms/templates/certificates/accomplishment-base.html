@@ -1,0 +1,46 @@
+<%namespace name='static' file='/static_content.html'/>
+<%! from django.utils.translation import ugettext as _ %>
+
+<%
+# set doc language direction
+from django.utils.translation import get_language_bidi
+dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
+course_mode_class = course_mode if course_mode else ''
+%>
+
+<!DOCTYPE html>
+<html class="no-js" lang="en" style="font-size: 1rem">
+<head dir="${dir_rtl}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>${document_title}</title>
+
+    <%static:css group='style-certificates'/>
+    <style type="text/css">
+        .psu--certificates__certificate .btn,
+        .psu--certificates__certificate .btn:hover
+         {
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+    </style>
+
+</head>
+
+<body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} psu--certificates__certificate certificate-${course_mode_class}" data-view="valid-accomplishment">
+
+    <div class="wrapper-view" dir="${dir_rtl}">
+
+
+        <hr class="divider sr-only">
+
+        ${self.body()}
+
+    </div>
+
+    <%include file="/certificates/_assets-secondary.html" />
+
+</body>
+</html>
