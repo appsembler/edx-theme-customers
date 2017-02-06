@@ -116,18 +116,6 @@
   <%
     return [
       {
-        'link_title': 'About Us',
-        'link_URL': '/about',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
-      {
-        'link_title': 'Contact',
-        'link_URL': '/contact',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
-      {
         'link_title': 'Facebook',
         'link_URL': 'https://www.facebook.com/dhis2',
         'special_class': '',
@@ -179,6 +167,18 @@
         }
       },
       {
+        "element-type":'static-block', "element-path":"design-templates/static-blocks/_heading-plus-text-plus-cta.html",
+        "options": {
+          # template settings
+          'heading' : "Becoming an expert in DHIS2, step by step", ## leave value empty if you don't want it displayed.
+          'text' : "<p>DHIS2 Online Academy will give you the opportunity to learn DHIS 2 at your own pace and wherever you are. All you need is an internet connection...and motivation!</p><p>DHIS2 Online courses can be combined with our traditional DHIS2 Academy, on-site. Blending the 2 methods will give you a unique exposure to the DHIS2 Community at a fast learning pace.</p>", ## leave value empty if you don't want it displayed.
+          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
+          'optional_classes' : "", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
+          'extra_css' : "text-align: center;" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
         "element-type":"courses-list",
         "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
         "options":{
@@ -188,6 +188,30 @@
           'section_heading' : "Our latest courses:",
           'section_text' : "",
           'optional_classes' : "centered", ## can be "centered" to have all text centered
+          'extra_css' : "background: #F7F7F7;" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
+        "element-type":'static-block', "element-path":"design-templates/static-blocks/_heading-plus-text-plus-cta.html",
+        "options": {
+          # template settings
+          'heading' : "DHIS2 Fundamentals available in Q1 2017", ## leave value empty if you don't want it displayed.
+          'text' : "<p>The first course of the DHIS2 Online Academy will be \"DHIS2 Fundamentals\".</p><p>If you'd like to learn more, click the following button.</p>", ## leave value empty if you don't want it displayed.
+          'cta_link' : "/register", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "I'm Interested", ## leave value empty if you don't want a CTA button displayed.
+          'optional_classes' : "negative", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
+          'extra_css' : "text-align: center;" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
+        "element-type":'static-block', "element-path":"design-templates/static-blocks/_heading-plus-text-plus-cta.html",
+        "options": {
+          # template settings
+          'heading' : "We're supported by:", ## leave value empty if you don't want it displayed.
+          'text' : "", ## leave value empty if you don't want it displayed.
+          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
+          'optional_classes' : "centered", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
         }
       },
@@ -336,15 +360,15 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "Terms of Use",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
+            'bg_image_url' : '/static/edx-theme-codebase/images/hero.jpg', ## leave empty if you want just a full color background
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
         },
@@ -352,7 +376,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
+            'content' : '<h2>Terms</h2><h3>1. Terms</h3><p>By accessing this web site, you are agreeing to be bound by these web site Terms and Conditions of Use, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using or accessing this site. The materials contained in this web site are protected by applicable copyright and trade mark law.</p><h3>2. Use License</h3><p>a. Permission is granted to temporarily download one copy of the materials (not applicable to the DHIS 2 software) on HISP&#146;s web site for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p><ul><li>modify or copy the materials;</li><li>use the materials for any commercial purpose, or for any public display (commercial or non-commercial);</li><li>remove any copyright or other proprietary notations from the materials; or</li><li>transfer the materials to another person or "mirror" the materials on any other server.</li></ul><p>b. This license shall automatically terminate if you violate any of these restrictions and may be terminated by HISP at any time. Upon terminating your viewing of these materials or upon the termination of this license, you must destroy any downloaded materials in your possession whether in electronic or printed format.</p><h3>3. Disclaimer</h3><p>The materials on HISP&#146;s web site are provided "as is". HISP makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, HISP does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.</p><h3>4. Limitations</h3><p>In no event shall HISP or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on HISP&#146;s Internet site, even if HISP or a HISP authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.</p><h3>5. Revisions and Errata</h3><p>The materials appearing on HISP&#146;s web site could include technical, typographical, or photographic errors. HISP does not warrant that any of the materials on its web site are accurate, complete, or current. HISP may make changes to the materials contained on its web site at any time without notice. HISP does not, however, make any commitment to update the materials.</p><h3>6. Links</h3><p>HISP has not reviewed all of the sites linked to its Internet web site and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by HISP of the site. Use of any such linked web site is at the user&#146;s own risk.</p><h3>7. Site Terms of Use Modifications</h3><p>HISP may revise these terms of use for its web site at any time without notice. By using this web site you are agreeing to be bound by the then current version of these Terms and Conditions of Use.</p><h3>8. Governing Law</h3><p>Any claim relating to HISP&#146;s web site shall be governed by the laws of the State of Oslo, Norway without regard to its conflict of law provisions.</p><p>General Terms and Conditions applicable to Use of a Web Site.</p><h2>Privacy Policy</h2><p>Your privacy is very important to us. Accordingly, we have developed this Policy in order for you to understand how we collect, use, communicate and disclose and make use of personal information. The following outlines our privacy policy.</p><ul><li>Before or at the time of collecting personal information, we will identify the purposes for which information is being collected.</li><li>We will collect and use of personal information solely with the objective of fulfilling those purposes specified by us and for other compatible purposes, unless we obtain the consent of the individual concerned or as required by law.</li><li>We will only retain personal information as long as necessary for the fulfillment of those purposes.</li><li>We will collect personal information by lawful and fair means and, where appropriate, with the knowledge or consent of the individual concerned.</li><li>Personal data should be relevant to the purposes for which it is to be used, and, to the extent necessary for those purposes, should be accurate, complete, and up-to-date.</li><li>We will protect personal information by reasonable security safeguards against loss or theft, as well as unauthorized access, disclosure, copying, use or modification.</li><li>We will make readily available to customers information about our policies and practices relating to the management of personal information.</li></ul><p>We are committed to conducting our business in accordance with these principles in order to ensure that the confidentiality of personal information is protected and maintained.</p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
@@ -510,7 +534,7 @@
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
+            'bg_image_url' : '/static/edx-theme-codebase/images/hero.jpg', ## leave empty if you want just a full color background
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
         },
