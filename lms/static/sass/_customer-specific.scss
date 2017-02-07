@@ -2,14 +2,12 @@
   height: 7rem;
 }
 
-.hero--example-background {
-  line-height: 1.5;
+.a--hero-section-01 {
+  h4 {
+    opacity: 1;
+    line-height: 1.5;
+  }
 }
-
-.a--hero-section-01 h4 {
-  opacity: 1;
-}
-
 
 .a--footer__powered-by #footer-openedx-logo {
   align-self: baseline;
@@ -18,3 +16,23 @@
 .a--footer__logo img {
   width: 5rem;
 }
+
+// Styling for custom static block: _heading-plus-images.html
+.heading-images {
+  h2 {
+    font-size: 3.2rem;
+  }
+
+  .heading-images-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+
+    img {
+      margin: 2.2rem;
+      max-width: 150px;
+    }
+  }
+}
+// End styling for custom static block
