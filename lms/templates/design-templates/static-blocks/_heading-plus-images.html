@@ -1,4 +1,5 @@
 <%page args="template_settings" />
+<%namespace name='static' file='/static_content.html'/>
 
 <%
   heading = template_settings['heading']
@@ -6,22 +7,17 @@
   extra_css = template_settings['extra_css']
   text_color = template_settings.get('text_color',"")
   background_color = template_settings.get('background_color',"")
-  sponsor1 = template_settings.get('sponsor1',"")
-  sponsor2 = template_settings.get('sponsor2',"")
-  sponsor3 = template_settings.get('sponsor3',"")
-  sponsor4 = template_settings.get('sponsor4',"")
-  sponsor5 = template_settings.get('sponsor5',"")
 %>
 
 <section class="a--heading-plus-text-plus-cta ${optional_classes} heading-images" style="color: ${text_color}; background-color: ${background_color}; ${extra_css}">
   <div class="bs-container a--container a--heading-plus-text-plus-cta__container">
       <h2>${heading}</h2>
       <div class="heading-images-list">
-        <img src="${sponsor1}" />
-        <img src="${sponsor2}" />
-        <img src="${sponsor3}" />
-        <img src="${sponsor4}" />
-        <img src="${sponsor5}" />
+        <img src="${static.url('images/sponsors/rcn.png')}" />
+        <img src="${static.url('images/sponsors/globalfund.png')}" />
+        <img src="${static.url('images/sponsors/norad.png')}" />
+        <img src="${static.url('images/sponsors/pepfar.png')}" />
+        <img src="${static.url('images/sponsors/universityofoslo.png')}" />
       </div>
 
   </div>
