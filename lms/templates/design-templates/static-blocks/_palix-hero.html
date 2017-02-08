@@ -1,0 +1,38 @@
+<%page args="template_settings" />
+<%! from django.utils.translation import ugettext as _ %>
+
+<%
+  text_color = template_settings.get('text_color',"")
+  background_color = template_settings.get('background_color',"")
+  bg_image_url = template_settings.get('bg_image_url',"")
+  optional_classes = template_settings.get('optional_classes',"")
+  extra_css = template_settings.get('extra_css',"")
+%>
+
+<section class="a--palix-hero ${optional_classes}" style="background-image: url('${bg_image_url}'); color: ${text_color}; background-color: ${background_color}; ${extra_css}">
+  <div class="bs-container a--container a--palix-hero__container">
+      <div class="a--palix-hero__content">
+        <h1>${_(template_settings['hero_title'])}</h1>
+        <h4>${_(template_settings['hero_subtitle'])}</h4>
+        <div class="a--palix-hero__cta-container">
+          % if template_settings['popup_video_url']:
+            <a href="#" data-toggle="modal" data-target="#${template_settings['popup_video_id']}Modal" class="a--cta">${_(template_settings['popup_video_text'])}</a>
+          % endif
+          % if template_settings['cta_link']:
+            <a href="${template_settings['cta_link']}" class="a--cta">${_(template_settings['cta_link_text'])}</a>
+          % endif
+        </div>
+      </div>
+  </div>
+</section>
+
+% if template_settings['popup_video_url']:
+  <div class="modal a--modal a--modal__video fade" id="${template_settings['popup_video_id']}Modal" tabindex="-1" role="dialog" aria-labelledby="${template_settings['popup_video_id']}Modal">
+    <div class="a--modal__outer-container">
+      <div class="a--modal__video__container bs-container a--container">
+        <button type="button" class="a--modal__close-button" id="a--video-modal-close-${template_settings['popup_video_url']}" data-dismiss="modal" aria-label="Close"><i class="fa fa-remove"></i></button>
+        <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe class="youtube-modal-iframe" id="${template_settings['popup_video_url']}" src='https://www.youtube.com/embed/${template_settings['popup_video_url']}?rel=0&controls=0&showinfo=0&enablejsapi=1' frameborder='0' allowfullscreen></iframe></div>
+      </div>
+    </div>
+  </div>
+% endif

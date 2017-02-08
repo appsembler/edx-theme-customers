@@ -1,0 +1,25 @@
+<%page args="template_settings" />
+<%! from django.utils.translation import ugettext as _ %>
+
+<%
+  heading = template_settings['heading']
+  text = template_settings['text']
+  cta_link = template_settings['cta_link']
+  cta_link_text = template_settings['cta_link_text']
+  optional_classes = template_settings['optional_classes']
+  extra_css = template_settings['extra_css']
+  text_color = template_settings.get('text_color',"")
+  background_color = template_settings.get('background_color',"")
+%>
+
+<section class="a--heading-plus-text-plus-cta ${optional_classes}" style="color: ${text_color}; background-color: ${background_color}; ${extra_css}">
+  <div class="bs-container a--container a--heading-plus-text-plus-cta__container">
+      <h2>${_(heading)}</h2>
+      ${_(text)}
+      <div class="a--heading-plus-text-plus-cta__cta-container">
+        % if cta_link:
+          <a href="${cta_link}" target="_blank" class="a--cta">${_(cta_link_text)}</a>
+        % endif
+      </div>
+  </div>
+</section>
