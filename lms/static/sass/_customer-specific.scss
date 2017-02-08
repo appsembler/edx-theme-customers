@@ -1,14 +1,19 @@
+
+// Header and hero
 .a--header-design-01.a--site-nav .a--site-nav__logo {
   height: 7rem;
 }
 
 .a--hero-section-01 {
+  padding: 12rem 0;
+
   h4 {
     opacity: 1;
     line-height: 1.5;
   }
 }
 
+// Footer
 .a--footer__powered-by #footer-openedx-logo {
   align-self: baseline;
 }
