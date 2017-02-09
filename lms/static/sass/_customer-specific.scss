@@ -289,3 +289,458 @@
 .a--footer__powered-by #footer-openedx-logo {
   align-self: baseline;
 }
+
+// Cert templates
+.palix--certificates {
+
+	.accomplishment-rendering {
+    	padding: 7rem 7rem 2rem 7rem;
+    	top: 0rem !important;
+    	border-top: 0.5rem solid rgb(100,163,146);
+
+		.accomplishment-signatories {
+				display: none;
+		}
+	}
+
+}
+
+@media print {
+
+	.palix--certificates {
+		margin-top: 0 !important;
+
+		.label {
+			border: 0;
+		}
+
+		a:after {
+			content: none;
+		}
+
+		.accomplishment-rendering .wrapper-statement-and-signatories {
+			border-bottom: 0;
+		}
+
+  	.accomplishment-rendering {
+  		padding-top: 5rem;
+
+  		.accomplishment-type-label {
+  			width: 100%;
+  		}
+  	}
+	}
+}
+
+// Course About palix--certificates.a--course-about-palix {
+
+  &__header {
+    padding: 9rem 0;
+    position: relative;
+    overflow: hidden;
+
+    &__background {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: url('../images/course_about_bg.png');
+      z-index: 1;
+    }
+
+    &__overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      background: linear-gradient(rgba(#000, 0.03) 0%, rgba(#000, 0) 25%, rgba(#000, 0) 75%, rgba(#000, 0.03) 100%)
+    }
+
+    &__content {
+      position: relative;
+      z-index: 3;
+
+      @media(min-width: $screen-sm-min) {
+        @include display(flex);
+        @include align-items(center);
+      }
+    }
+
+    &__image {
+      width: 30%;
+      @include flex-grow(0);
+      @include flex-shrink(0);
+      max-width: 32rem;
+      margin-right: 5rem;
+      position: relative;
+      -webkit-box-shadow: 0 0 2rem 0 rgba(0,0,0,0.35);
+      -moz-box-shadow: 0 0 2rem 0 rgba(0,0,0,0.35);
+      box-shadow: 0 0 2rem 0 rgba(0,0,0,0.35);
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      @media (max-width: $screen-sm-max) {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    &__video-trigger {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      @include display(flex);
+      @include align-items(center);
+      text-align: center;
+
+      i {
+        margin: 0 auto;
+        color: #fff;
+        font-size: 6.4rem;
+        text-shadow: 0 0 2rem rgba(0, 0, 0, 0.5);
+        @include transition(all 0.2s ease-in-out);
+      }
+
+      &:hover, &:focus {
+        i {
+          @include transform(scale(1.2));
+        }
+      }
+    }
+
+    &__info {
+      width: 100%;
+      @include flex-shrink(1);
+      @include flex-grow(1);
+    }
+
+    &__title {
+      @include big-headings-font;
+      -webkit-font-smoothing: antialiased;
+      font-size: 5.2rem;
+      color: #fff;
+      margin: 0 0 3rem;
+
+      @media (max-width:$screen-sm-max) {
+        font-size: 3.2rem;
+      }
+    }
+
+    &__description {
+      @include primary-font;
+      font-size: 1.8rem;
+      color: #fff;
+      margin: -1rem 0 3rem;
+    }
+  }
+
+  &__courseware-button-wrapper {
+
+    #register_error {
+      display: inline-block;
+    }
+  }
+
+  &__social-share {
+    @include transition(all 0.3s ease-in-out);
+    @include display(flex);
+    @include align-items(center);
+    padding: 2rem 0;
+    border-top: 0.1rem solid rgba(#fff, 0.15);
+    border-bottom: 0.1rem solid rgba(#fff, 0.15);
+    margin: 0 0 3rem;
+
+    & .expand-on-parent-hover {
+      @include flex-shrink(0);
+      white-space: nowrap;
+      max-width: 0;
+      @include transition(all 0.2s ease-in-out);
+      overflow: hidden;
+      margin-right: 0;
+    }
+
+    &:hover, &:focus {
+      opacity: 1;
+
+      & .expand-on-parent-hover {
+        max-width: 30rem;
+        margin-right: 1.5rem;
+      }
+    }
+
+    &__helper {
+      display: block;
+      color: #fff;
+      @include primary-font;
+    }
+
+    a {
+      font-size: 2rem;
+      margin: 0 1rem;
+      color: #fff;
+      opacity: 1;
+
+      &:hover, &:focus {
+        color: #fff;
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__courseware-btn {
+    border: $navbar-button-border;
+    display: inline-block;
+    padding: 1.5rem 2rem;
+    font-size: 1.6rem;
+    margin: 1rem 2rem 1rem 0;
+    @include large-cta-font;
+    @include button_radius;
+    @include button_splash($buttons-border-radius);
+    background-color: #fff;
+    color: $brand-primary-color;
+    opacity: 1;
+
+    &:visited {
+      color: $brand-primary-color;
+    }
+
+    &:hover, &:focus {
+      color: $brand-primary-color;
+      opacity: 0.75;
+    }
+  }
+
+  &__overview {
+    padding: 3rem 0 5rem;
+    background-color: transparent;
+    line-height: 150%;
+    display: block;
+
+    @media(max-width: $screen-md-min) {
+      width: 100%;
+    }
+
+    h1 {
+      @include big-headings-font;
+      font-size: 5.4rem;
+      margin: 0 0 3rem;
+      color: $brand-primary-color;
+      text-transform: uppercase;
+
+      @media(max-width: $screen-sm-max) {
+        font-size: 3.2rem;
+      }
+    }
+
+    h2 {
+      @include big-headings-font;
+      font-size: 4.2rem;
+      margin: 4rem 0 3rem;
+      color: $brand-primary-color;
+      text-transform: uppercase;
+
+      @media(max-width: $screen-sm-max) {
+        font-size: 2.4rem;
+      }
+    }
+
+    h3 {
+      @include primary-font-bold;
+      font-size: 1.8rem;
+      margin: 3rem 0 2rem;
+      color: $brand-primary-color;
+      text-transform: none;
+    }
+
+    p {
+      font-size: 1.6rem;
+      line-height: 160%;
+      color: lighten($base-text-color, 30%);
+    }
+
+    a {
+      color: $brand-primary-color;
+    }
+
+    .teacher {
+
+      .teacher-image {
+        margin-top: 3rem;
+
+        img {
+          float: none;
+        }
+      }
+
+      h3 {
+        @include big-headings-font;
+        color: $brand-primary-color;
+        text-transform: uppercase;
+        font-size: 2.4rem;
+      }
+
+      h3, p {
+      }
+    }
+  }
+
+  &__info {
+    display: block;
+    width: 30%;
+    max-width: 32rem;
+    margin-right: 5rem;
+    padding: 5rem 0;
+
+    @media (max-width: $screen-sm-max) {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    li {
+      list-style-type: none;
+      border-bottom: 0.1rem solid rgba($base-text-color, 0.2);
+      padding: 2rem 0;
+      @include display(flex);
+      @include align-items(center);
+      font-size: 1.6rem;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      i {
+        margin-right: 1.5rem;
+        color: rgba($base-text-color, 0.75);
+      }
+
+      p {
+        color: rgba($base-text-color, 0.75);
+        @include primary-font-light;
+        margin-right: 1.5rem;
+        display: inline-block;
+        width: 13rem;
+      }
+
+      span {
+        color: $base-text-color;
+        @include primary-font-bold;
+        display: inline-block;
+      }
+    }
+  }
+
+  &__content {
+    padding-bottom: 4rem;
+
+    &__container {
+      @media (min-width: $screen-md-min) {
+        @include display(flex);
+      }
+    }
+  }
+
+  article.response {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 0.1rem solid #ddd;
+  }
+}
+
+// Course Tile Palix
+.a--course-tile-palix {
+  margin: 2.5rem 1.5rem;
+  display: block;
+  max-width: 92rem;
+  width: 100%;
+  @include transition(all 0.3s ease-in-out);
+  text-align: left;
+  position: relative;
+
+  &:hover, &:focus {
+    opacity: 0.7;
+  }
+
+  @media(min-width: $screen-sm-min) {
+    @include display(flex);
+    @include align-items(center);
+    margin: 2.5rem auto;
+
+    &__image-container {
+      display: block;
+      width: 26rem;
+      @include flex-shrink(0);
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__image {
+    background-size: cover;
+    background-position: center center;
+    padding-bottom: 75%;
+    width: 100%;
+    display: block;
+  }
+
+  &__info-container {
+    padding: 3rem 1.5rem;
+    background-color: #fff;
+    width: 100%;
+  }
+
+  &__code {
+    @include primary-font-black;
+    font-size: 1.4rem;
+    color: $base-text-color;
+    margin: 0;
+  }
+
+  &__title {
+    @include large-cta-font;
+    text-transform: uppercase;
+    font-size: 2.8rem;
+    margin: 0 0 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 0.1rem solid #ddd;
+    color: $brand-primary-color;
+    display: inline-block;
+  }
+
+  &__start-date {
+    @include primary-font-light;
+    color: $brand-primary-color;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    margin: 0;
+
+    span {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__description {
+    font-size: 1.6rem;
+    line-height: 160%;
+    color: lighten($base-text-color, 30%);
+    margin: 1rem 0;
+  }
+
+  &__more-info, a {
+    @include primary-font-bold;
+    text-transform: uppercase;
+    color: $brand-accent-color;
+    font-size: 1.6rem;
+
+    &:hover, &:focus {
+      opacity: 0.8;
+    }
+  }
+}
