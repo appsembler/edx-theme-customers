@@ -1,0 +1,19 @@
+<article class="a--course-tile-palix" aria-label="<%= content.display_name %>">
+  <div class="a--course-tile-palix__image-container">
+    <a href="/courses/<%- course %>/about" class="a--course-tile-palix__image" style="background-image: url('<%- image_url %>');"></a>
+  </div>
+  <div class="a--course-tile-palix__info-container">
+    <div class="a--course-tile-palix__info">
+      <p class="a--course-tile-palix__code"><%= content.number %></p>
+      <p class="a--course-tile-palix__title"><%= content.display_name %></p>
+      <p class="a--course-tile-palix__start-date"><span>Starts on:</span>
+        <%= interpolate(
+          gettext("%(start_date)s"),
+          { start_date: start }, true
+        ) %>
+      </p>
+      <p class="a--course-tile-palix__description"><%= content.overview.substr(0,220) %>...</p>
+      <a class="a--course-tile-palix__more-info" href="/courses/<%- course %>/about">Learn more...</a>
+    </div>
+  </div>
+</article>

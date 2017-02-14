@@ -290,6 +290,11 @@
   align-self: baseline;
 }
 
+// Sign In
+.login-register .form-type .section-title span.text, .login-register .form-type .section-title.lines span.text {
+  font-weight: 700;
+}
+
 // Cert templates
 .palix--certificates {
 
@@ -332,7 +337,8 @@
 	}
 }
 
-// Course About palix--certificates.a--course-about-palix {
+// Course About palix--certificates
+.a--course-about-palix {
 
   &__header {
     padding: 9rem 0;
@@ -586,9 +592,6 @@
         color: $brand-primary-color;
         text-transform: uppercase;
         font-size: 2.4rem;
-      }
-
-      h3, p {
       }
     }
   }

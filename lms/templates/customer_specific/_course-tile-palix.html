@@ -1,0 +1,26 @@
+<%page args="course" />
+<%! from django.utils.translation import ugettext as _ %>
+<%
+  course = course
+%>
+<%namespace file='../translator-templates/_single-course.html' import="get_course_info" />
+
+<%
+  course_info = get_course_info(course)
+  course_image = course_info['course_image']
+%>
+
+<article id="course_info['id']" class="a--course-tile-palix" aria-label="${course_info['course_title']}">
+  <div class="a--course-tile-palix__image-container">
+    <a href="${course_info['course_url']}" class="a--course-tile-palix__image" style="background-image: url('${course_image}');" role="presentation"></a>
+  </div>
+  <div class="a--course-tile-palix__info-container">
+    <div class="a--course-tile-palix__info">
+      <p class="a--course-tile-palix__code">${course_info['course_code']}</p>
+      <p class="a--course-tile-palix__title">${course_info['course_title']}</p>
+      <p class="a--course-tile-palix__start-date">${course_info['course_start_date']}</p>
+      <p class="a--course-tile-palix__description">${course_info['course_short_description']}</p>
+      <a class="a--course-tile-palix__more-info" href="${course_info['course_url']}">Learn more...</a>
+    </div>
+  </div>
+</article>
