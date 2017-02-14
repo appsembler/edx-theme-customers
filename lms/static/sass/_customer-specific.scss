@@ -552,11 +552,10 @@
     }
 
     h2 {
-      @include big-headings-font;
+      @include large-cta-font;
       font-size: 4.2rem;
       margin: 4rem 0 3rem;
       color: $brand-primary-color;
-      text-transform: uppercase;
 
       @media(max-width: $screen-sm-max) {
         font-size: 2.4rem;
@@ -670,6 +669,11 @@
   }
 }
 
+// My Courses Dashboard
+.a--dashboard-course-listing-01__course-name {
+  text-transform: uppercase;
+}
+
 // Course Tile Palix
 .a--course-tile-palix {
   margin: 2.5rem 1.5rem;
@@ -758,4 +762,24 @@
       opacity: 0.8;
     }
   }
+}
+
+// Account Settings
+#u-field-link-password {
+  border-color: $brand-primary-color;
+  color: $brand-primary-color;
+
+  &:hover {
+    background: $brand-primary-color;
+    color: #FFF;
+  }
+}
+
+.account-settings-sections .section .account-settings-section-body .u-field .field select ~ .icon-caret-down:after {
+  border-top: 7px solid $brand-primary-color;
+}
+
+.wrapper-account-settings .wrapper-header .account-nav .account-nav-item button:hover, .wrapper-account-settings .wrapper-header .account-nav .account-nav-item button:focus {
+  border-bottom: 4px solid $brand-primary-color !important;
+  outline: none;
 }
