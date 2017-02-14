@@ -1,11 +1,18 @@
+// Mixins
+@mixin large-cta-font {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	text-transform: uppercase;
+}
+
+// Hero
 .a--heading-plus-text-plus-cta {
   padding: 10rem 0;
 
   h2 {
-    @include big-headings-font;
+    @include large-cta-font;
     font-size: 4.2rem;
     line-height: 4.2rem;
-    text-transform: uppercase;
 
     @media (max-width: $screen-xs-max) {
       font-size: 2.4rem;
@@ -19,7 +26,6 @@
   }
 
   .a--cta {
-    text-transform: uppercase;
     @include large-cta-font;
     font-size: 1.8rem;
     margin: 0;
@@ -81,7 +87,7 @@
 
   h1 {
     font-size: 7.2rem;
-    @include big-headings-font;
+    @include large-cta-font;
     -webkit-font-smoothing: antialiased;
     text-transform: uppercase;
   }
@@ -169,10 +175,9 @@
   }
 
   h1 {
-    @include big-headings-font;
+    @include large-cta-font;
     font-size: 7.2rem;
     line-height: 100%;
-    letter-spacing: 2px;
     margin: 0 0 2rem;
     color: inherit;
     text-transform: uppercase;
@@ -220,11 +225,10 @@
   line-height: 150%;
 
   h2 {
-    @include big-headings-font;
     font-size: 4.2rem;
     margin: 0 0 3rem;
     color: $brand-primary-color;
-    text-transform: none;
+    @include large-cta-font;
   }
 
   &__cta-container {
@@ -655,6 +659,14 @@
     padding-bottom: 2rem;
     margin-bottom: 2rem;
     border-bottom: 0.1rem solid #ddd;
+  }
+}
+
+// Course catalogue
+.a--course-catalogue-01__courses {
+
+  li {
+    list-style-type: none;
   }
 }
 

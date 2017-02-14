@@ -202,6 +202,18 @@
           'bg_image_url' : static('images/course_about_bg.png') ## leave empty if you want just a full color background
         }
       },
+      {
+        "element-type":'static-block', "element-path":"design-templates/static-blocks/_heading-plus-text-plus-cta.html",
+        "options": {
+          # template settings
+          'heading' : "ABOUT THE COURSE CREATORS", ## leave value empty if you don't want it displayed.
+          'text' : "<p>This course was created by the Alberta Family Wellness Initiative, a not-for-profit organization that facilitates research into early brain development, and addiction and mental health treatment; and applies this research to policies and practices that support positive lifelong health outcomes.</p>", ## leave value empty if you don't want it displayed.
+          'cta_link' : "http://www.albertafamilywellness.org/", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "LEARN MORE", ## leave value empty if you don't want a CTA button displayed.
+          'optional_classes' : "negative", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
+          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+        }
+      },
     ]
   %>
 </%def>
