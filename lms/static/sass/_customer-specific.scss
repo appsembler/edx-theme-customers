@@ -1,0 +1,18 @@
+// Hero
+.a--hero-section-01 h1 {
+  font-weight: 500;
+  text-shadow: 2px 2px $brand-primary-color;
+}
+
+.a--hero-section-01__cta-container .a--cta {
+  text-transform: uppercase;
+}
+
+// Footer
+.a--footer__logo img {
+  width: 7rem;
+}
+
+.a--footer__powered-by #footer-openedx-logo {
+  align-self: baseline;
+}
