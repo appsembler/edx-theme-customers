@@ -14,10 +14,50 @@ course_mode_class = course_mode if course_mode else ''
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/static/themes/palix-dogwood/css/main.css" />
+    <link rel="stylesheet" href="/static/eucalyptus-theme-codebase/css/main.css" />
     <title>${document_title}</title>
 
     <%static:css group='style-certificates'/>
+
+    <style type="text/css">
+        .palix--certificates .accomplishment-rendering {     
+            padding: 7rem 7rem 2rem 7rem;
+            top: 0rem !important; 
+            border-top: 0.5rem solid rgb(100,163,146);
+        }
+        .palix--certificates .accomplishment-signatories {
+            display: none;
+        }           
+        
+        @media print {
+            
+            .palix--certificates {
+                margin-top: 0 !important;
+            }
+
+            .palix--certificates .label {
+                border: 0;
+            }
+
+            .palix--certificates a:after {
+                content: none;
+            }
+
+            .palix--certificates .accomplishment-rendering .wrapper-statement-and-signatories {
+                border-bottom: 0;
+            }
+
+            .palix--certificates .accomplishment-rendering {
+                padding-top: 5rem;
+            }          
+
+            .palix--certificates  .accomplishment-rendering  .accomplishment-type-label {
+                width: 100%;
+            }
+        }
+
+
+    </style>
 
 </head>
 
