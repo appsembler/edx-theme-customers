@@ -27,35 +27,45 @@ course_mode_class = course_mode if course_mode else ''
         }
         .palix--certificates .accomplishment-signatories {
             display: none;
-        }           
-        
-        @media print {
-            
-            .palix--certificates {
-                margin-top: 0 !important;
-            }
+        }  
 
-            .palix--certificates .label {
-                border: 0;
-            }
-
-            .palix--certificates a:after {
-                content: none;
-            }
-
-            .palix--certificates .accomplishment-rendering .wrapper-statement-and-signatories {
-                border-bottom: 0;
-            }
-
-            .palix--certificates .accomplishment-rendering {
-                padding-top: 5rem;
-            }          
-
-            .palix--certificates  .accomplishment-rendering  .accomplishment-type-label {
-                width: 100%;
-            }
+        .palix--certificates__certificate .btn {
+            color: #fff !important;
+            border-color: #fff !important;
+        }
+        .palix--certificates__certificate .btn:hover {
+            color: #000 !important;
+            background-color: #fff !important; 
+        }
+    </style>
+    <style type="text/css" media="print">  
+        @page {
+            size: A4 portrait; 
         }
 
+        .palix--certificates {
+            margin-top: 0 !important;
+        }
+
+        .palix--certificates .label {
+            border: 0;
+        }
+
+        .palix--certificates a:after {
+            content: none;
+        }
+
+        .palix--certificates .accomplishment-rendering .wrapper-statement-and-signatories {
+            border-bottom: 0;
+        }
+
+        .palix--certificates .accomplishment-rendering {
+            padding-top: 5rem;
+        }          
+
+        .palix--certificates  .accomplishment-rendering  .accomplishment-type-label {
+            width: 100%;
+        }
 
     </style>
 
