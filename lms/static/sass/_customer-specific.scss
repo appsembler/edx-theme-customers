@@ -1,4 +1,23 @@
+//CTA
+.a--heading-plus-text-plus-cta__cta-container {
+  text-align: center;
+}
+
+// Course wrapper
+.a--course-listing-01__wrapper {
+  background-color: $brand-accent-color;
+}
+
+.a--course-listing-01__section-heading {
+  color: #FFF;
+}
+
+// Course listing
+.a--dashboard-course-listing-01__course-name {
+  font-weight: 700;
+}
+
 // footer
-.a--footer__powered-by #footer-openedx-logo img {
+.a--footer__powered-by #footer-openedx-logo {
   align-self: baseline;
 }
