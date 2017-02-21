@@ -3,10 +3,38 @@
   background: $brand-accent-color;
 }
 
-//Hero
+// Hero
 .a--hero-section-01 h1 {
   display: inline-block;
   background: $brand-accent-color;
   padding: 1.5rem 3rem;
   font-weight: $primary-font-weight-bold;
+  font-size: 6.4rem;
+
+  @media (max-width: 900px) {
+    font-size: 3rem;
+    margin-left: -3rem;
+  }
+}
+
+// Course listing
+.a--course-listing-01__section-heading {
+  font-weight: $primary-font-weight-regular;
+}
+
+// Footer
+.a--footer__logo {
+  opacity: 1;
+}
+
+.a--footer__powered-by {
+  opacity: 1;
+}
+
+.a--footer__powered-by #footer-openedx-logo {
+  align-self: baseline;
+}
+
+.a--footer__powered-by #footer-appsembler-logo {
+  opacity: 1;
 }
