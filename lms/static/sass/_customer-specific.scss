@@ -22,7 +22,16 @@
   font-weight: $primary-font-weight-regular;
 }
 
+// CTA
+.a--heading-plus-text-plus-cta.negative {
+  background: $brand-accent-color;
+}
+
 // Footer
+.a--footer {
+  border-top: 5px solid $brand-primary-color;
+}
+
 .a--footer__logo {
   opacity: 1;
 }
