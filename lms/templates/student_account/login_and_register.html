@@ -1,0 +1,57 @@
+<%!
+    import json
+    from django.utils.translation import ugettext as _
+    from openedx.core.djangolib.js_utils import dump_js_escaped_json
+%>
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_global_settings" />
+
+<%inherit file="/main.html" />
+
+<%block name="pagetitle">${_("Sign in or Register")}</%block>
+
+<%block name="js_extra">
+    <%static:require_module module_name="js/student_account/logistration_factory" class_name="LogistrationFactory">
+        var options = ${data | n, dump_js_escaped_json};
+        LogistrationFactory(options);
+    </%static:require_module>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>    
+</%block>
+
+<%block name="header_extras">
+  % if get_global_settings()['enable_registration_button']:
+    % for template_name in ["account", "access", "form_field", "login", "register", "institution_login", "institution_register", "password_reset", "hinted_login"]:
+        <script type="text/template" id="${template_name}-tpl">
+            <%static:include path="student_account/${template_name}.underscore" />
+        </script>
+    % endfor
+  % else:
+    % for template_name in ["account", "access", "form_field", "institution_login", "institution_register", "password_reset", "hinted_login"]:
+        <script type="text/template" id="${template_name}-tpl">
+            <%static:include path="student_account/${template_name}.underscore" />
+        </script>
+        <script type="text/template" id="login-tpl">
+            <%static:include path="student_account/login-no-register.underscore" />
+        </script>
+        <script type="text/template" id="register-tpl">
+            <%static:include path="student_account/register.underscore" />
+        </script>
+    % endfor
+  % endif
+</%block>
+
+<div class="section-bkg-wrapper">
+    <div id="login-and-registration-container" class="login-register bs-container" />
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    // site mobile nav toggle
+    $('#site-menu-toggle').on('click', function() {
+      $(this).toggleClass('a--toggled');
+      $('#slide-menu').toggleClass('a--active');
+    });
+  });
+</script>

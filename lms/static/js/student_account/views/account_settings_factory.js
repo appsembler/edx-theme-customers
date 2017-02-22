@@ -18,12 +18,13 @@
             authData,
             userAccountsApiUrl,
             userPreferencesApiUrl,
+            userTrinityUserProfileUrl,
             accountUserId,
             platformName
         ) {
             var accountSettingsElement, userAccountModel, userPreferencesModel, aboutSectionsData,
                 accountsSectionData, ordersSectionData, accountSettingsView, showAccountSettingsPage,
-                showLoadingError, orderNumber;
+                showLoadingError, orderNumber, userTrinityUserProfileModel;
 
             accountSettingsElement = $('.wrapper-account-settings');
 
@@ -34,7 +35,7 @@
             userPreferencesModel.url = userPreferencesApiUrl;
 
             // specific to Trinity fields e.g., District (school district)
-            var userTrinityUserProfileModel = new UserTrinityUserProfileModel();
+            userTrinityUserProfileModel = new UserTrinityUserProfileModel();
             userTrinityUserProfileModel.url = userTrinityUserProfileUrl;            
 
             aboutSectionsData = [
