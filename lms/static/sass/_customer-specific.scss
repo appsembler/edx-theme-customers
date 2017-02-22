@@ -3,6 +3,18 @@
   background: $brand-accent-color;
 }
 
+.a--header-design-01 .a--site-menu__group ul li.a--nav-cta a, .a--header-design-01 .a--site-menu__group ul li.a--cta-button a {
+  border-color: $brand-primary-color;
+
+  &:hover {
+    background: $brand-primary-color;
+  }
+}
+
+.a--header-design-01 .a--site-menu__group ul li.a--nav-cta a:before, .a--header-design-01 .a--site-menu__group ul li.a--cta-button a:before {
+  display: none;
+}
+
 // Hero
 .a--hero-section-01 h1 {
   display: inline-block;
@@ -46,4 +58,16 @@
 
 .a--footer__powered-by #footer-appsembler-logo {
   opacity: 1;
+}
+
+.a--footer__links-container li a:hover .fa-facebook {
+  color: #3B5998;
+}
+
+.a--footer__links-container li a:hover .fa-twitter {
+  color: #1DA1F2;
+}
+
+.a--footer__links-container li a:hover .fa-linkedin {
+  color: #0077B5;
 }
