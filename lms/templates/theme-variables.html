@@ -243,6 +243,23 @@
   <%
     return [
       {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_hero-section-01.html",
+        "options":{
+          # template settings
+          'hero_title' : "Bokskapet",
+          'hero_subtitle' : "",
+          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
+          'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+          'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+          'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
+          'text_color' : "#fff",
+          'bg_image_url' : static('images/hero.jpg'), ## leave empty if you want just a full color background
+          'extra_css' : "text-align: left; padding-top: 115px;" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
         "element-type":"course-catalogue-template",
         "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
         "options":{
@@ -251,7 +268,19 @@
           "search-enabled":True,
           "discovery-facet":"facet-01"
         }
-      }
+      },
+      {
+        "element-type":'static-block', "element-path":"design-templates/static-blocks/_heading-plus-text-plus-cta.html",
+        "options": {
+          # template settings
+          'heading' : "Publiser i Bokskapet!", ## leave value empty if you don't want it displayed.
+          'text' : "<p>Vil du være med å utvikle i Bokskapet? Har du kursmateriell som du vil bearbeide for digital plattform slik at der når ut til flere?</p><p>Vi er på utkikk etter studenter og lærere som har lyst til å bidra som forfattere, redaktører, eller med tekst, foto og video.</p><p>Opplæring blir gitt.</p><p>Kom til LæreVerkStedet i 3. egt Pilestredet 48 man-tors 13:00-15:00</p>", ## leave value empty if you don't want it displayed.
+          'cta_link' : "https://blogg.hioa.no/verkstedet", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "Jeg vil!", ## leave value empty if you don't want a CTA button displayed.
+          'optional_classes' : "negative", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
+          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+        }
+      },
     ]
   %>
 </%def>

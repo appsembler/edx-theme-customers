@@ -29,12 +29,12 @@
   }
 }
 
-// Course listing
+// Course listing and CTA
+.a--heading-plus-text-plus-cta h2,
 .a--course-listing-01__section-heading {
   font-weight: $primary-font-weight-regular;
 }
 
-// CTA
 .a--heading-plus-text-plus-cta.negative {
   background: $brand-accent-color;
 }
