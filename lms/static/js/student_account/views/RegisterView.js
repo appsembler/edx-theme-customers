@@ -52,9 +52,7 @@
                 }));
 
                 this.postRender();
-                $('#register-district').select2();
-
-
+              
                 if (this.autoSubmit) {
                     $(this.el).hide();
                     $('#register-honor_code').prop('checked', true);
@@ -63,6 +61,15 @@
 
                 return this;
             },
+
+            postRender: function() {
+                var $container = $(this.el);
+                this.$form = $container.find('form');
+                this.$errors = $container.find('.submission-error');
+                this.$submitButton = $container.find(this.submitButton);
+                
+                $('#register-district').select2();  
+            }
 
             thirdPartyAuth: function( event ) {
                 var providerUrl = $(event.currentTarget).data('provider-url') || '';
