@@ -79,7 +79,7 @@ $footer-bg-color: $brand-accent-color;
 $footer-top-border: none;
 $footer-text-color: #ccc;
 $footer-link-color: $brand-primary-color;
-$footer-link-hover-color: lighten($footer-text-color, 15%);
+$footer-link-hover-color: darken($brand-primary-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;

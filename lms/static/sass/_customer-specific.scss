@@ -1,39 +1,121 @@
 // Header
 .a--header-design-01.a--site-nav {
-  background: $brand-accent-color;
+  background-color: $brand-accent-color;
 }
 
-.a--header-design-01 .a--site-menu__group ul li.a--nav-cta a, .a--header-design-01 .a--site-menu__group ul li.a--cta-button a {
-  border-color: $brand-primary-color;
-
-  &:hover {
-    background: $brand-primary-color;
-  }
+.a--header-design-01 .a--site-menu__group:first-child {
+  flex-shrink: 0;
 }
 
-.a--site-menu__group ul .hioa--feide-login-cta .button-saml-feide-saml.login-saml-feide-saml {
-  padding: 1rem 1.5rem;
-  background: transparent;
-  border-radius: 0.5rem;
-  border: 0.2rem solid $brand-primary-color;
+.a--site-nav {
 
-  &:hover {
-    background: $brand-primary-color;
+  .button-saml-feide-saml {
+    background: none;
+    box-shadow: none;
+    outline: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    font: inherit;
+    @include primary-font;
+    padding: 1rem 1.5rem;
+    border-radius: $buttons-border-radius;
+    border: 0.2rem solid $brand-primary-color;
+    @include transition(all 0.3s ease-in-out);
+
+    i {
+      margin-right: 1rem;
+    }
+
+    span.cta-title {
+      font-size: 1.4rem;
+      letter-spacing: 0;
+    }
+
+    &:hover, &:focus, &:hover:not(:disabled) {
+      background-color: $brand-primary-color;
+      border: 0.2rem solid $brand-primary-color;
+
+      &:after {
+        display: none !important;
+      }
+    }
+
+    &.sidebar-button {
+      border-color: #fff;
+
+      &:hover, &:focus, &:hover:not(:disabled) {
+        border-color: #fff;
+        background-color: #fff;
+        color: $brand-primary-color;
+      }
+    }
   }
 }
 
 // Hero
-.a--hero-section-01 h1 {
-  display: inline-block;
-  background: $brand-accent-color;
-  padding: 1.5rem 3rem;
-  font-weight: $primary-font-weight-bold;
-  font-size: 6.4rem;
+.hioa--hero-section {
+  background-position: center top;
+  background-size: cover;
+  background-color: $brand-primary-color;
+  line-height: 150%;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+  border-bottom: 0.4rem solid #000;
 
-  @media (max-width: 900px) {
-    font-size: 3rem;
-    margin-left: -3rem;
+  &__container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
+
+  h1 {
+    @include primary-font-bold;
+    font-size: 6.4rem;
+    line-height: 120%;
+    margin: 0 0 0 -3rem;
+    background-color: #0F1012;
+    padding: 1.5rem 3rem;
+    color: #fff;
+    display: inline-block;
+
+    @media(max-width: $screen-sm-max) {
+      font-size: 4.2rem;
+    }
+  }
+
+  h4 {
+    @include small-headings-font;
+    font-size: 1.6rem;
+    margin: 0;
+    color: inherit;
+    opacity: 0.75
+  }
+
+  &__cta-container {
+    margin: 0;
+
+    & .a--cta {
+      @include large-cta-font;
+      background-color: $cta-button-bg;
+      border: $navbar-button-border;
+      display: inline-block;
+      padding: 1.5rem 2rem;
+      font-size: 2.0rem;
+      margin: 1rem;
+      @include large-cta-font;
+      color: $cta-button-text-color;
+      @include button_radius;
+      @include button_splash($buttons-border-radius);
+
+      &:hover, &:focus {
+        color: rgba($cta-button-text-color, 0.8);
+      }
+    }
+  }
+}
+
+.a--hero-section-01 h1 {
+  font-weight: 500;
 }
 
 // Course listing and CTA
