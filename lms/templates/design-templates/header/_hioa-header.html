@@ -22,8 +22,8 @@
           <li class="a--site-menu__group">
             <ul>
               % for menu_item in get_header_menu_logged_in_extra_items():
-                <li class="a--${menu_item[2]}">
-                  <a href="${menu_item[1]}" ${menu_item[3]}>${_(menu_item[0])}</a>
+                <li class="a--${menu_item.special_class}">
+                  <a href="${menu_item.link_url}">${_(menu_item.link_title)}</a>
                 </li>
               % endfor
             </ul>
@@ -39,8 +39,8 @@
           <li class="a--site-menu__group">
             <ul>
               % for menu_item in get_header_menu_logged_out_extra_items():
-                <li class="a--${menu_item[2]}">
-                  <a href="${menu_item[1]}" ${menu_item[3]}>${_(menu_item[0])}</a>
+                <li class="a--${menu_item.special_class}">
+                  <a href="${menu_item.link_url}">${_(menu_item.link_title)}</a>
                 </li>
               % endfor
             </ul>
@@ -81,8 +81,8 @@
             % if user_authenticated:
               % if get_header_menu_logged_in_extra_items():
                 % for menu_item in get_header_menu_logged_in_extra_items():
-                  <li class="a--${menu_item[2]}">
-                    <a href="${menu_item[1]}">${_(menu_item[0])}</a>
+                  <li class="a--${menu_item.special_class}">
+                    <a href="${menu_item.link_url}">${_menu_item.link_title}</a>
                   </li>
                 % endfor
                 <li class="a--spacer"></li>
@@ -107,7 +107,7 @@
               % if get_header_menu_logged_out_extra_items():
                 % for menu_item in get_header_menu_logged_out_extra_items():
                   <li>
-                    <a href="${menu_item[1]}" ${menu_item[3]}>${_(menu_item[0])}</a>
+                    <a href="${menu_item.link_url}">${_menu_item.link_title}</a>
                   </li>
                 % endfor
                 <li class="a--spacer"></li>
