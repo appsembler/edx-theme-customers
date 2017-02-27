@@ -11,8 +11,15 @@
   }
 }
 
-.a--header-design-01 .a--site-menu__group ul li.a--nav-cta a:before, .a--header-design-01 .a--site-menu__group ul li.a--cta-button a:before {
-  display: none;
+.a--site-menu__group ul .hioa--feide-login-cta .button-saml-feide-saml.login-saml-feide-saml {
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border-radius: 0.5rem;
+  border: 0.2rem solid $brand-primary-color;
+
+  &:hover {
+    background: $brand-primary-color;
+  }
 }
 
 // Hero
