@@ -1,0 +1,38 @@
+<%!
+from django.utils.translation import ugettext as _
+%>
+
+<%page args="courses, discovery_enabled" />
+
+<%namespace file='/theme-variables.html' import="get_course_catalogue_content, get_course_catalogue_settings" />
+
+
+% if discovery_enabled:
+
+  <section class="a--course-catalogue-01__discovery bs-container a--container">
+    <%include file = "/design-templates/${get_course_catalogue_settings()['discovery-search-template']}" args='search_wrapper_id = "discovery-form"' />
+  </section>
+
+  <section class="a--course-catalogue-01__courses">
+    <div class="bs-container a--container courses">
+      <div class="col-xs-12 a--course-catalogue-01__courses-container courses-listing courses-listing-narrower ${get_course_catalogue_settings()['course_template_class']}-parent-element">
+        % for course in courses:
+            <%include file="/${get_course_catalogue_settings()['course_template']}" args="course=course" />
+        % endfor
+      </div>
+    </div>
+  </section>
+
+% else:
+
+  <section class="a--course-catalogue-01__courses">
+    <div class="bs-container a--container courses">
+      <div class="col-xs-12 a--course-catalogue-01__courses-container courses-listing ${get_course_catalogue_settings()['course_template_class']}-parent-element">
+        % for course in courses:
+            <%include file="../../${get_course_catalogue_settings()['course_template']}" args="course=course" />
+        % endfor
+      </div>
+    </div>
+  </section>
+
+% endif

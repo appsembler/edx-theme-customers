@@ -237,6 +237,22 @@
   %>
 </%def>
 
+## course catalogue page settings
+
+<%def name="get_course_catalogue_settings()">
+  <%
+    return {
+        "default_edx_view" : false, ## required boolean value. Set to "true" if you want the default edX look and feel.
+        "discovery_course_card" : '_course-tile-01.underscore', ## define which tile template to use for results
+        "discovery_facet" : '_facet-01.underscore', ## define which template for facets to use
+        "discovery_facet_option" : '_facet_option-01.underscore', ## define which template for a single facet to use
+        "course_template_class" : 'a--course-tile-01', ## required, defined as "a--{template-name}"
+        "course_template" : 'live-blocks/single-course/_course-tile-01.html', ## required
+        "discovery-search-template" : 'live-blocks/discovery/_discovery-search-01.html' ## design which discovery-search block design to use
+      }
+  %>
+</%def>
+
 ## course catalogue page content
 
 <%def name="get_course_catalogue_content()">
@@ -244,7 +260,7 @@
     return [
       {
         "element-type":"static-block",
-        "element-path":"design-templates/static-blocks/_hero-section-01.html",
+        "element-path":"customer-specific/_hioa-hero-section.html",
         "options":{
           # template settings
           'hero_title' : "Bokskapet",
@@ -261,7 +277,7 @@
       },
       {
         "element-type":"course-catalogue-template",
-        "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
+        "element-path":"customer-specific/_hioa-course-catalogue.html",
         "options":{
           "discovery-facet-option":"facet_option-01",
           "course-card":"course-tile-01",
