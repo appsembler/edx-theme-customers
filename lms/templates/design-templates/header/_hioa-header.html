@@ -9,7 +9,7 @@ from django.utils.translation import ugettext as _
 <%
   import third_party_auth
   from third_party_auth import pipeline
-  custom_login_url = ''
+  custom_login_url = 'https://idp.feide.no/simplesaml/module.php/feide/login.php?asLen=195&AuthState=_c6629d32c610711d814908c02d1a1256cf0e2758e1%3Ahttps%3A%2F%2Fidp.feide.no%2Fsimplesaml%2Fsaml2%2Fidp%2FSSOService.php%3Fspentityid%3Dhttp%253A%252F%252Fedx-saml.bokskapet.hioa.no%26cookieTime%3D1488296013%26RelayState%3Dfeide-saml'
   try:
     tpa_idp = third_party_auth.provider.Registry.accepting_logins()[0]
     custom_login_url = pipeline.get_login_url(tpa_idp.provider_id, pipeline.AUTH_ENTRY_REGISTER, redirect_url=request.path)
