@@ -36,11 +36,11 @@
 <%def name="get_brand_logos()">
   <%
   return {
-    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.png'), ## required
+    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
     'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo.png'), ## required
     'icon_color' : get_value('icon_color', '') or static('images/branding/brand-logo.png'), ## required
     'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.png'), ## required
-    'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.png'), ## required
+    'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.svg'), ## required
   }
   %>
 </%def>
@@ -103,12 +103,12 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
-      #{
-        #'link_title': 'Example item',
-        #'link_URL': '#',
-        #'special_class': '',
-        #'open_in_new_tab': False,
-      #},
+      {
+        'link_title': 'About',
+        'link_URL': '/about',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
     ]
   %>
 </%def>
@@ -395,10 +395,10 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
+            'hero_title' : "About",
+            'hero_subtitle' : "",
             'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
