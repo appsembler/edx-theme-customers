@@ -1,6 +1,10 @@
 // Header
 .a--header-design-01.a--site-nav .a--site-nav__logo {
   height: 5.8rem;
+
+  @media (max-width: 990px) {
+    height: 2.8rem;
+  }
 }
 
 .a--hero-section-01 {
@@ -11,6 +15,10 @@
     padding: 2.7rem;
     background: $brand-primary-color;
     opacity: .9;
+
+    @media (max-width: 500px) {
+      font-size: 3.2rem;
+    }
   }
 
   @media (max-width: 600px) {
@@ -54,7 +62,7 @@
   opacity: 1;
 
   img {
-    width: 16rem;
+    width: 24rem;
   }
 }
 
