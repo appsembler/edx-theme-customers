@@ -73,4 +73,56 @@
   }
 }
 
+p:not(.lead) {
+
+}
+
 // Custom About Page
+.asu-learn-content {
+  margin: 10rem 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  .asu-learn-img {
+    width: 35rem;
+  }
+
+  .asu-learn-img-single {
+    width: 15rem;
+  }
+
+  .asu-learn-cta {
+    text-align: center;
+  }
+
+  .asu-learn-cta-links {
+    margin: 3rem 0;
+  }
+
+  .asu-learn-cta-link {
+    padding: 15px 30px;
+    background: $brand-primary-color;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: $primary-font-weight-bold;
+    border: 1px solid $brand-primary-color;
+
+    &:hover {
+      color: $brand-primary-color;
+      background: transparent;
+    }
+  }
+
+  .asu-learn-cta-link:last-of-type {
+    background: transparent;
+    border: 1px solid $brand-primary-color;
+    color: $brand-primary-color;
+
+    &:hover {
+      background: $brand-primary-color;
+      color: #FFF;
+    }
+  }
+}
