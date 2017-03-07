@@ -1,0 +1,23 @@
+// hero
+.a--hero-section-01 {
+  background-position-y: 20%;
+
+  h1 {
+    color: $brand-accent-color;
+    text-shadow: 2px 2px $brand-primary-color;
+    font-weight: $primary-font-weight-bold;
+  }
+
+  h4 {
+    padding: 1rem 0;
+    color: $brand-primary-color;
+    font-size: 2.5rem;
+    background: #FFF;
+    opacity: .6;
+  }
+}
+
+// footer
+.a--footer__powered-by #footer-openedx-logo {
+  align-self: baseline;
+}
