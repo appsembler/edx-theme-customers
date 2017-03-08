@@ -1,3 +1,7 @@
+h1, h2 {
+  font-family: 'Roboto Slab', serif;
+}
+
 // Header
 .a--header-design-01.a--site-nav .a--site-nav__logo {
   height: 5.8rem;
@@ -81,48 +85,96 @@
 .asu-learn-content {
   margin: 10rem 0;
 
+  p a {
+      color: $brand-primary-color;
+      text-decoration: underline;
+
+      &:hover {
+        color: #8F0042;
+      }
+    }
+
   &:first-child {
     margin-top: 0;
   }
 
   .asu-learn-img {
-    width: 35rem;
-  }
-
-  .asu-learn-img-single {
-    width: 15rem;
-  }
-
-  .asu-learn-cta {
     text-align: center;
+
+    .starbucks-img,
+    .asu-img {
+      width: 15rem;
+    }
+
+    .partner-img {
+      margin-top: 2rem;
+      width: 40rem;
+
+      @media (max-width: 500px) {
+        max-width: 30rem;
+      }
+    }
+
+    .asu-img {
+      margin-top: 3rem;
+    }
+
+    .starbucks-img {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+.asu-learn-img-single {
+  width: 15rem;
+}
+
+.asu-learn-cta {
+  text-align: center;
+  margin-top: 6rem;
+}
+
+.asu-learn-cta-links {
+  margin: 4rem 0;
+}
+
+.asu-learn-cta-link {
+  padding: 15px 30px;
+  background: $brand-primary-color;
+  text-transform: uppercase;
+  font-weight: $primary-font-weight-bold;
+  border: 1px solid $brand-primary-color;
+  color: #FFF;
+
+  @media (max-width: 500px) {
+    padding: 10px 20px;
   }
 
-  .asu-learn-cta-links {
-    margin: 3rem 0;
+  &:hover {
+    color: $brand-primary-color;
+    background: transparent;
   }
 
-  .asu-learn-cta-link {
-    padding: 15px 30px;
+  &:visited:first-of-type {
+    color: #FFF;
+  }
+
+  &:first-of-type:hover {
+    color: $brand-primary-color;
+  }
+}
+
+.asu-learn-cta-link:last-of-type {
+  background: transparent;
+  border: 1px solid $brand-primary-color;
+  color: $brand-primary-color;
+
+  &:hover {
     background: $brand-primary-color;
     color: #FFF;
-    text-transform: uppercase;
-    font-weight: $primary-font-weight-bold;
-    border: 1px solid $brand-primary-color;
-
-    &:hover {
-      color: $brand-primary-color;
-      background: transparent;
-    }
   }
+}
 
-  .asu-learn-cta-link:last-of-type {
-    background: transparent;
-    border: 1px solid $brand-primary-color;
-    color: $brand-primary-color;
-
-    &:hover {
-      background: $brand-primary-color;
-      color: #FFF;
-    }
-  }
+.test {
+  text-align: center;
 }
