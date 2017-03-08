@@ -1,6 +1,8 @@
 // hero
 .a--hero-section-01 {
   background-position-y: 20%;
+  border-top: 2px solid $brand-accent-color;
+  border-bottom: 2px solid $brand-accent-color;
 
   h1 {
     color: $brand-accent-color;
