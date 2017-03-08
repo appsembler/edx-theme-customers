@@ -25,6 +25,17 @@ h1, h2 {
     }
   }
 
+  h4 {
+    margin-top: 4rem;
+    font-size: 4rem;
+    color: #FFF;
+    opacity: .9;
+
+    @media (max-width: 500px) {
+      font-size: 2.2rem;
+    }
+  }
+
   @media (max-width: 600px) {
     padding: 6rem 0;
   }
@@ -116,7 +127,7 @@ h1, h2 {
     }
 
     .asu-img {
-      margin-top: 3rem;
+      margin: 3.5rem 0 1rem 0;
     }
 
     .starbucks-img {
@@ -131,7 +142,7 @@ h1, h2 {
 
 .asu-learn-cta {
   text-align: center;
-  margin-top: 6rem;
+  margin-top: 8rem;
 }
 
 .asu-learn-cta-links {
