@@ -1,3 +1,8 @@
+// header
+.a--header-design-01.a--site-nav .a--site-nav__logo {
+  height: 13.8rem;
+}
+
 // hero
 .a--hero-section-01 {
   background-position-y: 20%;
@@ -20,6 +25,19 @@
 }
 
 // footer
+.a--footer {
+  border-top: 2px solid $brand-accent-color;
+  background: #FFF;
+}
+
+.a--footer__logo {
+  opacity: 1;
+
+  img {
+    width: 10rem;
+  }
+}
+
 .a--footer__powered-by #footer-openedx-logo {
   align-self: baseline;
 }
