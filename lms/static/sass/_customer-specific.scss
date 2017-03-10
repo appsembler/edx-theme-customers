@@ -1,6 +1,10 @@
 // header
 .a--header-design-01.a--site-nav .a--site-nav__logo {
   height: 13.8rem;
+
+  @media (max-width: 500px) {
+    height: 10rem;
+  }
 }
 
 // hero
