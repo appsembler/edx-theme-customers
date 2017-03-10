@@ -1,3 +1,7 @@
+<%!from django.db.models import Q %>
+<%! from openedx.core.djangoapps.appsembler.external_courses.models import ExternalCourseTile %>
+<% external_courses = ExternalCourseTile.objects.filter(Q(is_credit_eligible=True) | Q(org="ThunderbirdX")) %>
+
 <section class="a--course-listing-04__wrapper">
   <div class="bs-container a--container a--course-listing-01__container centered">
       <div class="a--course-listing-01__header">
@@ -7,215 +11,26 @@
       </div>
     <div class="a--course-listing-01__courses courses-listing a--course-tile-01-parent-element">
 
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/western-civilization-ancient-medieval-asux-hst102x-1" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/hst102_banner_0.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Western Civilization: Ancient and Medieval Europe</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">March 13, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
+      % for a in external_courses:
 
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/introduction-solar-systems-astronomy-asux-ast111x-3" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/ast111_banner_0.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Introduction to Solar Systems Astronomy</p>
+        <article class="a--course-tile-01__wrapper" aria-label="${a.title}">
+          <a href="${a.course_link}" class="a--course-tile-01__container">
+            <div class="a--course-tile-01__image" style="background-image: url('${a.image_url}');">
             </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">March 13, 2017</p>
+            <div class="a--course-tile-01__info">
+              <div>
+                <p class="a--course-tile-01__title">${a.title}</p>
+              </div>
+              <div>
+                <p class="a--course-tile-01__organization">${a.course_weeks_duration}</p>
+                <p class="a--course-tile-01__start-date">${a.starts.strftime('%B %d, %Y')}</p>
+              </div>
             </div>
-          </div>
-        </a>
-      </article>
+          </a>
+        </article>
 
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/introduction-health-wellness-asux-exw100x-1" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/intro_to_health_and_wellness_new.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Introduction to Health and Wellness</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">March 13, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/english-composition-research-writing-asux-eng102x-0" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/eng_102_course_image_378x225.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">English Composition: Research and Writing</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">March 13, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/communicating-global-context-thunderbirdx-tgm579x" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/tgm579x-v2_378x225.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Communicating in a Global Context</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">6 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">March 13, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/states-markets-global-economy-thunderbirdx-tgm505x" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/tbird_course_images_378x225_1x_tgm505.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">States and Markets in a Global Economy</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">6 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">May 16, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/introduction-sociology-asux-soc101x-0" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/asusoc101springagfa_378x225.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Introduction to Sociology</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">June 12, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/human-origins-asux-asm246-1" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/asm246_banner_378x225.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Human Origins</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">June 12, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/english-composition-asux-eng101x-1" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/eng101_small_378x225.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">English Composition</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">June 12, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/global-marketing-strategy-thunderbirdx-tgm551x" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/tgm551x-v2_378x225.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Global Marketing Strategy</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">6 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">June 29, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/technological-social-sustainable-systems-asux-cee181x-0" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/technological_social_sustainable_systems_378x225.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Technological, Social, and Sustainable Systems</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">Aug 14, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/macroeconomic-principles-asux-ecn211x" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/macro_econ_378x225.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">Macroeconomic Principles</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">8 Week Commitment</p>
-              <p class="a--course-tile-01__start-date">Aug 14, 2017</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-      <article class="a--course-tile-01__wrapper" aria-label="edX Demonstration Course">
-        <a href="https://www.edx.org/course/college-algebra-problem-solving-asux-mat117x" class="a--course-tile-01__container">
-          <div class="a--course-tile-01__image" style="background-image: url('https://www.edx.org/sites/default/files/course/image/promoted/mat117_banner.jpg');">
-          </div>
-          <div class="a--course-tile-01__info">
-            <div>
-              <p class="a--course-tile-01__title">College Algebra and Problem Solving</p>
-            </div>
-            <div>
-              <p class="a--course-tile-01__organization">Self-Paced</p>
-              <p class="a--course-tile-01__start-date">On-Going</p>
-            </div>
-          </div>
-        </a>
-      </article>
-
-
+      % endfor
+      
     </div>
   </div>
 </section>
