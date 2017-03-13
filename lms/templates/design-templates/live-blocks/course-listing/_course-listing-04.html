@@ -2,35 +2,37 @@
 <%! from openedx.core.djangoapps.appsembler.external_courses.models import ExternalCourseTile %>
 <% external_courses = ExternalCourseTile.objects.filter(Q(is_credit_eligible=True) | Q(org="ThunderbirdX")) %>
 
-<section class="a--course-listing-04__wrapper">
-  <div class="bs-container a--container a--course-listing-01__container centered">
-      <div class="a--course-listing-01__header">
-          <h1 class="a--course-listing-01__section-heading">
-            ASUx Open Online Courses:
-          </h1>
+% if external_courses.count():
+  <section class="a--course-listing-04__wrapper">
+    <div class="bs-container a--container a--course-listing-01__container centered">
+        <div class="a--course-listing-01__header">
+            <h1 class="a--course-listing-01__section-heading">
+              ASUx Open Online Courses:
+            </h1>
+        </div>
+      <div class="a--course-listing-01__courses courses-listing a--course-tile-01-parent-element">
+
+        % for a in external_courses:
+
+          <article class="a--course-tile-01__wrapper" aria-label="${a.title}">
+            <a href="${a.course_link}" class="a--course-tile-01__container">
+              <div class="a--course-tile-01__image" style="background-image: url('${a.image_url}');">
+              </div>
+              <div class="a--course-tile-01__info">
+                <div>
+                  <p class="a--course-tile-01__title">${a.title}</p>
+                </div>
+                <div>
+                  <p class="a--course-tile-01__organization">${a.course_weeks_duration}</p>
+                  <p class="a--course-tile-01__start-date">${a.starts.strftime('%B %d, %Y')}</p>
+                </div>
+              </div>
+            </a>
+          </article>
+
+        % endfor
+
       </div>
-    <div class="a--course-listing-01__courses courses-listing a--course-tile-01-parent-element">
-
-      % for a in external_courses:
-
-        <article class="a--course-tile-01__wrapper" aria-label="${a.title}">
-          <a href="${a.course_link}" class="a--course-tile-01__container">
-            <div class="a--course-tile-01__image" style="background-image: url('${a.image_url}');">
-            </div>
-            <div class="a--course-tile-01__info">
-              <div>
-                <p class="a--course-tile-01__title">${a.title}</p>
-              </div>
-              <div>
-                <p class="a--course-tile-01__organization">${a.course_weeks_duration}</p>
-                <p class="a--course-tile-01__start-date">${a.starts.strftime('%B %d, %Y')}</p>
-              </div>
-            </div>
-          </a>
-        </article>
-
-      % endfor
-
     </div>
-  </div>
-</section>
+  </section>
+% endif
