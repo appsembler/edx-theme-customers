@@ -133,7 +133,7 @@
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
       'footer_copyright_text' : '2017 Arizona Board of Regents. All rights reserved.',
-      'display_edx_disclaimer' : True, ## bool value required
+      'display_edx_disclaimer' : False, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
       'display_app_link' : False,
@@ -170,7 +170,7 @@
         "element-type":"courses-list",
         "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
         "options":{
-          'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
+          'max_courses' : 8, ## required, sets max number of courses to be displayed in the block
           'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
           'course_template' : 'single-course/_course-tile-01.html', ## required
           'section_heading' : "Our Latest Academy Courses:",

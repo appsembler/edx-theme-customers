@@ -1,4 +1,4 @@
-h1, h2 {
+blockquote {
   font-family: 'Roboto Slab', serif;
 }
 
@@ -70,12 +70,24 @@ h1, h2 {
 // End temp static course list
 
 // Footer
+.a--footer__main {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: 1000px) {
+    text-align: center;
+    display: block;
+  }
+}
+
 .a--footer__copyright-text {
   margin: 0;
 }
 
 .a--footer__logo {
   opacity: 1;
+  border: none;
 
   img {
     width: 24rem;
@@ -83,19 +95,12 @@ h1, h2 {
 }
 
 .a--footer__powered-by {
-
-  #footer-openedx-logo {
-    margin-bottom: 8px;
-  }
-}
-
-.a--footer__powered-by #footer-appsembler-logo img {
   display: none;
 }
 
 // Custom About Page
 .asu-learn-content {
-  margin: 10rem 0;
+  margin: 6rem 0;
 
   p a {
       color: $brand-primary-color;
@@ -109,32 +114,6 @@ h1, h2 {
   &:first-child {
     margin-top: 0;
   }
-
-  .asu-learn-img {
-    text-align: center;
-
-    .starbucks-img,
-    .asu-img {
-      width: 15rem;
-    }
-
-    .partner-img {
-      margin-top: 2rem;
-      width: 40rem;
-
-      @media (max-width: 500px) {
-        max-width: 30rem;
-      }
-    }
-
-    .asu-img {
-      margin: 3.5rem 0 1rem 0;
-    }
-
-    .starbucks-img {
-      margin-bottom: 3rem;
-    }
-  }
 }
 
 .asu-learn-img-single {
@@ -143,11 +122,11 @@ h1, h2 {
 
 .asu-learn-cta {
   text-align: center;
-  margin-top: 8rem;
+  margin-top: 6rem;
 }
 
 .asu-learn-cta-links {
-  margin: 4rem 0;
+  margin: 4rem 0 8rem 0;
 }
 
 .asu-learn-cta-link {
