@@ -1,4 +1,4 @@
-<%!from django.db.models import Q %>
+<%! from django.db.models import Q %>
 <%! from openedx.core.djangoapps.appsembler.external_courses.models import ExternalCourseTile %>
 <% external_courses = ExternalCourseTile.objects.filter(Q(is_credit_eligible=True) | Q(org="ThunderbirdX")) %>
 
@@ -30,7 +30,7 @@
         </article>
 
       % endfor
-      
+
     </div>
   </div>
 </section>
