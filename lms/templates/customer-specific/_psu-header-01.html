@@ -54,13 +54,15 @@
                 <li class="a--spacer"></li>
               % endif
               % for item in menu_group:
-                <li class="a--${item['special_class']}">
-                  <a href="${item['link_URL']}"
-                  % if item['open_in_new_tab']:
-                    target="_blank"
-                  % endif
-                  >${item['link_title']}</a>
-                </li>
+                % if item['link_title'] != 'Account':
+                  <li class="a--${item['special_class']}">
+                    <a href="${item['link_URL']}"
+                    % if item['open_in_new_tab']:
+                      target="_blank"
+                    % endif
+                    >${item['link_title']}</a>
+                  </li>
+                % endif
               % endfor
               <% first_slideout_item = False %>
             % endfor
