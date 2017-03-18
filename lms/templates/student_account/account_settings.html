@@ -15,6 +15,7 @@ from openedx.core.djangolib.js_utils import dump_js_escaped_json, js_escaped_str
 <%inherit file="/main.html" />
 <%def name="online_help_token()"><% return "learneraccountsettings" %></%def>
 <%namespace name='static' file='/static_content.html'/>
+<%namespace file='/trinity_districts.html' import="district_opts"/>
 
 <%block name="pagetitle">${_("Account Settings")}</%block>
 
@@ -37,6 +38,7 @@ from openedx.core.djangolib.js_utils import dump_js_escaped_json, js_escaped_str
     ordersHistoryData = ${ order_history | n, dump_js_escaped_json },
     authData = ${ auth | n, dump_js_escaped_json },
     platformName = '${ static.get_platform_name() | n, js_escaped_string }';
+    fieldsData['district'] = ${ json.dumps(district_opts()) };
 
     AccountSettingsFactory(
         fieldsData,
