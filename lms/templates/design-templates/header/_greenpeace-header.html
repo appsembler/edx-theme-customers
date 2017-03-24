@@ -81,7 +81,7 @@ from django.core.urlresolvers import reverse
         % endif
         % if user_authenticated:
         <li class="a--site-menu__group a--user-avatar">
-          Welcome, <span>${user_name}</span>.
+          ${_("Welcome")}, <span>${user_name}</span>.
         </li>
         % endif
         <li class="a--site-menu__group a--slide-menu">
