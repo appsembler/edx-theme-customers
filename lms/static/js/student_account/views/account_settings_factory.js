@@ -135,7 +135,7 @@
                             })
                         },
                         {
-                            view: new AccountSettingsFieldViews.DropdownFieldView({
+                            view: new AccountSettingsFieldViews.DistrictDropdownFieldView({
                                 model: userTrinityUserProfileModel,
                                 required: true,
                                 title: gettext('District'),
