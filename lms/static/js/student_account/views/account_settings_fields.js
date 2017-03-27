@@ -41,7 +41,30 @@
             DistrictDropdownFieldView: FieldViews.DropdownFieldView.extend({
                 fieldTemplate: field_dropdown_account_template,
                 render: function () {
+                    HtmlUtils.setHtml(this.$el, HtmlUtils.template(this.fieldTemplate)({
+                        id: this.options.valueAttribute,
+                        mode: this.mode,
+                        editable: this.editable,
+                        title: this.options.title,
+                        screenReaderTitle: this.options.screenReaderTitle || this.options.title,
+                        titleVisible: this.options.titleVisible !== undefined ? this.options.titleVisible : true,
+                        iconName: this.options.iconName,
+                        showBlankOption: (!this.options.required || !this.modelValueIsSet()),
+                        selectOptions: this.options.options,
+                        message: this.helpMessage
+                    }));
+                    this.delegateEvents();
+                    this.updateValueInField();
+
+                    if (this.editable === 'toggle') {
+                        this.showCanEditMessage(this.mode === 'display');
+                    }
+
+                    // only change from super here
                     $('#u-field-select-district').select2();
+                    
+                    return this;
+                    
                 }
             }),
             EmailFieldView: FieldViews.TextFieldView.extend({
