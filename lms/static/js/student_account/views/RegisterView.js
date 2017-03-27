@@ -70,7 +70,7 @@
                 this.$submitButton = $container.find(this.submitButton);
                 
                 $('#register-district').select2();  
-            }
+            },
 
             thirdPartyAuth: function( event ) {
                 var providerUrl = $(event.currentTarget).data('provider-url') || '';
