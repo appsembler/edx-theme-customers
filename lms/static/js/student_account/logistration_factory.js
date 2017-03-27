@@ -1,6 +1,7 @@
 ;(function (define) {
     'use strict';
-    define([
+    define('eucalyptus-theme-codebase/js/student_account/logistration_factory',
+           [
             'jquery',
             'eucalyptus-theme-codebase/js/student_account/views/AccessView'
         ],
