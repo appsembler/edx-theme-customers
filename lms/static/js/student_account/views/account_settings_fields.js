@@ -60,8 +60,10 @@
                         this.showCanEditMessage(this.mode === 'display');
                     }
 
-                    // only change from super here
-                    $('#u-field-select-district').select2();
+                    // only change from super here, and ugh setTimeout
+                    // TODO:  couldn't find any kind of callback but by this
+                    // point the field isn't actually rendered as HTML
+                    setTimeout( function(){ $('#u-field-select-district').select2()}, 1000);
                     
                     return this;
                     
