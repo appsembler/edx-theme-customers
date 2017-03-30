@@ -4,19 +4,6 @@
 <div class="recent-updates">
   % for index, update in enumerate(visible_updates):
     <article class="updates-article  a--courseware--updates-article">
-      % if not update.get("is_error"):
-        % if (update.get("date") != "July 4, 1776"):
-          <span class="date a--courseware--updates-article__date" id="msg-date-${index}">${update.get("date")}</span>
-          <button
-              class="toggle-visibility-button a--courseware--updates-article__toggle-visibility-button"
-              data-hide="${_('Hide')}"
-              data-show="${_('Show')}"
-              aria-describedby="msg-date-${index}"
-              aria-controls="msg-content-${index}"
-              aria-expanded="true"
-          ></button>
-        % endif
-      % endif
       <div class="toggle-visibility-element article-content a--courseware--updates-article__content" id="msg-content-${index}">
         ${update.get("content")}
       </div>
