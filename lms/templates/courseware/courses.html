@@ -4,12 +4,12 @@
   from microsite_configuration import microsite
   from openedx.core.djangolib.js_utils import dump_js_escaped_json
 %>
-<%inherit file="../main.html" />
+<%inherit file="/main.html" />
 <%
   course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
 %>
 
-<%namespace name='static' file='../static_content.html'/>
+<%namespace name='static' file='/static_content.html'/>
 <%namespace file='/theme-variables.html' import="get_course_catalogue_settings, get_course_catalogue_content" />
 
 % if course_discovery_enabled:
@@ -70,7 +70,7 @@
         <ul class="courses-listing">
           %for course in courses:
           <li class="courses-listing-item">
-            <%include file="../course.html" args="course=course" />
+            <%include file="/course.html" args="course=course" />
           </li>
           %endfor
         </ul>
