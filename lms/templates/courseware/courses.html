@@ -10,92 +10,56 @@
 %>
 
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='../theme-variables.html' import="get_course_catalogue_settings, get_course_catalogue_content" />
+<%namespace file='../theme-variables.html' import="get_course_catalogue_content, get_global_settings" />
 
-% if course_discovery_enabled:
-<%block name="header_extras">
-  % for template_name in ["filter_bar", "filter"]:
-  <script type="text/template" id="${template_name}-tpl">
-      <%static:include path="discovery/${template_name}.underscore" />
-  </script>
-  % endfor
-  <script type="text/template" id="course_card-tpl">
-      <%static:include path="discovery/${get_course_catalogue_settings()['discovery_course_card']}" />
-  </script>
-  <script type="text/template" id="facet-tpl">
-      <%static:include path="discovery/${get_course_catalogue_settings()['discovery_facet']}" />
-  </script>
-  <script type="text/template" id="facet_option-tpl">
-      <%static:include path="discovery/${get_course_catalogue_settings()['discovery_facet_option']}" />
-  </script>
-  <%static:require_module module_name="eucalyptus-theme-codebase/js/discovery/discovery_factory" class_name="DiscoveryFactory">
-    DiscoveryFactory(
-      ${ dump_js_escaped_json(course_discovery_meanings) | n },
-      getParameterByName('search_query')
-    );
-  </%static:require_module>
+<%block name="pagetitle">
+  % if get_global_settings().get('course-catalogue_enabled', True):
+    ${_("Courses")}
+  % else:
+    ${_("Page Not Found")}
+  % endif
 </%block>
-% endif
 
-<%block name="pagetitle">${_("Courses")}</%block>
-
-
-% if get_course_catalogue_settings()['default_edx_view']:
-
-  <section class="find-courses">
-    <section class="courses-container">
-      % if course_discovery_enabled:
-      <div id="discovery-form" role="search" aria-label="course" class="wrapper-search-context">
-        <div id="discovery-message" class="search-status-label"></div>
-        <form class="wrapper-search-input">
-          <label for="discovery-input" class="sr">${_('Search for a course')}</label>
-          <input id="discovery-input" class="discovery-input" placeholder="${_('Search for a course')}" type="text"/>
-          <button type="submit" class="button postfix discovery-submit" aria-label="${_('Search')}">
-            <i class="icon fa fa-search" aria-hidden="true"></i>
-            <div aria-live="polite" aria-relevant="all">
-              <div id="loading-indicator" class="loading-spinner hidden">
-                <i class="icon fa fa-spinner fa-spin"></i>
-                <span class="sr">${_('Loading')}</span>
-              </div>
-            </div>
-          </button>
-        </form>
-      </div>
-
-      <div id="filter-bar" class="filters hide-phone is-collapsed">
-      </div>
-      % endif
-
-      <div class="courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
-        <ul class="courses-listing">
-          %for course in courses:
-          <li class="courses-listing-item">
-            <%include file="/course.html" args="course=course" />
-          </li>
-          %endfor
-        </ul>
-      </div>
-
-
-      % if course_discovery_enabled:
-      <aside aria-label="${_('Refine Your Search')}" class="search-facets phone-menu">
-        <h2 class="header-search-facets">${_('Refine Your Search')}</h2>
-        <section class="search-facets-lists">
-        </section>
-      </aside>
-      % endif
-
-    </section>
-  </section>
-
-% else:
-
+% if get_global_settings().get('course-catalogue_enabled', True):
   % for element in get_course_catalogue_content():
     % if (element['element-type'].startswith('layout')):
       <%include file = '/${element["element-path"]}' args = "options = element['options'], children = element['children'], page_specific_args = course_about_vars" />
+    % elif (element['element-type'].startswith('static-block')):
+      <%include file = '/${element["element-path"]}' args = "template_settings = element['options']" />
     % elif (element['element-type'].startswith('course-catalogue-template')):
-      <%include file = '/${element["element-path"]}' args = "courses = courses, discovery_enabled = course_discovery_enabled" />
+      <%include file = '/${element["element-path"]}' args = "options = element['options'], courses = courses, discovery_enabled = course_discovery_enabled" />
+      % if (course_discovery_enabled & element['options']['search-enabled']):
+        <%
+        discovery_card_template = "_" + element['options']['course-card'] + ".underscore"
+        discovery_facet_template = "_" + element['options']['discovery-facet'] + ".underscore"
+        discovery_facet_option_template = "_" + element['options']['discovery-facet-option'] + ".underscore"
+        %>
+        % for template_name in ["filter_bar", "filter"]:
+        <script type="text/template" id="${template_name}-tpl">
+            <%static:include path="discovery/${template_name}.underscore" />
+        </script>
+        % endfor
+        <script type="text/template" id="course_card-tpl">
+            <%static:include path="discovery/${discovery_card_template}" />
+        </script>
+        <script type="text/template" id="facet-tpl">
+            <%static:include path="discovery/${discovery_facet_template}" />
+        </script>
+        <script type="text/template" id="facet_option-tpl">
+            <%static:include path="discovery/${discovery_facet_option_template}" />
+        </script>
+        <%static:require_module module_name="eucalyptus-theme-codebase/js/discovery/discovery_factory" class_name="DiscoveryFactory">
+          DiscoveryFactory(
+            ${ dump_js_escaped_json(course_discovery_meanings) | n },
+            getParameterByName('search_query')
+          );
+        </%static:require_module>
+      % endif
     % endif
   % endfor
-
+% else:
+  <%block name="headextra">
+    <meta name="robots" content="noindex" />
+  </%block>
+  <%include file = '/design-templates/pages/404/_404-block.html' />
 % endif
