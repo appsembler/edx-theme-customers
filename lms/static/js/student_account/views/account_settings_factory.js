@@ -255,9 +255,10 @@
                 accountUserId: accountUserId,
                 el: accountSettingsElement,
                 tabSections: {
-                    aboutTabSections: aboutSectionsData,
-                    accountsTabSections: accountsSectionData,
-                    ordersTabSections: ordersSectionData
+                    aboutTabSections: aboutSectionsData
+                    // Not wanted for Gateway Courses
+                    // accountsTabSections: accountsSectionData,
+                    // ordersTabSections: ordersSectionData
                 },
                 userPreferencesModel: userPreferencesModel
             });
