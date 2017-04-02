@@ -6,7 +6,7 @@
         'js/student_account/models/user_preferences_model',
         'eucalyptus-theme-codebase/js/student_account/models/trinity_user_profile_model',
         'eucalyptus-theme-codebase/js/student_account/views/account_settings_fields',
-        'js/student_account/views/account_settings_view',
+        'eucalyptus-theme-codebase/js/student_account/views/account_settings_view',
         'edx-ui-toolkit/js/utils/string-utils'
     ], function (gettext, $, _, Backbone, Logger, UserAccountModel, UserPreferencesModel,
                  UserTrinityUserProfileModel,
