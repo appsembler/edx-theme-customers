@@ -1,53 +1,13 @@
 .a--course-content__main-content {
   .xblock, .xmodule_display.xmodule_HtmlModule {
-    font-size: 14px;
-    line-height: 1.65em;
-
-    h1 {
-      font-size: 2.5em;
-      color: #0b55a8;
-    }
-
-    h2 {
-      font-size: 2.1em;
-      margin-bottom: 1.12em;
-      text-transform: none !important;
-    }
-
-    h3 {
-      font-size: 1.65em;
-      margin-bottom: 1.12em;
-      font-weight: 500;
-    }
-
-    p {
-      font-size: 1.12em;
-      line-height: 1.65em !important;
-    }
 
     ul li {
-      font-size: 1.12em;
+      font-size: 1.6rem;
     }
 
     label {
-      font-size: 1.12em !important;
+      font-size: 1.6rem !important;
     }
-
-
-  }
-}
-
-.a--courseware-wrapper__content, div.book-wrapper {
-  font-size: 14px;
-}
-
-.a--courseware-wrapper__content__main-content {
-
-  font-size: 1.12em;
-
-  p {
-    font-size: 1.12em;
-    margin-bottom: 1.12em;
   }
 }
 
@@ -84,8 +44,8 @@
   .tickLabels {
 
     .tickLabel {
-      font-size: 1.2em;
-      line-height: 1.12em;
+      font-size: 16.8rem;
+      line-height: 1.6rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
