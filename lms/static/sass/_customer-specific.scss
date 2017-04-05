@@ -1,3 +1,11 @@
+.a--header-design-01.a--site-nav .a--site-nav__logo {
+  height: 3.3rem;
+
+  @media (max-width: 450px) {
+    height: 2.5rem;
+  }
+}
+
 // Hero
 .a--hero-section-01 h1 {
   font-weight: 500;
@@ -15,4 +23,17 @@
 
 .a--footer__powered-by #footer-openedx-logo {
   align-self: baseline;
+}
+
+// Temporarily hide facets
+.a--discovery-facets {
+  display: none;
+}
+
+.a--discovery-search-01 {
+  border-bottom: none;
+}
+
+.a--discovery-search-01__filters {
+  display: none;
 }
