@@ -1,8 +1,25 @@
 .a--header-design-01.a--site-nav .a--site-nav__logo {
   height: 3.3rem;
-  
+
   @media (max-width: 1200px) {
     height: 2.3rem;
+  }
+}
+
+.a--header-design-01.a--site-nav .a--site-nav__course-name {
+  margin-left: 0;
+  padding-left: 1rem;
+}
+
+.a--header-design-01 .a--site-menu__group {
+  padding: 0 1rem;
+
+  &:first-child {
+    flex-shrink: 0;
+  }
+
+  &:last-child {
+    padding: 0;
   }
 }
 
