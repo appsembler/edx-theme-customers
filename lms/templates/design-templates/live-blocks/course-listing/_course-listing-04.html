@@ -24,7 +24,13 @@
                 </div>
                 <div>
                   <p class="a--course-tile-01__organization">${a.course_weeks_duration}</p>
-                  <p class="a--course-tile-01__start-date">${a.starts.strftime('%B %d, %Y')}</p>
+                  <p class="a--course-tile-01__start-date">
+                    % if a.pacing_type == 'self_paced':
+                      Ongoing
+                    % else:
+                      ${a.starts.strftime('%B %d, %Y')}
+                    % endif
+                  </p>
                 </div>
               </div>
             </a>
