@@ -23,6 +23,11 @@
   }
 }
 
+// Temp fix for pulsation menu effect
+.a--header-design-01 button.a--site-nav__mobile-toggle .a--toggle-pulsar{
+  display: none;
+}
+
 // Hero
 .a--hero-section-01 h1 {
   font-weight: 500;
@@ -42,7 +47,7 @@
   align-self: baseline;
 }
 
-// Temporarily hide facets
+// Temp hide facets per client request
 .a--discovery-facets {
   display: none;
 }
