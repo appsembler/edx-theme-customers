@@ -1,0 +1,93 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_brand_logos" />
+<%
+course_mode_class = course_mode if course_mode else ''
+%>
+
+<header class="header-app">
+    <h5 class="header-app-title">
+        <a class="logo" href="${logo_url}" style="width:40rem">
+            <img class="logo-img" src="${get_brand_logos()['logo_positive']}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
+        </a>
+        <span class="sr-only">${logo_subtitle}</span>
+    </h5>
+</header>    
+
+<main class="accomplishment accomplishment-main">
+
+    <div class="wrapper-accomplishment-rendering">
+        <div class="accomplishment-rendering accomplishment-rendering" style="padding-top: 3rem; top: 0.25rem; border-top: 0.5rem solid rgb(41,96,68)">
+
+
+            <div class="accomplishment-type">
+                <span class="accomplishment-type-label hd-1">${certificate_title}</span>
+                This is to certify that
+            </div>
+
+            <div class="wrapper-statement-and-signatories">
+                <div class="accomplishment-statement">
+                    <p class="accomplishment-statement-lead">
+                        <strong class="accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name | h}</strong>
+                        <span class="accomplishment-summary copy copy-lead">successfully completed</span>
+
+                        <span class="accomplishment-course-number">${course_number}</span>
+                        <span class="accomplishment-course hd-1 emphasized">
+                            <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
+                        </span>
+                    </p>
+                    <p class="accomplishment-statement-detail copy copy-lead">an online course offered by DHIS2 Academt Online and the University of Oslo</p>
+
+                    <div class="accomplishment-statement-detail">
+
+                        <dl class="wrapper-accomplishment-metadata accomplishment-date">
+                            <dt class="label copy copy-meta">Date of Completion</dt>
+                            <dd class="value copy copy-meta" style="-webkit-margin-start:0; margin-left:0">${certificate_date_issued}</dd>
+                        </dl>
+                    </div>
+                </div>
+
+
+    % if mode != 'base':
+    <div class="accomplishment-signatories">
+        <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
+
+        <div class="wrapper-signatories">
+            <div class="list-signatories">
+                % if certificate_data:
+                    % for signatory in certificate_data.get('signatories', []):
+                    <div class="signatory">
+                        <img class="signatory-signature" src="${signatory['signature_image_path']}" alt="${signatory['name']}"
+                        style="display:inline" />
+
+                        <h4 class="signatory-name hd-5">${signatory['name']}</h4>
+                        <p class="signatory-credentials copy copy-micro">
+                            <span class="role">${signatory['title']}</span>
+                            <span class="organization">${signatory['organization']}</span>
+                        </p>
+                    </div>
+                    % endfor
+                % endif
+            </div>
+        </div>
+    </div>
+    % endif    
+
+    <div class="wrapper-accomplishment-metadata">
+        <div class="accomplishment-metadata">
+<!--             <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
+ -->
+            <div class="wrapper-metadata">
+               
+                <dl class="metadata accomplishment-id" style="width: auto">
+                    <dt class="label copy copy-meta">Verify the authenticity of this certificate at</dt>
+                    <dd class="value copy copy-meta"><a href="${url}/certificates/user/${accomplishment_user_id}/course/${course_id}">${url}/certificates/user/${accomplishment_user_id}/course/${course_id}</a></dd>
+                </dl>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
