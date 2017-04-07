@@ -7,7 +7,7 @@ course_mode_class = course_mode if course_mode else ''
 
 <header class="header-app">
     <h5 class="header-app-title">
-        <a class="logo" href="${logo_url}" style="width:40rem">
+        <a class="logo" href="${logo_url}" style="width:40rem; padding-bottom: 1rem">
             <img class="logo-img" src="${get_brand_logos()['logo_certs']}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
         </a>
         <span class="sr-only">${logo_subtitle}</span>
@@ -26,7 +26,7 @@ course_mode_class = course_mode if course_mode else ''
             </div>
 
             <div class="wrapper-statement-and-signatories">
-                <div class="accomplishment-statement">
+                <div class="accomplishment-statement" style="padding-bottom: 1rem">
                     <p class="accomplishment-statement-lead">
                         <strong class="accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name | h}</strong>
                         <span class="accomplishment-summary copy copy-lead">successfully completed</span>
@@ -36,7 +36,7 @@ course_mode_class = course_mode if course_mode else ''
                             <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
                         </span>
                     </p>
-                    <p class="accomplishment-statement-detail copy copy-lead">an online course offered by DHIS2 Academt Online and the University of Oslo</p>
+                    <p class="accomplishment-statement-detail copy copy-lead">an online course offered by DHIS2 Academy Online and the University of Oslo</p>
 
                     <div class="accomplishment-statement-detail">
 
@@ -49,7 +49,7 @@ course_mode_class = course_mode if course_mode else ''
 
 
     % if mode != 'base':
-    <div class="accomplishment-signatories">
+    <div class="accomplishment-signatories" style="padding-bottom: 1rem">
         <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
 
         <div class="wrapper-signatories">
