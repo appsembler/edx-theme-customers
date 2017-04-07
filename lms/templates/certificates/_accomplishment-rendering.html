@@ -7,7 +7,7 @@ course_mode_class = course_mode if course_mode else ''
 
 <header class="header-app">
     <h5 class="header-app-title">
-        <a class="logo" href="${logo_url}" style="width:40rem; padding-bottom: 1rem">
+        <a class="logo" href="${logo_url}" style="width:35rem; padding-bottom: 1rem">
             <img class="logo-img" src="${get_brand_logos()['logo_certs']}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
         </a>
         <span class="sr-only">${logo_subtitle}</span>
@@ -73,7 +73,7 @@ course_mode_class = course_mode if course_mode else ''
     </div>
     % endif    
 
-    <div class="wrapper-accomplishment-metadata">
+    <div class="wrapper-accomplishment-metadata" style="margin-bottom:0">
         <div class="accomplishment-metadata">
 <!--             <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
  -->
