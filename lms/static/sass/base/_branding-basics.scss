@@ -40,7 +40,7 @@ $cta-button-border: none;
 $buttons-border-radius: 0.5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 6rem;
+$header-logo-height: 60px;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
@@ -79,7 +79,7 @@ $footer-bg-color: #eee;
 $footer-top-border: none;
 $footer-text-color: lighten($base-text-color, 15%);
 $footer-link-color: $footer-text-color;
-$footer-link-hover-color: lighten($footer-text-color, 15%);
+$footer-link-hover-color: lighten($footer-link-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;
