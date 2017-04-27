@@ -2,11 +2,11 @@
 
 <%namespace name='static' file='/static_content.html'/>
 <%namespace file='/theme-variables.html' import="get_global_settings" />
-<%! from openedx.core.djangoapps.site_configuration.helpers import get_value %>
+<%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
-<% style_overrides_file = get_value('css_overrides_file') %>
-% if style_overrides_file:
-  <link rel="stylesheet" type="text/css" href="/static/${style_overrides_file}" />
+<%! site_configuration = get_current_site_configuration() %>
+% if site_configuration:
+  <link rel="stylesheet" type="text/css" href="${site_configuration.get_css_url()}" />
 % else:
   <link rel="stylesheet" type="text/css" href="${static('css/main.css')}">
 % endif
