@@ -4,7 +4,7 @@
 <%namespace file='/theme-variables.html' import="get_global_settings" />
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
-<%! site_configuration = get_current_site_configuration() %>
+<% site_configuration = get_current_site_configuration() %>
 % if site_configuration:
   <link rel="stylesheet" type="text/css" href="${site_configuration.get_css_url()}" />
 % else:
