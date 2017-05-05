@@ -22,10 +22,13 @@
 <%def name="get_global_settings()">
   <%
   return {
-    'enable_registration_button' : True,
+    'enable_registration_button' : False,
     'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
     'apple_app_id' : '',
-    'header_logo_target' : 'http://www.open.ac.uk'
+    'header_logo_target' : 'http://www.open.ac.uk',
+    'course-catalogue_enabled': True,
+    'enable_course_catalogue_for_non-auth_users': False,
+    'enable_big_header_on_course_info': False,
   }
   %>
 </%def>
@@ -239,13 +242,13 @@
   <%
     return {
       'default_edx_view' : False, ## required boolean value. Set to "true" if you want the default edX look and feel.
-      'dashboard_search_enabled' : True,
+      'dashboard_search_enabled' : False,
       'dashboard_course_listing' : 'live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html', ## set which template should be used to display a single course in the dashboard
       'discovery_course_card' : '_course-tile-02.underscore', ## define which tile template to use for results
       'discovery_facet' : '_facet-01.underscore', ## define which template for facets to use
       'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
       'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html', ## design which discovery-search block design to use
-      'promote_course_catalog' : True,
+      'promote_course_catalog' : False,
       'promote_course_catalog_text' : "Check out our course catalog and enroll in some awesome courses!"
     }
   %>

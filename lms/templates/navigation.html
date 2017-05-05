@@ -1,0 +1,200 @@
+## mako
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/main.html' import="login_query"/>
+<%namespace file='/theme-variables.html' import="get_global_settings, get_header_footer_templates, get_header_menu_logged_out_extra_items, get_header_menu_logged_in_extra_items, get_brand_logos" />
+
+<%!
+from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
+
+from microsite_configuration import microsite
+from lms.djangoapps.ccx.overrides import get_current_ccx
+
+# App that handles subdomain specific branding
+import branding
+# app that handles site status messages
+from status.status import get_site_status_msg
+%>
+
+## Provide a hook for themes to inject branding on top.
+<%block name="navigation_top" />
+
+<%block>
+<%
+try:
+    course_id = course.id
+except:
+    # can't figure out a better way to get at a possibly-defined course var
+    course_id = None
+site_status_msg = get_site_status_msg(course_id)
+%>
+% if site_status_msg:
+<div class="site-status">
+  <div class="inner-wrapper">
+    <span class="white-error-icon"></span>
+    <p>${site_status_msg}</p>
+  </div>
+</div>
+% endif
+</%block>
+
+
+  <% theme_folder = settings.THEME_NAME %>
+  <% logo_positive = get_brand_logos()['logo_positive'] %>
+  <% logo_negative = get_brand_logos()['logo_negative'] %>
+  <% logo_url = get_global_settings().get('header_logo_target',marketing_link('ROOT')) %>
+  <%
+    if should_display_shopping_cart_func() and not (course and microsite.is_request_in_microsite()):
+      display_shopping_cart = True
+      shopping_cart_url = reverse('shoppingcart.views.show_cart')
+    else:
+      display_shopping_cart = False
+      shopping_cart_url = ""
+    endif
+  %>
+  % if course:
+  <%
+    display_course_name = True
+    display_name = course.display_name_with_default
+    if settings.FEATURES.get('CUSTOM_COURSES_EDX', False):
+      ccx = get_current_ccx(course.id)
+      if ccx:
+        display_name = ccx.display_name
+    course_number = course.display_number_with_default
+    course_name = display_name
+  %>
+  % else:
+  <%
+    display_course_name = False
+    course_number = ""
+    course_name = ""
+  %>
+  % endif
+  <%
+    menu_items = []
+    slideout_menu_items = []
+  %>
+  % if user.is_authenticated():
+    <%
+      user_authenticated = True
+      user_name = user.profile.name.split(' ', 1)[0]
+    %>
+    % if get_header_menu_logged_in_extra_items():
+      <%
+        menu_items.append(get_header_menu_logged_in_extra_items())
+        slideout_menu_items.append(get_header_menu_logged_in_extra_items())
+      %>
+    % endif
+    % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+      <%
+        append_group = []
+        append_group.append({
+          'link_title': _('Profile'),
+          'link_URL': reverse('learner_profile', kwargs={'username': user.username}),
+          'special_class': '',
+          'open_in_new_tab': false
+          })
+        append_group.append({
+          'link_title': _('Account'),
+          'link_URL': reverse('account_settings'),
+          'special_class': '',
+          'open_in_new_tab': false
+          })
+        slideout_menu_items.append(append_group)
+        append_group = []
+        append_group.append({
+          'link_title': _('Sign Out'),
+          'link_URL': reverse('logout'),
+          'special_class': '',
+          'open_in_new_tab': false
+          })
+        slideout_menu_items.append(append_group)
+      %>
+    % endif
+
+  % else:
+    <%
+      user_authenticated = false
+      user_name = ""
+    %>
+    % if get_header_menu_logged_out_extra_items():
+      <%
+        menu_items.append(get_header_menu_logged_out_extra_items())
+        slideout_menu_items.append(get_header_menu_logged_out_extra_items())
+      %>
+    % endif
+      % if not settings.FEATURES['DISABLE_LOGIN_BUTTON']:
+      <%
+        append_group = []
+      %>
+      % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY') and get_global_settings().get('course-catalogue_enabled', True) and get_global_settings().get('enable_course_catalogue_for_non-auth_users', True):
+        <%
+          append_group.append({
+            'link_title': _('Find Courses'),
+            'link_URL': '/courses',
+            'special_class': '',
+            'open_in_new_tab': false
+            })
+        %>
+      % endif
+      % if get_global_settings()['enable_registration_button']:
+        % if course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
+          <%
+            append_group.append({
+              'link_title': _('Register'),
+              'link_URL': reverse('course-specific-register', args=[course.id.to_deprecated_string()]),
+              'special_class': 'a--nav-cta',
+              'open_in_new_tab': false
+              })
+          %>
+        % else:
+          <%
+            append_group.append({
+              'link_title': _('Register'),
+              'link_URL': '/register',
+              'special_class': 'a--nav-cta',
+              'open_in_new_tab': false
+              })
+          %>
+        % endif
+      % endif
+      <%
+        menu_items.append(append_group)
+        slideout_menu_items.append(append_group)
+        append_group = []
+      %>
+      % if course and settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
+        <%
+          append_group.append({
+            'link_title': _('Sign in'),
+            'link_URL': reverse('course-specific-login', args=[course.id.to_deprecated_string()]),
+            'special_class': '',
+            'open_in_new_tab': false
+            })
+        %>
+      % else:
+        <%
+          append_group.append({
+            'link_title': _('Sign in'),
+            'link_URL': '/login',
+            'special_class': '',
+            'open_in_new_tab': false
+            })
+        %>
+      % endif
+      <%
+        menu_items.append(append_group)
+        slideout_menu_items.append(append_group)
+      %>
+    % endif
+  % endif
+
+  <%include file = "/${get_header_footer_templates()['header_template']}" args="user_authenticated = user_authenticated, user_name = user_name, theme_folder = theme_folder, logo_positive = logo_positive, logo_negative = logo_negative, logo_url = logo_url, display_shopping_cart = display_shopping_cart, shopping_cart_url = shopping_cart_url, display_course_name = display_course_name, course_number = course_number, course_name = course_name, menu_items = menu_items, slideout_menu_items = slideout_menu_items" />
+
+% if course:
+<!--[if lte IE 9]>
+<div class="ie-banner" aria-hidden="true">${_('<strong>Warning:</strong> Your browser is not fully supported. We strongly recommend using {chrome_link} or {ff_link}.').format(chrome_link='<a href="https://www.google.com/chrome" target="_blank">Chrome</a>', ff_link='<a href="http://www.mozilla.org/firefox" target="_blank">Firefox</a>')}</div>
+<![endif]-->
+% endif
+
+<%include file="/help_modal.html"/>

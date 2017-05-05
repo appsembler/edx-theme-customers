@@ -37,6 +37,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
+    .xAxis .tickLabel {
+      font-size: 1.2rem;
+      width: 8rem !important;
+      margin-top: 5rem;
+    }
   }
 }
 
@@ -64,7 +70,7 @@
   font-size: 1.4rem;
 }
 
-.a--course-content__main-content, .a--course-content__main-content .course-content {
+.a--course-content__main-content, .a--course-content__main-content .course-content, .a--course-static-page, .xmodule_display.xmodule_StaticTabModule {
   h1, h2, h3, h4, h5, h6 {
     color: $brand-primary-color;
   }
@@ -92,4 +98,64 @@
   h6 {
     margin: 24px 0 26px 0;
   }
+
+  p, .problem {
+    font-size: 1.6rem;
+    line-height: 2.2rem !important;
+  }
+
+  h3.problem-header {
+    @include fontVariantInclude($global-font-h4);
+    font-size: 1.7rem;
+    line-height: $line-height-h3;
+    color: $brand-primary-color;
+    margin: $font-size-h3 0;
+  }
+
+  .xblock h3.problem-header, .xblock h3 {
+    @include fontVariantInclude($global-font-h2);
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+    color: $brand-primary-color;
+    margin: $font-size-h2 0;
+  }
+
+  ul li {
+    line-height: 2.2rem;
+  }
+}
+
+.a--courseware--updates-article {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+
+  &__date {
+    font-size: 1.6rem;
+  }
+}
+
+/** discussion forums fix **/
+
+.content-wrapper .page-header .page-description, body.discussion .discussion-post .post-body, body.discussion .discussion-article .post-body, body.view-in-course .discussion-post .post-body, body.view-in-course .discussion-article .post-body {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+
+  p {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+}
+
+.forum-nav-thread.is-unread .forum-nav-thread-comments-count {
+  background-color: lightblue;
+  color: #006196;
+  font-weight: 900;
+}
+
+.discussion.container .action-button, .discussion-module .action-button, .discussion-user-threads .action-button {
+  color: darkslategrey;
+}
+
+.discussion.container .action-button .action-icon, .discussion-module .action-button .action-icon, .discussion-user-threads .action-button .action-icon {
+  color: darkslategrey;
 }

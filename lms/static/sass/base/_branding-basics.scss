@@ -15,7 +15,7 @@ $primary-font-weight-bold: 700;
 $primary-font-weight-black: 800;
 $accent-font-name: "Bebas";
 
-$font-size-base-body: 14px;
+$font-size-base-body: 1.6rem;
 $line-height-base-body: 1.65rem;
 $font-size-h1: 2.5em;
 $line-height-h1: 130%;
@@ -63,7 +63,7 @@ $nav-toggle-bar-margin: 2rem;
 $nav-toggle-bar-color: $header-text-color;
 $nav-toggle-bar-separation: 1rem;
 $nav-toggle-bar-pulsar-color: $brand-primary-color;
-$nav-toggle-bar-pulsar-visible: false;
+$nav-toggle-bar-pulsar-visible: "False";
 
 $slideout-menu-text-color: #fff;
 $slideout-menu-background-color: $brand-primary-color;
