@@ -85,6 +85,19 @@ site_status_msg = get_site_status_msg(course_id)
         slideout_menu_items.append(get_header_menu_logged_in_extra_items())
       %>
     % endif
+    <%
+      append_group = []
+      append_group.append({
+        'link_title': _('Dashboard'),
+        'link_URL': reverse('dashboard'),
+        'special_class': '',
+        'open_in_new_tab': ''
+        })
+    %>
+    <%
+      slideout_menu_items.append(append_group)
+      menu_items.append(append_group)
+    %>
     % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
       <%
         append_group = []
