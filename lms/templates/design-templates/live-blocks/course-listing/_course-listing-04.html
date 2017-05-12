@@ -23,7 +23,13 @@
                   <p class="a--course-tile-01__title">${a.title}</p>
                 </div>
                 <div>
-                  <p class="a--course-tile-01__organization">${a.course_weeks_duration}</p>
+                  <p class="a--course-tile-01__organization">
+                    % if a.course_duration:
+                      ${a.course_duration}
+                    % else:
+                      ${a.course_weeks_duration}
+                    % endif
+                  </p>
                   <p class="a--course-tile-01__start-date">
                     % if a.pacing_type == 'self_paced':
                       Ongoing
