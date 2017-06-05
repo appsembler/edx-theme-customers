@@ -1,9 +1,9 @@
 ;(function (define) {
     'use strict';
-    define('eucalyptus-theme-codebase/js/student_account/logistration_factory',
+    define('edx-theme-codebase/js/student_account/logistration_factory',
            [
             'jquery',
-            'eucalyptus-theme-codebase/js/student_account/views/AccessView'
+            'edx-theme-codebase/js/student_account/views/AccessView'
         ],
         function($, AccessView) {
             return function(options) {

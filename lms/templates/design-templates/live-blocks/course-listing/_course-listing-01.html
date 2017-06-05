@@ -32,7 +32,7 @@
     <div class="a--course-listing-01__courses courses-listing ${course_template_class}-parent-element">
       % for course in featured:
         % if not course_count == max_courses:
-          <%include file="/eucalyptus-theme-codebase/lms/templates/design-templates/live-blocks/${course_template}" args="course=course" />
+          <%include file="/edx-theme-codebase/lms/templates/design-templates/live-blocks/${course_template}" args="course=course" />
           <% course_count = course_count + 1 %>
         % endif
       % endfor

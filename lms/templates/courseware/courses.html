@@ -48,7 +48,7 @@
         <script type="text/template" id="facet_option-tpl">
             <%static:include path="discovery/${discovery_facet_option_template}" />
         </script>
-        <%static:require_module module_name="eucalyptus-theme-codebase/js/discovery/discovery_factory" class_name="DiscoveryFactory">
+        <%static:require_module module_name="edx-theme-codebase/js/discovery/discovery_factory" class_name="DiscoveryFactory">
           DiscoveryFactory(
             ${ dump_js_escaped_json(course_discovery_meanings) | n },
             getParameterByName('search_query')

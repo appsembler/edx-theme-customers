@@ -1,6 +1,6 @@
 ;(function (define) {
 
-define('eucalyptus-theme-codebase/js/discovery/models/search_state',
+define('edx-theme-codebase/js/discovery/models/search_state',
     [
     'underscore',
     'backbone',
