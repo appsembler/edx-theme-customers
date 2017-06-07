@@ -1,4 +1,7 @@
 <%page args="user_authenticated, user_name, logo_positive, logo_negative, logo_url, display_shopping_cart, shopping_cart_url, display_course_name, course_number, course_name, menu_items, slideout_menu_items" />
+<%namespace file='/theme-variables.html' import="get_header_menu_logged_out_extra_items, get_header_menu_logged_in_extra_items" />
+<%namespace name='static' file='/static_content.html'/>
+
 <%!
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
@@ -8,13 +11,13 @@ from django.core.urlresolvers import reverse
 import third_party_auth
 from third_party_auth import pipeline
 try:
-   tpa_idp = third_party_auth.provider.Registry.accepting_logins()[0]
+   tpa_idp = third_party_auth.provider.Registry.enabled()[0]
    custom_login_url = pipeline.get_login_url(tpa_idp.provider_id, pipeline.AUTH_ENTRY_REGISTER, redirect_url=request.path)
 except:
     custom_login_url = '/login'
 
 try:
-    tpa_idp = third_party_auth.provider.Registry.accepting_logins()[0]
+    tpa_idp = third_party_auth.provider.Registry.enabled()[0]
     custom_logout_url = pipeline.get_logout_url(tpa_idp.provider_id, pipeline.AUTH_ENTRY_REGISTER)
 except:
     custom_logout_url = '/logout'
