@@ -34,11 +34,15 @@ course_mode_class = course_mode if course_mode else ''
        .asu--certificates__certificate .signatory-signature {
         height: 3.25rem !important;
        }
+       body {
+         margin-top: 0px !important;
+         margin-bottom: 0px !important;
+       }
        @page {
-        size: 21cm 29.7cm;
-        margin: 27mm 16mm 27mm 16mm;
+        /* limited browser support but works in Chrome*/
+        size: landscape;
         }
-    </style>    
+    </style>   
 
 </head>
 
