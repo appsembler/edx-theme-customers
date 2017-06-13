@@ -27,6 +27,7 @@
   latin_extended = "&amp;subset=latin-ext" if get_value('accent-font', False) else ""
   return {
     'enable_registration_button' : get_value('enable_registration_button', True),
+    'enable_registration_form' : get_value('enable_registration_form', True),
     'fonts_url' : 'https://fonts.googleapis.com/css?family={}|{}:300,300i,400,400i,700,700i,900{}'.format(
       encoded_accent_font, encoded_primary_font, latin_extended),
     'apple_app_id' : '',
