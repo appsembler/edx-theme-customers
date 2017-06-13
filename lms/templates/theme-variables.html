@@ -22,13 +22,17 @@
 <%def name="get_global_settings()">
   <%
   return {
-    'enable_registration_button' : True,
+    ##'header_logo_target' : ''
     'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
+    'enable_registration_button' : True,
+    'enable_registration_form' : True,
     'apple_app_id' : '',
     'course-catalogue_enabled': True,
     'enable_course_catalogue_for_non-auth_users': True,
+    'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
+    'client_ga_code': "",
+    'allow_search_engine_indexing': True,
     'small_screen_optimized_courseware': True,
-    ##'header_logo_target' : ''
   }
   %>
 </%def>
