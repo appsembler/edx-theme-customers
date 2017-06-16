@@ -11,7 +11,7 @@
             'js/student_account/models/RegisterModel',
             'js/student_account/views/LoginView',
             'js/student_account/views/PasswordResetView',
-            'eucalyptus-theme-codebase/js/student_account/views/RegisterView',
+            'edx-theme-codebase/js/student_account/views/RegisterView',
             'js/student_account/views/InstitutionLoginView',
             'js/student_account/views/HintedLoginView',
             'js/vendor/history'

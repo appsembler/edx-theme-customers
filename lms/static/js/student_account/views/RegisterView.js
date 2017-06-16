@@ -1,6 +1,6 @@
 ;(function (define) {
     'use strict';
-    define('eucalyptus-theme-codebase/js/student_account/views/RegisterView',
+    define('edx-theme-codebase/js/student_account/views/RegisterView',
            [
             'jquery',
             'underscore',

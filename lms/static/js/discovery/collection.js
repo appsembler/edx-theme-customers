@@ -1,6 +1,6 @@
 ;(function (define) {
 
-define('eucalyptus-theme-codebase/js/discovery/collection',
+define('edx-theme-codebase/js/discovery/collection',
     [
     'backbone',
     'js/discovery/models/course_card'
