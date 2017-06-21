@@ -23,7 +23,7 @@
   <%
   return {
     ##'header_logo_target' : ''
-    'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
+    'fonts_url' : static('css/MyFontsWebfontsKit.css'),
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
@@ -127,7 +127,7 @@
   <%
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2016 Company Name. All rights reserved.',
+      'footer_copyright_text' : '© 2017 Fast Lane. All rights reserved.',
       'display_edx_disclaimer' : True, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required

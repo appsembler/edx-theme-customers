@@ -1,0 +1,18 @@
+## mako
+
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_global_settings" />
+<%! from openedx.core.djangoapps.site_configuration.helpers import get_value %>
+<%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<% style_overrides_file = get_value('css_overrides_file') %>
+% if style_overrides_file:
+  <link rel="stylesheet" type="text/css" href="${static(style_overrides_file)}" />
+% else:
+  <link rel="stylesheet" type="text/css" href="${static('css/main.css')}">
+% endif
+<link rel="stylesheet" type="text/css" href="${static('font-awesome/css/font-awesome.min.css')}">
+<link href="${static('css/MyFontsWebfontsKit.css')}" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+% if apple_app_id:
+  <meta name="apple-itunes-app" content="app-id=${get_global_settings()['apple_app_id']}">
+% endif
