@@ -3,6 +3,7 @@
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%! from django.utils.translation import ugettext as _ %>
 
 
 
@@ -787,7 +788,7 @@
       'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
       'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html', ## design which discovery-search block design to use
       'promote_course_catalog' : True,
-      'promote_course_catalog_text' : "Check out our course catalog and enroll in some awesome courses!"
+      'promote_course_catalog_text' : _("Browse recently launched courses and see what's new in your favorite subjects.")
     }
   %>
 </%def>
