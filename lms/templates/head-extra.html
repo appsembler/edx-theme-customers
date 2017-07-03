@@ -29,10 +29,12 @@
   appsembler_ga_code = get_global_settings()['appsembler_ga_code'];
   client_ga_code = get_global_settings().get('client_ga_code', "");
 %>
-<script>
-  % if get_global_settings().get('client_ga_code'):
-    ga('create', '${client_ga_code}', 'auto', 'clientTracker');
-    ga('clientTracker.send', 'pageview');
-  % endif
-</script>
-<!-- /Google Analytics code -->
+% if SHOW_GOOGLE_ANALYTICS:
+  <script>
+    % if get_global_settings().get('client_ga_code'):
+      ga('create', '${client_ga_code}', 'auto', 'clientTracker');
+      ga('clientTracker.send', 'pageview');
+    % endif
+  </script>
+  <!-- /Google Analytics code -->
+% endif
