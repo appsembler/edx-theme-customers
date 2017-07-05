@@ -44,39 +44,29 @@ except:
     <nav class="a--site-nav__group-right" id="site-menu">
       <ul class="a--site-menu__container">
         % if user_authenticated:
-          <li class="a--site-menu__group">
-            <ul>
-              % for menu_item in get_header_menu_logged_in_extra_items():
-                <li class="a--${menu_item['special_class']}">
-                  <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
-                </li>
-              % endfor
-            </ul>
-          </li>
-          <li class="a--site-menu__group">
-            <ul>
-              <li>
-                <a href="/courses">${_("Find Courses")}</a>
-              </li>
-            </ul>
-          </li>
+          % if get_header_menu_logged_in_extra_items():
+            <li class="a--site-menu__group">
+              <ul>
+                % for menu_item in get_header_menu_logged_in_extra_items():
+                  <li class="a--${menu_item['special_class']}">
+                    <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
+                  </li>
+                % endfor
+              </ul>
+            </li>
+          % endif
         % else:
-          <li class="a--site-menu__group">
-            <ul>
-              % for menu_item in get_header_menu_logged_out_extra_items():
-                <li class="a--${menu_item['special_class']}">
-                  <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
-                </li>
-              % endfor
-            </ul>
-          </li>
-          <li class="a--site-menu__group">
-            <ul>
-              <li>
-                <a href="/courses">${_("Find Courses")}</a>
-              </li>
-            </ul>
-          </li>
+          % if get_header_menu_logged_out_extra_items():
+            <li class="a--site-menu__group">
+              <ul>
+                % for menu_item in get_header_menu_logged_out_extra_items():
+                  <li class="a--${menu_item['special_class']}">
+                    <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
+                  </li>
+                % endfor
+              </ul>
+            </li>
+          % endif
           <li class="a--site-menu__group">
             <ul>
               <li class="a--nav-cta">
@@ -109,17 +99,8 @@ except:
                 <li class="a--spacer"></li>
               % endif
               <li>
-                <a href="${reverse('learner_profile', kwargs={'username': user.username})}">${_("Profile")}</a>
+                <a href="https://213.203.255.50/auth/realms/FastLane/account">${_("Account")}</a>
               </li>
-              <li>
-                <a href="${reverse('account_settings')}">${_("Account")}</a>
-              </li>
-              % if settings.FEATURES.get('ENABLE_SYSADMIN_DASHBOARD','') and user.is_staff:
-                <li class="a--spacer"></li>
-                <li>
-                  <a href="${reverse('sysadmin')}">${_("SysAdmin")}</a>
-                </li>
-              % endif
               <li class="a--spacer"></li>
               <li>
                 <a href="${custom_logout_url}">${_("Sign Out")}</a>
