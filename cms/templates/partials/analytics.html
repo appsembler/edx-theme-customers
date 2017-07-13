@@ -7,8 +7,10 @@
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
     ga('create', '${GOOGLE_ANALYTICS_APP_ID}', 'auto');
-    ga('set', 'userId', '${USER_EMAIL_HASH}');
-    ga('set', 'dimension1', '${USER_EMAIL_HASH }');
+    %if USER_EMAIL_HASH:
+      ga('set', 'userId', '${USER_EMAIL_HASH}');
+      ga('set', 'dimension1', '${USER_EMAIL_HASH }');
+    %endif
     ga('send', 'pageview');
   </script>
   <!-- End Google Analytics -->
