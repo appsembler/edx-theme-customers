@@ -1,0 +1,159 @@
+<%!
+ from django.utils.translation import ugettext as _
+ from django.core.urlresolvers import reverse
+ %>
+
+ <%page args="user_authenticated, user_name, theme_folder, logo_positive, logo_negative, logo_url, display_shopping_cart, shopping_cart_url, display_course_name, course_number, course_name, menu_items, slideout_menu_items" />
+ <%namespace file='/theme-variables.html' import="get_header_menu_logged_out_extra_items, get_header_menu_logged_in_extra_items" />
+ <%namespace name='static' file='/static_content.html'/>
+
+ <%
+   import third_party_auth
+   from third_party_auth import pipeline
+   try:
+     tpa_idp = third_party_auth.provider.Registry.accepting_logins()[0]
+     custom_login_url = pipeline.get_login_url(tpa_idp.provider_id, pipeline.AUTH_ENTRY_REGISTER, redirect_url=request.path)
+   except:
+     custom_login_url = '/login'
+
+   custom_register_url = 'https://pass-staging.texasgateway.org/register/'
+   custom_profile_url = 'https://pass-staging.texasgateway.org/profile_edit'
+   custom_logout_url = 'https://pass-staging.texasgateway.org/oauth/v2/auth/logout'
+ %>
+
+ ## mako
+
+ <!-- top navigation -->
+ <section class="a--header-design-01 a--site-nav">
+   <div class="bs-container a--container a--site-nav__container">
+     <div class="a--site-nav__group-left">
+       <a href="${logo_url}" class="a--site-nav__logo__container a--site-nav__logo__positive">
+         <img class="a--site-nav__logo a--logo-full" src="${logo_positive}">
+       </a>
+       <a href="${logo_url}" class="a--site-nav__logo__container a--site-nav__logo__negative">
+         <img class="a--site-nav__logo a--logo-full" src="${logo_negative}">
+       </a>
+       % if display_course_name:
+       <div class="a--site-nav__course-name">
+         <span>${course_number}</span>${course_name}
+       </div>
+       % endif
+     </div>
+     <nav class="a--site-nav__group-right" id="site-menu">
+       <ul class="a--site-menu__container">
+         % if user_authenticated:
+           <li class="a--site-menu__group">
+             <ul>
+               % for menu_item in get_header_menu_logged_in_extra_items():
+                 <li class="a--${menu_item['special_class']}">
+                   <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
+                 </li>
+               % endfor
+             </ul>
+           </li>
+           <li class="a--site-menu__group">
+             <ul>
+               <li>
+                 <a href="/courses">${_("Find Courses")}</a>
+               </li>
+             </ul>
+           </li>
+         % else:
+           <li class="a--site-menu__group">
+             <ul>
+               % for menu_item in get_header_menu_logged_out_extra_items():
+                 <li class="a--${menu_item['special_class']}">
+                   <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
+                 </li>
+               % endfor
+             </ul>
+           </li>
+           <li class="a--site-menu__group">
+             <ul>
+               <li>
+                 <a href="/courses">${_("Find Courses")}</a>
+               </li>
+             </ul>
+           </li>
+           <li class="a--site-menu__group">
+             <ul>
+               <li class="a--nav-cta">
+                 <a href="${custom_login_url}">Trinity Account</a>
+               </li>
+             </ul>
+           </li>
+           <li class="a--site-menu__group">
+             <ul>
+               <li class="a--nav-cta">
+                 <a href="${custom_register_url}">Register</a>
+               </li>
+             </ul>
+           </li>
+         % endif
+         % if user_authenticated:
+         <li class="a--site-menu__group a--user-avatar">
+           Welcome, <span>${user_name}</span>.
+         </li>
+         % endif
+         <li class="a--site-menu__group a--slide-menu">
+           <button type="button" id="site-menu-toggle" class="a--button a--site-nav__mobile-toggle" aria-label="toggle menu">
+             <span class="a--toggle-bar"></span>
+             <span class="a--toggle-bar"></span>
+             <span class="a--toggle-bar"></span>
+             <span class="a--toggle-pulsar a--toggle-pulsar__1"></span>
+             <span class="a--toggle-pulsar a--toggle-pulsar__2"></span>
+           </button>
+           <ul class="a--slide-menu__container" id="slide-menu">
+             % if user_authenticated:
+               % if get_header_menu_logged_in_extra_items():
+                 % for menu_item in get_header_menu_logged_in_extra_items():
+                   <li class="a--${menu_item['special_class']}">
+                     <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
+                   </li>
+                 % endfor
+                 <li class="a--spacer"></li>
+               % endif
+               <li>
+                 <a href="${custom_profile_url}">${_("Profile")}</a>
+               </li>
+               <li>
+                 <a href="${custom_profile_url}">${_("Account")}</a>
+               </li>
+               % if settings.FEATURES.get('ENABLE_SYSADMIN_DASHBOARD','') and user.is_staff:
+                 <li class="a--spacer"></li>
+                 <li>
+                   <a href="${reverse('sysadmin')}">${_("SysAdmin")}</a>
+                 </li>
+               % endif
+               <li class="a--spacer"></li>
+               <li>
+                 <a href="${custom_logout_url}">${_("Sign Out")}</a>
+               </li>
+             % else:
+               % if get_header_menu_logged_out_extra_items():
+                 % for menu_item in get_header_menu_logged_out_extra_items():
+                   <li>
+                     <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
+                   </li>
+                 % endfor
+                 <li class="a--spacer"></li>
+               % endif
+               <li>
+                 <a href="/courses">${_("Find Courses")}</a>
+               </li>
+               <li class="a--spacer"></li>
+               <li>
+                 <a href="${custom_login_url}">Trinity Account</a>
+               </li>
+               <li class="a--spacer"></li>
+               <li>
+                 <a href="${custom_register_url}">Register</a>
+               </li>
+             % endif
+           </ul>
+         </li>
+       </ul>
+     </nav>
+   </div>
+ </section>
+ 		<!-- end of top navigation -->
