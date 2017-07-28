@@ -65,7 +65,7 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : '/design-templates/header/_trinity-header.html', ## required
+    'header_template' : 'design-templates/header/_header-appsembler-01.html', ## required
     'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
   }
   %>
@@ -122,13 +122,13 @@
       },
       {
         'link_title': 'Privacy Policy',
-        'link_URL': 'https://pass.texasgateway.org/tos',
+        'link_URL': '/privacy',
         'special_class': '',
         'open_in_new_tab': False,
       },
       {
         'link_title': 'Terms of Service',
-        'link_URL': 'https://pass.texasgateway.org/tos',
+        'link_URL': '/tos',
         'special_class': '',
         'open_in_new_tab': False,
       },
@@ -173,7 +173,7 @@
           # template settings
           'hero_title' : "Explore Gateway Courses",
           'hero_subtitle' : "",
-          'cta_link' : "https://pass-staging.texasgateway.org/register/", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link' : "/register", ## leave value empty if you don't want a CTA button displayed.
           'cta_link_text' : "Register Now", ## leave value empty if you don't want a CTA button displayed.
           'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
           'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
@@ -443,7 +443,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h2>About Gateway Courses</h2><p>Gateway Courses offer statewide online professional development opportunities for Texas teachers. Through Gateway Courses, teachers have anytime, anywhere access to trainings that offer</p><ul><li>extensive instruction in the TEKS, the ELPS, and the RtI model;</li><li>strategies on providing effective instructional support for English language learners, Gifted and Talented students, and struggling students; and</li><li>CPE credits and certifications.</li></ul><p>The courses are all TEA-approved and available at no cost to practicing and pre-service teachers across the state. Teachers simply register to get instant access to courses where they can watch instructional videos, engage in interactive activities, participate in discussions, and earn CPE credits.</p><p><a href="https://pass-staging.texasgateway.org/register/">Create your Gateway Courses account and get started today!</a></p><p>Have questions? Visit our <a href="https://support.texascourses.org/hc/en-us">Help page</a> for tips and answers to frequently asked questions.</p>', ## block content, place iline HTML here
+            'content' : '<h2>About Gateway Courses</h2><p>Gateway Courses offer statewide online professional development opportunities for Texas teachers. Through Gateway Courses, teachers have anytime, anywhere access to trainings that offer</p><ul><li>extensive instruction in the TEKS, the ELPS, and the RtI model;</li><li>strategies on providing effective instructional support for English language learners, Gifted and Talented students, and struggling students; and</li><li>CPE credits and certifications.</li></ul><p>The courses are all TEA-approved and available at no cost to practicing and pre-service teachers across the state. Teachers simply register to get instant access to courses where they can watch instructional videos, engage in interactive activities, participate in discussions, and earn CPE credits.</p><p><a href="/register">Create your Gateway Courses account and get started today!</a></p><p>Have questions? Visit our <a href="https://support.texascourses.org/hc/en-us">Help page</a> for tips and answers to frequently asked questions.</p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
