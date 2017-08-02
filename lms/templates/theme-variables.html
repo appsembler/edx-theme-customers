@@ -32,6 +32,7 @@
     'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
     'client_ga_code': "",
     'allow_search_engine_indexing': True,
+    'ficus_course_info_header_enabled': False,
   }
   %>
 </%def>
@@ -185,19 +186,19 @@
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
         }
       },
-      {
-        "element-type":"courses-list",
-        "element-path":"design-templates/live-blocks/course-listing/_course-listing-04.html",
-        "options":{
-          'max_courses' : 14, ## required, sets max number of courses to be displayed in the block
-          'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
-          'course_template' : 'single-course/_course-tile-01.html', ## required
-          'section_heading' : "ASUx Open Online Courses:",
-          'section_text' : "",
-          'optional_classes' : "centered", ## can be "centered" to have all text centered
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
-        }
-      },
+      ## {
+      ##   "element-type":"courses-list",
+      ##   "element-path":"design-templates/live-blocks/course-listing/_course-listing-04.html",
+      ##   "options":{
+      ##     'max_courses' : 14, ## required, sets max number of courses to be displayed in the block
+      ##     'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
+      ##     'course_template' : 'single-course/_course-tile-01.html', ## required
+      ##     'section_heading' : "ASUx Open Online Courses:",
+      ##     'section_text' : "",
+      ##     'optional_classes' : "centered", ## can be "centered" to have all text centered
+      ##     'extra_css' : "" ## add custom css to be added inline to the wrapper element
+      ##   }
+      ## },
     ]
   %>
 </%def>
