@@ -3,10 +3,10 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
+$brand-primary-color: rgba(75,46,131,1);
 $brand-accent-color: #7f8c8d;
-$navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$navbar-style: "brand";  // brand or white
+$base-text-color: #000;
 
 $primary-font-name: "Open Sans";
 $primary-font-weight-light: 300;
@@ -34,13 +34,13 @@ $global-font-base-body: "primary-font-regular";
 $global-font-header-links: "primary-font-regular";
 $global-font-cta-buttons: "primary-font-regular";
 
-$cta-button-bg: $brand-accent-color;
+$cta-button-bg: #4b2e83;
 $cta-button-text-color: #fff;
 $cta-button-border: none;
 $buttons-border-radius: 0.5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
+$header-logo-height: 6rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
@@ -48,8 +48,8 @@ $header-padding-sm-bottom: 1.5rem;
 $header-group-separation: 4rem;
 $header-font-size: 1.6rem;
 $header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
-$navbar-button-border: calcNavbarButtonBorder($navbar-style);
-$navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
+$navbar-button-border: none;
+$navbar-button-bg: #85754d;
 $navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
 $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
@@ -83,7 +83,7 @@ $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;
-$footer-logo-width: 4rem;
+$footer-logo-width: 6rem;
 $footer-logo-opacity: 0.5;
 $footer-copyright-text-size: 1.2rem;
 $footer-copyright-text-color: lighten($footer-text-color, 15%);

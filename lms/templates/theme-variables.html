@@ -24,7 +24,7 @@
   return {
     ##'header_logo_target' : ''
     'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
-    'enable_registration_button' : True,
+    'enable_registration_button' : False,
     'enable_registration_form' : True,
     'apple_app_id' : '',
     'course-catalogue_enabled': True,
@@ -78,12 +78,6 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
     ]
   %>
 </%def>
@@ -94,12 +88,6 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
     ]
   %>
 </%def>
@@ -110,12 +98,6 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
     ]
   %>
 </%def>
@@ -145,33 +127,142 @@
   <%
     return [
       {
-        "element-type":"static-block",
-        "element-path":"design-templates/static-blocks/_hero-section-01.html",
+        "element-type":"layout-single-col",
+        "element-path":"page-builder/layouts/_single-col.html",
         "options":{
-          # template settings
-          'hero_title' : "Welcome to our online courses!",
-          'hero_subtitle' : "We deliver our courses using Open edX, an open source software that powers edX.org and hundreds of other online learning sites around the world.",
-          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
-          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-          'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
-          'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
-          'text_color' : "#fff",
-          'bg_image_url' : '/static/themes/edx-theme-codebase/images/hero--example-background.jpg', ## leave empty if you want just a full color background
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+          "layout-bg-image":static('images/bg-image.jpg'),
+          "padding-bottom":"padd-b-100",
+          "bg-color":"#fff",
+          "margin-left":"marg-l-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-right":"marg-r-0",
+          "align-content":"align-content-center",
+          "padding-left":"padd-l-0",
+          "padding-top":"padd-t-100",
+          "text-alignment":"text-align--center"
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"heading",
+              "element-path":"page-builder/elements/_heading.html",
+              "options":{
+                "font-size":"font-size--48px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-20",
+                "text-color":"#ffffff",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":"We make it possible for you to keep learning at the University of Washington, even if you work full time or live outside of the Seattle area",
+                "font-family":"font--primary--bold",
+                "text-alignment":"text-align--left"
+              }
+            },
+            {
+              "element-type":"paragraph-text",
+              "element-path":"page-builder/elements/_paragraph.html",
+              "options":{
+                "font-size":"font-size--20px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-5",
+                "text-color":"#f9f9f9",
+                "margin-top":"marg-t-5",
+                "margin-left":"marg-l-0",
+                "text-content":"Welcome to  the University of Washington Continuum College!",
+                "font-family":"font--primary--light",
+                "text-alignment":"text-align--left"
+              }
+            },
+            {
+              "element-type":"cta-button",
+              "element-path":"page-builder/elements/_cta-button.html",
+              "options":{
+                "font-size":"font-size--16px",
+                "padding-bottom":"padd-b-15",
+                "bg-color":"rgba(255, 255, 255, 0)",
+                "border-color":"#ffffff",
+                "margin-left":"marg-l-0",
+                "border-width":"border-width--2px",
+                "margin-bottom":"marg-b-0",
+                "text-color":"#ffffff",
+                "margin-top":"marg-t-30",
+                "padding-right":"padd-r-30",
+                "url":"https://www.pce.uw.edu/program-finder",
+                "margin-right":"marg-r-auto",
+                "text-content":"Find programs & Courses ",
+                "padding-top":"padd-t-15",
+                "font-family":"font--primary--regular",
+                "padding-left":"padd-l-30"
+              }
+            }
+          ]
         }
       },
       {
-        "element-type":"courses-list",
-        "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
+        "element-type":"layout-single-col",
+        "element-path":"page-builder/layouts/_single-col.html",
         "options":{
-          'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
-          'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
-          'course_template' : 'single-course/_course-tile-01.html', ## required
-          'section_heading' : "Our latest courses:",
-          'section_text' : "",
-          'optional_classes' : "centered", ## can be "centered" to have all text centered
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+          "layout-bg-image":"",
+          "padding-bottom":"padd-b-100",
+          "bg-color":"#fff",
+          "margin-left":"marg-l-0",
+          "margin-bottom":"marg-b-50",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-right":"marg-r-0",
+          "align-content":"align-content-center",
+          "padding-left":"padd-l-0",
+          "padding-top":"padd-t-75",
+          "text-alignment":"text-align--left"
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"heading",
+              "element-path":"page-builder/elements/_heading.html",
+              "options":{
+                "font-size":"font-size--42px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-20",
+                "text-color":"#4B2E83",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":"Our latest courses",
+                "font-family":"font--primary--bold",
+                "text-alignment":"text-align--left"
+              }
+            },
+            {
+              "element-type":"paragraph-text",
+              "element-path":"page-builder/elements/_paragraph.html",
+              "options":{
+                "font-size":"font-size--16px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-30",
+                "text-color":"#323232",
+                "margin-top":"marg-t-5",
+                "margin-left":"marg-l-0",
+                "text-content":"Here are some of our latest courses available online:",
+                "font-family":"font--primary--regular",
+                "text-alignment":"text-align--left"
+              }
+            },
+            {
+              "element-type":"courses-listing",
+              "element-path":"page-builder/elements/_courses-listing.html",
+              "options":{
+                "tile-type":"course-tile-01",
+                "num-of-courses":"4",
+                "text-alignment":"text-align--left"
+              }
+            }
+          ]
         }
       },
     ]
