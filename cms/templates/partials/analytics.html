@@ -41,3 +41,25 @@
   <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/${HUBSPOT_PORTAL_ID}.js"></script>
 <!-- End of HubSpot Embed Code -->
 % endif
+
+<!-- Appcues code -->
+<script src="//fast.appcues.com/26227.js"></script>
+% if user.is_authenticated():
+  <script>
+      // NOTE: These values should be specific to the current user.
+      Appcues.identify('{{ user.id }}', { // Unique identifier for current user
+          name: '{{ user.name }}', // Current user's name
+          email: '{{ user.email }}', // Current user's email
+          created_at: {{ request.user.date_joined|date:"U" }}, // Unix timestamp of user signup date
+
+          // Additional user properties.
+          // is_trial: false,
+          // plan: "enterprise"
+      });
+  </script>
+% else:
+  <script>
+    Appcues.anonymous();
+  </script>
+% endif
+<!-- /Appcues code -->
