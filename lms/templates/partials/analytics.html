@@ -31,10 +31,10 @@
 % if user.is_authenticated():
   <script>
       // NOTE: These values should be specific to the current user.
-      Appcues.identify('{{ user.id }}', { // Unique identifier for current user
-          name: '{{ user.name }}', // Current user's name
-          email: '{{ user.email }}', // Current user's email
-          created_at: {{ request.user.date_joined|date:"U" }}, // Unix timestamp of user signup date
+      Appcues.identify('${user.id }', { // Unique identifier for current user
+          name: '${user.profile.name}', // Current user's name
+          email: '${user.email}', // Current user's email
+          created_at: ${request.user.date_joined.strftime("%s")}, 
 
           // Additional user properties.
           // is_trial: false,
