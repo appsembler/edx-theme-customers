@@ -39,6 +39,7 @@ site_status_msg = get_site_status_msg(course_id)
 </%block>
 
 
+  <% theme_folder = settings.THEME_NAME %>
   <% logo_positive = get_brand_logos()['logo_positive'] %>
   <% logo_negative = get_brand_logos()['logo_negative'] %>
   <% logo_url = get_global_settings().get('header_logo_target',marketing_link('ROOT')) %>
@@ -152,7 +153,7 @@ site_status_msg = get_site_status_msg(course_id)
       % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY') and get_global_settings().get('course-catalogue_enabled', True) and get_global_settings().get('enable_course_catalogue_for_non-auth_users', True):
         <%
           append_group.append({
-            'link_title': _('Explore courses'),
+            'link_title': _('Find Courses'),
             'link_URL': 'https://extension.psu.edu/shopby?education_format=806',
             'special_class': '',
             'open_in_new_tab': false
@@ -211,7 +212,7 @@ site_status_msg = get_site_status_msg(course_id)
     % endif
   % endif
 
-  <%include file = "${get_header_footer_templates()['header_template']}" args="user_authenticated = user_authenticated, user_name = user_name, logo_positive = logo_positive, logo_negative = logo_negative, logo_url = logo_url, display_shopping_cart = display_shopping_cart, shopping_cart_url = shopping_cart_url, display_course_name = display_course_name, course_number = course_number, course_name = course_name, menu_items = menu_items, slideout_menu_items = slideout_menu_items" />
+  <%include file = "${get_header_footer_templates()['header_template']}" args="user_authenticated = user_authenticated, user_name = user_name, theme_folder = theme_folder, logo_positive = logo_positive, logo_negative = logo_negative, logo_url = logo_url, display_shopping_cart = display_shopping_cart, shopping_cart_url = shopping_cart_url, display_course_name = display_course_name, course_number = course_number, course_name = course_name, menu_items = menu_items, slideout_menu_items = slideout_menu_items" />
 
 % if course:
 <!--[if lte IE 9]>
