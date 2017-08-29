@@ -1,0 +1,48 @@
+.adn--index-hero {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  margin-bottom: 5rem;
+  background-size: cover;
+  background-position: center center;
+
+  &__container {
+
+  }
+
+  h1 {
+    display: block;
+    font-size: 4.8rem;
+    padding: 2rem;
+    background-color: $brand-accent-color;
+    color: #fff;
+    font-weight: bold;
+    margin: 0;
+    max-width: 72rem;
+  }
+
+  h4 {
+    display: block;
+    font-size: 1.8rem;
+    padding: 2rem;
+    background-color: $brand-primary-color;
+    color: #fff;
+    margin: 0;
+    max-width: 72rem;
+  }
+
+  &__cta {
+    display: inline-block;
+    font-size: 1.8rem;
+    padding: 1.5rem 3rem;
+    background-color: $brand-accent-color;
+    color: #fff;
+    margin: 5rem 0 0;
+    font-weight: bold;
+  }
+}
+
+.a--course-listing-01__section-heading {
+  font-size: 3.6rem;
+  font-weight: bold;
+  color: $brand-accent-color;
+}
