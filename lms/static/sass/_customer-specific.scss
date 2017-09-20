@@ -1,0 +1,4 @@
+.a--header-design-01 .a--site-menu__group ul li a, .a--header-design-01 .a--site-menu__group ul li.a--nav-cta a {
+  text-transform: uppercase;
+  @include primary-font-bold;
+}
