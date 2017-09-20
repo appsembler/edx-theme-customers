@@ -2,3 +2,53 @@
   text-transform: uppercase;
   @include primary-font-bold;
 }
+
+
+// old login/register form styling
+.view-login {
+
+  .content-wrapper {
+    padding-top: 2rem;
+    padding-bottom: 8rem;
+  }
+
+  .introduction {
+    width: 100%;
+    max-width: 128rem;
+    margin: 0 auto;
+
+    header {
+      background: none;
+      height: auto;
+      padding: 6rem 0 0;
+
+      .title {
+        position: relative;
+        top: 0;
+        left: 0;
+        padding: 2rem 2rem 0;
+
+        .title-super {
+          @include primary-font-bold;
+          font-size: 4.8rem;
+          color: $brand-primary-color;
+          text-transform: initial;
+          margin: 0 0 1.5rem;
+        }
+
+        .title-sub {
+          @include primary-font;
+          font-size: 2rem;
+          color: $brand-accent-color;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .container {
+    width: 100%;
+    max-width: 128rem;
+    margin: 0 auto;
+  }
+}
