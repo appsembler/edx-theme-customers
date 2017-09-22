@@ -1,0 +1,15 @@
+@import "header/uw-header";
+
+.a--hero-section-01 h1 {
+  @include primary-font-bold;
+}
+
+.account-settings-container {
+
+  .account-nav {
+
+    button#accounts-tab {
+      display: none;
+    }
+  }
+}

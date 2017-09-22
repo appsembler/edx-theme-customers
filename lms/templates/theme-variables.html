@@ -66,7 +66,7 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : 'design-templates/header/_header-appsembler-01.html', ## required
+    'header_template' : '/design-templates/header/_header-uw.html', ## required
     'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
   }
   %>
@@ -98,6 +98,30 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
+      {
+        'link_title': 'Help Center',
+        'link_URL': '/help',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Contact Us',
+        'link_URL': '/contact',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Privacy',
+        'link_URL': 'http://www.washington.edu/online/privacy',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Terms',
+        'link_URL': 'http://www.washington.edu/online/terms',
+        'special_class': '',
+        'open_in_new_tab': False,
+      }
     ]
   %>
 </%def>
@@ -157,7 +181,7 @@
                 "text-color":"#ffffff",
                 "margin-top":"marg-t-50",
                 "margin-left":"marg-l-0",
-                "text-content":"We make it possible for you to keep learning at the University of Washington, even if you work full time or live outside of the Seattle area",
+                "text-content":"UW Start Learning",
                 "font-family":"font--primary--bold",
                 "text-alignment":"text-align--center"
               }
@@ -172,7 +196,7 @@
                 "text-color":"#f9f9f9",
                 "margin-top":"marg-t-5",
                 "margin-left":"marg-l-0",
-                "text-content":"Welcome to  the University of Washington Continuum College!",
+                "text-content":"Your home for online, self-paced courses from the University of Washington",
                 "font-family":"font--primary--light",
                 "text-alignment":"text-align--center"
               }
@@ -191,14 +215,68 @@
                 "text-color":"#ffffff",
                 "margin-top":"marg-t-30",
                 "padding-right":"padd-r-30",
-                "url":"https://www.pce.uw.edu/program-finder",
+                "url":"/login",
                 "margin-right":"marg-r-auto",
-                "text-content":"Find programs & Courses ",
+                "text-content":"Sign In",
                 "padding-top":"padd-t-15",
                 "font-family":"font--primary--regular",
                 "padding-left":"padd-l-30"
               }
             }
+          ]
+        }
+      },
+      {
+        "element-type":"layout-single-col",
+        "element-path":"page-builder/layouts/_single-col.html",
+        "options":{
+          "layout-bg-image":'',
+          "padding-bottom":"padd-b-75",
+          "bg-color":"#fff",
+          "margin-left":"marg-l-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-right":"marg-r-0",
+          "align-content":"align-content-center",
+          "padding-left":"padd-l-0",
+          "padding-top":"padd-t-75",
+          "text-alignment":"text-align--center"
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"paragraph-text",
+              "element-path":"page-builder/elements/_paragraph.html",
+              "options":{
+                "font-size":"font-size--16px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-5",
+                "text-color":"#000",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":"Note: Before you can register for courses, you must apply and be accepted to a program.",
+                "font-family":"font--primary--regular",
+                "text-alignment":"text-align--center"
+              }
+            },
+            {
+              "element-type":"paragraph-text",
+              "element-path":"page-builder/elements/_paragraph.html",
+              "options":{
+                "font-size":"font-size--16px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-5",
+                "text-color":"#000",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":'To apply, visit the <a href="https://www.pce.uw.edu/career-accelerator-certificates" target="_blank">UW Professional & Continuing Education website</a>.',
+                "font-family":"font--primary--regular",
+                "text-alignment":"text-align--center"
+              }
+            },
           ]
         }
       },
@@ -256,7 +334,7 @@
       'discovery_facet' : '_facet-01.underscore', ## define which template for facets to use
       'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
       'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html', ## design which discovery-search block design to use
-      'promote_course_catalog' : True,
+      'promote_course_catalog' : False,
       'promote_course_catalog_text' : "Check out our course catalog and enroll in some awesome courses!"
     }
   %>
@@ -498,7 +576,33 @@
 
 <%def name="get_help_content()">
   <%
-    return []
+    return [
+        {
+          "element-type":"static-block",
+          "element-path":"design-templates/static-blocks/_hero-section-01.html",
+          "options":{
+            'hero_title' : "Help Center",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
+            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
+            'text_color' : "#fff",
+            'bg_image_url' : '', ## leave empty if you want just a full color background
+            'extra_css' : "text-align: left;" ## add custom css to be added inline to the wrapper element
+          }
+        },
+        {
+          "element-type":"static-block",
+          "element-path":"design-templates/static-blocks/_plain-content-01.html",
+          "options":{
+            'content' : '<h2>Creating a UW Start Learning Account</h2><p>Before registering for a course, you’ll need to create a UW Start Learning account. To create your account, click on the Sign In button. Then follow the link to sign up for UW Start Learning and complete the registration form.</p><p>After creating an account, you can register for and access courses via your dashboard. To view or make edits to your account or profile, click on the menu at the top right of any page and click on Profile or Account to update your info, such as your email address or time zone.</p><h2>Registering for a Self-Paced Course</h2><p>After you’ve applied and been accepted to a self-paced, online certificate, you’ll be able to register for the first course in that program. To learn more about self-paced programs and how to apply, please visit the <a href="https://www.pce.uw.edu/career-accelerator-certificates">UW Professional & Continuing Education website</a>.</p><p>Once you’re accepted to a program, you’ll receive an email inviting you to register in your first course. You’ll need to create a UW Start Learning account before registering. After successfully completing a course, you’ll be able to register for the next course in the program.</p><p>Payment is due when you register. For self-paced courses on UW Start Learning, you can pay online by credit card or PayPal by clicking on the Register button on the course page. If a third party, such as your employer, will be making the payment, please contact us at <a href="mailto:startlrn@uw.edu">startlrn@uw.edu</a> for instructions.</p><h2>Starting Your Course</h2><p>Once you’ve registered for a course, click the View Course button on your dashboard. This takes you to the course home page, where you’ll find announcements from the course staff and any course handouts.</p><p>To access course materials, click on the Course tab on the top navigation. You’ll see the course outline at a glance in the left-hand column. To move through the course, simply click on the Next button at the top or bottom of the page to continue through the course units. Once you reach the last unit in a course, the Next button will deactivate.</p><h2>Browser Compatability</h2><p>The UW Start Learning platform runs on the following browsers: <a href="https://www.google.com/chrome">Chrome</a>, <a href="https://www.mozilla.org/firefox/">Firefox</a>, <a href="https://www.apple.com/safari/">Safari</a>, <a href="https://www.microsoft.com/microsoft-edge">Microsoft Edge</a> and <a href="http://windows.microsoft.com/internet-explorer/download-ie">Microsoft Internet Explorer</a> 11. We recommend updating to the most current version of your preferred browser.</p><p>In addition, you can access your course using a mobile device, though you may run into issues. If you’re using a mobile device and seeing strange behavior, try switching to a computer.</p><h2>Costs & Fees</h2><p>Self-paced courses on UW Start Learning have the same fees as other courses, though with self-paced courses the fees are charged per course rather than quarterly. For details, please visit the <a href="https://www.pce.uw.edu/help/registration-costs/costs-and-fees">UWPCE Help Center</a>.</p><h2>Drops, Withdrawals & Refunds</h2><p>Self-paced courses on UW Start Learning follow the same withdrawals and refunds polices as other UW Professional & Continuing Education courses. For details, please visit the <a href="https://www.pce.uw.edu/help/registration-costs/costs-and-fees">UWPCE Help Center</a>.</p><p>You have up to eight days after you get access to your self-paced course to drop and request a refund. You do not need your student ID to request a withdrawal or refund, but you should indicate that you’re registered in a self-paced course when you make your request.</p><h2>Additional Help Resources From UW Professional & Continuing Education</h2><p><a href="https://www.pce.uw.edu/help/completing-program/grades">Completing Your Program</a></p><p><a href="https://www.pce.uw.edu/help/resources-policies">Resources & Policies</a></p><p>Please note, to access some of these resources you may need an active UW NetID, which is an account used for accessing your UW information and other online services.</p><p>Students registered in courses on UW Start Learning will have the option of getting a NetID if they don’t already have one. You’ll receive an email with Net ID instructions shortly after you register for your first course.</p><h2>Technical Support & Customer Service</h2><p>Questions? Visit the <a href="/contact">Contact Us</a> page for details on how to get in touch.</p>', ## block content, place iline HTML here
+            'optional_classes' : "", ##
+            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+          }
+        },
+    ]
   %>
 </%def>
 
@@ -507,7 +611,33 @@
 
 <%def name="get_contact_content()">
   <%
-    return []
+    return [
+        {
+          "element-type":"static-block",
+          "element-path":"design-templates/static-blocks/_hero-section-01.html",
+          "options":{
+            'hero_title' : "Help Center",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
+            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
+            'text_color' : "#fff",
+            'bg_image_url' : '', ## leave empty if you want just a full color background
+            'extra_css' : "text-align: left;" ## add custom css to be added inline to the wrapper element
+          }
+        },
+        {
+          "element-type":"static-block",
+          "element-path":"design-templates/static-blocks/_plain-content-01.html",
+          "options":{
+            'content' : '<h2>General Questions</h2><p>Have a question that’s not for your instructor or instructional assistant? We’re here to help!</p><p>Monday through Friday, 8 a.m. to 5 p.m. (Pacific Standard Time) <br>Email: <a href="mailto:startlrn@uw.edu">startlrn@uw.edu</a></p><h2>Report a Problem</h2><p>Is the UW Start Learning site misbehaving? Tell technical support about it.</p><p>Monday through Friday, 8 a.m. to 5 p.m. (Pacific Standard Time)</p><p>Email: <a href="mailto:dltechsupp@pce.uw.edu">dltechsupp@pce.uw.edu</a></p><p>Please provide the following information if possible:<ul><li>Name of the course (if any) in question</li><li>Description of question or issue</li><li>Link to the page you are experiencing difficulty with</li><li>Steps you are taking when you encounter difficulty</li><li>Screenshot of what you’re seeing</li></ul></p><p>While waiting for a response from us, feel free to try a couple of things to resolve the issue:<ul><li>Clear your browser cache</li><li>Access your course in a different browser</li><li>Reload the page</li></ul></p>', ## block content, place iline HTML here
+            'optional_classes' : "", ##
+            'extra_css' : "" ## add custom css to be added inline to the wrapper element
+          }
+        },
+    ]
   %>
 </%def>
 
