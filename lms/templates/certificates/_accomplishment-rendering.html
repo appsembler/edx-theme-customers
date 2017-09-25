@@ -1,0 +1,128 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='../static_content.html'/>
+<%
+course_mode_class = course_mode if course_mode else ''
+%>
+
+<header class="header-app">
+    <h5 class="nyif--certificates__header-app-title">
+        <a class="logo" href="${logo_url}" style="width:20rem">
+            <img class="logo-img" src="${logo_src}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
+        </a>
+        <span class="sr-only">${logo_subtitle}</span>
+    </h5>
+</header>    
+
+<main class="accomplishment accomplishment-main">
+
+    <div class="nyif--certificates__wrapper-accomplishment-rendering">
+        <div class="nyif--certificates__accomplishment-rendering accomplishment-rendering">
+
+
+            <div class="nyif--certificates__accomplishment-type">
+                <span class="accomplishment-type-label hd-1">${certificate_title}</span>
+                This certificate is awarded to
+            </div>
+
+            <div class="wrapper-statement-and-signatories">
+                <div class="nyif--certificates__accomplishment-statement">
+                    <p class="accomplishment-statement-lead">
+                        <strong class="nyif--certificates__accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name | h}</strong>
+                        <span class="accomplishment-summary copy copy-lead">for the successful completion of the course</span>
+
+                        <span class="accomplishment-course hd-1 emphasized">
+                            <span class="nyif--certificates__accomplishment-course-name">${accomplishment_copy_course_name}</span>
+                        </span>
+                    </p>
+
+                    <div class="nyif--certificates__accomplishment-statement-detail">
+
+                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-date">
+                            <dt class="label copy copy-meta">Date of Completion</dt>
+                            <dd class="value copy copy-meta">${certificate_date_issued}</dd>
+                        </dl>
+                        %if credits:
+                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-credits">
+                            <dt class="label copy copy-meta">CPE Credits Awarded</dt>
+                            <dd class="value copy copy-meta">${'{0:g}'.format(credits)}</dd>
+                        </dl>
+                        %endif 
+                        %if field_of_study:
+                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-field_of_study">
+                            <dt class="label copy copy-meta">Field of Study</dt>
+                            <dd class="value copy copy-meta">${field_of_study}</dd>
+                        </dl>
+                        %endif 
+                        %if instruction_location:                          
+                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-location">
+                            <dt class="label copy copy-meta">Location</dt>
+                            <dd class="value copy copy-meta">${instruction_location}</dd>
+                        </dl>
+                        %endif
+                        %if instructional_method:                  
+                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-instructional_method">
+                            <dt class="label copy copy-meta">Instructional Method</dt>
+                            <dd class="value copy copy-meta">${instructional_method}</dd>
+                        </dl>
+                        %endif
+
+                        <p class="nyif--certificates__wrapper-accomplishment-credits-explanation">
+                        In accordance with the standards of the National Registry of CPE Sponsors,
+                        CPE Credits have been granted based on a 50-minute hour.
+                        </p>
+
+                        <p class="nyif--certificates__wrapper-accomplishment-accreditation-info">
+                        National Registry of CPE Sponsors<br/>
+                        New York Institute of Finance ID Number 103413<br/>
+                        New York State Sponsor ID Number 002308<br/>
+                        New York Institute of Finance<br/>
+                        160 Broadway, 15th Floor, New York, NY 10038<br/>
+                        <a href="http://www.nyif.com">www.nyif.com</a>
+                        </p>
+
+                    </div>
+                </div>
+
+
+    % if mode != 'base':
+    <div class="accomplishment-signatories">
+        <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
+
+        <div class="wrapper-signatories">
+            <div class="list-signatories">
+                % if certificate_data:
+                    % for signatory in certificate_data.get('signatories', []):
+                    <div class="signatory">
+                        <img class="signatory-signature" src="${signatory['signature_image_path']}" alt="${signatory['name']}"
+                        style="display:inline">
+
+                        <h4 class="signatory-name hd-5">${signatory['name']}</h4>
+                        <p class="signatory-credentials copy copy-micro">
+                            <span class="role">${signatory['title']}</span>
+                        </p>
+                    </div>
+                    % endfor
+                % endif
+            </div>
+        </div>
+    </div>
+    % endif    
+
+    <div class="nyif--certificates__wrapper-accomplishment-metadata">
+        <div class="accomplishment-metadata">
+<!--             <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
+ -->
+            <div class="wrapper-metadata">
+               
+                <dl class="metadata accomplishment-id">
+                    <dt class="label copy copy-meta">Verify the authenticity of this certificate at</dt>
+                    <dd class="value copy copy-meta"><a href="${url}/certificates/user/${accomplishment_user_id}/course/${course_id}">${url}/certificates/user/${accomplishment_user_id}/course/${course_id}</a></dd>
+                </dl>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
