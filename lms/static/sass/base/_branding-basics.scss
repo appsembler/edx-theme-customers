@@ -75,9 +75,9 @@ $base-letter-spacing: 0;
 
 $footer-padding-top: 4rem;
 $footer-padding-bottom: 1.5*$footer-padding-top;
-$footer-bg-color: #eee;
+$footer-bg-color: #000;
 $footer-top-border: none;
-$footer-text-color: lighten($base-text-color, 15%);
+$footer-text-color: #fff;
 $footer-link-color: $footer-text-color;
 $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
