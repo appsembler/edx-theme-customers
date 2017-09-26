@@ -8,20 +8,8 @@
  <%namespace name='static' file='/static_content.html'/>
 
  <%
-   import third_party_auth
-   from third_party_auth import pipeline
-   try:
-     tpa_idp = third_party_auth.provider.Registry.accepting_logins()[0]
-     custom_login_url = pipeline.get_login_url(tpa_idp.provider_id, pipeline.AUTH_ENTRY_REGISTER, redirect_url=request.path)
-   except:
-     custom_login_url = '/login'
-
-   if 'staging' in settings.SITE_NAME:
-     custom_register_url = 'https://pass-staging.texasgateway.org/register/'
-     custom_profile_url = 'https://pass-staging.texasgateway.org/profile_edit'
-   else:
-     custom_register_url = 'https://pass.texasgateway.org/register/'
-     custom_profile_url = 'https://pass.texasgateway.org/profile_edit'
+   custom_login_url = '/login'
+   custom_register_url = 'register/'
 
  %>
 
