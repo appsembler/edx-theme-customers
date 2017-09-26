@@ -1,5 +1,6 @@
 <%namespace name='static' file='/static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
+<%! from django.contrib.staticfiles.templatetags.staticfiles import static as dj_static %>
 
 <%
 # set doc language direction
@@ -18,7 +19,7 @@ course_mode_class = course_mode if course_mode else ''
     <title>${document_title}</title>
 
     <%static:css group='style-certificates'/>
-    <link rel="stylesheet" href="/static/themes/nyif-dogwood/css/main.css" />
+    <link rel="stylesheet" href="${dj_static('css/main.css')}" />
 
 </head>
 
