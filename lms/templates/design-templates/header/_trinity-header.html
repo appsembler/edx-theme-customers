@@ -10,7 +10,7 @@
  <%
    custom_login_url = '/login'
    custom_register_url = 'register/'
-   custom_profile_url = '/account/settings'
+   custom_profile_url = reverse('learner_profile', kwargs={'username': user_name})
 
  %>
 
@@ -107,10 +107,10 @@
                  <li class="a--spacer"></li>
                % endif
                <li>
-                 <a target="_blank" href="${custom_profile_url}">${_("Profile")}</a>
+                 <a href="${custom_profile_url}">${_("Profile")}</a>
                </li>
                <li>
-                 <a target="_blank" href="${custom_profile_url}">${_("Account")}</a>
+                 <a href="/account/settings">${_("Account")}</a>
                </li>
                % if settings.FEATURES.get('ENABLE_SYSADMIN_DASHBOARD','') and user.is_staff:
                  <li class="a--spacer"></li>
