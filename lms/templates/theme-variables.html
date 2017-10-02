@@ -23,7 +23,7 @@
   <%
   return {
     ##'header_logo_target' : ''
-    'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
+    'fonts_url' : 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&amp;subset=latin-ext',
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
@@ -152,15 +152,22 @@
         }
       },
       {
+        "element-type":"static-block",
+        "element-path":"customer-specific/_index-static-text.html",
+        "options":{
+          # template settings
+        }
+      },
+      {
         "element-type":"courses-list",
         "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
         "options":{
           'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
           'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
           'course_template' : 'single-course/_course-tile-01.html', ## required
-          'section_heading' : "Unsere neusten Kurse",
+          'section_heading' : "Unsere neuesten Kurse",
           'section_text' : "",
-          'optional_classes' : "", ## can be "centered" to have all text centered
+          'optional_classes' : "centered", ## can be "centered" to have all text centered
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
         }
       },

@@ -8,7 +8,7 @@ $brand-accent-color: #e53517;
 $navbar-style: "brand";  // brand or white
 $base-text-color: #2e3640;
 
-$primary-font-name: "Arial";
+$primary-font-name: "Roboto";
 $primary-font-weight-light: 300;
 $primary-font-weight-regular: 400;
 $primary-font-weight-bold: 700;
@@ -40,7 +40,7 @@ $cta-button-border: none;
 $buttons-border-radius: 0;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 11rem;
+$header-logo-height: 9rem;
 $header-padding-top: 2rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;

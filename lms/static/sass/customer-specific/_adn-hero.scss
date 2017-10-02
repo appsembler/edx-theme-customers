@@ -1,0 +1,52 @@
+.adn--index-hero {
+  padding-top: 15rem;
+  padding-bottom: 6rem;
+  margin-bottom: 5rem;
+  background-size: cover;
+  background-position: center center;
+
+  &__container {
+
+  }
+
+  h1 {
+    display: inline-block;
+    font-size: 4.8rem;
+    padding: 1rem 2rem;
+    background-color: $brand-accent-color;
+    color: #fff;
+    @include primary-font-bold;
+    margin: 0 0 1rem;
+  }
+
+  h2 {
+    display: inline-block;
+    font-size: 4.8rem;
+    padding: 1rem 2rem;
+    background-color: $brand-primary-color;
+    color: #fff;
+    @include primary-font-bold;
+    margin: 0 0 1rem;
+  }
+
+  h4 {
+    display: block;
+    font-size: 1.8rem;
+    padding: 2rem;
+    background-color: $brand-primary-color;
+    color: #fff;
+    margin: 0;
+    max-width: 72rem;
+  }
+
+  &__cta {
+    display: inline-block;
+    font-size: 1.8rem;
+    padding: 1.5rem 3rem;
+    background-color: $brand-accent-color;
+    color: #fff;
+    margin: 4rem 0 0;
+    @include primary-font-light;
+    text-transform: uppercase;
+  }
+}

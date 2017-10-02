@@ -1,0 +1,30 @@
+.adn--index-static {
+
+  &__container {
+    text-align: center;
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  h3 {
+    @include primary-font-bold;
+    font-size: 4.0rem;
+
+    &.red {
+      color: $brand-accent-color;
+      margin: 0 0 3rem;
+    }
+
+    &.grey {
+      color: $brand-primary-color;
+      margin: 0;
+    }
+  }
+
+  h4 {
+    @include primary-font-bold;
+    font-size: 2.8rem;
+    color: lighten($brand-primary-color, 20%);
+    margin: 0;
+  }
+}
