@@ -117,7 +117,7 @@
     line-height: 2.2rem !important;
   }
 
-  .xblock h3.hd {
+  .xblock h3.hd, h3.discussion-module-title {
     @include fontVariantInclude($global-font-h2);
     font-size: $font-size-h2;
     line-height: $line-height-h2;
@@ -196,3 +196,53 @@
     line-height: 2.2rem;
   }
 }
+
+// inline discussions fix
+
+.discussion-module {
+
+  .discussion-show.btn {
+    padding: 1rem 3rem;
+    width: auto;
+    height: auto;
+    color: $brand-primary-color;
+    border: 0.1rem solid $brand-primary-color;
+    border-radius: 0.4rem;
+
+    &:hover, &:focus {
+      background-color: $brand-primary-color;
+      color: #fff;
+    }
+  }
+
+  .add_post_btn_container {
+    padding: 1rem 0;
+    margin: 0 0 2rem;
+  }
+
+  .btn-link.new-post-btn {
+    padding: 1rem 3rem;
+    width: auto;
+    height: auto;
+    color: #fff;
+    background-color: $brand-primary-color;
+    border: 0.1rem solid $brand-primary-color;
+    border-radius: 0.4rem;
+
+    &:hover, &:focus {
+      background-color: darken($brand-primary-color, 15%) !important;
+      color: #fff;
+    }
+  }
+
+  .inline-discussion-thread-container {
+
+    a.forum-nav-thread-link {
+      @include display(flex);
+      width: 100%;
+    }
+  }
+}
+
+
+// discussions responsiveness fixes
