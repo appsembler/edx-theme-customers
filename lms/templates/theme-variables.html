@@ -152,6 +152,12 @@
       'special_class': 'a--twitter',
       'open_in_new_tab': False,
     },
+    {
+      'link_title': '<i class="fa fa-phone"></i> +1 347 842 2501',
+      'link_URL': 'tel:+13478422501',
+      'special_class': '',
+      'open_in_new_tab': False,
+    }
   ]
   %>
 </%def>
@@ -163,7 +169,7 @@
   <%
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '© 1922-2017 New York Institute of Finance, a Financial Times company. All rights reserved.',
+      'footer_copyright_text' : '© 1922-2017 New York Institute of Finance inc. All rights reserved.',
       'display_edx_disclaimer' : False, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
@@ -371,7 +377,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<p>To view the New York Institue of Finance Terms of Service, please visit: <a href="https://www.nyif.com/terms-of-use">https://www.nyif.com/terms-of-use</a> </p>', ## block content, place iline HTML here
+            'content' : '<p>To view the New York Institute of Finance Terms of Service, please visit: <a href="https://www.nyif.com/terms-of-use">https://www.nyif.com/terms-of-use</a> </p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
