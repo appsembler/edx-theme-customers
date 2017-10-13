@@ -13,3 +13,16 @@
     }
   }
 }
+
+form#register .form-field.password-password {
+  position: relative;
+
+  &:after {
+    content: 'Passwords must contain at least 12 characters and must contain at least one of the following: lower case letter, upper case letter, special character.';
+    display: block;
+    @include primary-font;
+    font-size: 1.4rem;
+    color: rgba(0,0,0,0.7);
+    margin: 1rem 0 0;
+  }
+}
