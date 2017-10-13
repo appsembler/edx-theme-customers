@@ -1,0 +1,97 @@
+// index hero
+.easycare--index-hero {
+  padding: 8rem 0;
+  background-color: #f5f7fd;
+
+  &__container {
+    @include display(flex);
+    @include align-items(center);
+
+    @media(max-width: $screen-sm-max) {
+      display: block;
+    }
+  }
+
+  &__content {
+    width: 60%;
+    @include flex-shrink(0);
+    margin-right: 4rem;
+
+    @media(max-width: $screen-sm-max) {
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-size: 5.4rem;
+      color: #555659;
+
+      span {
+        font-size: 3.8rem;
+        display: block;
+        color: #b9bbd2;
+      }
+    }
+
+    h4 {
+      font-size: 1.6rem;
+      color: #b9bbd2;
+      @include primary-font;
+    }
+
+    a.index-hero-cta {
+      display: inline-block;
+      padding: 1.5rem 3rem;
+      margin: 3rem 0 0;
+      background-color: $brand-accent-color;
+      color: #fff;
+      @include primary-font-bold;
+      font-size: 1.6rem;
+      border-radius: 5rem;
+
+      &:hover {
+        background-color: darken($brand-accent-color, 10%);
+      }
+    }
+  }
+
+  &__graphic {
+    width: 40%;
+
+    .circle-image-container {
+      width: 100%;
+      display: block;
+      background-size: cover;
+      background-position: center;
+      border-radius: 100%;
+      @include responsive_square_div;
+    }
+  }
+}
+
+// index course listing
+.a--course-listing-01 {
+
+  &__wrapper {
+    background-color: $brand-accent-color;
+    padding: 8rem 0;
+  }
+
+  &__container {
+    padding-top: 2rem;
+  }
+
+  &__header {
+    margin-bottom: 3rem;
+  }
+
+  &__section-heading {
+    font-size: 3.6rem;
+    @include primary-font-bold;
+    color: #fff;
+  }
+
+  &__courses {
+    margin: 0 -1.5rem;
+  }
+}

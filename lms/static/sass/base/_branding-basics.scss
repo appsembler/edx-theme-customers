@@ -3,10 +3,10 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
+$brand-primary-color: #07B8EC;
+$brand-accent-color: #FFAA00;
 $navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$base-text-color: darken(#9d9ea8, 10%);
 
 $primary-font-name: "Open Sans";
 $primary-font-weight-light: 300;
@@ -15,7 +15,7 @@ $primary-font-weight-bold: 700;
 $primary-font-weight-black: 800;
 $accent-font-name: "Bebas";
 
-$font-size-base-body: 14px;
+$font-size-base-body: 16px;
 $line-height-base-body: 150%;
 $font-size-h1: 32px;
 $line-height-h1: 130%;
@@ -26,8 +26,8 @@ $line-height-h3: 130%;
 $font-size-h4: 18px;
 $line-height-h4: 130%;
 
-$global-font-h1: "primary-font-light";
-$global-font-h2: "primary-font-light";
+$global-font-h1: "primary-font-black";
+$global-font-h2: "primary-font-black";
 $global-font-h3: "primary-font-bold";
 $global-font-h4: "primary-font-bold";
 $global-font-base-body: "primary-font-regular";
@@ -37,10 +37,10 @@ $global-font-cta-buttons: "primary-font-regular";
 $cta-button-bg: $brand-accent-color;
 $cta-button-text-color: #fff;
 $cta-button-border: none;
-$buttons-border-radius: 0.5rem;
+$buttons-border-radius: 5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
+$header-logo-height: 3.4rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
@@ -51,7 +51,7 @@ $header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
 $navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
 $navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
-$navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
+$navbar-link-hover: "hover-pop";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
 $display-navbar-logo-positive: calcDisplayLogoPositive($navbar-style);
 $display-navbar-logo-negative: calcDisplayLogoNegative($navbar-style);
@@ -83,7 +83,7 @@ $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;
-$footer-logo-width: 4rem;
+$footer-logo-width: 6rem;
 $footer-logo-opacity: 0.5;
 $footer-copyright-text-size: 1.2rem;
 $footer-copyright-text-color: lighten($footer-text-color, 15%);
