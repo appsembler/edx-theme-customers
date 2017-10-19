@@ -1,6 +1,6 @@
-<%inherit file="main.html" />
-<%namespace name='static' file='static_content.html'/>
-<%namespace file='main.html' import="login_query"/>
+<%inherit file="../../../lms/templates/main.html" />
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='../../../lms/templates/main.html' import="login_query"/>
 <%!
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
@@ -112,7 +112,7 @@ import calendar
     <form role="form" id="register-form" method="post" data-remote="true" action="/create_account" novalidate>
 <%
   # allow for theming override on the registration form
-  registration_form = static.get_template_path('register-form.html')
+  registration_form = static.get_template_path('/register-form.html')
 %>
       <%include file="${registration_form}" />
     </form>
@@ -122,7 +122,7 @@ import calendar
 
 <%
   # allow for theming overrides on the registration sidebars, otherwise default to pre-existing ones
-  sidebar_file = static.get_template_path('register-sidebar.html')
+  sidebar_file = static.get_template_path('/register-sidebar.html')
 %>
 
     <%include file="${sidebar_file}" />
