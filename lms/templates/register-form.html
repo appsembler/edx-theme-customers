@@ -9,6 +9,11 @@ from student.models import UserProfile
 <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
 
 <!-- status messages -->
+<div role="alert" class="form__status-message status message submission-success" tabindex="-1">
+  <h3 class="message-title">${_("Registration succeeded.  You will receive an email shortly with instructions on how to activate your account.")} </h3>
+  <ul class="message-copy"> </ul>
+</div>
+
 <div role="alert" class="status message">
   <h3 class="message-title">${_("We're sorry, but this version of your browser is not supported. Try again using a different browser or a newer version of your browser.")}</h3>
 </div>

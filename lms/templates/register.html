@@ -1,6 +1,6 @@
-<%inherit file="../../../lms/templates/main.html" />
+<%inherit file="/main.html" />
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='../../../lms/templates/main.html' import="login_query"/>
+<%namespace file='/main.html' import="login_query"/>
 <%!
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
@@ -13,7 +13,7 @@ from third_party_auth import pipeline, provider
 import calendar
 %>
 
-<%block name="pagetitle">${_("Register for {platform_name}").format(platform_name=platform_name)}</%block>
+<%block name="pagetitle">${_("XZXXRegister for {platform_name}").format(platform_name=platform_name)}</%block>
 
 <%block name="bodyclass">view-register</%block>
 
@@ -57,7 +57,16 @@ import calendar
           nextUrl = json.redirect_url; // Most likely third party auth completion. This trumps 'nextUrl' above.
         }
         if (!isExternal(nextUrl)) {
-          location.href=nextUrl;
+          $('.status.message.submission-success').addClass('is-shown').focus();
+          $('.status.message.submission-error').removeClass('is-shown');
+          $('.status.message.submission-success').addClass('is-shown').focus();
+          $('.status.message.submission-error').removeClass('is-shown');
+          $('.group-form').hide();
+          $('.instructions').hide();
+          $('button.action').hide();
+          $('h1.title').hide();
+          $('header').hide();
+          $('aside').hide();
         } else {
           location.href="${reverse('dashboard')}";
         }
