@@ -1,4 +1,4 @@
-<%namespace name='static' file='../static_content.html'/>
+<%namespace name='static' file='/static_content.html'/>
 <%!
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
@@ -6,11 +6,26 @@ from courseware.courses import get_course_about_section
 from django.conf import settings
 from edxmako.shortcuts import marketing_link
 from openedx.core.lib.courses import course_image_url
+from hr_management.utils import requested_access_for_course
+%>
+
+<%
+    if require_access_request:
+      require_approval = True
+      form_action=reverse('require_course_access')
+      enrollment_action='request_access'
+      has_requested_access = requested_access_for_course(course, user)
+      active_reg_button = not has_requested_access
+    else:
+      require_approval = False
+      form_action=reverse('change_enrollment')
+      enrollment_action='enroll'
+      active_reg_button = True
 %>
 
 <%namespace file='/theme-variables.html' import="get_course_about_content" />
 
-<%inherit file="../main.html" />
+<%inherit file="/main.html" />
 <%block name="headextra">
   ## OG (Open Graph) title and description added below to give social media info to display
   ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
@@ -153,6 +168,7 @@ from openedx.core.lib.courses import course_image_url
   course_about_vars['show_courseware_link'] = show_courseware_link
   course_about_vars['course_in_cart'] = in_cart
   course_about_vars['course_is_full'] = is_course_full
+  course_about_vars['course_requires_approval'] = require_approval and has_requested_access
   course_about_vars['course_is_invitation_only'] = invitation_only
   course_about_vars['user_can_enroll'] = can_enroll
   course_about_vars['can_add_course_to_cart'] = can_add_course_to_cart
@@ -213,14 +229,14 @@ from openedx.core.lib.courses import course_image_url
 ## which is when the student is not registered.
 %if active_reg_button or is_shib_course:
   <div style="display: none;">
-    <form id="class_enroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
+    <form id="class_enroll_form" method="post" data-remote="true" action="${form_action}">
       <fieldset class="enroll_fieldset">
         <legend class="sr">${_("Enroll")}</legend>
         <input name="course_id" type="hidden" value="${course.id | h}">
-        <input name="enrollment_action" type="hidden" value="enroll">
+        <input name="enrollment_action" type="hidden" value="${enrollment_action}">
       </fieldset>
       <div class="submit">
-        <input name="submit" type="submit" value="${_('enroll')}">
+        <input name="submit" type="submit" value="${enrollment_action}">
       </div>
     </form>
   </div>
