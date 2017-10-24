@@ -3,12 +3,12 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
+$brand-primary-color: #2E3485;
+$brand-accent-color: #21A89D;
 $navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$base-text-color: rgb(67, 72, 77);
 
-$primary-font-name: "Open Sans";
+$primary-font-name: "Roboto";
 $primary-font-weight-light: 300;
 $primary-font-weight-regular: 400;
 $primary-font-weight-bold: 700;
@@ -28,7 +28,7 @@ $line-height-h4: 130%;
 
 $global-font-h1: "primary-font-light";
 $global-font-h2: "primary-font-light";
-$global-font-h3: "primary-font-bold";
+$global-font-h3: "primary-font-regular";
 $global-font-h4: "primary-font-bold";
 $global-font-base-body: "primary-font-regular";
 $global-font-header-links: "primary-font-regular";
@@ -37,20 +37,20 @@ $global-font-cta-buttons: "primary-font-regular";
 $cta-button-bg: $brand-accent-color;
 $cta-button-text-color: #fff;
 $cta-button-border: none;
-$buttons-border-radius: 0.5rem;
+$buttons-border-radius: 0;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
-$header-padding-top: 1.5rem;
+$header-logo-height: 5.8rem;
+$header-padding-top: 1rem;
 $header-padding-bottom: $header-padding-top;
-$header-padding-sm-top: 1.5rem;
-$header-padding-sm-bottom: 1.5rem;
+$header-padding-sm-top: 1rem;
+$header-padding-sm-bottom: $header-padding-sm-top;
 $header-group-separation: 4rem;
 $header-font-size: 1.6rem;
-$header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
+$header-text-color: rgb(94,105,119);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
 $navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
-$navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
+$navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-accent-color);
 $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
 $display-navbar-logo-positive: calcDisplayLogoPositive($navbar-style);
@@ -63,7 +63,7 @@ $nav-toggle-bar-margin: 2rem;
 $nav-toggle-bar-color: $header-text-color;
 $nav-toggle-bar-separation: 1rem;
 $nav-toggle-bar-pulsar-color: $brand-primary-color;
-$nav-toggle-bar-pulsar-visible: false;
+$nav-toggle-bar-pulsar-visible: False;
 
 $slideout-menu-text-color: #fff;
 $slideout-menu-background-color: $brand-primary-color;

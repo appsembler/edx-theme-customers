@@ -1,0 +1,58 @@
+<%page args="template_settings, courses" />
+
+<%
+  max_courses = template_settings['max_courses']
+  courses = courses
+  course_template = template_settings['course_template']
+  course_template_class = template_settings['course_template_class']
+%>
+
+
+<%
+  course_count = 0
+%>
+
+<%
+  ## Bryan, in this template I'm trying to make your job as easy as possible - I'm copying the academies and universities structure of the original theme, but I'll leave those lines commented and add lines that are used in a normal installation so I can test this. After you implement whatever you need, just remove excess lines and uncomment ones commented.
+%>
+
+##% if 'academies' in [key.lower() for key in courses.keys()]:
+  <section class="isc--index-courses-universities__callout-container">
+    <div class="bs-container a--container">
+      <h3>A selection of Global Summit Academies 2015 are now available online.</h3>
+      <a class="isc--index-courses-universities__cta" href="#academies">Access online Global Summit Academies</a>
+    </div>
+  </section>
+##% endif
+
+<section class="a--course-listing-01__wrapper isc--index-courses-universities__courses-wrapper">
+  <div class="bs-container a--container a--course-listing-01__container">
+    ##% for university in sorted(courses.keys(), key=lambda k:k.lower(), reverse=True):
+
+      <div class="isc--index-courses-universities__single-university-courses">
+
+        ##<h2 class="university-name">${university}</h2>
+        <h2 class="university-name">Test University</h2>
+
+        ##% if university.lower()=='academies':
+          <a name="academies"></a>
+          <p class="academies-intro-text">
+            View a selection of Global Summit 2015 Academies available online.  Each online Academy includes a video of the Global Summit Academy presentation, hands-on exercises, and access to an online lab environment.
+          </p>
+        ##% endif
+
+        <div class="a--course-listing-01__courses courses-listing ${course_template_class}-parent-element">
+          ##% for course in courses[university]:
+          % for course in courses:
+            % if not course_count == max_courses:
+              <%include file="/design-templates/live-blocks/${course_template}" args="course=course" />
+              <% course_count = course_count + 1 %>
+            % endif
+          % endfor
+        </div>
+
+      </div>
+
+    ##% endfor
+  </div>
+</section>
