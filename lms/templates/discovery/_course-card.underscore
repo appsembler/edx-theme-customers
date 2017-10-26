@@ -1,0 +1,9 @@
+<article class="cmc--course-tile" aria-label="<%= content.display_name %>">
+  <a href="/courses/<%- course %>/about" class="course-image" style="background-image: url('<%- image_url %>');">
+    <span />
+  </a>
+  <a href="${course_info['course_url']}" class="course-name"><%= content.number %> <%= content.display_name %></a>
+  <p class="course-description">
+    <%= content.overview.substr(0,220) %>...
+  </p>
+</article>

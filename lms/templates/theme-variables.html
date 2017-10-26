@@ -23,7 +23,7 @@
   <%
   return {
     ##'header_logo_target' : ''
-    'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
+    'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,700i,800&subset=latin-ext',
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
@@ -66,8 +66,8 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : 'design-templates/header/_header-appsembler-01.html', ## required
-    'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
+    'header_template' : '/customer_specific/_header-cmc.html', ## required
+    'footer_template' : '/customer_specific/_footer-cmc.html' ## required
   }
   %>
 </%def>
@@ -146,32 +146,16 @@
     return [
       {
         "element-type":"static-block",
-        "element-path":"design-templates/static-blocks/_hero-section-01.html",
+        "element-path":"customer_specific/_index-hero.html",
         "options":{
-          # template settings
-          'hero_title' : "Welcome to our online courses!",
-          'hero_subtitle' : "We deliver our courses using Open edX, an open source software that powers edX.org and hundreds of other online learning sites around the world.",
-          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
-          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-          'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
-          'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
-          'text_color' : "#fff",
-          'bg_image_url' : '/static/themes/edx-theme-codebase/images/hero--example-background.jpg', ## leave empty if you want just a full color background
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+
         }
       },
       {
         "element-type":"courses-list",
-        "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
+        "element-path":"customer_specific/_index-courses-listing.html",
         "options":{
-          'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
-          'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
-          'course_template' : 'single-course/_course-tile-01.html', ## required
-          'section_heading' : "Our latest courses:",
-          'section_text' : "",
-          'optional_classes' : "centered", ## can be "centered" to have all text centered
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+          'max_courses' : 3, ## required, sets max number of courses to be displayed in the block
         }
       },
     ]
@@ -186,7 +170,7 @@
     return [
       {
         "element-type":"course-about-template",
-        "element-path":"design-templates/pages/course-about/_course-about-01.html",
+        "element-path":"/customer_specific/_cmc-course-about.html",
         "options":{
           "optional_classes":"",
           "extra_css":"",
@@ -203,10 +187,10 @@
     return [
       {
         "element-type":"course-catalogue-template",
-        "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
+        "element-path":"customer_specific/_cmc-course-catalogue.html",
         "options":{
           "discovery-facet-option":"facet_option-01",
-          "course-card":"course-tile-01",
+          "course-card":"course-card",
           "search-enabled":True,
           "discovery-facet":"facet-01"
         }
@@ -262,25 +246,17 @@
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
             # template settings
-            'hero_title' : "This is the title for the FAQ static page",
-            'hero_subtitle' : "Got any questions for us? Check out the ones we already have answered below, and if you don't find yours - click to contact us!",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "Contact us", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "Frequently Asked Questions",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
+            'text_color' : "#1DAFE2",
+            'background_color' : "#fff",
             'extra_css' : "", ## add custom css to be added inline to the wrapper element
             'bg_image_url' : '' ## leave empty if you want just a full color background
-          }
-        },
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_plain-content-01.html",
-          "options":{
-            'content' : '<h1>FAQ</h1><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. </p><h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p><h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<h3>Subheading here</h3><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<h3>Subheading here</h3><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus.<h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
         },
         {
@@ -289,17 +265,12 @@
           "options":{
             'content' : [
               ## ['Title', 'Expanded content'],
-              ['Does Open edX have an intuitive, polished interface: it should look modern and be easy to use.', 'This is one of the first things that strike people who use Open edX; as one person put it, "unlike many other learning management systems it actually looks like it was developed in the 21st Century." In less than four years over five million people have taken edX courses.'],
-              ['Can we visually brand our Open edX site, an individual course or series of courses through graphics, color, typography?', 'Yes, you can brand -- "theme" -- your Open edX instance. And you can give unique looks to groups of courses, such as those from a particular division or geography, using the Open edX microsites functionality. Finally, you can make modest modifications to individual courses and alter their navigation options, too.'],
-              ['Does Open edX functions fluidly on conventional web browsers for Windows, OSX and mobile platforms?', 'Open edX can be used on current versions of the Chrome, Safari, Firefox and Internet Explorer browsers.'],
-              ['How can students track activity and performance?', 'Students can take quizzes and tests and upload files. Using the Staff Graded Assignment feature developed by Appsemblers sister company Jazkarta, and added to the core edX code in 2014, instructors can grade and comment on student submissions. Using the Open Response Assessment (ORA) feature developed by Appsembler students can grade the essays of their peers.'],
-              ['How do students know where they left off within the course?', 'Open edX automatically returns the students to the place they were in the course when they last closed it.'],
-              ['Is there a mechanism to allow submission of documents and files from students?', 'Yes, using the Staff Graded Assignment feature students can upload and instructors can grade assignments. This is a feature commissioned by MIT that the Appsembler team built and has now been incorporated as a core feature of the edX platform.'],
-              ['Can you group all course downloads, handouts, etc. all together in a ‘library’, as well as embed them individually with lesson content?', 'You can upload files into a library and reference them in any course content: <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/course_files.html">http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/course_files.html</a> &nbsp; There is a handouts feature. <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/handouts_updates.html">http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/handouts_updates.html</a> Open edX provides a <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/creating_content/libraries.html">content libraries</a> feature which lets you create a library of content that can be re-used across multiple courses. When you change the content in the library the content is updated in all the courses.'],
-              ['Can you import and export content from other online education systems?', 'Appsembler has provided Open edX SCORM support using SCORM Cloud as described<a href="http://blog.jazkarta.com/2015/02/08/adding-scorm-packages-to-open-edx-via-scormcloud-and-lti/%27"> in this blog post</a>, and are working on deeper native SCORM support for a client that we will deliver this winter. Open edX is an LTI provider and consumer.'],
-              ['Can instructors create simple or complex quizzes or tests using text, images or video clips as needed?', 'Yes, here is information on tests and quizzes. Use of images and video is fundamental to edX <a href="http://open-edx-building-and-running-a-course.readthedocs.org/en/latest/exercises_tools/index.html">http://open-edx-building-and-running-a-course.readthedocs.org/en/latest/exercises_tools/index.html</a> &nbsp; The<a href="https://github.com/open-craft/problem-builder"> Problem Builder XBlock</a> has capabilities that can help you provide feedback and hints to the student. &nbsp; Some of the hundreds of other XBlocks available for Open edX include:<ul><li>Integration with cloud storage services such as Google Drive and Dropbox</li><li>Student polls</li><li>Integration with third-party video hosting services such as Brightcove</li><li>Ask questions during playback of YouTube videos</li><li>Mathematical physics simulations</li><li>Adding hotspots to course images</li><li>Drag and Drop questions</li><li>Awarding digital badges</li></ul>Appsembler could create a custom XBlock to support any content, exercise or test type that’s not currently provided.'],
-              ['We want students to be able to practice on our software. Could Open edX support this?', 'Yes, Appsembler has developed a custom virtual software lab for our clients that lets students instantly spin up a copy of their software to work on.'],
-              ['How can students communicate with instructors?', 'The instructor and students in a course can communicate with one another in course discussion areas, and instructors and individual students can communicate directly via a one-to-one discussion thread and email. Instructors can email students individual or as a group.']
+              ['How do I sign up for a course?', 'Simply create an account and then register for the course of your choice. Choose Register Now to get started.'],
+              ['What are the requirements for taking an online course on this system?', ' The courses work best with current versions of Chrome, Firefox or Safari, or with Internet Explorer version 9 or above.'],
+              ['Who do I contact if I experience a technical issue while taking an online course? ', 'Email <a href="mailto:onlinetraining@intersystems.com">onlinetraining@intersystems.com</a>.'],
+              ['Who do I contact if I have a question about the content of a course? ', 'Email <a href="mailto:CMC_training@nhs.net.">CMC_training@nhs.net.</a>'],
+              ['Do I need to have a CMC login to complete the training?', ' No. The training can be completed without a CMC login.'],
+              ['Will I be given a CMC login when I register for training?', ' No. CMC logins must be requested separately. Email <a href="mailto:CMC_training@nhs.net">CMC_training@nhs.net</a>.']
             ],
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
@@ -319,14 +290,15 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "Terms of Use for Coordinate My Care Online Training",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
+            'text_color' : "#1DAFE2",
+            'background_color' : "#fff",
             'bg_image_url' : '', ## leave empty if you want just a full color background
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
@@ -335,7 +307,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
+            'content' : '<p>This website contains information which is the property of InterSystems Corporation, One Memorial Drive, Cambridge, MA 02142, or its affiliates and site-users. This website, its functions, and information are made available solely for purpose of education on the operation and use of the Coordinate My Care service. No part of this website (including the submitted information of its users) is to be used for any other purpose, and this website is not to be reproduced, copied, disclosed, transmitted, stored in a retrieval system or translated into any human or computer language, in any form, by any means, in whole or in part, without the express prior written consent of InterSystems Corporation.</p><p>While accessing or using this website, you agree to refrain from any conduct which is outside the stated purpose above, unlawful, malicious, abusive, fraudulent, harmful, or involves the misappropriation of any intellectual property (including streaming, downloading, or otherwise trafficking misappropriated media, software, etc.). Any failure to observe these standards of conduct may result in termination of your access privileges, sanctions through your employer, and criminal and/or civil penalties.</p><p>These terms may be modified from time to time without notice, and InterSystems Corporation shall have no obligation to alert you to such modifications. If you do not consent to the terms herein, you must discontinue all use of the website. YOUR CONTINUED ACCESS OR USE OF THIS WEBSITE SHALL INDICATE YOUR ACCEPTANCE OF THESE TERMS.</p><p>InterSystems®, InterSystems Caché®, InterSystems HealthShare®, TrakCare, and InterSystems Ensemble® are registered trademarks of InterSystems Corporation.</p><p>TrakCare is a registered trademark in Australia and the European Union.<br />All other marks, trademarks, and product names are the property of their respective vendors.</p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
@@ -483,7 +455,17 @@
 ## privacy page content
 
 <%def name="get_privacy_content()">
-  <%
-    return []
-  %>
+<%
+  return [
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_plain-content-01.html",
+        "options":{
+          'content' : '<p>While using and exploring this online education platform, you may submit or expose information that relates to you as an individual.  This “Personal Information” may be protected by various obligations rising from laws, regulations, and contractual commitments. This Privacy Policy describes how we use and protect your Personal Information. As used in this Privacy Policy, "we," "us," and "our" refer to InterSystems Corporation (“ISC”).</p><p>This Privacy Policy only applies to information that we collect through the Coordinate My Care Online Training System (the "Site"--including all content and web pages hosted on this domain as part of the Site).  This Privacy Policy does not apply to information collected from you through any other medium (such as by phone, email, or fax).</p><h3>USERNAMES AND POSTINGS</h3><p>Your comments or postings can viewed by other Site-users on our forums, wikis or other areas of the Site designed for public communications or communications among registered class members. Please exercise discretion when posting information that may identify or help identify you to other viewers of forums and user-submission areas.</p><h3>CONSENT TO PROCESSING OUTSIDE HOME COUNTRY</h3><p>By using our Site, or providing information to ISC, you consent to the collection, use, disclosure and retention of information in the United States and other countries and territories, for the purposes set forth in this Privacy Policy and the ISC Terms of Service. You hereby consent to the collection, use, disclosure, and retention by ISC of your Personal Information as described under this Privacy Policy, including but not limited to the transfer of your personal data between ISC and the third parties, affiliates, and subsidiaries described in this Privacy Policy. For further certainty, any consent relating to a right to transfer information referred to in this paragraph shall be deemed to include your consent to the transfer of the applicable Personal Information to a jurisdiction which may provide a different level of privacy protection than that available in your own country.</p><p>If you do not agree with these terms, then please do not access, browse, or register for the Site. If you choose not to provide us with certain information required to provide you with various services offered on our Site, you may not be able to establish a user account and we may not be able to provide you with those services.</p><h3>PERSONAL INFORMATION</h3><p>As used in this Privacy Policy, "Personal Information" means any information about you that you provide to us when using the Site. Personal Information includes (but is not limited to) your name, contact information, gender, date of birth, occupation, any other identification material, and potentially your course history and educational records.</p><h3>INFORMATION WE COLLECT AND HOW WE USE IT</h3><p>We collect information when you sign up for a user account, register or participate in online courses, send us email messages and/or participate in forums on our Site. We also collect certain usage information about student performance and patterns of learning. We also track and log information about how you (a user) navigate our Site, when you visit the Site, and how you use the interface and hyperlinks.</p><p>We may log session, browser, and machine information when you connect to the Site, including but not limited to your IP address, operating system, and browser software, and we may determine additional user information from the IP address, such as the user\'s Internet Service Provider and the geographic location from which a user is connecting. </p><p>Some of the information above is collected through cookies (small text files placed on your computer that store information about you for the benefit of sites you access). You may be able to control how and whether your web browser accepts cookies. For more information relating to disabling or limiting your browser’s use of cookies, many browsers include documentation in their "Help" documentation accessible through the toolbar. If you reject our cookies, some functions and conveniences of this Site may not function.</p><h3>USE AND DISCLOSURE TO THIRD PARTIES</h3><p>In cases where we share or disclose your Personal Information: (1) the third party recipients are required to handle the Personal Information in a confidential manner and to maintain adequate security to protect the information from loss, misuse, unauthorized access or disclosure, alteration, and destruction; and (2) we will only disclose and share the Personal Information that is required by the</p><p></p><p>Some of the reasons we use Personal Information can be found below...</p><ul style="font-size: 14px;"><li>To provide, administer, and improve the courses offered over the Site.</li><li>To help us improve ISC offerings, both individually (e.g., by course staff when working with a student) and in aggregate, and to individualize the experience and evaluate the access and use of the Site.</li><li>For the purpose for which you specifically provided the information, for example, to respond to a specific inquiry or provide you with access to the specific course content and/or services in which you enroll.</li><li>To track both individual and aggregate attendance, progress and completion of an online course, and to analyze statistics on student performance and how students learn.</li><li>To monitor and detect violations of the Terms of Service and other misuses of the Site.</li><li>To publish information, but not Personal Information, gathered about ISC access, use, impact, and student performance.</li><li>To send you updates about online courses offered by ISC or other events, or to send you email messages about Site maintenance or updates.</li><li>To archive this information and/or use it for future communications with you.</li><li>To maintain and improve the functioning and security of the Site and our software, systems, and network.</li><li>As otherwise described to you at the point of collection or pursuant to your consent.</li><li>To authenticate your identity, if needed.</li><li>To process refunds, as applicable.</li></ul><p>We may share your Personal Information with service providers or contractors that process information on the Site, transactions through the Site, Site operations, provision or administration of courses, or in connection with other aspects of ISC.<br />We may provide your Postings (submitted comments, course work, or other information or content) as examples or material for courses or forums or to integrate with third party services and content (such as authenticating access to videos hosted on other services). If we do re-post your Postings originally made to non-public portions of the Site, we will post them without your real name and e-mail (except with your express permission), but we may use your username without your consent.</p><p>We may use your Personal Information to provide opportunities for you to communicate with other users who may have similar interests or educational goals. For instance, we may recommend specific study partners or connect potential student mentees and mentors. In such cases, we may use all information collected about you to determine who might be interested in communicating with you.<br />Your Personal Information may be used to respond to subpoenas, court orders, or other legal process; to investigate, or prevent, or take action regarding illegal activities, suspected fraud, or security or technical issues, or to enforce our Terms of Service or this Privacy Policy; as otherwise may be required by applicable law; or to protect our rights, property, or safety or those of others.<br />Your Personal Information may be shared with affiliates of ISC, or with successors in the event of a merger, acquisition or reorganization, for their use consistent with this Privacy Policy.</p><p>Finally, we may use your Person Information as otherwise described to you at the point of collection or pursuant to your consent.<br />Alternatively, we may share aggregated information that does not personally identify you with the public and with third parties, including but not limited to researchers and business partners.</p><h3>LINKS TO OTHER WEBSITES</h3><p>The Site contains links to websites published by third parties, including other content providers as well as certain service providers. These other websites are not under our control, and you acknowledge and agree that we are not responsible for the collection and use of your information by such websites. We encourage you to be aware when you are be redirected to a third party website and review the privacy policies of each website you visit and use.</p><h3>SECURITY</h3><p>While ISC has implemented information security safeguards designed to protect your Personal Information in our possession or control, no method of transmission over the Internet, or method of electronic storage, is 100% secure; and therefore, ISC cannot absolutely guarantee the security of your Personal Information.</p><h3>CHANGING OUR PRIVACY POLICY</h3><p>Please note that we review and may make changes to this Privacy Policy from time to time. By accessing the Site after any changes have been made, you signify your agreement on a prospective basis to the modified Privacy Policy and any changes contained therein. In case you miss a notification of changes to this Privacy Policy, be sure to return to this page periodically to ensure familiarity with the most current version of this Privacy Policy.</p><h3>PRIVACY CONCERNS</h3><p>If you have privacy concerns, have disclosed data you would prefer to keep private, or would like to access the information we maintain about you, please contact us at <a href="mailto:coordinatemycare@nhs.net">coordinatemycare@nhs.net</a>.</p>', ## block content, place iline HTML here
+          'optional_classes' : "", ##
+          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+        }
+      },
+  ]
+%>
 </%def>

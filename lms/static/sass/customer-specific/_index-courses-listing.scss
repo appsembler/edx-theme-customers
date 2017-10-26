@@ -1,0 +1,41 @@
+.cmc--index-courses-listing {
+
+  &__wrapper {
+    padding: 6rem 0;
+  }
+
+  &__header {
+    @include display(flex);
+    @include align-items(center);
+    margin: 0 0 2rem;
+
+    h2 {
+      @include primary-font;
+      font-size: 2.6rem;
+      letter-spacing: 1px;
+      color: #152527;
+      margin: 0 3rem 0 0;
+    }
+
+    .cta-button {
+      margin-left: auto;
+      @include primary-font;
+      font-size: 1.6rem;
+      color: #fff;
+      background-color: $brand-accent-color;
+      padding: 1rem 1.5rem;
+      border-radius: 0.5rem;
+
+      &:hover, &:focus {
+        color: #fff;
+        background-color: darken($brand-accent-color, 10%);
+      }
+    }
+  }
+
+  &__courses {
+    margin: 0 -3rem;
+    @include display(flex);
+    @include flex-wrap(wrap);
+  }
+}

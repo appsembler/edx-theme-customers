@@ -1,0 +1,20 @@
+<%page args="theme_folder" />
+<%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+## mako
+
+<!-- Include jQuery -->
+<script src="${static('js/jquery.mobile.custom.min.js')}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="${static('js/bootstrap.min.js')}"></script>
+<!-- Custom base JavaScript -->
+<script src="${static('js/base.js')}"></script>
+<!-- Bowser script to handle IE redirect condition -->
+<script src="${static('js/bowser.min.js')}"></script>
+<!-- old IE redirect -->
+<script>
+    $(document).ready(function() {
+      if (do_redirect && bowser.msie && bowser.version < 9) {
+        $(location).attr('href','http://cmc.learning.intersystems.com/ie-static');
+      }
+    });
+</script>

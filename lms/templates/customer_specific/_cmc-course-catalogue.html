@@ -1,0 +1,83 @@
+<%!
+from django.utils.translation import ugettext as _
+%>
+
+<%page args="options, courses, discovery_enabled" />
+
+<%namespace name='static' file='/static_content.html'/>
+
+
+% if (discovery_enabled & options['search-enabled']):
+
+  <section class="a--course-catalogue-01__discovery bs-container a--container">
+    <%include file = "/design-templates/live-blocks/discovery/_discovery-search-01.html" args='search_wrapper_id = "discovery-form"' />
+  </section>
+
+  <section class="a--course-catalogue-01__courses">
+    <div class="bs-container a--container courses">
+      <div class="col-xs-12 col-sm-8 col-md-9 a--course-catalogue-01__courses-container courses-listing courses-listing-narrower a--${options['course-card']}-parent-element">
+        % for course in courses:
+            <%include file="/design-templates/live-blocks/single-course/_${options['course-card']}.html" args="course=course" />
+        % endfor
+      </div>
+      <aside class="hidden-xs col-sm-4 col-md-3 a--course-catalogue-01__discovery-facet-container a--discovery-facets search-facets">
+        <h2 class="a--discovery-facets__heading">${_('Refine Your Search')}</h2>
+        <div class="search-facets-lists">
+        </div>
+      </aside>
+    </div>
+  </section>
+
+% else:
+
+  <!-- Header with categories -->
+  <section class="cmc--course-catalogue__header">
+    <div class="bs-container a--container cmc--course-catalogue__header__container">
+      <h2>Modules</h2>
+      <div class="cmc--course-catalogue__header__categories">
+        <a href="#cmcsystemaccess" class="cmc--course-catalogue__header__category">CMC System Access</a>
+        <a href="#cmcsystemtraining" class="cmc--course-catalogue__header__category">CMC System Training</a>
+        <a href="#clinicalguidance" class="cmc--course-catalogue__header__category">Clinical Guidance</a>
+      </div>
+    </div>
+  </section>
+  <!-- end of header with categories -->
+
+  <section class="cmc--course-catalogue__courses">
+    <ul class="bs-container a--container cmc--course-catalogue__courses__container">
+      % for category in courses.keys():
+        <%
+          cat_courses = courses[category]
+          cgroupshort = category.replace(" ", "").lower()
+        %>
+        <!-- single courses category -->
+        <li id="${cgroupshort}" class="courses-category">
+
+          <!-- single category header with category name -->
+          % if category != 'ungrouped':
+          <div class="courses-category__header">
+            <h3>{category}</h3>
+          </div>
+          % endif
+          <!-- end of category header -->
+
+          % if category.lower() == 'cmc system training':
+            <%
+            # move CMC000 to end of category
+            cat_courses = cat_courses + [cat_courses.pop(0)]
+            %>
+          % endif
+
+          <div class="courses-category__list">
+            % for course in cat_courses:
+              <%include file="/customer_specific/_course-card.html" args="course=course" />
+            % endfor
+          </div>
+
+        </li>
+        <!-- end of single courses category -->
+      % endfor
+    </ul>
+  </section>
+
+% endif

@@ -1,0 +1,158 @@
+.cmc--ie-warning {
+  margin-top: 40px;
+
+  p {
+    margin: 0;
+    width: 100%;
+    display: block;
+    padding: 30px;
+    background-color: #f6f7c4;
+    border: 1px solid #ccc;
+    font-size: 16px;
+
+    .red {
+      color: $brand-danger;
+    }
+  }
+}
+
+
+.cmc--ie-courses-header {
+  padding: 40px 0;
+
+  &__container {
+    @include display(flex);
+    @include align-items(center);
+
+    @media(max-width:$screen-xs-max) {
+      @include flex-wrap(wrap);
+    }
+  }
+
+  h2 {
+    display: inline-block;
+    margin: 0 35px 0 0;
+    @include primary-font;
+    font-size: 26px;
+
+    @media(max-width:$screen-xs-max) {
+      margin-bottom: 10px;
+    }
+  }
+
+  ul {
+    padding: 0;
+    margin: 10px 0 0 0;
+
+    li {
+      padding: 5px 15px;
+      display: inline-block;
+      list-style-type: none;
+      margin: 0;
+
+      @media(max-width:$screen-xs-max) {
+        display: block;
+      }
+
+      a, a:link, a:visited {
+        color: $brand-primary-color;
+        @include primary-font-bold;
+
+        &:hover, &:focus {
+          color: darken($brand-primary-color, 10%);
+        }
+      }
+    }
+  }
+}
+
+.cmc--ie-courses-group {
+  padding: 40px 0;
+  border-top: 1px solid #ccc;
+
+  &__title {
+    @include primary-font;
+    font-size: 21px;
+    margin-bottom: 20px;
+  }
+}
+
+.ie-course {
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  &__image {
+
+    img {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+  }
+
+  &__info {
+    padding-top: 20px;
+
+    &__name {
+      font-size: 18px;
+      @include primary-font-bold;
+      margin: 0 0 20px 0;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 10px 0 0 0;
+    }
+  }
+
+  &__resources {
+    padding-top: 20px;
+
+    &__pdf-button, &__pdf-button:link, &__pdf-button:visited {
+      display: inline-block;
+      padding: 15px 30px;
+      color: #fff;
+      background-color: $brand-accent-color;
+      border-radius: 5px;
+      @include primary-font;
+      font-weight: 600;
+      @include transition(all 0.3s ease-in-out);
+
+      &:hover, &:focus {
+        background-color: darken($brand-accent-color, 10%);
+        color: #fff;
+      }
+    }
+
+    ul {
+      padding: 0;
+      margin: 30px 0 0 0;
+
+      li {
+        list-style-type: none;
+        padding: 5px;
+        display: block;
+        @include primary-font-bold;
+
+        &.warning {
+          color: $brand-danger;
+          @include primary-font;
+          font-size: 14px;
+        }
+
+        a {
+          color: $brand-primary-color;
+          @include primary-font-bold;
+        }
+      }
+    }
+  }
+}
+
+.no-flexbox .cmc--ie-courses-header__container {
+  display: table;
+}
+
+.no-flexbox .cmc--ie-courses-header__container ul {
+  display: table-cell;
+}

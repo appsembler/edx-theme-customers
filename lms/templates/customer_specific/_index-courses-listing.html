@@ -1,0 +1,28 @@
+<%page args="template_settings, courses" />
+
+<%
+  max_courses = template_settings['max_courses']
+  courses = courses
+%>
+
+
+<%
+  course_count = 0
+%>
+
+<section class="cmc--index-courses-listing__wrapper">
+  <div class="bs-container a--container cmc--index-courses-listing__container">
+    <div class="cmc--index-courses-listing__header">
+      <h2>Example modules</h2>
+      <a href="/courses" class="cta-button">Browse all modules</a>
+    </div>
+    <div class="cmc--index-courses-listing__courses">
+      % for course in courses:
+        % if not course_count == max_courses:
+          <%include file="/customer_specific/_course-card.html" args="course=course" />
+          <% course_count = course_count + 1 %>
+        % endif
+      % endfor
+    </div>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+<%!
+from django.contrib.staticfiles.templatetags.staticfiles import static
+%>
+
+<section class="cmc--index-hero">
+  <div class="bs-container a--container">
+    <div class="cmc--index-hero__content row">
+      <div class="cmc--index-hero__content__text col-xs-12 col-md-7">
+        <p>Coordinate My Care is a clinical service that allows health and social care professionals to create urgent care plans reflecting patients' clinical needs, wishes and preferences to be shared with the urgent care providers 24/7.</p>
+      </div>
+      <div class="cmc--index-hero__graphic col-md-5">
+        <img class="svg-fallback svg" src="${static('images/landing-graphic.svg')}">
+        <img class="svg-fallback png" src="${static('images/landing-graphic.png')}">
+      </div>
+    </div>
+  </div>
+</section>

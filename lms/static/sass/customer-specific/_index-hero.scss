@@ -1,0 +1,40 @@
+.cmc--index-hero {
+	padding: 0 3rem;
+	background-color: #F5F5F5;
+	text-align: left;
+	color: #000;
+	border-bottom: 0.2rem solid #D7D7D7;
+
+	&__content {
+		margin: 0 auto;
+		@include display(flex);
+
+		@media(max-width:$screen-sm-max) {
+			text-align: center;
+		}
+
+		&__text {
+			padding: 10rem 0;
+
+      p {
+				@include primary-font;
+				font-size: 2.6rem;
+				line-height: 160%;
+			}
+		}
+	}
+
+	&__graphic {
+		position: relative;
+
+		@media(max-width: $screen-sm-max) {
+			display: none;
+		}
+
+		img {
+			height: 100%;
+			position: absolute;
+		}
+	}
+
+}

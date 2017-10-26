@@ -3,10 +3,10 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
+$brand-primary-color: #1DAFE2;
+$brand-accent-color: #714C8D;
 $navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$base-text-color: #152527;
 
 $primary-font-name: "Open Sans";
 $primary-font-weight-light: 300;
@@ -40,7 +40,7 @@ $cta-button-border: none;
 $buttons-border-radius: 0.5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
+$header-logo-height: 4.4rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
@@ -63,7 +63,7 @@ $nav-toggle-bar-margin: 2rem;
 $nav-toggle-bar-color: $header-text-color;
 $nav-toggle-bar-separation: 1rem;
 $nav-toggle-bar-pulsar-color: $brand-primary-color;
-$nav-toggle-bar-pulsar-visible: false;
+$nav-toggle-bar-pulsar-visible: False;
 
 $slideout-menu-text-color: #fff;
 $slideout-menu-background-color: $brand-primary-color;
@@ -76,7 +76,7 @@ $base-letter-spacing: 0;
 $footer-padding-top: 4rem;
 $footer-padding-bottom: 1.5*$footer-padding-top;
 $footer-bg-color: #eee;
-$footer-top-border: none;
+$footer-top-border: 0.1rem solid #D7D7D7;
 $footer-text-color: lighten($base-text-color, 15%);
 $footer-link-color: $footer-text-color;
 $footer-link-hover-color: lighten($footer-text-color, 15%);

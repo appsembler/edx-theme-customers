@@ -1,0 +1,37 @@
+@import "customer-specific/header-cmc";
+@import "customer-specific/footer-cmc";
+@import "customer-specific/index-hero";
+@import "customer-specific/index-courses-listing";
+@import "customer-specific/course-card";
+@import "customer-specific/cmc-course-catalogue";
+@import "customer-specific/ie-static-page";
+
+.svg-fallback.png {
+	display: none;
+}
+
+.no-svgasimg {
+
+	.svg-fallback.svg {
+		display: none;
+	}
+
+	.svg-fallback.png {
+		display: block;
+	}
+}
+
+.a--course-card-parent-element.courses-listing-narrower {
+	@include display(flex);
+	@include flex-wrap(wrap);
+	position: relative;
+	z-index: 2;
+
+	li.courses-listing-item {
+ 	width: 50%;
+
+ 	@media (max-width: $screen-sm-max) {
+ 		width: 100%;
+ 	}
+ }
+}

@@ -1,0 +1,38 @@
+.cmc--course-tile {
+  margin: 2rem 0;
+  padding: 0 3rem;
+
+  .course-image {
+    display: block;
+    position: relative;
+    height: 24rem;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    margin: 0 0 2rem;
+    border: 0.1rem solid rgba(#000, 0.1);
+    border-bottom: 0.5rem solid rgba(#000, 0.1);
+    @include transition(all 0.3s ease-in-out);
+
+    &:hover, &:focus {
+      border-bottom: 1rem solid rgba(#000, 0.1);
+    }
+  }
+
+  .course-name {
+    color: #009bcb;
+    @include primary-font-bold;
+    font-size: 1.8rem;
+    line-height: 130%;
+    min-height: 4.6rem;
+    margin: 0 0 1rem;
+
+    &:hover, &:focus {
+      color: $brand-primary-color;
+    }
+  }
+
+  .course-description {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,312 @@
+<%!
+  from django.utils.translation import ugettext as _
+  from django.contrib.staticfiles.templatetags.staticfiles import static
+%>
+<%inherit file="/main.html" />
+
+<%namespace file='/theme-variables.html' import="get_blog_content, get_global_settings" />
+
+<%block name="pagetitle">
+    Coordinate My Care | IE Static Page
+</%block>
+
+<section class="cmc--index-hero">
+  <div class="bs-container a--container">
+    <div class="cmc--index-hero__content row">
+      <div class="cmc--index-hero__content__text col-xs-12 col-md-7">
+        <p>Coordinate My Care is a clinical service that allows health and social care professionals to create urgent care plans reflecting patients' clinical needs, wishes and preferences to be shared with the urgent care providers 24/7.</p>
+      </div>
+      <div class="cmc--index-hero__graphic col-md-5">
+        <img class="svg-fallback svg" src="${static('images/landing-graphic.svg')}">
+        <img class="svg-fallback png" src="${static('images/landing-graphic.png')}">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="cmc--ie-warning">
+    <div class="bs-container a--container">
+      <p>
+        Online training from CMC is only available to users with modern browsers like <b>Chrome, Firefox, Safari, IE9 or later</b>. You can download PDF versions of each module and view module videos using the links below.
+        <span class="red">If you encounter problems viewing the online videos, they can be downloaded and watched offline.  To do this: right click on the video link and choose "Save link as..." (Chrome) or "Save target as..." (IE).  To play a video a compatible MP4 video player must be installed locally on your machine.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="cmc--ie-courses-header">
+    <div class="cmc--ie-courses-header__container bs-container a--container">
+      <h2>Modules</h2>
+      <ul>
+        <li>
+          <a href="#cmc-system-access">CMC System Access</a>
+        </li>
+        <li>
+          <a href="#cmc-system-training">CMC System Training</a>
+        </li>
+        <li>
+          <a href="#clinical-guidance">Clinical Guidance</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cmc--ie-courses-group" id="cmc-system-access">
+    <div class="cmc--ie-courses-group__container bs-container a--container">
+      <h2 class="cmc--ie-courses-group__title">CMC System Access</h2>
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-1.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC100: Introduction to Coordinate My Care and Accessing the System</h3>
+          <p>
+            For all users. This module introduces the Coordinate My Care (CMC) organisation, explains the purpose of care plans and provides steps for requesting a Coordinate My Care system login.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://training.intersystems.com/samples/cmc/live/CMC100/CMC100.IntroductiontoCoordinateMyCareandAccessingtheSystem.pdf" class="ie-course__resources__pdf-button">Module content PDF</a>
+        </div>
+      </div>
+      <!-- end of single course -->
+    </div>
+  </section>
+  <section class="cmc--ie-courses-group" id="cmc-system-training">
+    <div class="cmc--ie-courses-group__container bs-container a--container">
+      <h2 class="cmc--ie-courses-group__title">CMC System Training</h2>
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-8.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC101: Logging In to the System</h3>
+          <p>
+            For all users. This module will instruct users how to log in to the Coordinate My Care system and change their password.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://training.intersystems.com/samples/cmc/live/CMC101/CMC101.LoggingIntotheCoordinateMyCareSystem.pdf" class="ie-course__resources__pdf-button">Module content PDF</a>
+        </div>
+      </div>
+      <!-- end of single course -->
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-9.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC102: Creating a New Care Plan</h3>
+          <p>
+            For clinical and administrative users. This course will familiarise users with the care plan approval process and how to create a new care plan for a patient.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://training.intersystems.com/samples/cmc/live/CMC102/CMC102.CreatingaNewCarePlan.pdf" class="ie-course__resources__pdf-button">Module content PDF</a>
+          <ul>
+            <li>
+              Videos
+            </li>
+            <li class="warning">Please Note: If you encounter problems viewing the online videos, they can be downloaded and watched offline.  To do this: right click on the video link and choose "Save link as..." (Chrome) or "Save target as..." (IE).  To play a video a compatible MP4 video player must be installed locally on your machine.</li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4605153993001_4601845877001.mp4">The Care Plan Life Cycle</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4603497698001_4603480036001.mp4">The Home Screen</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4598752625001_4598720329001.mp4">Creating a New Care Plan</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4604911301001_4600277534001.mp4">Data Entry: Patient Details</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4605289972001_4601343768001.mp4">Data Entry: Significant Medical Details & Medications</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4601422255001_4601400775001.mp4">Data Entry: Preferences, CPR, Treatment Plan</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4605238890001_4602112148001.mp4">Data Entry: Contacts</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4601408046001_4601369934001.mp4">Care Plan Approval</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- end of single course -->
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-4.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC103: Reviewing, Updating and Recording Death</h3>
+          <p>
+            For clinical and administrative users.  This module explains how to find a patient care plan and the difference between opening a care plan in View Only and Editing mode.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://training.intersystems.com/samples/cmc/live/CMC103/CMC103.ReviewingUpdatingandRecordingDeath.pdf" class="ie-course__resources__pdf-button">Module content PDF</a>
+        </div>
+      </div>
+      <!-- end of single course -->
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-5.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC104: Viewing a Care Plan</h3>
+          <p>
+            For urgent care users. This module provides an introduction to the Urgent Care Summary screen and navigation menus which provide access to detailed information about a patient and the patient's care plan.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://training.intersystems.com/samples/cmc/live/CMC104/CMC104.ViewingaCarePlan.pdf" class="ie-course__resources__pdf-button">Module content PDF</a>
+          <ul>
+            <li>
+              Videos
+            </li>
+            <li class="warning">Please Note: If you encounter problems viewing the online videos, they can be downloaded and watched offline.  To do this: right click on the video link and choose "Save link as..." (Chrome) or "Save target as..." (IE).  To play a video a compatible MP4 video player must be installed locally on your machine.</li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201512/90843153001_4671820115001_4667061588001.mp4">The Care Plan Life Cycle</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201602/90843153001_4748794329001_4686778408001.mp4">Viewing a Care Plan</a>
+            </li>
+            <li>
+              <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201601/90843153001_4703740190001_4692152699001.mp4">Restricted Records</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- end of single course -->
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-10.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC105: Working with CMC Care Plans from EMIS</h3>
+          <p>
+            This module explains how registered Coordinate My Care (CMC) users can access the CMC system from EMIS Web and what CMC system functionality is available.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://training.intersystems.com/samples/cmc/live/CMC105/CMC105.WorkingWithCMCCarePlansFromEMIS.pdf" class="ie-course__resources__pdf-button">Module content PDF</a>
+        </div>
+      </div>
+      <!-- end of single course -->
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-11.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC106: Enabling Patient Access to myCMC (The Patient Portal)</h3>
+          <p>
+            For clinical users who have patients with published care plans. This module takes clinicians through the process of enabling patients to access the patient portal website myCMC in order to view their care plans.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://training.intersystems.com/samples/edxcourses/cmc106/CMC106.EnablingPatientAccesstomyCMC.pdf" class="ie-course__resources__pdf-button">Module content PDF</a>
+          <ul>
+            <li>
+              Videos
+            </li>
+            <li class="warning">Please Note: If you encounter problems viewing the online videos, they can be downloaded and watched offline.  To do this: right click on the video link and choose "Save link as..." (Chrome) or "Save target as..." (IE).  To play a video a compatible MP4 video player must be installed locally on your machine.</li>
+            <li>
+              <a href="https://bcsecure04-a.akamaihd.net/hd2/o1/90843153001/90843153001_5353338683001_5343170587001.mp4?pubId=90843153001&videoId=5343170587001">Enabling Patient Access to myCMC Demonstration</a>
+            </li>
+            <li>
+              <a href="https://bcsecure04-a.akamaihd.net/hd2/o1/90843153001/201703/90843153001_5358852725001_5358847142001.mp4?pubId=90843153001&videoId=5358847142001">myCMC Demonstration</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- end of single course -->
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-12.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC107: Care Plans Initiated by Patients</h3>
+          <p>
+            For clinical users who receive care plan requests via the CMC system. This module introduces the process through which patients can initiate care plan requests via the CMC patient portal, myCMC, and demonstrates the steps for completing the care plan request.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://training.intersystems.com/samples/edxcourses/cmc107/CMC107.CarePlansInitiatedbyPatients.pdf" class="ie-course__resources__pdf-button">Module content PDF</a>
+          <ul>
+            <li>
+              Videos
+            </li>
+            <li>
+              <a href="https://players.brightcove.net/90843153001/SkjAkVHrZ_default/index.html?videoId=5449900159001">Patient Initiation Process</a>
+            </li>
+            <li>
+              <a href="https://players.brightcove.net/90843153001/SkjAkVHrZ_default/index.html?videoId=5453365214001">Completing a Care Plan Request</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- end of single course -->
+    </div>
+  </section>
+
+  <section class="cmc--ie-courses-group" id="clinical-guidance">
+    <div class="cmc--ie-courses-group__container bs-container a--container">
+      <h2 class="cmc--ie-courses-group__title">Clinical Guidance</h2>
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-3-1.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC201: Patient Consent</h3>
+          <p>
+            For clinical users. This video explains the details of patient consent.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201510/90843153001_4584396803001_4584363623001.mp4" class="ie-course__resources__pdf-button">Video</a>
+        </div>
+      </div>
+      <!-- end of single course -->
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-3-2.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC202: Mental Capacity </h3>
+          <p>
+            For clinical users. This video explains the details of mental capacity.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4604786598001_4604770431001.mp4" class="ie-course__resources__pdf-button">Video</a>
+        </div>
+      </div>
+      <!-- end of single course -->
+      <!-- single course -->
+      <div class="ie-course row">
+        <div class="col-xs-12 col-sm-4 ie-course__image">
+          <img src="${static('images/course-images/cmc-3-3.png')}">
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-5 ie-course__info">
+          <h3 class="ie-course__info__name">CMC203: Advance Care Planning</h3>
+          <p>
+            For clinical users. This video explains the details of advance care planning.
+          </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-3 ie-course__resources">
+          <a href="http://brightcove04.brightcove.com/hd2/o1/90843153001/201511/90843153001_4604790369001_4604770445001.mp4" class="ie-course__resources__pdf-button">Video</a>
+        </div>
+      </div>
+      <!-- end of single course -->
+    </div>
+  </section>

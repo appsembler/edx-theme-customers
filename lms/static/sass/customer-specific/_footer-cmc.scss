@@ -1,0 +1,132 @@
+.cmc--footer {
+  padding-top: $footer-padding-top;
+  padding-bottom: $footer-padding-bottom;
+  background-color: $footer-bg-color;
+  color: $footer-text-color;
+  border-top: $footer-top-border;
+
+  &__main-wrapper {
+    @include display(flex);
+    @include align-items(center);
+    @include flex-wrap(nowrap);
+    @include justify-content(space-between);
+
+    @media (max-width: $screen-sm-max) {
+      display: block;
+    }
+  }
+
+  &__main {
+    @include display(flex);
+    @include align-items(center);
+    @include flex-wrap(nowrap);
+
+    @media (max-width: $screen-sm-max) {
+      display: block;
+    }
+  }
+
+  &__nav {
+
+  }
+
+  &__copyright-text {
+    font-size: $footer-copyright-text-size;
+    color: $footer-copyright-text-color;
+    padding: 0;
+    margin: 0 0 $footer-copyright-breathe-space;
+  }
+
+  &__links-container {
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      list-style-type: none;
+      padding: 0.2rem 1.5rem;
+      border-right: 0.1rem solid $brand-primary-color;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: $brand-primary-color;
+
+        &:hover, &:focus {
+          color: $footer-link-hover-color;
+        }
+      }
+    }
+
+    @media(max-width: $screen-sm-max) {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__powered-by {
+    @include display(flex);
+    @include align-items(center);
+    @include transition(all 0.3s ease-in-out);
+    opacity: 0.35;
+
+    &:hover, &:focus {
+      opacity: 1;
+    }
+
+    @media(max-width: $screen-sm-max) {
+      @include justify-content(space-around);
+      margin: 0 auto;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 0 1.5rem 0 0;
+    }
+
+    #footer-appsembler-logo {
+      @include transition(all 0.3s ease-in-out);
+      opacity: 0.5;
+
+      &:hover, &:focus {
+        opacity: 1;
+      }
+
+      img {
+        width: 10rem;
+        margin: 0 1.5rem 0 0;
+      }
+    }
+
+    #footer-openedx-logo {
+      @include transition(all 0.3s ease-in-out);
+      opacity: 0.7;
+      margin-bottom: 0.6rem;
+
+      &:hover, &:focus {
+        opacity: 1;
+      }
+
+      img {
+        width: 6.4rem;
+        margin: 0 1.5rem 0 0;
+      }
+    }
+  }
+
+  &__edx-disclaimer {
+    text-align: center;
+    border-top: 0.1rem solid rgba($footer-text-color, 0.25);
+    color: rgba($footer-text-color, 0.5);
+    font-size: 1rem;
+    margin-top: 3.5rem;
+    padding-top: 3.5rem;
+  }
+}

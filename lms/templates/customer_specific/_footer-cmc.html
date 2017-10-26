@@ -1,0 +1,46 @@
+<%!
+  from django.utils.translation import ugettext as _
+  from datetime import datetime
+%>
+<%namespace name='static' file='/static_content.html'/>
+
+<footer class="cmc--footer">
+  <div class="bs-container a--container cmc--footer__container">
+    <div class="cmc--footer__main-wrapper">
+      <div class="cmc--footer__main">
+        <div class="cmc--footer__nav">
+          <ul class="cmc--footer__links-container">
+            <li>
+              <p>
+                © ${datetime.now().year} Coordinate My Care. All rights reserved.
+              </p>
+            </li>
+            <li>
+              <a href="/faq">FAQ</a>
+            </li>
+            <li>
+              <a href="/tos">Terms of Service</a>
+            </li>
+            <li>
+              <a href="/privacy">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="cmc--footer__powered-by">
+        <p>
+          Powered by:
+        </p>
+        <a href="https://www.appsembler.com" target="_blank" id="footer-appsembler-logo" alt="Appsembler">
+          <img src="${static.url('images/appsembler-logo-positive.svg')}" />
+        </a>
+        <a href="http://open.edx.org" target="_blank" id="footer-openedx-logo" alt="Open edX">
+          <img src="${static.url('images/openedx-logo.svg')}" />
+        </a>
+      </div>
+    </div>
+    <div class="cmc--footer__edx-disclaimer">
+      edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.
+    </div>
+  </div>
+</footer>
