@@ -182,15 +182,32 @@
 
 ## course catalogue page content
 
+## <%def name="get_course_catalogue_content()">
+##  <%
+##    return [
+##      {
+##        "element-type":"course-catalogue-template",
+##        "element-path":"customer_specific/_cmc-course-catalogue.html",
+##        "options":{
+##          "discovery-facet-option":"facet_option-01",
+##          "course-card":"course-card",
+##          "search-enabled":True,
+##          "discovery-facet":"facet-01"
+##        }
+##      }
+##    ]
+##  %>
+## </%def>
+
 <%def name="get_course_catalogue_content()">
   <%
     return [
       {
         "element-type":"course-catalogue-template",
-        "element-path":"customer_specific/_cmc-course-catalogue.html",
+        "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
         "options":{
           "discovery-facet-option":"facet_option-01",
-          "course-card":"course-card",
+          "course-card":"course-tile-01",
           "search-enabled":True,
           "discovery-facet":"facet-01"
         }
