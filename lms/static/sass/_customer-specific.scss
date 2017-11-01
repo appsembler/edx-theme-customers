@@ -15,3 +15,23 @@
 .a--footer__copyright-text {
   margin: 0;
 }
+
+.a--courseware-wrapper {
+
+  &__content {
+
+    .xblock-student_view-openassessment {
+
+      .openassessment.problem {
+
+        .step--response .action--upload {
+
+          &:hover, &:focus {
+            background-color: $brand-accent-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
