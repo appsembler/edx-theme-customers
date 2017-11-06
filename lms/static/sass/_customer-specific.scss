@@ -55,11 +55,11 @@
   .button-chapter {
 
     &:hover, &:focus {
-      color: #000;
+      color: #4eb9ac;
     }
 
     &.is-open {
-      color: #000;
+      color: #4eb9ac;
     }
   }
 
@@ -69,6 +69,7 @@
 
       p {
         @include primary-font-bold;
+        color: #4eb9ac;
       }
     }
   }
@@ -77,6 +78,7 @@
 
     p {
       @include primary-font-bold;
+      color: #4eb9ac;
     }
   }
 }
@@ -137,4 +139,9 @@
   .account-settings-sections .section .account-settings-section-body .u-field .field {
     width: 100%;
   }
+}
+
+// IE fixes
+.xmodule_display.xmodule_CapaModule div.problem .choicegroup legend {
+  max-width: 100%;
 }
