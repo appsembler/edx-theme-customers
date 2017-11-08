@@ -4,7 +4,7 @@
   from microsite_configuration import microsite
   from openedx.core.djangolib.js_utils import dump_js_escaped_json
 %>
-<%inherit file="../main.html" />
+<%inherit file="/main.html" />
 <%
   course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
 %>
@@ -23,6 +23,14 @@
     ${_("Page Not Found")}
   % endif
 </%block>
+
+<div role="alert" class="status message submission-error is-shown" tabindex="-1" style="margin: 0 0 20px 0; padding: 20px 20px; background: #fffce3;">
+        <h3 class="message-title" style="font-size: 25px; font-weight: 600;">To use your browsers built in search capability to find courses</h3>
+        <ul class="message-copy">
+          <li style="font-size:18px;"><strong>On Mac:</strong> press ⌘ + F</li>
+          <li style="font-size:18px;"><strong>On Windows:</strong> press CTRL + F</li>
+        </ul>
+</div>
 
 % if get_global_settings().get('course-catalogue_enabled', True) and (get_global_settings().get('enable_course_catalogue_for_non-auth_users', True) or (not get_global_settings().get('enable_course_catalogue_for_non-auth_users', True) and user.is_authenticated())):  
   % for element in get_course_catalogue_content():
