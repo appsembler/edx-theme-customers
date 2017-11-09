@@ -9,14 +9,14 @@ from django.utils.translation import ugettext as _
 <%
   course_image = course_vars['course_image']
 
-  courseware_button_already_enrolled_text = template_settings.get('courseware_button_already_enrolled_text', _("You are enrolled in this course"))
-  courseware_button_view_courseware_text = template_settings.get('courseware_button_view_courseware_text', _("View Course"))
-  courseware_button_in_cart_text = template_settings.get('courseware_button_in_cart_text', _("Course is in your cart."))
-  courseware_button_course_full_text = template_settings.get('courseware_button_course_full_text', _("Course is full"))
-  courseware_button_invitation_only_text = template_settings.get('courseware_button_invitation_only_text', _("Enrollment in this course is by invitation only"))
-  courseware_button_enrollment_closed_text = template_settings.get('courseware_button_enrollment_closed_text', _("Enrollment is Closed"))
+  courseware_button_already_enrolled_text = template_settings.get('courseware_button_already_enrolled_text', _("You are enroled in this module"))
+  courseware_button_view_courseware_text = template_settings.get('courseware_button_view_courseware_text', _("View Module"))
+  courseware_button_in_cart_text = template_settings.get('courseware_button_in_cart_text', _("Module is in your cart."))
+  courseware_button_course_full_text = template_settings.get('courseware_button_course_full_text', _("Module is full"))
+  courseware_button_invitation_only_text = template_settings.get('courseware_button_invitation_only_text', _("Enrolment in this module is by invitation only"))
+  courseware_button_enrollment_closed_text = template_settings.get('courseware_button_enrollment_closed_text', _("Enrolment is Closed"))
   courseware_button_add_to_cart_text = template_settings.get('courseware_button_add_to_cart_text', _("Add to Cart / Price: ")) + course_vars['course_price']
-  courseware_button_enroll_text = template_settings.get('courseware_button_add_to_cart_text', _("Enroll in ")) + course_vars['course_name']
+  courseware_button_enroll_text = template_settings.get('courseware_button_add_to_cart_text', _("Enrol in ")) + course_vars['course_name']
   view_in_studio_button_text = template_settings.get('view_in_studio_button_text', _("View About Page in studio"))
 %>
 
