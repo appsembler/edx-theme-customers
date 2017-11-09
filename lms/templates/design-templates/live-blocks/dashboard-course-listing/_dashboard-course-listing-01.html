@@ -273,9 +273,9 @@ from student.helpers import (
           % endif
         % else:
           % if not is_course_blocked:
-            <a href="${course_target}" class="a--enter-course" data-course-key="${enrollment.course_id}">${_('View Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
+            <a href="${course_target}" class="a--enter-course" data-course-key="${enrollment.course_id}">${_('View Module')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
           % else:
-            <a class="a--enter-course-blocked" data-course-key="${enrollment.course_id}">${_('View Course')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
+            <a class="a--enter-course-blocked" data-course-key="${enrollment.course_id}">${_('View Module')}<span class="sr">&nbsp;${course_overview.display_name_with_default}</span></a>
           % endif
         % endif
       % endif
