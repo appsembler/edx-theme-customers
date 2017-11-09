@@ -2,11 +2,10 @@
 msgid "You are not enrolled in any courses yet."
 msgstr "You are not enroled in any courses yet."
 
-
 #: lms/templates/design-templates/pages/dashboard/_dashboard-01.html
+#: lms/templates/design-templates/live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html
 msgid "Unenroll"
 msgstr "Unenrol"
-
 
 #: lms/templates/design-templates/pages/dashboard/_dashboard-01.html
 msgid "My Courses"
@@ -15,7 +14,6 @@ msgstr "My Modules"
 #: lms/templates/design-templates/pages/dashboard/_dashboard-01.html
 msgid "Find Courses"
 msgstr "Find Modules"
-
 
 #: lms/templates/design-templates/pages/dashboard/_dashboard-01.html
 msgid "Receive course emails"
@@ -26,24 +24,12 @@ msgid "Enrolled as:"
 msgstr "Enroled as:"
 
 #: lms/templates/design-templates/live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html
-msgid "Enrolled as:"
-msgstr "Enroled as:"
-
-
-#: lms/templates/design-templates/live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html
-msgid "Unenroll"
-msgstr "Unenrol"
-
-
-#: lms/templates/design-templates/live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html
 msgid "View Course"
 msgstr "View Module"
-
 
 #: lms/templates/design-templates/live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html
 msgid "You still need to verify for this course."
 msgstr "You still need to verify for this module"
-
 
 #: lms/templates/design-templates/live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html
 msgid "View Archived Course"
