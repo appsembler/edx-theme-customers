@@ -12,6 +12,7 @@
 <!-- old IE redirect -->
 <script>
     $(document).ready(function() {
+      var do_redirect = ($(location).attr('href').indexOf('ie-static') == -1 ) ? true : false;
       if (do_redirect && bowser.msie && bowser.version < 9) {
         $(location).attr('href','/ie-static');
       }
