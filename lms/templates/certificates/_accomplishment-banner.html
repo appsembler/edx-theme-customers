@@ -48,20 +48,20 @@ from django.template.defaultfilters import escapejs
                 <div class="message-hints message-copy"> 
                   <p class="copy copy-base">To share on LinkedIn, enter this information on the form:</p>
                   <dl id="linkedin-hint" class="row">
-                    <dt class="col-xs-3">Certification name:</dt>
-                    <dd class="col-xs-9">${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
-                    <dt class="col-xs-3">Certification authority:</dt>
-                    <dd class="col-xs-9"> (select ${platform_name} from dropdown)</dd>
+                    <dt class="col-md-3">Certification name:</dt>
+                    <dd class="col-md-9">${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
+                    <dt class="col-md-3">Certification authority:</dt>
+                    <dd class="col-md-9"> (select ${platform_name} from dropdown)</dd>
                     <!-- 
-                    <dt class="col-xs-3">License number:</dt>
-                    <dd class="col-xs-0"> NASBA 103413</dd>
+                    <dt class="col-md-3">License number:</dt>
+                    <dd class="col-md-9"> NASBA 103413</dd>
                      -->
-                    <dt class="col-xs-3">From:</dt>
-                    <dd class="col-xs-9">${certificate_date_issued}</dd>
-                    <dt class="col-xs-3">Expiration:</dt>
-                    <dd class="col-xs-9">(check "Does not Expire")</dd>
-                    <dt class="col-xs-3">Certification url:</dt>
-                    <dd class="col-xs-9">${share_url}</dd>
+                    <dt class="col-md-3">From:</dt>
+                    <dd class="col-md-9">${certificate_date_issued}</dd>
+                    <dt class="col-md-3">Expiration:</dt>
+                    <dd class="col-md-9">(check "Does not Expire")</dd>
+                    <dt class="col-md-3">Certification url:</dt>
+                    <dd class="col-md-9">${share_url}</dd>
                   </dl>
                 </div>
                 %endif

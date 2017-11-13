@@ -9,6 +9,10 @@
 				margin: auto;
 			}
 		}
+
+		#linkedin-hint {
+			dt:not(:first-of-type){margin-top:0}
+		}
 	}
 
 	.nyif--certificates__wrapper-accomplishment-rendering {
