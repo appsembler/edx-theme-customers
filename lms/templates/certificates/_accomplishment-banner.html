@@ -47,13 +47,21 @@ from django.template.defaultfilters import escapejs
                 %if linked_in_url:
                 <div class="message-hints message-copy"> 
                   <p class="copy copy-base">To share on LinkedIn, enter this information on the form:</p>
-                  <dl id="linkedin-hint" class="dl-horizontal">
-                    <dt>Certification name:</dt><dd>${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
-                    <dt>Certification authority:</dt><dd> (select ${platform_name} from dropdown)</dd>
-                    <!-- <dt>License number:</dt><dd> NASBA 103413</dd> -->
-                    <dt>From:</dt><dd>${certificate_date_issued}</dd>
-                    <dt>Expiration:</dt><dd>(check "Does not Expire")</dd>
-                    <dt>Certification url:</dt><dd>${share_url}</dd>
+                  <dl id="linkedin-hint" class="row">
+                    <dt class="col-xs-3">Certification name:</dt>
+                    <dd class="col-xs-9">${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
+                    <dt class="col-xs-3">Certification authority:</dt>
+                    <dd class="col-xs-9"> (select ${platform_name} from dropdown)</dd>
+                    <!-- 
+                    <dt class="col-xs-3">License number:</dt>
+                    <dd class="col-xs-0"> NASBA 103413</dd>
+                     -->
+                    <dt class="col-xs-3">From:</dt>
+                    <dd class="col-xs-9">${certificate_date_issued}</dd>
+                    <dt class="col-xs-3">Expiration:</dt>
+                    <dd class="col-xs-9">(check "Does not Expire")</dd>
+                    <dt class="col-xs-3">Certification url:</dt>
+                    <dd class="col-xs-9">${share_url}</dd>
                   </dl>
                 </div>
                 %endif
@@ -61,7 +69,7 @@ from django.template.defaultfilters import escapejs
                 <div class="message-actions">
                     <h3 class="sr-only">${_("Print or share your certificate:")}</h3>
                     % if facebook_share_enabled:
-                      <button class="action action-share-facebook btn btn-overlay btn-small icon-only" id="action-share-facebook"
+                      <button class="action action-share-facebook btn btn-inverse btn-small icon-only" id="action-share-facebook"
                          onclick="FaceBook.share({
                           share_text: '${facebook_share_text | escapejs}',
                           share_link: '${share_url}',
@@ -74,7 +82,7 @@ from django.template.defaultfilters import escapejs
                     %endif
                     % if twitter_share_enabled:
                       <button data-tooltip="${_('Share on Twitter')}"
-                        class="action action-share-twitter btn btn-overlay btn-small icon-only"
+                        class="action action-share-twitter btn btn-inverse btn-small icon-only"
                         title="${_('Share on Twitter')}"
                         onclick="popupWindow('${twitter_url}', 'tweetWindow', 640, 480); return false;">
                           <i class="icon fa fa-twitter" aria-hidden="true"></i>
@@ -83,14 +91,14 @@ from django.template.defaultfilters import escapejs
                     %endif
 
                     %if linked_in_url:
-                    <button class="action action-linkedin-profile btn btn-overlay btn-small icon-only" id="action-share-linkedin" title="${_('Add to LinkedIn Profile')}" data-course-id="${course_id}" data-certificate-mode="${course_mode}">
+                    <button class="action action-linkedin-profile btn btn-inverse btn-small icon-only" id="action-share-linkedin" title="${_('Add to LinkedIn Profile')}" data-course-id="${course_id}" data-certificate-mode="${course_mode}">
                         <i class="icon fa fa-linkedin" aria-hidden="true"></i>
                         <span>&nbsp;${_("Add to LinkedIn Profile")}</span>
                     </button>
                     %endif
 
                     %if badge:
-                    <button class="action action-share-mozillaopenbadges btn btn-overlay btn-small">
+                    <button class="action action-share-mozillaopenbadges btn btn-inverse btn-small">
                         <img class="icon icon-mozillaopenbadges" src="/static/certificates/images/ico-mozillaopenbadges.png" alt="Mozilla Open Badges Backpack">
                         ${_("Add to Mozilla Backpack")}
                     </button>
