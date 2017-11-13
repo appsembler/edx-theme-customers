@@ -46,13 +46,14 @@ from django.template.defaultfilters import escapejs
 
                 %if linked_in_url:
                 <div class="message-hints message-copy"> 
-                  <p class="copy copy-base">To share on LinkedIn, enter
-                    <a class="linkedin-hint-link" href="javascript:$('#linkedin-hint').removeClass('collapse').addClass('expand'); void(0);">this information</a> on the form.</p>
+                  <p class="copy copy-base">To share on LinkedIn, 
+                    <i aria-hidden="true" class="icon fa fa-chevron-circle-right"></i>
+                    <a class="linkedin-hint-link" href="javascript:$('#linkedin-hint').removeClass('collapse').addClass('expand'); void(0);">view information</a> you will need to enter on the form.</p>
                   <dl id="linkedin-hint" class="row collapse">
                     <dt class="col-md-3">Certification name:</dt>
                     <dd class="col-md-9">${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
                     <dt class="col-md-3">Certification authority:</dt>
-                    <dd class="col-md-9"> (select ${platform_name} from dropdown)</dd>
+                    <dd class="col-md-9">Enter ${platform_name} and/or select from drop-down list once available</dd>
                     <!-- 
                     <dt class="col-md-3">License number:</dt>
                     <dd class="col-md-9"> NASBA 103413</dd>
@@ -60,7 +61,7 @@ from django.template.defaultfilters import escapejs
                     <dt class="col-md-3">From:</dt>
                     <dd class="col-md-9">${certificate_date_issued}</dd>
                     <dt class="col-md-3">Expiration:</dt>
-                    <dd class="col-md-9">(check "Does not Expire")</dd>
+                    <dd class="col-md-9">Check "This certificate oes not expire"</dd>
                     <dt class="col-md-3">Certification url:</dt>
                     <dd class="col-md-9">${share_url}</dd>
                   </dl>
