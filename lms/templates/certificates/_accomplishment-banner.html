@@ -43,6 +43,21 @@ from django.template.defaultfilters import escapejs
             <h2 class="message-title hd-5 emphasized">${accomplishment_banner_opening | h}</h2>
             <div class="wrapper-copy-and-actions">
                 <p class="message-copy copy copy-base emphasized">${accomplishment_banner_congrats}</p>
+
+                %if linked_in_url:
+                <div class="message-hints message-copy"> 
+                  <p class="copy copy-base">To share on LinkedIn, enter this information on the form:</p>
+                  <dl id="linkedin-hint" class="dl-horizontal">
+                    <dt>Certification name:</dt><dd>${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
+                    <dt>Certification authority:</dt><dd> (select ${platform_name} from dropdown)</dd>
+                    <!-- <dt>License number:</dt><dd> NASBA 103413</dd> -->
+                    <dt>From:</dt><dd>${certificate_date_issued}</dd>
+                    <dt>Expiration:</dt><dd>(check "Does not Expire")</dd>
+                    <dt>Certification url:</dt><dd>${share_url}</dd>
+                  </dl>
+                </div>
+                %endif
+
                 <div class="message-actions">
                     <h3 class="sr-only">${_("Print or share your certificate:")}</h3>
                     % if facebook_share_enabled:
