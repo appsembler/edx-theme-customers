@@ -1,0 +1,15 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="/main.html" />
+
+<%block name="pagetitle">${_("Invalid Certificate Configuration.")}</%block>
+
+<section class="outside-app">
+    <h1>
+        ${_(u"There is a problem with this certificate.")}
+    </h1>
+
+    <div>
+        <p>Please contact <a href="mailto:technical+nyif@appsembler.com">technical support</a>.</p>
+    </div>
+
+</section>
