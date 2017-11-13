@@ -48,7 +48,7 @@ from django.template.defaultfilters import escapejs
                 <div class="message-hints message-copy"> 
                   <p class="copy copy-base">To share on LinkedIn, enter
                     <a class="linkedin-hint-link" href="javascript:$('#linkedin-hint').removeClass('collapse').addClass('expand'); void(0);">this information</a> on the form.</p>
-                  <dl id="linkedin-hint" class="row">
+                  <dl id="linkedin-hint" class="row collapse">
                     <dt class="col-md-3">Certification name:</dt>
                     <dd class="col-md-9">${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
                     <dt class="col-md-3">Certification authority:</dt>
