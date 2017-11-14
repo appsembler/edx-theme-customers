@@ -35,12 +35,6 @@
           opacity: 0.65;
         }
 
-        &__text {
-          @include primary-font;
-          font-size: 2.2rem;
-          color: #fff;
-        }
-
         // IE fix hack
         @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
            width: 100%;
@@ -53,9 +47,6 @@
 
         &__container {
           @include flex-shrink(0);
-          padding-right: 1.5rem;
-          margin-right: 1.5rem;
-          border-right: 0.1rem solid rgba(#fff, 0.2);
         }
       }
 
@@ -78,6 +69,7 @@
         padding-left: 2rem;
         @include primary-font-light;
         font-size: 1.4rem;
+        line-height: 120%;
         color: rgba(#fff, 0.6);
 
         @media (max-width: $screen-sm-max) {
@@ -150,7 +142,6 @@
         @include flex-shrink(1);
 
         ul {
-          @include flex-wrap(wrap);
           @include justify-content(flex-end);
         }
       }
@@ -184,6 +175,7 @@
 
         a {
           color: #fff;
+          white-space: nowrap;
 
           &:hover, &:focus {
             color: rgba(#fff, 0.8);

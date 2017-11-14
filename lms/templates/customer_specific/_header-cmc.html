@@ -15,7 +15,6 @@ from django.contrib.staticfiles.templatetags.staticfiles import static as static
         <img class="a--site-nav__logo a--logo-full svg-fallback svg" src="${staticfile('images/branding/brand-logo-negative.svg')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}" />
         <img class="a--site-nav__logo a--logo-full svg-fallback png" src="${staticfile('images/branding/brand-logo-negative.png')}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}" />
       </a>
-      <span class="a--site-nav__logo__text">online learning</span>
       % if display_course_name:
       <div class="a--site-nav__course-name">
         <span>${course_number}</span>${course_name}
