@@ -49,9 +49,6 @@ from django.contrib.staticfiles.templatetags.staticfiles import static as static
             </button>
             <ul class="a--user-avatar__menu" id="user-avatar-menu">
               <li>
-                <a href="${reverse('learner_profile', kwargs={'username': user.username})}">${_('Profile')}</a>
-              </li>
-              <li>
                 <a href="${reverse('account_settings')}">${_('Account')}</a>
               </li>
               <li>
@@ -96,9 +93,6 @@ from django.contrib.staticfiles.templatetags.staticfiles import static as static
 
             </li>
             % if user_authenticated:
-              <li>
-                <a href="${reverse('learner_profile', kwargs={'username': user.username})}">${_('Profile')}</a>
-              </li>
               <li>
                 <a href="${reverse('account_settings')}">${_('Account')}</a>
               </li>
