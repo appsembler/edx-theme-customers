@@ -145,3 +145,16 @@
 .xmodule_display.xmodule_CapaModule div.problem .choicegroup legend {
   max-width: 100%;
 }
+
+// change the style of a cta on dashboard
+.a--dashboard-01__promote-catalog a.a--dashboard-01__promote-catalog__cta {
+  color: $base-text-color;
+  background-color: transparent;
+  border: 2px solid $brand-accent-color;
+
+  &:hover, &:focus, &:hover:not(:disabled), &:focus:not(:disabled) {
+    color: rgba($brand-primary-color, 0.8);
+    background-color: transparent;
+    border: 2px solid rgba($brand-primary-color, 0.8);
+  }
+}
