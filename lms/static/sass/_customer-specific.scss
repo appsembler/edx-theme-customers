@@ -1,0 +1,45 @@
+.a--header-design-01 .a--site-menu__group:first-child ul {
+  @include flex-wrap(nowrap);
+
+  li a {
+    white-space: nowrap;
+  }
+}
+
+.eknowledge--index-hero {
+  @include display(flex);
+  @include align-items(center);
+  min-height: 50vh;
+  padding: 12rem 0;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+
+  h1 {
+    display: inline-block;
+    font-size: 4.2rem;
+    color: #fff;
+    background-color: $brand-primary-color;
+    padding: 1.5rem;
+    margin: 0 auto;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 3.2rem;
+    }
+  }
+
+  span {
+    display: block;;
+  }
+
+  h2 {
+    display: inline-block;
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: normal;
+    background-color: $brand-accent-color;
+    padding: 1.5rem;
+    margin: 0 auto;
+  }
+}
