@@ -39,3 +39,9 @@
 .cmc--footer__powered-by {
 	display: none;
 }
+
+
+// eliminate certain tabs in account settings
+.wrapper-account-settings .account-settings-container .wrapper-header .account-nav {
+  display: none;
+}
