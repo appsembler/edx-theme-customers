@@ -3,16 +3,16 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
+$brand-primary-color: #E62644;
+$brand-accent-color: #C2F7FF;
 $navbar-style: "white";  // brand or white
 $base-text-color: #2C2A2F;
 
-$primary-font-name: "Open Sans";
+$primary-font-name: "Muli";
 $primary-font-weight-light: 300;
 $primary-font-weight-regular: 400;
 $primary-font-weight-bold: 700;
-$primary-font-weight-black: 800;
+$primary-font-weight-black: 900;
 $accent-font-name: "Bebas";
 
 $font-size-base-body: 14px;
@@ -26,8 +26,8 @@ $line-height-h3: 130%;
 $font-size-h4: 18px;
 $line-height-h4: 130%;
 
-$global-font-h1: "primary-font-light";
-$global-font-h2: "primary-font-light";
+$global-font-h1: "primary-font-black";
+$global-font-h2: "primary-font-black";
 $global-font-h3: "primary-font-bold";
 $global-font-h4: "primary-font-bold";
 $global-font-base-body: "primary-font-regular";
@@ -63,7 +63,7 @@ $nav-toggle-bar-margin: 2rem;
 $nav-toggle-bar-color: $header-text-color;
 $nav-toggle-bar-separation: 1rem;
 $nav-toggle-bar-pulsar-color: $brand-primary-color;
-$nav-toggle-bar-pulsar-visible: false;
+$nav-toggle-bar-pulsar-visible: False;
 
 $slideout-menu-text-color: #fff;
 $slideout-menu-background-color: $brand-primary-color;
@@ -83,8 +83,8 @@ $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;
-$footer-logo-width: 4rem;
-$footer-logo-opacity: 0.5;
+$footer-logo-width: 8rem;
+$footer-logo-opacity: 0.7;
 $footer-copyright-text-size: 1.2rem;
 $footer-copyright-text-color: lighten($footer-text-color, 15%);
 $footer-copyright-breathe-space: 1rem;

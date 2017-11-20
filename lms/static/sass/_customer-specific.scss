@@ -1,0 +1,36 @@
+// small header visual customisations
+
+.a--header-design-01 .a--site-menu__group ul li, .a--header-design-01 .a--site-menu__group ul li.a--nav-cta a, .a--header-design-01 .a--site-menu__group ul li.a--cta-button a {
+  @include fontVariantInclude("primary-font-bold");
+}
+
+.a--header-design-01.a--site-nav {
+  border-bottom: 0.4rem solid $brand-primary-color;
+}
+
+.cset--index-hero {
+  padding: 15rem 0;
+  text-align: center;
+  min-height: 50vh;
+  @include display(flex);
+  @include align-items(center);
+
+  h1 {
+    font-size: 7.2rem;
+    @include fontVariantInclude("primary-font-black");
+    color: $brand-primary-color;
+    margin: 0;
+    text-transform: uppercase;
+    text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.27);
+  }
+
+  p {
+    font-size: 2rem;
+    @include fontVariantInclude("primary-font-bold");
+    color: $base-text-color;
+    padding: 0.8rem;
+    background-color: $brand-accent-color;
+    display: inline-block;
+    margin: 1rem auto 0;
+  }
+}

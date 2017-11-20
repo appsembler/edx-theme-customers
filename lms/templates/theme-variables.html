@@ -23,7 +23,7 @@
   <%
   return {
     ##'header_logo_target' : ''
-    'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
+    'fonts_url' : 'https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&amp;subset=latin-ext',
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
@@ -78,12 +78,6 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
     ]
   %>
 </%def>
@@ -94,12 +88,6 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
     ]
   %>
 </%def>
@@ -111,8 +99,26 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'About',
+        'link_URL': '/about',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Help',
+        'link_URL': '/help',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Privacy Policy',
+        'link_URL': '/privacy',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Terms of Service',
+        'link_URL': '/tos',
         'special_class': '',
         'open_in_new_tab': False,
       },
@@ -127,7 +133,7 @@
   <%
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2016 Company Name. All rights reserved.',
+      'footer_copyright_text' : '2018 CSET. All rights reserved.',
       'display_edx_disclaimer' : True, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
@@ -146,29 +152,19 @@
     return [
       {
         "element-type":"static-block",
-        "element-path":"design-templates/static-blocks/_hero-section-01.html",
+        "element-path":"/_cset-index-hero.html",
         "options":{
-          # template settings
-          'hero_title' : "Welcome to our online courses!",
-          'hero_subtitle' : "We deliver our courses using Open edX, an open source software that powers edX.org and hundreds of other online learning sites around the world.",
-          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
-          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-          'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
-          'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
-          'text_color' : "#fff",
-          'bg_image_url' : '/static/themes/edx-theme-codebase/images/hero--example-background.jpg', ## leave empty if you want just a full color background
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
-        }
+
+        },
       },
       {
         "element-type":"courses-list",
         "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
         "options":{
           'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
-          'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
-          'course_template' : 'single-course/_course-tile-01.html', ## required
-          'section_heading' : "Our latest courses:",
+          'course_template_class' : 'a--course-tile-02', ## required, defined as "a--{template-name}"
+          'course_template' : 'single-course/_course-tile-02.html', ## required
+          'section_heading' : "View one of our latest CSET courses",
           'section_text' : "",
           'optional_classes' : "centered", ## can be "centered" to have all text centered
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
