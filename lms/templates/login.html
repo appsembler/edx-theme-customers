@@ -1,5 +1,5 @@
-<%inherit file="/main.html" />
-<%namespace name='static' file='/static_content.html'/>
+<%inherit file="main.html" />
+<%namespace name='static' file='static_content.html'/>
 
 <%!
 from django.core.urlresolvers import reverse
@@ -81,14 +81,9 @@ from third_party_auth import provider, pipeline
           } // else we just remain on this page, which is fine since this particular path implies a login failure
             // that has been generated via packet tampering (json.redirect has been messed with).
         } else {
-          var errorMessage = '';
-          if(json.value.toLowerCase() === 'email or password is incorrect.')
-            errorMessage = 'Email or password is incorrect or your manager hasn\'t approved your access.';
-          else
-            errorMessage = json.value
           toggleSubmitButton(true);
           $('.message.submission-error').addClass('is-shown').focus();
-          $('.message.submission-error .message-copy').html(errorMessage);
+          $('.message.submission-error .message-copy').html(json.value);
         }
       });
       $("#forgot-password-link").click(function() {
@@ -105,7 +100,7 @@ from third_party_auth import provider, pipeline
         $submitButton.
           removeClass('is-disabled').
           attr('aria-disabled', false).
-          prop('disabled',false).
+          removeProp('disabled').
           html("${_('Log into My {platform_name} Account').format(platform_name=platform_name)} <span class='orn-plus'>+</span> ${_('Access My Courses')}");
       }
       else {
@@ -134,7 +129,7 @@ from third_party_auth import provider, pipeline
   </script>
 </%block>
 
-<%include file="/forgot_password_modal.html" />
+<%include file="forgot_password_modal.html" />
 
 <section class="introduction">
   <header>
@@ -245,7 +240,7 @@ from third_party_auth import provider, pipeline
 
 <%
   # allow for theming overrides on the registration sidebars, otherwise default to pre-existing ones
-  sidebar_file = static.get_template_path('/login-sidebar.html')
+  sidebar_file = static.get_template_path('login-sidebar.html')
 %>
 
     <%include file="${sidebar_file}" />
