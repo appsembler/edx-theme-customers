@@ -3,8 +3,8 @@
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 %>
-<%namespace file='main.html' import="login_query"/>
-<%namespace name='static' file='static_content.html'/>
+<%namespace file='/main.html' import="login_query"/>
+<%namespace name='static' file='/static_content.html'/>
 
 
 <header>
@@ -39,10 +39,8 @@ from django.core.urlresolvers import reverse
 % if settings.MKTG_URL_LINK_MAP.get('FAQ'):
   <div class="cta cta-help">
     <h3>${_("Need Help?")}</h3>
-    <p>${_("Need help registering with {platform_name}?").format(platform_name=platform_name)}
-      <a href="${marketing_link('FAQ')}">
-          ${_("View our FAQs for answers to commonly asked questions.")}
-      </a>
-      ${_("You can find the answers to most of your questions in our list of FAQs. After you enroll in a course, you can also find answers in the course discussions.")}</p>
+    <p>
+      Contact us at +1 347 842 2501 or <a href="mailto:support@nyif.com">support@nyif.com</a> for assistance.
+    </p>
   </div>
 % endif
