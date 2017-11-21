@@ -1,5 +1,5 @@
-<%inherit file="main.html" />
-<%namespace name='static' file='static_content.html'/>
+<%inherit file="/main.html" />
+<%namespace name='static' file='/static_content.html'/>
 
 <%!
 from django.core.urlresolvers import reverse
@@ -129,7 +129,7 @@ from third_party_auth import provider, pipeline
   </script>
 </%block>
 
-<%include file="forgot_password_modal.html" />
+<%include file="/forgot_password_modal.html" />
 
 <section class="introduction">
   <header>
@@ -240,7 +240,7 @@ from third_party_auth import provider, pipeline
 
 <%
   # allow for theming overrides on the registration sidebars, otherwise default to pre-existing ones
-  sidebar_file = static.get_template_path('login-sidebar.html')
+  sidebar_file = static.get_template_path('/login-sidebar.html')
 %>
 
     <%include file="${sidebar_file}" />
