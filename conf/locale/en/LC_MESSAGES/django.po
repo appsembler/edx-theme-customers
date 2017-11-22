@@ -35,6 +35,9 @@ msgstr "You still need to verify for this module"
 msgid "View Archived Course"
 msgstr "View Archived Module"
 
-#../lms/templates/design-templates/live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html
-msgid "Are you sure you want to unenroll from "
-msgstr "Are you sure you want to unenrol from "
+#: ../lms/templates/design-templates/live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html
+#, python-format
+msgid ""
+"Are you sure you want to unenroll from %(course_name)s (%(course_number)s)?"
+msgstr ""
+"Are you sure you want to unenrol from %(course_name)s (%(course_number)s)?"
