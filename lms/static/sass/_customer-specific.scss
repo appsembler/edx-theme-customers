@@ -26,3 +26,29 @@ form#register .form-field.password-password {
     margin: 1rem 0 0;
   }
 }
+
+form#passwordreset-form .form-field.new_password1-new_password1 {
+  position: relative;
+
+  &:after {
+    content: 'Passwords must contain at least 12 characters and must contain one of each of the following: lower case letter, upper case letter, special character.';
+    display: block;
+    @include primary-font;
+    font-size: 1.4rem;
+    color: rgba(0,0,0,0.7);
+    margin: 1rem 0 0;
+  }
+}
+
+form#passwordreset-form .form-field.new_password2-new_password2 {
+  position: relative;
+
+  &:after {
+    content: 'Passwords must contain at least 12 characters and must contain one of each of the following: lower case letter, upper case letter, special character.';
+    display: block;
+    @include primary-font;
+    font-size: 1.4rem;
+    color: rgba(0,0,0,0.7);
+    margin: 1rem 0 0;
+  }
+}
