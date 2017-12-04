@@ -1,0 +1,19 @@
+<%page expression_filter="h"/>
+<%namespace name='static' file='/static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+%>
+<%inherit file="/main.html" />
+
+<%block name="pagetitle">${_("Page Not Found")}</%block>
+<%block name="headextra">
+  <meta name="robots" content="noindex" />
+</%block>
+
+<main aria-label="Content" tabindex="-1" class="a--404-content">
+  <section class="a--404-content__container">
+    <h1>${_("Page not found")}</h1>
+    <h3>Please check the url or you can search for courses here: <a href="https://www.texascourses.org/courses">https://www.texascourses.org/courses</a></h3>
+  </section>
+</main>
