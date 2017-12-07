@@ -41,3 +41,7 @@ msgid ""
 "Are you sure you want to unenroll from %(course_name)s (%(course_number)s)?"
 msgstr ""
 "Are you sure you want to unenrol from %(course_name)s (%(course_number)s)?"
+
+# ../lms/templates/design-templates/pages/course-catalogue/_course-catalogue-01.html
+msgid "Courses"
+msgstr "Modules"
