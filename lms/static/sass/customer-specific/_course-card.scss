@@ -1,6 +1,6 @@
 .cmc--course-tile {
-  margin: 2rem 0;
-  padding: 0 3rem;
+  margin: 0;
+  padding: 0;
 
   .course-image {
     display: block;
@@ -34,5 +34,6 @@
 
   .course-description {
     font-size: 1.6rem;
+    color: #000;
   }
 }

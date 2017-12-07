@@ -14,14 +14,14 @@ from django.utils.translation import ugettext as _
 %>
 
 <!-- single course tile template -->
-<div class="col-xs-12 col-sm-6 col-md-4 course-tile">
-  <div class="course-tile__body">
-    <a href="${course_info['course_url']}" class="course-tile__image" style="background-image: url('${course_image}');"></a>
-    <div class="course-tile__info">
-      <span class="course-tile__name"><a href="${course_info['course_url']}"><span class="course-id">${course_info['course_code']}: </span>${course_info['course_title']}</a></span>
-      <p class="course-tile__description">${course_info['course_short_description']}</p>
+<div class="col-xs-12 col-sm-6 col-md-4 cmc--course-tile" aria-label="${course_info['course_title']}">
+  <a href="${course_info['course_url']}">
+    <div class="course-image" style="background-image: url('${course_image}');"></div>
+    <div class="a--course-tile-01__info">
+      <span class="course-name"><span class="course-id">${course_info['course_code']}: </span>${course_info['course_title']}</span>
+      <p class="course-description">${course_info['course_short_description']}</p>
     </div>
-  </div>
+  </a>
 </div>
 <!-- end of single course tile template -->
 
