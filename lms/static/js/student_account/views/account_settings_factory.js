@@ -98,91 +98,8 @@
                                 )
                             })
                         }
-                        // ,
-                        // {
-                        //     view: new AccountSettingsFieldViews.LanguagePreferenceFieldView({
-                        //         model: userPreferencesModel,
-                        //         title: gettext('Language'),
-                        //         valueAttribute: 'pref-lang',
-                        //         required: true,
-                        //         refreshPageOnSave: true,
-                        //         helpMessage: StringUtils.interpolate(
-                        //             gettext('The language used throughout this site. This site is currently available in a limited number of languages.'),  // eslint-disable-line max-len
-                        //             {platform_name: platformName}
-                        //         ),
-                        //         options: fieldsData.language.options,
-                        //         persistChanges: true
-                        //     })
-                        // },
-                        // {
-                        //     view: new AccountSettingsFieldViews.DropdownFieldView({
-                        //         model: userAccountModel,
-                        //         required: true,
-                        //         title: gettext('Country or Region'),
-                        //         valueAttribute: 'country',
-                        //         options: fieldsData.country.options,
-                        //         persistChanges: true
-                        //     })
-                        // },
-                        // {
-                        //     view: new AccountSettingsFieldViews.TimeZoneFieldView({
-                        //         model: userPreferencesModel,
-                        //         required: true,
-                        //         title: gettext('Time Zone'),
-                        //         valueAttribute: 'time_zone',
-                        //         helpMessage: gettext('Select the time zone for displaying course dates. If you do not specify a time zone, course dates, including assignment deadlines, will be displayed in your browser\'s local time zone.'), // eslint-disable-line max-len
-                        //         groupOptions: [{
-                        //             groupTitle: gettext('All Time Zones'),
-                        //             selectOptions: fieldsData.time_zone.options,
-                        //             nullValueOptionLabel: gettext('Default (Local Time Zone)')
-                        //         }],
-                        //         persistChanges: true
-                        //     })
-                        // }
                     ]
                 }
-                // ,
-                // {
-                //     title: gettext('Additional Information'),
-                //     fields: [
-                //         {
-                //             view: new AccountSettingsFieldViews.DropdownFieldView({
-                //                 model: userAccountModel,
-                //                 title: gettext('Education Completed'),
-                //                 valueAttribute: 'level_of_education',
-                //                 options: fieldsData.level_of_education.options,
-                //                 persistChanges: true
-                //             })
-                //         },
-                //         {
-                //             view: new AccountSettingsFieldViews.DropdownFieldView({
-                //                 model: userAccountModel,
-                //                 title: gettext('Gender'),
-                //                 valueAttribute: 'gender',
-                //                 options: fieldsData.gender.options,
-                //                 persistChanges: true
-                //             })
-                //         },
-                //         {
-                //             view: new AccountSettingsFieldViews.DropdownFieldView({
-                //                 model: userAccountModel,
-                //                 title: gettext('Year of Birth'),
-                //                 valueAttribute: 'year_of_birth',
-                //                 options: fieldsData.year_of_birth.options,
-                //                 persistChanges: true
-                //             })
-                //         },
-                //         {
-                //             view: new AccountSettingsFieldViews.LanguageProficienciesFieldView({
-                //                 model: userAccountModel,
-                //                 title: gettext('Preferred Language'),
-                //                 valueAttribute: 'language_proficiencies',
-                //                 options: fieldsData.preferred_language.options,
-                //                 persistChanges: true
-                //             })
-                //         }
-                //     ]
-                // }
             ];
 
             // set TimeZoneField to listen to CountryField
@@ -194,9 +111,6 @@
             userFields = _.find(aboutSectionsData, function(section) {
                 return section.title === gettext('Basic Account Information');
             }).fields;
-            timeZoneDropdownField = getUserField(userFields, 'time_zone');
-            countryDropdownField = getUserField(userFields, 'country');
-            timeZoneDropdownField.listenToCountryView(countryDropdownField);
 
             accountsSectionData = [
                 {
