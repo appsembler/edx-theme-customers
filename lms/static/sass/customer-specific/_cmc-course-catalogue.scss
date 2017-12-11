@@ -1,3 +1,22 @@
+
+.courses-list__category {
+  margin: 0.5rem 1.2rem;
+  @include primary-font;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: #00AFE4;
+
+  &:hover, &:focus {
+    color: $brand-primary-color;
+  }
+
+  &__heading {
+    padding: 15px 30px;
+    text-align: left;
+    margin-bottom: 15px;
+  }
+}
+
 .cmc--course-catalogue {
 
   &__header {
@@ -23,21 +42,11 @@
       width: 100%;
     }
 
-    &__category {
-      margin: 0.5rem 1.2rem;
-      @include primary-font;
-      font-weight: 600;
-      font-size: 1.6rem;
-      color: #00AFE4;
-
-      &:hover, &:focus {
-        color: $brand-primary-color;
-      }
-    }
   }
 
-  &__courses {
 
+
+  &__courses {
 
     &__container {
       padding: 0 1.5rem;
