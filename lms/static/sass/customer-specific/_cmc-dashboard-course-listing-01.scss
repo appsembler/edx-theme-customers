@@ -1,0 +1,34 @@
+.a--dashboard-course-listing-01 {
+
+  &__course-image {
+    width: 41rem;
+  }
+
+  &__course-organisation-id {
+    color:#000 !important;
+    font-size: inherit;
+  }
+
+  &__course-name {
+    font-weight: 700;
+
+    &:visited {
+      color: $brand-primary-color;
+    }
+  }
+
+  .cmc-dashboard-course__description,
+  .cmc-dashboard-course__time {
+    font-size: 16px;
+  }
+
+  &__course-options {
+
+    li.actions-item {
+      .action {
+        color: #d9534f;
+      }
+    }
+  }
+
+}
