@@ -11,9 +11,13 @@
 .cset--index-hero {
   padding: 15rem 0;
   text-align: center;
-  min-height: 50vh;
+  min-height: 40vh;
+  height: 45rem;
   @include display(flex);
   @include align-items(center);
+  background-size: initial;
+  background-position: center;
+  background-color: #2c2516;
 
   h1 {
     font-size: 7.2rem;

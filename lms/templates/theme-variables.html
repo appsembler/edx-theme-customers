@@ -45,7 +45,7 @@
   return {
     'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
     'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.svg'), ## required
-    'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.svg'), ## required
+    'icon_color' : get_value('icon_color', '') or static('images/branding/SFF_ASU_Logo.png'), ## required
     'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.svg'), ## required
     'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.svg'), ## required
   }
@@ -98,30 +98,6 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
-      {
-        'link_title': 'About',
-        'link_URL': '/about',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
-      {
-        'link_title': 'Help',
-        'link_URL': '/help',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
-      {
-        'link_title': 'Privacy Policy',
-        'link_URL': '/privacy',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
-      {
-        'link_title': 'Terms of Service',
-        'link_URL': '/tos',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
     ]
   %>
 </%def>
@@ -132,11 +108,11 @@
 <%def name="get_footer_settings()">
   <%
     return {
-      'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2018 CSET. All rights reserved.',
-      'display_edx_disclaimer' : True, ## bool value required
+      'footer_logo' : get_brand_logos()['icon_color'], ## leave as is, defined above. Can be changed to something custom if needed.
+      'footer_copyright_text' : '2018 Edge. All rights reserved.',
+      'display_edx_disclaimer' : False, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
-      'display_poweredby' : True, ## bool value required
+      'display_poweredby' : False, ## bool value required
       'display_app_link' : False,
       'app_url' : 'https://itunes.apple.com/app/id1044418100'
     }
@@ -164,7 +140,7 @@
           'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
           'course_template_class' : 'a--course-tile-02', ## required, defined as "a--{template-name}"
           'course_template' : 'single-course/_course-tile-02.html', ## required
-          'section_heading' : "View one of our latest CSET courses",
+          'section_heading' : "View one of our latest EDGE courses",
           'section_text' : "",
           'optional_classes' : "centered", ## can be "centered" to have all text centered
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
