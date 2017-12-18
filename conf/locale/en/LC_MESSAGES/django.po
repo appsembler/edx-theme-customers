@@ -45,3 +45,13 @@ msgstr ""
 # ../lms/templates/design-templates/pages/course-catalogue/_course-catalogue-01.html
 msgid "Courses"
 msgstr "Modules"
+
+# openedx/common/djangoapps/user_api/accounts/view.py
+msgid ""
+"It looks like {username} belongs to an existing account. "
+"Try again with a different username."
+msgstr ""
+"We were unable to supply a unique username based on your email address."
+"Please verify you have not already used this email address to create an "
+"account, or contact OnlineTraining@intersystems.com for assistance."
+

@@ -11,8 +11,7 @@
         }
     });
 
-    define('edx-theme-codebase/js/student_account/views/account_settings_factory', 
-        [
+    define([
         'gettext', 'jquery', 'underscore', 'backbone', 'logger',
         'js/student_account/models/user_account_model',
         'js/student_account/models/user_preferences_model',
