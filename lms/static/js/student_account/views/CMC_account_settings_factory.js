@@ -11,7 +11,8 @@
         }
     });
 
-    define([
+    define('edx-theme-codebase/js/student_account/views/CMC_account_settings_factory',
+        [
         'gettext', 'jquery', 'underscore', 'backbone', 'logger',
         'js/student_account/models/user_account_model',
         'js/student_account/models/user_preferences_model',
