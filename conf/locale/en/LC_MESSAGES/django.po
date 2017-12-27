@@ -56,5 +56,5 @@ msgstr ""
 "account, or contact OnlineTraining@intersystems.com for assistance."
 
 # lms/djangoapps/courseware/views.py
-msgid "Course complete"
-msgstr "Module complete"
+msgid "Course completed"
+msgstr "Module completed"
