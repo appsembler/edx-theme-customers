@@ -55,3 +55,6 @@ msgstr ""
 "Please verify you have not already used this email address to create an "
 "account, or contact OnlineTraining@intersystems.com for assistance."
 
+# lms/djangoapps/courseware/views.py
+msgid "Course complete"
+msgstr "Module complete"
