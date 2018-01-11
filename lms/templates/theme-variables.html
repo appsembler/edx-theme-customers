@@ -24,14 +24,14 @@
   return {
     ##'header_logo_target' : ''
     'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
-    'enable_registration_button' : True,
-    'enable_registration_form' : True,
+    'enable_registration_button' : False,
+    'enable_registration_form' : False,
     'apple_app_id' : '',
-    'course-catalogue_enabled': True,
-    'enable_course_catalogue_for_non-auth_users': True,
+    'course-catalogue_enabled': False,
+    'enable_course_catalogue_for_non-auth_users': False,
     'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
     'client_ga_code': "UA-103146091-1",  # Using EasyCare's Google Analytics account
-    'allow_search_engine_indexing': True,
+    'allow_search_engine_indexing': False,
     'small_screen_optimized_courseware': False,
   }
   %>
@@ -43,7 +43,7 @@
 <%def name="get_brand_logos()">
   <%
   return {
-    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
+    'logo_positive' : get_value('logo_positive') or static('images/branding/EC-Learn-logo.svg'), ## required
     'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.svg'), ## required
     'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.svg'), ## required
     'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.svg'), ## required
@@ -67,7 +67,7 @@
   <%
   return {
     'header_template' : '/design-templates/header/_header-appsembler-01.html', ## required
-    'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
+    'footer_template' : '/customer-specific/_footer.html' ## required
   }
   %>
 </%def>
@@ -78,6 +78,12 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
+    {
+      'link_title': 'Explore courses',
+      'link_URL': 'https://www.easycareacademy.com',
+      'special_class': '',
+      'open_in_new_tab': False,
+    },
     ]
   %>
 </%def>
@@ -88,6 +94,12 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     return [
+    {
+      'link_title': 'Explore courses',
+      'link_URL': 'https://www.easycareacademy.com',
+      'special_class': '',
+      'open_in_new_tab': False,
+    },
     ]
   %>
 </%def>
@@ -108,11 +120,11 @@
 <%def name="get_footer_settings()">
   <%
     return {
-      'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
+      'footer_logo' : get_brand_logos()['logo_positive'], ## leave as is, defined above. Can be changed to something custom if needed.
       'footer_copyright_text' : '©2017 EasyCare Academy. All rights reserved.',
-      'display_edx_disclaimer' : True, ## bool value required
+      'display_edx_disclaimer' : False, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
-      'display_poweredby' : True, ## bool value required
+      'display_poweredby' : False, ## bool value required
       'display_app_link' : False,
       'app_url' : 'https://itunes.apple.com/app/id1044418100'
     }
@@ -194,13 +206,13 @@
   <%
     return {
       'default_edx_view' : False, ## required boolean value. Set to "true" if you want the default edX look and feel.
-      'dashboard_search_enabled' : True,
-      'dashboard_course_listing' : 'live-blocks/dashboard-course-listing/_dashboard-course-listing-01.html', ## set which template should be used to display a single course in the dashboard
+      'dashboard_search_enabled' : False,
+      'dashboard_course_listing' : '../customer-specific/_dashboard-course-listing.html', ## set which template should be used to display a single course in the dashboard
       'discovery_course_card' : '_course-tile-02.underscore', ## define which tile template to use for results
       'discovery_facet' : '_facet-01.underscore', ## define which template for facets to use
       'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
       'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html', ## design which discovery-search block design to use
-      'promote_course_catalog' : True,
+      'promote_course_catalog' : False,
       'promote_course_catalog_text' : "Check out our course catalog and enroll in some awesome courses!"
     }
   %>

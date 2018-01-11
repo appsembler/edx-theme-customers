@@ -26,13 +26,13 @@ $line-height-h3: 130%;
 $font-size-h4: 18px;
 $line-height-h4: 130%;
 
-$global-font-h1: "primary-font-black";
-$global-font-h2: "primary-font-black";
-$global-font-h3: "primary-font-bold";
-$global-font-h4: "primary-font-bold";
-$global-font-base-body: "primary-font-regular";
-$global-font-header-links: "primary-font-regular";
-$global-font-cta-buttons: "primary-font-regular";
+$global-font-h1: "primary-font-bold";
+$global-font-h2: "primary-font-bold";
+$global-font-h3: "primary-font-regular";
+$global-font-h4: "primary-font-regular";
+$global-font-base-body: "primary-font-light";
+$global-font-header-links: "primary-font-light";
+$global-font-cta-buttons: "primary-font-light";
 
 $cta-button-bg: $brand-accent-color;
 $cta-button-text-color: #fff;
@@ -40,7 +40,7 @@ $cta-button-border: none;
 $buttons-border-radius: 5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 3.4rem;
+$header-logo-height: 4rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
@@ -63,7 +63,7 @@ $nav-toggle-bar-margin: 2rem;
 $nav-toggle-bar-color: $header-text-color;
 $nav-toggle-bar-separation: 1rem;
 $nav-toggle-bar-pulsar-color: $brand-primary-color;
-$nav-toggle-bar-pulsar-visible: false;
+$nav-toggle-bar-pulsar-visible: False;
 
 $slideout-menu-text-color: #fff;
 $slideout-menu-background-color: $brand-primary-color;

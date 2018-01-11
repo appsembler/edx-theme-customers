@@ -95,3 +95,42 @@
     margin: 0 -1.5rem;
   }
 }
+
+
+// footer
+.easycare--footer {
+  padding-top: $footer-padding-top;
+  padding-bottom: $footer-padding-bottom;
+  background-color: $footer-bg-color;
+  color: $footer-text-color;
+  border-top: $footer-top-border;
+
+  &__main {
+    @include display(flex);
+    @include align-items(flex-end);
+    padding: 1rem 0 2rem;
+  }
+
+  &__logo {
+    border-right: 0.1rem solid rgba($base-text-color, 0.3);
+    padding: 0.5rem 3rem 0.5rem 0;
+
+    img {
+      height: 4rem;
+    }
+  }
+
+  &__text {
+    padding: 0.5rem 0 0.5rem 3rem;
+
+    a {
+      color: $footer-text-color;
+    }
+  }
+
+  &__copyright {
+    padding: 3rem 0;
+    border-top: 0.1rem solid rgba($base-text-color, 0.3);
+    font-size: 1rem;
+  }
+}
