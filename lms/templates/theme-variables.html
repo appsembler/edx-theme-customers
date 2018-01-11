@@ -5,6 +5,7 @@
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
 <%! from django.utils.translation import ugettext as _ %>
+<%! from datetime import date %>
 
 
 
@@ -115,7 +116,7 @@
     footer_options = get_current_site_configuration().page_elements.get('footer', {}).get('options', {})
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : footer_options.get('footer_copyright_text', '© 2017 Company Name. All rights reserved.'),  ## leave value empty if you don't want it displayed.
+      'footer_copyright_text' : footer_options.get('footer_copyright_text', '©' + date.today().strftime('%Y') + ' Company Name. All rights reserved.'),  ## leave value empty if you don't want it displayed.
       'display_edx_disclaimer' : footer_options.get('display_edx_disclaimer', True), ## bool value required
       'edx_disclaimer' : footer_options.get('edx_disclaimer', 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.'), ## leave value empty if you don't want it displayed.
       'display_poweredby' : footer_options.get('display_poweredby', True), ## bool value required
