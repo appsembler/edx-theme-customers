@@ -6,7 +6,7 @@
 $brand-primary-color: #07B8EC;
 $brand-accent-color: #FFAA00;
 $navbar-style: "white";  // brand or white
-$base-text-color: darken(#9d9ea8, 10%);
+$base-text-color: rgb(32,51,56);
 
 $primary-font-name: "Open Sans";
 $primary-font-weight-light: 300;
@@ -26,9 +26,9 @@ $line-height-h3: 130%;
 $font-size-h4: 18px;
 $line-height-h4: 130%;
 
-$global-font-h1: "primary-font-bold";
-$global-font-h2: "primary-font-bold";
-$global-font-h3: "primary-font-regular";
+$global-font-h1: "primary-font-light";
+$global-font-h2: "primary-font-light";
+$global-font-h3: "primary-font-light";
 $global-font-h4: "primary-font-regular";
 $global-font-base-body: "primary-font-light";
 $global-font-header-links: "primary-font-light";
@@ -40,18 +40,18 @@ $cta-button-border: none;
 $buttons-border-radius: 5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4rem;
+$header-logo-height: 8rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
 $header-padding-sm-bottom: 1.5rem;
 $header-group-separation: 4rem;
-$header-font-size: 1.6rem;
-$header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
+$header-font-size: 1.4rem;
+$header-text-color: rgba(32,51,56,1);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
 $navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
 $navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
-$navbar-link-hover: "hover-pop";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
+$navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
 $display-navbar-logo-positive: calcDisplayLogoPositive($navbar-style);
 $display-navbar-logo-negative: calcDisplayLogoNegative($navbar-style);
@@ -83,7 +83,7 @@ $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;
-$footer-logo-width: 6rem;
+$footer-logo-width: 8rem;
 $footer-logo-opacity: 0.5;
 $footer-copyright-text-size: 1.2rem;
 $footer-copyright-text-color: lighten($footer-text-color, 15%);

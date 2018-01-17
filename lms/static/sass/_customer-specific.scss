@@ -24,18 +24,18 @@
 
     h1 {
       font-size: 5.4rem;
-      color: #555659;
+      color: $base-text-color;
 
       span {
         font-size: 3.8rem;
         display: block;
-        color: #b9bbd2;
+        color: rgb(136,142,144);
       }
     }
 
     h4 {
       font-size: 1.6rem;
-      color: #b9bbd2;
+      color: rgb(136,142,144);
       @include primary-font;
     }
 
@@ -45,7 +45,7 @@
       margin: 3rem 0 0;
       background-color: $brand-accent-color;
       color: #fff;
-      @include primary-font-bold;
+      @include primary-font-light;
       font-size: 1.6rem;
       border-radius: 5rem;
 
@@ -87,7 +87,7 @@
 
   &__section-heading {
     font-size: 3.6rem;
-    @include primary-font-bold;
+    @include primary-font-light;
     color: #fff;
   }
 
@@ -132,5 +132,41 @@
     padding: 3rem 0;
     border-top: 0.1rem solid rgba($base-text-color, 0.3);
     font-size: 1rem;
+  }
+}
+
+
+.a--course-content__main-content, .a--course-content__main-content .course-content, .a--course-static-page, .xmodule_display.xmodule_StaticTabModule, .content-wrapper {
+
+  h1, h2 {
+    color: $base-text-color;
+  }
+
+  h3 {
+    color: rgba(136,142,144,1);
+  }
+
+  h5 {
+    font-weight: 400;
+    color: rgba(136,142,144,1);
+  }
+
+  h6 {
+
+  }
+
+  h2.unit-title, h2.unit-title:first-of-type {
+    @include fontVariantInclude($global-font-h2);
+    color: $brand-primary-color;
+  }
+
+  .xblock h3.hd, h3.discussion-module-title, h3.problem-header {
+    @include fontVariantInclude($global-font-h3);
+    font-size: $font-size-h3;
+    color: $brand-primary-color;
+  }
+
+  .a--course-about-01__header__title {
+    color: #fff;
   }
 }
