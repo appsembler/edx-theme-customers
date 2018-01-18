@@ -47,3 +47,12 @@
 .wrapper-account-settings .account-settings-container .wrapper-header .account-nav {
   display: none;
 }
+
+// temporary fix for IE<=9, don't display the slideout menu
+html.lte9 {
+
+	.a--slide-menu {
+		display:none;
+	}
+}
+
