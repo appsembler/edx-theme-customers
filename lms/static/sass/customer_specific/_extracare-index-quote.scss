@@ -1,0 +1,39 @@
+.extracare--index-quote {
+  padding: 6rem 0;
+  text-align: center;
+
+  &__container {
+
+  }
+
+  #infinity-symbol {
+    width: 32rem;
+    max-width: 60%;
+    margin: 0 auto 4rem;
+    opacity: 0.3;
+  }
+
+  &__quote {
+    @include primary-font-light-italic;
+    font-size: 1.8rem;
+    color: $base-text-color;
+    margin: 0 0 2rem;
+  }
+
+  &__source {
+    @include primary-font-bold;
+    font-size: 1.4rem;
+    color: lighten($base-text-color, 20%);
+    margin: 0;
+    display: block;
+  }
+
+  &__quote {
+    font-size: 1.8rem;
+    @include primary-font-light-italic;
+  }
+
+  &__source {
+
+  }
+}

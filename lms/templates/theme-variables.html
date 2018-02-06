@@ -3,6 +3,7 @@
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%! from datetime import date %>
 
 
 
@@ -67,7 +68,7 @@
   <%
   return {
     'header_template' : 'design-templates/header/_header-appsembler-01.html', ## required
-    'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
+    'footer_template' : '/customer_specific/_footer-extracare.html' ## required
   }
   %>
 </%def>
@@ -78,12 +79,7 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
+
     ]
   %>
 </%def>
@@ -94,12 +90,7 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
+
     ]
   %>
 </%def>
@@ -111,8 +102,8 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'Contact',
+        'link_URL': reverse('contact'),
         'special_class': '',
         'open_in_new_tab': False,
       },
@@ -126,8 +117,8 @@
 <%def name="get_footer_settings()">
   <%
     return {
-      'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2016 Company Name. All rights reserved.',
+      'footer_logo' : get_brand_logos()['logo_positive'], ## leave as is, defined above. Can be changed to something custom if needed.
+      'footer_copyright_text' : '©' + date.today().strftime('%Y') + ' The ExtraCare Charitable Trust.. All rights reserved.',
       'display_edx_disclaimer' : True, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
@@ -149,15 +140,51 @@
         "element-path":"design-templates/static-blocks/_hero-section-01.html",
         "options":{
           # template settings
-          'hero_title' : "Welcome to our online courses!",
-          'hero_subtitle' : "We deliver our courses using Open edX, an open source software that powers edX.org and hundreds of other online learning sites around the world.",
+          'hero_title' : "ExtraCare Learning: Gateway to your learning",
+          'hero_subtitle' : "",
           'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
           'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+          'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
           'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
           'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
           'text_color' : "#fff",
-          'bg_image_url' : '/static/themes/edx-theme-codebase/images/hero--example-background.jpg', ## leave empty if you want just a full color background
+          'bg_image_url' : static('images/hero-image-01.jpg'), ## leave empty if you want just a full color background
+          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_heading-plus-text-plus-cta.html",
+        "options":{
+          # template settings
+          'heading' : "", ## leave value empty if you don't want it displayed.
+          'text' : "<p>Welcome to ExtraCare Learning, our e-learning portal, designed to support your learning within ExtraCare. All the eworkshops in ExtraCare Learning have been designed by ExtraCare’s Training and Development Team. The learning is keyed to our culture, values and our way of doing things. If you have any questions, please ask us and we will be happy to help you. You can also access ExtraCare’s Intranet to keep yourself up to date with what is happening by clicking on the button below.</p><p>Enjoy your learning</p><p>Training and Development Team</p>", ## leave value empty if you don't want it displayed.
+          'cta_link' : "https://extracareuk.sharepoint.com/", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "ExtraCare intranet", ## leave value empty if you don't want a CTA button displayed.
+          'optional_classes' : "centered", ## can be "centered" to have all text centered, or "negative" if you want white text on solid color background
+          'extra_css' : "padding: 4rem 0 6rem;" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_line-separator.html",
+        "options":{
+          'optional_classes' : "", ## if none line will have height of 0.1rem (1px by default), can be set to "2px", "5px" or "8px"
+          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
+        "element-type":"static-block",
+        "element-path":"/customer_specific/_index-quote.html",
+        "options":{
+          #
+        }
+      },
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_line-separator.html",
+        "options":{
+          'optional_classes' : "", ## if none line will have height of 0.1rem (1px by default), can be set to "2px", "5px" or "8px"
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
         }
       },
@@ -165,7 +192,7 @@
         "element-type":"courses-list",
         "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
         "options":{
-          'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
+          'max_courses' : 5, ## required, sets max number of courses to be displayed in the block
           'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
           'course_template' : 'single-course/_course-tile-01.html', ## required
           'section_heading' : "Our latest courses:",
@@ -262,15 +289,15 @@
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
             # template settings
-            'hero_title' : "This is the title for the FAQ static page",
-            'hero_subtitle' : "Got any questions for us? Check out the ones we already have answered below, and if you don't find yours - click to contact us!",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "Contact us", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "Frequently Asked Questions", ## leave value empty if you don't want it displayed.
+            'hero_subtitle' : "", ## leave value empty if you don't want it displayed.
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
-            'extra_css' : "", ## add custom css to be added inline to the wrapper element
+            'extra_css' : "text-align: left; padding: 8rem 0;", ## add custom css to be added inline to the wrapper element
             'bg_image_url' : '' ## leave empty if you want just a full color background
           }
         },
@@ -278,29 +305,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h1>FAQ</h1><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. </p><h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p><h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<h3>Subheading here</h3><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.<h3>Subheading here</h3><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus.<h2>Subheading here</h2><p>Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        },
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_expanding-sections-list-01.html",
-          "options":{
-            'content' : [
-              ## ['Title', 'Expanded content'],
-              ['Does Open edX have an intuitive, polished interface: it should look modern and be easy to use.', 'This is one of the first things that strike people who use Open edX; as one person put it, "unlike many other learning management systems it actually looks like it was developed in the 21st Century." In less than four years over five million people have taken edX courses.'],
-              ['Can we visually brand our Open edX site, an individual course or series of courses through graphics, color, typography?', 'Yes, you can brand -- "theme" -- your Open edX instance. And you can give unique looks to groups of courses, such as those from a particular division or geography, using the Open edX microsites functionality. Finally, you can make modest modifications to individual courses and alter their navigation options, too.'],
-              ['Does Open edX functions fluidly on conventional web browsers for Windows, OSX and mobile platforms?', 'Open edX can be used on current versions of the Chrome, Safari, Firefox and Internet Explorer browsers.'],
-              ['How can students track activity and performance?', 'Students can take quizzes and tests and upload files. Using the Staff Graded Assignment feature developed by Appsemblers sister company Jazkarta, and added to the core edX code in 2014, instructors can grade and comment on student submissions. Using the Open Response Assessment (ORA) feature developed by Appsembler students can grade the essays of their peers.'],
-              ['How do students know where they left off within the course?', 'Open edX automatically returns the students to the place they were in the course when they last closed it.'],
-              ['Is there a mechanism to allow submission of documents and files from students?', 'Yes, using the Staff Graded Assignment feature students can upload and instructors can grade assignments. This is a feature commissioned by MIT that the Appsembler team built and has now been incorporated as a core feature of the edX platform.'],
-              ['Can you group all course downloads, handouts, etc. all together in a ‘library’, as well as embed them individually with lesson content?', 'You can upload files into a library and reference them in any course content: <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/course_files.html">http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/course_files.html</a> &nbsp; There is a handouts feature. <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/handouts_updates.html">http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/building_course/handouts_updates.html</a> Open edX provides a <a href="http://edx.readthedocs.org/projects/open-edx-building-and-running-a-course/en/latest/creating_content/libraries.html">content libraries</a> feature which lets you create a library of content that can be re-used across multiple courses. When you change the content in the library the content is updated in all the courses.'],
-              ['Can you import and export content from other online education systems?', 'Appsembler has provided Open edX SCORM support using SCORM Cloud as described<a href="http://blog.jazkarta.com/2015/02/08/adding-scorm-packages-to-open-edx-via-scormcloud-and-lti/%27"> in this blog post</a>, and are working on deeper native SCORM support for a client that we will deliver this winter. Open edX is an LTI provider and consumer.'],
-              ['Can instructors create simple or complex quizzes or tests using text, images or video clips as needed?', 'Yes, here is information on tests and quizzes. Use of images and video is fundamental to edX <a href="http://open-edx-building-and-running-a-course.readthedocs.org/en/latest/exercises_tools/index.html">http://open-edx-building-and-running-a-course.readthedocs.org/en/latest/exercises_tools/index.html</a> &nbsp; The<a href="https://github.com/open-craft/problem-builder"> Problem Builder XBlock</a> has capabilities that can help you provide feedback and hints to the student. &nbsp; Some of the hundreds of other XBlocks available for Open edX include:<ul><li>Integration with cloud storage services such as Google Drive and Dropbox</li><li>Student polls</li><li>Integration with third-party video hosting services such as Brightcove</li><li>Ask questions during playback of YouTube videos</li><li>Mathematical physics simulations</li><li>Adding hotspots to course images</li><li>Drag and Drop questions</li><li>Awarding digital badges</li></ul>Appsembler could create a custom XBlock to support any content, exercise or test type that’s not currently provided.'],
-              ['We want students to be able to practice on our software. Could Open edX support this?', 'Yes, Appsembler has developed a custom virtual software lab for our clients that lets students instantly spin up a copy of their software to work on.'],
-              ['How can students communicate with instructors?', 'The instructor and students in a course can communicate with one another in course discussion areas, and instructors and individual students can communicate directly via a one-to-one discussion thread and email. Instructors can email students individual or as a group.']
-            ],
+            'content' : '<p>This section is currently under construction.</p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
@@ -385,6 +390,50 @@
 <%def name="get_about_content()">
   <%
     return [
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_hero-section-01.html",
+        "options":{
+          'hero_title' : "Contact us", ## leave value empty if you don't want it displayed.
+          'hero_subtitle' : "", ## leave value empty if you don't want it displayed.
+          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
+          'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+          'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+          'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
+          'text_color' : "#fff",
+          'bg_image_url' : '', ## leave empty if you want just a full color background
+          'extra_css' : "text-align: left; padding: 8rem 0;" ## add custom css to be added inline to the wrapper element
+        }
+      },
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_plain-content-01.html",
+        "options":{
+          'content' : '<h3>IT Contact:</h3><p>024 7650 9022</p><a href="mailto:extracaresupport@extracare.org.uk">extracaresupport@extracare.org.uk</a><h3>Training Team Contact:</h3><p>024 7650 9046</p><a href="mailto:training.team@extracare.org.uk">training.team@extracare.org.uk</a>', ## block content, place iline HTML here
+          'optional_classes' : "", ##
+          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+        }
+      },
+    ]
+  %>
+</%def>
+
+
+## help page content
+
+<%def name="get_help_content()">
+  <%
+    return []
+  %>
+</%def>
+
+
+## contact page content
+
+<%def name="get_contact_content()">
+  <%
+    return [
         {
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
@@ -414,24 +463,6 @@
   %>
 </%def>
 
-
-## help page content
-
-<%def name="get_help_content()">
-  <%
-    return []
-  %>
-</%def>
-
-
-## contact page content
-
-<%def name="get_contact_content()">
-  <%
-    return []
-  %>
-</%def>
-
 ## blog page content
 
 <%def name="get_blog_content()">
@@ -452,7 +483,33 @@
 
 <%def name="get_honor_content()">
   <%
-    return []
+  return [
+    {
+      "element-type":"static-block",
+      "element-path":"design-templates/static-blocks/_hero-section-01.html",
+      "options":{
+        'hero_title' : "Honor Code", ## leave value empty if you don't want it displayed.
+        'hero_subtitle' : "", ## leave value empty if you don't want it displayed.
+        'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+        'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
+        'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
+        'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
+        'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
+        'text_color' : "#fff",
+        'bg_image_url' : '', ## leave empty if you want just a full color background
+        'extra_css' : "" ## add custom css to be added inline to the wrapper element
+      }
+    },
+    {
+      "element-type":"static-block",
+      "element-path":"design-templates/static-blocks/_plain-content-01.html",
+      "options":{
+        'content' : '<ol><li>The ExtraCare Charitable Trust reserves the right to change the content used at any time</li><li>The ExtraCare Charitable Trust may make improvements, or changes, to this material at any time without prior notification</li><li>The use of the training material on our courses is restricted to the Registered User who has been supplied with the log in details by a The ExtraCare Charitable Trust as part of an authorised course</li><li>This training material has been prepared, maintained, updated and distributed by The ExtraCare Charitable Trust</li><li>The use of the training material on our courses is restricted to the Registered User who has been supplied with the log in details by a The ExtraCare Charitable Trust as part of an authorised course</li><li>The ExtraCare Charitable Trust does not warrant that the materials will be error free including technical inaccuracies, nor free of viruses, or other harmful matter</li></ol>', ## block content, place inline HTML here
+        'optional_classes' : "", ##
+        'extra_css' : "" ## add custom css to be added inline to the wrapper element
+      }
+    },
+  ]
   %>
 </%def>
 

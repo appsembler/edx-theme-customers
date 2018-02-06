@@ -1,0 +1,40 @@
+@import "customer_specific/extracare-certs";
+@import "customer_specific/extracare-footer";
+@import "customer_specific/extracare-index-quote";
+
+$extracare-light-green: #a1d068;
+
+.a--hero-section-01 {
+  border-top: 0.8rem solid $extracare-light-green;
+  border-bottom: 0.4rem solid $extracare-light-green;
+  min-height: 14rem;
+  padding: 10rem 2rem;
+
+  h1 {
+    display: inline-block;
+    background-color: $extracare-light-green;
+    padding: 1rem 2rem;
+    font-size: 4.2rem;
+    margin: 0;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 2.8rem;
+    }
+  }
+
+  &__container {
+    padding: 0;
+  }
+
+  &__cta-container {
+    margin: 0;
+  }
+}
+
+.a--header-design-01 .a--site-menu__group ul li.a--nav-cta a {
+  color: #fff;
+}
+
+.a--plain-content li {
+  padding: 10px 0;
+}
