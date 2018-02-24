@@ -24,14 +24,20 @@
             <%static:include path="student_account/${template_name}.underscore" />
         </script>
     % endfor
-    % if get_global_settings()['enable_registration_link_on_login']:
+    % if get_global_settings().get('sso_disable_login_fields', False):
       <script type="text/template" id="login-tpl">
-          <%static:include path="student_account/login.underscore" />
+          <%static:include path="student_account/sso-no-login-no-register.underscore" />
       </script>
     % else:
-      <script type="text/template" id="login-tpl">
-          <%static:include path="student_account/login-no-register.underscore" />
-      </script>
+      % if get_global_settings()['enable_registration_link_on_login']:
+        <script type="text/template" id="login-tpl">
+            <%static:include path="student_account/login.underscore" />
+        </script>
+      % else:
+        <script type="text/template" id="login-tpl">
+            <%static:include path="student_account/login-no-register.underscore" />
+        </script>
+      % endif
     % endif
   % else:
     % for template_name in ["account", "access", "form_field", "institution_login", "institution_register", "password_reset", "hinted_login"]:
@@ -39,9 +45,15 @@
             <%static:include path="student_account/${template_name}.underscore" />
         </script>
     % endfor
-    <script type="text/template" id="login-tpl">
-        <%static:include path="student_account/login-no-register.underscore" />
-    </script>
+    % if get_global_settings().get('sso_disable_login_fields', False):
+      <script type="text/template" id="login-tpl">
+          <%static:include path="student_account/sso-no-login-no-register.underscore" />
+      </script>
+    % else:
+      <script type="text/template" id="login-tpl">
+          <%static:include path="student_account/login-no-register.underscore" />
+      </script>
+    % endif
     <script type="text/template" id="register-tpl">
         <%static:include path="student_account/a--register-disabled.underscore" />
     </script>
