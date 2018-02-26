@@ -43,7 +43,7 @@
 <%def name="get_brand_logos()">
   <%
   return {
-    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
+    'logo_positive' : get_value('logo_positive') or static('images/branding/Edge_logo--new.svg'), ## required
     'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.svg'), ## required
     'icon_color' : get_value('icon_color', '') or static('images/branding/SFF_ASU_Logo.png'), ## required
     'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.svg'), ## required
@@ -78,6 +78,12 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
+      {
+        'link_title': 'Learn more',
+        'link_URL': '/about',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
     ]
   %>
 </%def>
@@ -98,6 +104,18 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
+      {
+        'link_title': 'Terms and Conditions',
+        'link_URL': 'https://getyouredge.org/tou',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Privacy Policy',
+        'link_URL': 'https://www.asu.edu/privacy/',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
     ]
   %>
 </%def>
@@ -108,7 +126,7 @@
 <%def name="get_footer_settings()">
   <%
     return {
-      'footer_logo' : get_brand_logos()['icon_color'], ## leave as is, defined above. Can be changed to something custom if needed.
+      'footer_logo' : static('images/branding/sff+asu.png'), ## leave as is, defined above. Can be changed to something custom if needed.
       'footer_copyright_text' : '2018 Edge. All rights reserved.',
       'display_edx_disclaimer' : False, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
@@ -137,10 +155,10 @@
         "element-type":"courses-list",
         "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
         "options":{
-          'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
-          'course_template_class' : 'a--course-tile-02', ## required, defined as "a--{template-name}"
-          'course_template' : 'single-course/_course-tile-02.html', ## required
-          'section_heading' : "View one of our latest EDGE courses",
+          'max_courses' : 4, ## required, sets max number of courses to be displayed in the block
+          'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
+          'course_template' : 'single-course/_course-tile-01.html', ## required
+          'section_heading' : "Our Latest EDGE Courses:",
           'section_text' : "",
           'optional_classes' : "centered", ## can be "centered" to have all text centered
           'extra_css' : "" ## add custom css to be added inline to the wrapper element
@@ -361,10 +379,10 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "Learn more",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
@@ -377,7 +395,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
+            'content' : '<h2>About Edge</h2><p>Edge exists to provide youth with engaging, impactful customer service training that creates a solid foundation from which to launch a career. These trainings are all available on any device, for free, to flexibly support job attainment, career advancement, and personal development. Through Edge training, youth will be better equipped to serve, assuring managers that the Edge employees they recruit and retain are more ready for their jobs. The Edge curriculum will become a national standard curriculum leveraged by anyone interested in entering the service sector in any industry; and recognized by employers as a preferred training for new hires.</p><p>Choose to set yourself apart with Edge and you will:</p><ul><li>Complete fun, quick, easy modules right on your phone, whenever you want, for free.</li><li>Learn valuable skills that you will use throughout your entire career.</li><li>Earn a certificate for each module to strengthen your resume and job applications.</li></ul><h3><i>Content Framework</i></h3><table style="width:100%; text-align: center;"> <tr style="background-color:#eee"> <th>Customer Service</th> <th>Leadership</th> <th>Personal Development</th> </tr><tr> <td>Customer Service Basics</td><td>Leadership Skills</td><td>Personal Finance</td></tr><tr> <td>Advanced Customer Service</td><td>Time Management</td><td>Career Preparedness</td></tr><tr> <td></td><td></td><td>Employment Planning</td></tr></table><h2>Arizona State University</h2><p>Arizona State University (ASU) is ranked one of the top 100 universities in the world. With more than 300 degrees, ASU has a major that will fit any student. With top faculty conducting leading-edge research, students get access to an education that makes them master learners, capable of learning anything throughout their lives.</p><p>Out of thousands of U.S. schools, ASU is ranked:</p><ul><li>#1 in innovation, ahead of Stanford and MIT</li><li>#1 producer of Fulbright scholars, ahead of Cornell, UC Berkeley and UCLA</li><li>#1 public university chosen by international students</li><li>#4 online undergraduate program in the nation</li><li>Top ten for graduate employability</li><li>One of the best college values in public higher education</li></ul><p><a href="http://www.asu.edu/?feature=academics">Meet our faculty</> and <a href="http://www.asu.edu/?feature=research">learn more</a> about ASU’s rankings, groundbreaking research, and commitment to its communities.<h2>Schultz Family Foundation</h2><h3>Making A Difference</h3><p><b>We are witnessing a fundamental breakdown of the American Dream. Division. Hate. Exclusion. These have replaced respect, mobility, and compassion at the core of our country, leaving our nation at risk.</b></p><p><b>Now, we must all ask ourselves:</b></p><p><b>Will we allow one’s place in life to be determined by the zip code of one’s birth?</b></p><p><b>Will we turn our backs on those who have served our country, yet find decent work out of reach?</b></p><p><b>Will we settle for an America where only a few have access to first starts?</b></p><p><b>We all share the same dreams—to love and be loved, to find and pursue our purpose and to provide for our families. Yet, we are living in an America where potential is within all of us, but opportunity is not.</b></p><p><b>The Schultz Family Foundation is committed to lifting the human spirit and bringing possibility to everyone, regardless of skin color, religion, sexual orientation, gender, or station in life. We see our nation’s challenges, but we also see solutions. If we work together to unlock potential across our communities, we can build a nation that lives up to its promise.</b></p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }

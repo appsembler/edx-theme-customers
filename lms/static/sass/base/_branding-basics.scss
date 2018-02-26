@@ -3,10 +3,10 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #E62644;
-$brand-accent-color: #C2F7FF;
+$brand-primary-color: #e52544;
+$brand-accent-color: #c7e9f4;
 $navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$base-text-color: #000000;
 
 $primary-font-name: "Muli";
 $primary-font-weight-light: 300;
@@ -40,7 +40,7 @@ $cta-button-border: none;
 $buttons-border-radius: 0.5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.6rem;
+$header-logo-height: 5rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
@@ -83,7 +83,7 @@ $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;
-$footer-logo-width: 11rem;
+$footer-logo-width: 20rem;
 $footer-logo-opacity: 1;
 $footer-copyright-text-size: 1.2rem;
 $footer-copyright-text-color: lighten($footer-text-color, 15%);
