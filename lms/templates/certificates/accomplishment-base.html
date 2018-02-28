@@ -1,6 +1,7 @@
 <%namespace name='static' file='/static_content.html'/>
 <%namespace file='/theme-variables.html' import="get_global_settings" />
 <%! from django.utils.translation import ugettext as _ %>
+<%! from django.contrib.staticfiles.templatetags.staticfiles import static as djstatic %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_value %>
 
 <%
@@ -10,12 +11,7 @@ dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
 course_mode_class = course_mode if course_mode else ''
 %>
 
-<%
-style_overrides_file = get_value('css_overrides_file')
-if style_overrides_file:
-  style_overrides_file = 'customer_themes/' + style_overrides_file
-endif
-%>
+<% style_overrides_file = get_value('css_overrides_file') %>
 
 <!DOCTYPE html>
 <html class="certs-page no-js" lang="en">
@@ -29,9 +25,9 @@ endif
     <%static:css group='style-certificates'/>
 
     % if style_overrides_file:
-      <link rel="stylesheet" type="text/css" href="${static.url(style_overrides_file)}" />
+      <link rel="stylesheet" type="text/css" href="${djstatic(style_overrides_file)}" />
     % else:
-      <link rel="stylesheet" type="text/css" href="${static.url('css/main.css')}">
+      <link rel="stylesheet" type="text/css" href="${djstatic('css/main.css')}">
     % endif
     <link href="${get_global_settings()['fonts_url']}" rel="stylesheet" />
 </head>
