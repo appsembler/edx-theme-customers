@@ -139,18 +139,25 @@ var require = {baseUrl: window.baseUrl};
     </script>
     <%include file="/widgets/segment-io-footer.html" />
     <div class="modal-cover"></div>
-    <script>!function(e,o,n){window.HSCW=o,window.HS=n,n.beacon=n.beacon||{};var t=n.beacon;t.userConfig={},t.readyQueue=[],t.config=function(e){this.userConfig=e},t.ready=function(e){this.readyQueue.push(e)},o.config={docs:{enabled:!0,baseUrl:"//appsembler.helpscoutdocs.com/"},contact:{enabled:!0,formId:"fdef890f-fabb-11e5-a329-0ee2467769ff"}};var r=e.getElementsByTagName("script")[0],c=e.createElement("script");c.type="text/javascript",c.async=!0,c.src="https://djtflbt20bdde.cloudfront.net/",r.parentNode.insertBefore(c,r)}(document,window.HSCW||{},window.HS||{});</script>
-      % if user.is_authenticated():
-        <script>
-          HS.beacon.ready(function() {
-            HS.beacon.identify({
-              %if user.get_full_name():
-                name: '${user.get_full_name()}',
-              %endif
-              email: '${user.email}'
-            });
-          });
-        </script>
-      %endif
+    <!-- Intercom widget -->
+    % if show_intercom_widget:
+      <!-- Intercom widget -->
+      <script>
+      window.intercomSettings = {
+          % if user.is_authenticated():
+            %if user.get_full_name():
+              name: "${user.get_full_name() }", // Full name
+            %endif
+            email: "${user.email }", // Email address
+            created_at: ${user.date_joined.strftime("%s")}, // Signup date as a Unix timestamp
+            user_hash: "${intercom_user_hash}",
+          %endif
+          app_id: "${intercom_app_id}",
+          "LMS_URL": "${intercom_lms_url}"
+        };
+      </script>
+      <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/e4awi275';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+    % endif
+    <!-- /Intercom widget -->
   </body>
 </html>
