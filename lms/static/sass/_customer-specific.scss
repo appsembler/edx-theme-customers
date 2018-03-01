@@ -197,6 +197,56 @@
   }
 }
 
+// RTL Fixes (Hacks?) for Mixed-language courses in both courseware and discussion
+
+@mixin mixed-language-plain-text() {
+  // A reusable mixin for plain text and simple fields such as titles.
+
+  unicode-bidi: plaintext;  // This is similar to dir=auto attribute
+  text-align: initial;  // Undo edX styles that is suitable only for single-language courses
+}
+
+@mixin mixed-language-rich-content() {
+  // A reusable mixin for elements that contain rich text such as tables and headers and simple fields such as titles.
+
+  h1, h2, h3, h4, h5, h6, p, label, blockquote, ol, ul {
+    @include mixed-language-plain-text();
+  }
+
+  ol, ul {
+    li {
+      @include mixed-language-plain-text();
+    }
+  }
+
+  table {
+    th, td {
+      @include mixed-language-plain-text();
+    }
+  }
+}
+
+#seq_content {
+  @include mixed-language-rich-content();
+}
+
+body.discussion, .xblock-student_view-discussion {
+  // Note: It might be a good idea not include `.discussion-module-title` since it's not on it's own line.
+
+  .post-title, .forum-nav-thread-title {
+    @include mixed-language-plain-text();
+  }
+
+  .thread-preview-body, .wmd-input {
+    @include mixed-language-plain-text();
+  }
+
+  .post-body, .response-body {
+    @include mixed-language-rich-content();
+  }
+}
+
+
 // inline discussions fix
 
 .discussion-module {
