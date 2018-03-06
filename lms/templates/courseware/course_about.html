@@ -145,44 +145,56 @@ from openedx.core.lib.courses import course_image_url
       %>
 
 
-<%
-  course_about_vars = {}
+      <%
+        course_about_vars = {}
 
-  course_about_vars['user_authenticated'] = user.is_authenticated()
-  course_about_vars['course_registered'] = registered
-  course_about_vars['show_courseware_link'] = show_courseware_link
-  course_about_vars['course_in_cart'] = in_cart
-  course_about_vars['course_is_full'] = is_course_full
-  course_about_vars['course_is_invitation_only'] = invitation_only
-  course_about_vars['user_can_enroll'] = can_enroll
-  course_about_vars['can_add_course_to_cart'] = can_add_course_to_cart
-  course_about_vars['is_shib_course'] = is_shib_course
-  course_about_vars['user_has_staff_access'] = staff_access
-  course_about_vars['course_about_show_social_links'] = static.get_value('course_about_show_social_links')
+        course_about_vars['user_authenticated'] = user.is_authenticated()
+        course_about_vars['course_registered'] = registered
+        course_about_vars['show_courseware_link'] = show_courseware_link
+        course_about_vars['course_in_cart'] = in_cart
+        course_about_vars['course_is_full'] = is_course_full
+        course_about_vars['course_is_invitation_only'] = invitation_only
+        course_about_vars['user_can_enroll'] = can_enroll
+        course_about_vars['can_add_course_to_cart'] = can_add_course_to_cart
+        course_about_vars['is_shib_course'] = is_shib_course
+        course_about_vars['user_has_staff_access'] = staff_access
+        course_about_vars['course_about_show_social_links'] = static.get_value('course_about_show_social_links')
 
-  course_about_vars['twitter_href'] = tweet_action
-  course_about_vars['email_href'] = email_subject
-  course_about_vars['facebook_href'] = facebook_link
+        course_about_vars['twitter_href'] = tweet_action
+        course_about_vars['email_href'] = email_subject
+        course_about_vars['facebook_href'] = facebook_link
 
-  course_about_vars['course_name'] = course.display_name_with_default
-  course_about_vars['course_number'] = course.number
+        course_about_vars['course_name'] = course.display_name_with_default
+        course_about_vars['course_number'] = course.number
 
-  course_about_vars['user_authenticated_reg_element_id'] = "add_to_cart_post"
-  course_about_vars['public_reg_element_id'] = "reg_then_add_to_cart"
-  course_about_vars['public_reg_element_href'] = reg_then_add_to_cart_link
-  course_about_vars['user_cart_link'] = cart_link
-  course_about_vars['course_href_target'] = course_target
-  course_about_vars['course_image'] = course_image_url(course)
-  course_about_vars['course_video'] = get_course_about_section(request, course, "video")
-  course_about_vars['short_description'] = get_course_about_section(request, course, "short_description")
-  course_about_vars['course_overview'] = get_course_about_section(request, course, "overview")
-  course_about_vars['course_studio_url'] = studio_url
-  course_about_vars['course_price'] = course_price
-  course_about_vars['course_effort'] = get_course_about_section(request, course, "effort")
-  course_about_vars['course_display_start_date'] = not course.start_date_is_still_default
-  course_about_vars['course_start_date'] = course.start_datetime_text()
-  course_about_vars['course_end_date'] = course.end_datetime_text()
-%>
+        course_about_vars['user_authenticated_reg_element_id'] = "add_to_cart_post"
+        course_about_vars['public_reg_element_id'] = "reg_then_add_to_cart"
+        course_about_vars['public_reg_element_href'] = reg_then_add_to_cart_link
+        course_about_vars['user_cart_link'] = cart_link
+        course_about_vars['course_href_target'] = course_target
+        course_about_vars['course_image'] = course_image_url(course)
+        course_about_vars['course_video'] = get_course_about_section(request, course, "video")
+        course_about_vars['short_description'] = get_course_about_section(request, course, "short_description")
+        course_about_vars['course_overview'] = get_course_about_section(request, course, "overview")
+        course_about_vars['course_studio_url'] = studio_url
+        course_about_vars['course_price'] = course_price
+        course_about_vars['course_effort'] = get_course_about_section(request, course, "effort")
+        course_about_vars['course_display_start_date'] = not course.start_date_is_still_default
+        course_about_vars['course_end_date'] = course.end
+        course_about_vars['self_paced'] = course.self_paced
+
+        if course.advertised_start is not None:
+          course_start_string = course.advertised_start
+        else:
+          if course.start is not None:
+            course_start_string = course.start.strftime('%Y-%m-%dT%H:%M:%S%z')
+          else:
+            course_start_string = ''
+          endif
+        endif
+
+        course_about_vars['course_start_date'] = course_start_string
+      %>
 
 % for element in get_course_about_content():
   % if (element['element-type'].startswith('layout')):
