@@ -104,6 +104,14 @@ site_status_msg = get_site_status_msg(course_id)
       %>
     % endif
     <%
+      append_group.append({
+        'link_title': _('Sign Out'),
+        'link_URL': reverse('logout'),
+        'special_class': '',
+        'open_in_new_tab': false
+      })
+    %>
+    <%
       slideout_menu_items.append(append_group)
       menu_items.append(append_group)
     %>
@@ -119,14 +127,6 @@ site_status_msg = get_site_status_msg(course_id)
         append_group.append({
           'link_title': _('Account'),
           'link_URL': reverse('account_settings'),
-          'special_class': '',
-          'open_in_new_tab': false
-          })
-        slideout_menu_items.append(append_group)
-        append_group = []
-        append_group.append({
-          'link_title': _('Sign Out'),
-          'link_URL': reverse('logout'),
           'special_class': '',
           'open_in_new_tab': false
           })
@@ -152,7 +152,7 @@ site_status_msg = get_site_status_msg(course_id)
       % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY') and get_global_settings().get('course-catalogue_enabled', True) and get_global_settings().get('enable_course_catalogue_for_non-auth_users', True):
         <%
           append_group.append({
-            'link_title': _('Explore courses'),
+            'link_title': _('Find courses'),
             'link_URL': '/courses',
             'special_class': '',
             'open_in_new_tab': false

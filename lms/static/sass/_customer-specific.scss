@@ -9,21 +9,20 @@
 }
 
 .cset--index-hero {
-  padding: 15rem 0;
+  padding: 30rem 0;
   text-align: center;
-  min-height: 40vh;
-  height: 45rem;
+  min-height: 50vh;
   @include display(flex);
   @include align-items(center);
-  background-size: initial;
+  background-size: cover;
   background-position: center;
   background-color: #2c2516;
 
   h1 {
-    font-size: 7.2rem;
+    font-size: 6.2rem;
     @include fontVariantInclude("primary-font-black");
     color: $brand-primary-color;
-    margin: 0;
+    margin: 0 0 2rem;
     line-height: 100%;
     text-transform: uppercase;
     text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
@@ -89,5 +88,91 @@
 
   .a--footer__links-container li {
     margin: 0.5rem 0 0.5rem 1.5rem;
+  }
+}
+
+// bottom page cta for signin/signup
+
+.cset--bottom-signin-cta {
+  border-top: 0.2rem solid #ddd;
+  border-bottom: 0.2rem solid #ddd;
+  background-color: #fafafa;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  text-align: center;
+
+  &__cta-container {
+    @include display(flex);
+    @include align-items(center);
+    @include justify-content(center);
+  }
+
+  h2 {
+    margin: 0 0 3rem;
+    font-size: 3.2rem;
+  }
+
+  .create-account-cta, .sign-in-cta {
+    min-width: 23rem;
+    padding: 1.5rem 2rem;
+    @include primary-font;
+    display: inline-block;
+    margin: 0;
+    font-size: 1.8rem;
+    @include fontVariantInclude($global-font-cta-buttons);
+    @include button_radius;
+    @include button_splash($buttons-border-radius);
+  }
+
+  .create-account-cta {
+    border: none;
+    background-color: $brand-accent-color;
+    color: pick-visible-color($brand-accent-color, $base-text-color, #fff);
+  }
+
+  .sign-in-cta {
+    border: 0.2rem solid $brand-primary-color;
+    color: $brand-primary-color;
+    background: none;
+
+    &:hover, &:focus {
+      background-color: $brand-primary-color;
+      color: pick-visible-color($brand-primary-color, $base-text-color, #fff);
+    }
+  }
+
+  .cta-divider {
+    display: inline-block;
+    max-width: 15rem;
+    margin: 2rem 3rem;
+    font-size: $font-size-base-body;
+  }
+}
+
+// header nav padding changes
+
+.a--header-design-01 .a--site-menu__group {
+  padding: 0;
+
+  .a--nav-cta {
+    margin-right: 5rem;
+  }
+
+  .a--user-avatar {
+    margin-left: 3rem;
+  }
+}
+
+// table style in plain content
+
+.a--plain-content {
+
+  table {
+    max-width: 72rem;
+
+    th, td {
+      border: 0.1rem solid rgba($base-text-color, 0.3);
+      padding: 1rem;
+    }
   }
 }
