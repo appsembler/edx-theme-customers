@@ -1,2 +1,9 @@
 @import "certificates/certificates-base";
 @import "certificates/certificate-template-01";
+
+// hide Linked Accounts option
+@if $hide-linked-accounts-tab != "False" {
+  .wrapper-account-settings .account-settings-container .wrapper-header .account-nav #accounts-tab {
+    display: none;
+  }
+}
