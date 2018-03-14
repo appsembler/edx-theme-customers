@@ -2,6 +2,12 @@
 <%namespace name='static' file='/static_content.html'/>
 <%
 course_mode_class = course_mode if course_mode else ''
+ENV_TOKENS = settings.ENV_TOKENS['APPSEMBLER_FEATURES']
+cert_configs = ENV_TOKENS.get("CERTS_HTML_VIEW_CONFIGURATION", None)
+logo_src = cert_configs['default']['logo_src']
+logo_url = cert_configs['default']['logo_url']
+url = cert_configs['default']['url']
+certificate_title = cert_configs['default']['certificate_title']
 %>
 
 <header class="header-app">
@@ -101,3 +107,4 @@ course_mode_class = course_mode if course_mode else ''
 </footer>
 
 </main>
+
