@@ -36,7 +36,7 @@ course_mode_class = course_mode if course_mode else ''
                             <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
                         </span>
                     </p>
-                    <p class="accomplishment-statement-detail copy copy-lead">an online course offered by Starbucks Global Academy and Arizona State University</p>
+                    <p class="accomplishment-statement-detail copy copy-lead">an online professional skills training module powered by Arizona State University with support from Schultz Family Foundation</p>
 
                     <div class="accomplishment-statement-detail">
 
@@ -48,7 +48,7 @@ course_mode_class = course_mode if course_mode else ''
                 </div>
 
 
-    % if mode != 'base':
+    % if mode != 'base' and False:
     <div class="accomplishment-signatories">
         <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
 
@@ -72,6 +72,14 @@ course_mode_class = course_mode if course_mode else ''
         </div>
     </div>
     % endif
+
+    <div class="wrapper-footer">
+
+        <footer class="footer-app" role="contentinfo" id="company-info">
+            <img class="logo-img" src="${get_brand_logos()['icon_color']}"  alt="logo of Schultz Family Foundation and Arizona State University" width="240" height="90"/>
+        </footer>
+
+    </div>
 
     <div class="wrapper-accomplishment-metadata">
         <div class="accomplishment-metadata">

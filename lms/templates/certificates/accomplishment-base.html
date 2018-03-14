@@ -19,12 +19,26 @@ course_mode_class = course_mode if course_mode else ''
 
     <%static:css group='style-certificates'/>
     <style type="text/css">
-        .asu--certificates__certificate .btn,
-        .asu--certificates__certificate .btn:hover
-         {
+        .asu--certificates__certificate .btn:hover {
             color: #fff !important;
             border-color: #fff !important;
         }
+        .asu--certificates__certificate .accomplishment-statement {
+            border-bottom-width: 0; 
+            margin-bottom: 0;
+            padding-bottom: 0; 
+
+        }
+    </style>
+    <style type="text/css" media="print">
+        body {margin-top: 0 !important;}
+        .wrapper-footer {display: block !important; float:left; width: 50%; text-align: right}
+        .footer-app {border-width: 0; float: right; padding-top:0;}
+        .wrapper-metadata {margin-top: 0.5em !important;}
+        .wrapper-statement-and-signatories {border-bottom-width: 0 !important; }
+        .accomplishment-rendering {padding-bottom: 0 !important}
+        .accomplishment-type {margin-bottom: 30px !important;}
+        .accomplishment-summary {margin-bottom: 20px !important;}
     </style>
 
 </head>
