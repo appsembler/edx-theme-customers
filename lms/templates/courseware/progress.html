@@ -71,7 +71,7 @@ from django.utils.http import urlquote_plus
                   </div>
                   <div class="msg-actions">
                       %if certificate_data.cert_web_view_url:
-                      <a class="btn" target="_blank" onclick="view_cert()">${_("View and Email Certificate")} <span class="sr">${_("Opens in a new browser window")}</span></a>
+                      <a id="view_email_cert" class="btn" target="_blank" href="${certificate_data.cert_web_view_url}" onclick="view_cert()">${_("View and Email Certificate")} <span class="sr">${_("Opens in a new browser window")}</span></a>
                       %elif certificate_data.cert_status == CertificateStatuses.downloadable and certificate_data.download_url:
                       <a class="btn" href="${certificate_data.download_url}" target="_blank">${_("Download Your Certificate")} <span class="sr">${_("Opens in a new browser window")}</span></a>
                       %elif certificate_data.cert_status == CertificateStatuses.requesting:
@@ -216,9 +216,7 @@ from django.utils.http import urlquote_plus
       by visiting your Account page via the upper right hand menu bar.
       This may be located in your previous browser tab or window.
       Then re-open or refresh this page.`)
-        }
-        else{
-          window.open(decodeURIComponent("${certificate_data.cert_web_view_url}"))
+      $("#view_email_cert").attr("href", "")
         }
       }
     </script>
