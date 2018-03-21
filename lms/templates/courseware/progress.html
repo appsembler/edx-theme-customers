@@ -211,12 +211,8 @@ from django.utils.http import urlquote_plus
 
       function view_cert() {
         if(${studylocation} == false){
-      alert(`To share this Certificate with your Location training staff,
-      please set a Location for which you are completing this training,
-      by visiting your Account page via the upper right hand menu bar.
-      This may be located in your previous browser tab or window.
-      Then re-open or refresh this page.`)
-      $("#view_email_cert").attr("href", "")
+        alert(`To successfully email your certificate to your location,\nplease set your location in your Account. You can do this by\nvisiting your Account page via the upper right hand bar menu,\nThree Horizontal lines. Click on them and click on Account.\nPick your location from the drop down menu on the Location box,\nits about halfway down the page.Once done return to your progress page and click on “email and view certificate” and then “email certificate” – Thank you.`)
+      $("#view_email_cert").attr("href", "/account/settings")
         }
       }
     </script>
@@ -225,4 +221,3 @@ from django.utils.http import urlquote_plus
 <%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
     DateUtilFactory.transform(iterationKey=".localized-datetime");
 </%static:require_module_async>
-
