@@ -33,8 +33,12 @@ course_mode_class = course_mode if course_mode else ''
         <div class="a--accomplishment-design-01__main">
           <div class="a--accomplishment-design-01__main__content">
             <div class="main-header">
-              <span class="accomplishment-type-symbol">
-                  <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="">
+              <span class="accomplishment-type-symbol" style="width: ${get_certificates_settings()['accomplishment_icon_width']};">
+                % if (get_certificates_settings()['accomplishment_icon'] != ''):
+                  <img class="src" src="${get_certificates_settings()['accomplishment_icon']}" alt="" />
+                % else:
+                  <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="" />
+                % endif
               </span>
               <h3 class="course-info">
                 ${document_title}
