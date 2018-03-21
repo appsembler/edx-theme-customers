@@ -1,6 +1,6 @@
 ## mako
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='/theme-variables.html' import="get_global_settings" />
+<%namespace file='/theme-variables.html' import="get_global_settings, get_brand_favicon" />
 <%! from django.utils.translation import ugettext as _ %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static as djstatic %>
@@ -22,6 +22,8 @@ course_mode_class = course_mode if course_mode else ''
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>${document_title}</title>
+
+    <link rel="icon" type="image/x-icon" href="${get_brand_favicon()['brand_favicon']}" />
 
     <%static:css group='style-certificates'/>
 
