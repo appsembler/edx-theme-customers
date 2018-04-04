@@ -1,0 +1,35 @@
+.nh--hero-section {
+  padding: 20rem 0 10rem;
+  background-size: cover;
+
+  &__container {
+
+  }
+
+  &__text-container {
+    margin-left: -30px;
+    margin-right: -30px;
+    max-width: 64rem;
+    padding: 4rem 3rem;
+    background-color: #fff;
+  }
+
+  h1 {
+    @include primary-font-black;
+    color: $brand-primary-color;
+    font-size: 6.4rem;
+    max-width: 64rem;
+    margin: 0 0 3rem;
+    line-height: 110%;
+  }
+
+  p {
+    @include primary-font;
+    color: $base-text-color;
+    font-size: 1.6rem;
+  }
+}
+
+.a--course-listing-01__wrapper {
+  padding: 5rem 0 8rem;
+}
