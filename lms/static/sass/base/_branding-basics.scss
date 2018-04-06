@@ -3,16 +3,16 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
+$brand-primary-color: #CF1220;
+$brand-accent-color: #63BBBE;
 $navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$base-text-color: #555555;
 
-$primary-font-name: "Open Sans";
+$primary-font-name: "Lato";
 $primary-font-weight-light: 300;
 $primary-font-weight-regular: 400;
 $primary-font-weight-bold: 700;
-$primary-font-weight-black: 800;
+$primary-font-weight-black: 900;
 $accent-font-name: "Bebas";
 
 $font-size-base-body: 14px;
@@ -26,22 +26,22 @@ $line-height-h3: 130%;
 $font-size-h4: 18px;
 $line-height-h4: 130%;
 
-$global-font-h1: "primary-font-light";
-$global-font-h2: "primary-font-light";
+$global-font-h1: "primary-font-regular";
+$global-font-h2: "primary-font-regular";
 $global-font-h3: "primary-font-bold";
 $global-font-h4: "primary-font-bold";
 $global-font-base-body: "primary-font-regular";
 $global-font-header-links: "primary-font-regular";
 $global-font-cta-buttons: "primary-font-regular";
 
-$cta-button-bg: $brand-accent-color;
+$cta-button-bg: $brand-primary-color;
 $cta-button-text-color: #fff;
 $cta-button-border: none;
-$buttons-border-radius: 0.5rem;
+$buttons-border-radius: 0.6rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
-$header-padding-top: 1.5rem;
+$header-logo-height: 7.8rem;
+$header-padding-top: 2rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
 $header-padding-sm-bottom: 1.5rem;
@@ -49,7 +49,7 @@ $header-group-separation: 4rem;
 $header-font-size: 1.6rem;
 $header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
-$navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
+$navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-primary-color);
 $navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
 $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
@@ -63,7 +63,7 @@ $nav-toggle-bar-margin: 2rem;
 $nav-toggle-bar-color: $header-text-color;
 $nav-toggle-bar-separation: 1rem;
 $nav-toggle-bar-pulsar-color: $brand-primary-color;
-$nav-toggle-bar-pulsar-visible: false;
+$nav-toggle-bar-pulsar-visible: False;
 
 $slideout-menu-text-color: #fff;
 $slideout-menu-background-color: $brand-primary-color;
@@ -83,7 +83,7 @@ $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;
-$footer-logo-width: 4rem;
+$footer-logo-width: 10rem;
 $footer-logo-opacity: 0.5;
 $footer-copyright-text-size: 1.2rem;
 $footer-copyright-text-color: lighten($footer-text-color, 15%);
