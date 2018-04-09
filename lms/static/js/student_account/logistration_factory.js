@@ -3,7 +3,7 @@
     define('edx-theme-codebase/js/student_account/logistration_factory',
            [
             'jquery',
-            'edx-theme-codebase/js/student_account/views/AccessView'
+            'edx-theme-codebase/js/student_account/views/TrinityAccessView'
         ],
         function($, AccessView) {
             return function(options) {
