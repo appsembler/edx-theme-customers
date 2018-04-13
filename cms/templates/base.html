@@ -67,9 +67,29 @@ from openedx.core.djangolib.js_utils import (
         <% tier_expires_in = request.session.get('TIER_EXPIRES_IN', False) %>
 
         % if tier_display_warning and tier_has_expired:
-            <span style="position: absolute; top: 0; left: 0; padding: 15px; font-size: 14px; background-color: #e74c3c; display: block; width: 100%; color: #fff; font-family: sans-serif;">Your Tahoe Trial has <strong>expired!</strong> Please <a href="http://www.appsembler.com/contact/" style="display: inline-block; padding: 7px 10px; border: 2px solid #fff; color: #fff; border-radius: 30px; margin: 0 3px; font-weight: bolder;">let us know</a> about your experience or if you want to extend your Trial.</span><span style="display: block; height: 68px; width: 100%;"></span>
+          <section class="amc--notification__area" style="background-color: #fff; padding: 1px 0;">
+            <div class="amc--notification__content amc--notification--tier-expiration" style="width: 100%; max-width: 1280px; min-width: 900px; margin: 15px auto; background-color: #E4572E; box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2); color: #fff; font-size: 14px; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; padding: 20px 30px; border-radius: 30px;">
+              <div class="amc--notification__text-left">
+                Your Tahoe Trial <strong>has expired</strong>!
+              </div>
+              <div class="amc--notification__actions-right" style="margin-left: auto;">
+                <a class="amc--notification--button secondary-action" href="https://www.appsembler.com/about/contact-us" target="_blank" style="padding: 7px 20px; margin: 5px; border-radius: 30px; text-decoration: none; background: none; border: 2px solid #fff; color: #fff; font-weight: bolder;">Contact us</a>
+                <a class="amc--notification--button primary-action" href="https://amc-app.appsembler.com/app/buy-now" target="_blank" style="padding: 7px 20px; margin: 5px; border-radius: 30px; text-decoration: none; background-color: #fff; border: 2px solid #fff; color: #1a1a1a; font-weight: bolder;">Buy now!</a>
+              </div>
+            </div>
+          </section>
         % elif tier_display_warning and tier_expires_in:
-            <span style="padding: 15px; font-size: 14px; background-color: #0090c1; display: block; width: 100%; color: #fff; font-family: sans-serif;">Your Tahoe Trial <strong>expires</strong> in: <strong>${tier_expires_in}</strong>.</span>
+          <section class="amc--notification__area" style="background-color: #fff; padding: 1px 0;">
+            <div class="amc--notification__content amc--notification--tier-expiration" style="width: 100%; max-width: 1280px; min-width: 900px; margin: 15px auto; background-color: #fff; box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2); color: #1a1a1a; font-size: 14px; display: -ms-flexbox; display: flex; -ms-flex-align: center; align-items: center; padding: 20px 30px; border-radius: 30px;">
+              <div class="amc--notification__text-left">
+                Your Tahoe Trial <strong>expires</strong> in: <span class="expiration-info" style="font-size: 16px; font-weight: bolder;">${tier_expires_in}</span>
+              </div>
+              <div class="amc--notification__actions-right" style="margin-left: auto;">
+                <a class="amc--notification--button secondary-action" href="https://www.appsembler.com/about/contact-us" target="_blank" style="padding: 7px 20px; margin: 5px; border-radius: 30px; text-decoration: none; background: none; border: 2px solid #0090c1; color: #0090c1; font-weight: bolder;">Contact us</a>
+                <a class="amc--notification--button primary-action" href="https://amc-app.appsembler.com/app/buy-now" target="_blank" style="padding: 7px 20px; margin: 5px; border-radius: 30px; text-decoration: none; background-color: #0090c1; border: 2px solid #0090c1; color: #fff; font-weight: bolder;">Buy now!</a>
+              </div>
+            </div>
+          </section>
         % endif
 
     % endif
