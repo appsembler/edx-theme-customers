@@ -158,3 +158,14 @@
     border: 2px solid rgba($brand-primary-color, 0.8);
   }
 }
+
+
+// notes with calculator active fixes
+.nav-utilities.has-utility-calculator .wrapper-utility.edx-notes-visibility {
+  margin: 1rem 2rem 1rem 0;
+  padding: 0.1rem;
+
+  .action-toggle-message {
+    right: 7rem;
+  }
+}
