@@ -1,0 +1,66 @@
+<%page args="footer_links, footer_logo, footer_copyright_text, display_edx_disclaimer, edx_disclaimer, display_poweredby" />
+<%namespace file='/theme-variables.html' import="get_footer_settings" />
+<%namespace name='static' file='/static_content.html'/>
+<%! from django.utils.translation import ugettext as _ %>
+
+<footer class="a--footer">
+  <div class="bs-container a--container a--footer__container">
+    <div class="a--footer__main-wrapper">
+      <div class="a--footer__main">
+        <div class="a--footer__logo">
+          <img src="${footer_logo}" />
+        </div>
+        <div class="a--footer__nav">
+          <p class="a--footer__copyright-text">
+            ${footer_copyright_text}
+          </p>
+          <ul class="a--footer__links-container">
+            % if get_footer_settings().get('display_app_link', False):
+              <li>
+                <a href="${get_footer_settings().get('app_url')}" target="_blank">
+                  <img class="app-store" alt="${_("Apple app on Apple Store")}" src="/static/images/app/app_store_badge_135x40.svg" style="height: 30px; width: auto;">
+                </a>
+              </li>
+            % endif
+            % for item in footer_links:
+            <li class="">
+              <a href="${item['link_URL']}" class="${item['special_class']}"
+              % if item['open_in_new_tab']:
+                target="_blank"
+              % endif
+              >${item['link_title']}</a>
+            </li>
+            % endfor
+          </ul>
+        </div>
+      </div>
+      % if display_poweredby:
+        <div class="a--footer__powered-by">
+          <p>
+            Powered by:
+          </p>
+          <a href="https://www.appsembler.com" target="_blank" id="footer-appsembler-logo" alt="Appsembler">
+            <img src="${static.url('images/appsembler-logo-positive.svg')}" />
+          </a>
+          <a href="http://open.edx.org" target="_blank" id="footer-openedx-logo" alt="Open edX">
+            <img src="${static.url('images/openedx-logo.svg')}" />
+          </a>
+        </div>
+      % endif
+    </div>
+    % if display_edx_disclaimer:
+      <div class="a--footer__edx-disclaimer">
+        ${edx_disclaimer}
+      </div>
+    % endif
+    <div class="cset--footer-apps">
+      <span class="cset--footer-apps__text">Download our official app:</span>
+      <a href="https://itunes.apple.com/us/app/get-your-edge/id1362799707" class="app-button app-store-button">
+        <img src="${static.url('images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg')}" alt="Download our app on the App store!" />
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=org.getyouredge.app" class="app-button play-store-button">
+        <img src="${static.url('images/google-play-badge.svg')}" alt="Download our app on the Google Play store!" />
+      </a>
+    </div>
+  </div>
+</footer>
