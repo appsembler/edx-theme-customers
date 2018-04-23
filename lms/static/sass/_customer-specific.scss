@@ -46,7 +46,10 @@
 }
 
 .nh--index-text {
-  margin: 5rem 0 0;
+  margin: 0;
+  padding: 10rem 0;
+  background-color: $brand-primary-color;
+  color: #fff;
 
   .a--plain-content__container {
     max-width: 110rem;
@@ -59,6 +62,7 @@
 
     a {
       @include primary-font-bold;
+      color: #fff;
     }
   }
 }
