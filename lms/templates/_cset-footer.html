@@ -10,6 +10,14 @@
         <div class="a--footer__logo">
           <img src="${footer_logo}" />
         </div>
+        <div class="cset--footer-apps">
+          <a href="https://itunes.apple.com/us/app/get-your-edge/id1362799707" class="app-button app-store-button">
+            <img src="${static.url('images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg')}" alt="Download our app on the App store!" />
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=org.getyouredge.app" class="app-button play-store-button">
+            <img src="${static.url('images/google-play-badge.svg')}" alt="Download our app on the Google Play store!" />
+          </a>
+        </div>
         <div class="a--footer__nav">
           <p class="a--footer__copyright-text">
             ${footer_copyright_text}
@@ -53,14 +61,5 @@
         ${edx_disclaimer}
       </div>
     % endif
-    <div class="cset--footer-apps">
-      <span class="cset--footer-apps__text">Download our official app:</span>
-      <a href="https://itunes.apple.com/us/app/get-your-edge/id1362799707" class="app-button app-store-button">
-        <img src="${static.url('images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg')}" alt="Download our app on the App store!" />
-      </a>
-      <a href="https://play.google.com/store/apps/details?id=org.getyouredge.app" class="app-button play-store-button">
-        <img src="${static.url('images/google-play-badge.svg')}" alt="Download our app on the Google Play store!" />
-      </a>
-    </div>
   </div>
 </footer>

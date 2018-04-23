@@ -193,9 +193,8 @@
   @include align-items(center);
   @include justify-content(center);
   @include flex-wrap(wrap);
-  border-top: 0.2rem solid #ddd;
-  margin: 3rem auto 0;
-  padding: 3rem;
+  margin: 0 auto;
+  padding: 1rem 3rem;
 
   &__text {
     display: block;
@@ -209,6 +208,8 @@
     @include flex-shrink(0);
     @include flex-grow(0);
     padding: 1.5rem;
+    opacity: 1;
+    @include transition(all 0.3s ease-in-out);
 
     img {
       display: block;
@@ -222,6 +223,10 @@
 
     &.play-store-button {
 
+    }
+
+    &:hover, &:focus {
+      opacity: 0.6;
     }
   }
 }
