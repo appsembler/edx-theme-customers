@@ -161,11 +161,20 @@
 
 
 // notes with calculator active fixes
-.nav-utilities.has-utility-calculator .wrapper-utility.edx-notes-visibility {
+.nav-utilities.has-utility-calculator .wrapper-utility.edx-notes-visibility {
   margin: 1rem 2rem 1rem 0;
   padding: 0.1rem;
 
   .action-toggle-message {
+    right: 7rem;
+  }
+}
+
+.nav-utilities .wrapper-utility.edx-notes-visibility {
+  margin: 1rem 2rem 1rem 0;
+  padding: 0.1rem;
+
+  .action-toggle-message {
     right: 7rem;
   }
 }
