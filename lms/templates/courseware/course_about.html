@@ -1,5 +1,6 @@
 <%namespace name='static' file='/static_content.html'/>
 <%!
+from dateutil import parser
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from courseware.courses import get_course_about_section
@@ -194,6 +195,11 @@ from openedx.core.lib.courses import course_image_url
         endif
 
         course_about_vars['course_start_date'] = course_start_string
+        course_about_vars['course_start_date_is_nondate'] = False
+        try:
+          parser.parse(course_start_string)          
+        except ValueError:
+          course_about_vars['course_start_date_is_nondate'] = True
       %>
 
 % for element in get_course_about_content():
