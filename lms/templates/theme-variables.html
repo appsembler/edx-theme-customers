@@ -44,11 +44,11 @@
 <%def name="get_brand_logos()">
   <%
   return {
-    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
-    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.svg'), ## required
-    'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.svg'), ## required
-    'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.svg'), ## required
-    'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.svg'), ## required
+    'logo_positive' : get_value('logo_positive') or static('images/branding/fulllogo_positive.png'), ## required
+    'logo_negative' : get_value('logo_negative') or static('images/branding/fulllogo_negative.png'), ## required
+    'icon_color' : get_value('icon_color', '') or static('images/branding/icon_fullcolor.png'), ## required
+    'icon_white' : get_value('icon_white', '') or static('images/branding/icon_white.png'), ## required
+    'icon_black' : get_value('icon_black', '') or static('images/branding/icon_black.png'), ## required
   }
   %>
 </%def>
@@ -79,12 +79,6 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
     ]
   %>
 </%def>
@@ -95,12 +89,6 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     return [
-      {
-        'link_title': 'Example item',
-        'link_URL': '#',
-        'special_class': '',
-        'open_in_new_tab': False,
-      },
     ]
   %>
 </%def>
@@ -112,8 +100,14 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'Privacy policy',
+        'link_URL': '/privacy',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Terms of Use',
+        'link_URL': '/tos',
         'special_class': '',
         'open_in_new_tab': False,
       },
@@ -128,8 +122,8 @@
   <%
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '2016 Company Name. All rights reserved.',
-      'display_edx_disclaimer' : True, ## bool value required
+      'footer_copyright_text' : '© 2018 JFrog Ltd. All rights reserved.',
+      'display_edx_disclaimer' : False, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
       'display_app_link' : False,
@@ -146,35 +140,131 @@
   <%
     return [
       {
-        "element-type":"static-block",
-        "element-path":"design-templates/static-blocks/_hero-section-01.html",
+        "element-type":"layout-single-col",
+        "element-path":"page-builder/layouts/_single-col.html",
         "options":{
-          # template settings
-          'hero_title' : "Welcome to our online courses!",
-          'hero_subtitle' : "We deliver our courses using Open edX, an open source software that powers edX.org and hundreds of other online learning sites around the world.",
-          'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
-          'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
-          'popup_video_url' : "r5YdS_ZjXnc", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-          'popup_video_text' : "Watch our video", ## leave value empty if you don't want a video button and modal displayed.
-          'popup_video_id' : "HeroVideo", ## leave value empty if you don't want a video button and modal displayed.
-          'text_color' : "#fff",
-          'bg_image_url' : '/static/themes/edx-theme-codebase/images/hero--example-background.jpg', ## leave empty if you want just a full color background
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
+          "layout-bg-image":static('images/HEADER1.jpg'),
+          "bg-color":"#fff",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-200",
+          "align-content":"align-content-center",
+          "text-alignment":"text-align--center",
+          "padding-top":"padd-t-200",
+          "padding-left":"padd-l-0"
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"layout-single-col",
+              "element-path":"page-builder/layouts/_single-col.html",
+              "options":{
+                "layout-bg-image":"",
+                "bg-color":"#",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-0",
+                "layout-bg-image-size":"bg-img-size--cover",
+                "text-color":"#000",
+                "margin-top":"marg-t-0",
+                "padding-right":"padd-r-0",
+                "margin-left":"marg-l-0",
+                "padding-bottom":"padd-b-20",
+                "align-content":"align-content-center",
+                "text-alignment":"text-align--center",
+                "padding-top":"padd-t-20",
+                "padding-left":"padd-l-0"
+              },
+              "children":{
+                "column-1":[
+                  {
+                    "element-type":"heading",
+                    "element-path":"page-builder/elements/_heading.html",
+                    "options":{
+                      "font-size":"font-size--42px",
+                      "margin-right":"marg-r-0",
+                      "margin-bottom":"marg-b-20",
+                      "text-color":"#fff",
+                      "margin-top":"marg-t-0",
+                      "margin-left":"marg-l-0",
+                      "text-content":"Welcome to JFrog Academy, where you can learn from the experts!",
+                      "font-family":"font--primary--bold",
+                      "text-alignment":"text-align--center"
+                    }
+                  },
+                  {
+                    "element-type":"paragraph-text",
+                    "element-path":"page-builder/elements/_paragraph.html",
+                    "options":{
+                      "font-size":"font-size--24px",
+                      "margin-right":"marg-r-0",
+                      "margin-bottom":"marg-b-5",
+                      "text-color":"#f9f9f9",
+                      "margin-top":"marg-t-5",
+                      "margin-left":"marg-l-0",
+                      "text-content":"Your fast track to learn - fully featured, self paced, best instructors!",
+                      "font-family":"font--primary--regular",
+                      "text-alignment":"text-align--center"
+                    }
+                  },
+                  {
+                    "element-type":"layout-1:1:1",
+                    "element-path":"page-builder/layouts/_three-col.html",
+                    "options":{
+                      "layout-bg-image":"",
+                      "bg-color":"#",
+                      "margin-right":"marg-r-0",
+                      "margin-bottom":"marg-b-0",
+                      "layout-bg-image-size":"bg-img-size--cover",
+                      "text-color":"#000",
+                      "margin-top":"marg-t-0",
+                      "padding-right":"padd-r-0",
+                      "margin-left":"marg-l-0",
+                      "padding-bottom":"padd-b-20",
+                      "align-content":"align-content-center",
+                      "text-alignment":"text-align--center",
+                      "padding-top":"padd-t-20",
+                      "padding-left":"padd-l-0"
+                    },
+                    "children":{
+                      "column-1":[],
+                      "column-3":[],
+                      "column-2":[
+                        {
+                          "element-type":"cta-button",
+                          "element-path":"page-builder/elements/_cta-button.html",
+                          "options":{
+                            "font-size":"font-size--18px",
+                            "bg-color":"#24A82A",
+                            "border-color":"#24A82A",
+                            "margin-right":"marg-r-auto",
+                            "border-width":"border-width--none",
+                            "margin-bottom":"marg-b-5",
+                            "text-color":"#fff",
+                            "margin-top":"marg-t-5",
+                            "padding-right":"padd-r-10",
+                            "margin-left":"marg-l-auto",
+                            "url":"http://www.jfrog.com",
+                            "padding-bottom":"padd-b-10",
+                            "text-content":"Visit JFrog.com",
+                            "padding-top":"padd-t-10",
+                            "font-family":"font--primary--regular",
+                            "padding-left":"padd-l-10"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
         }
-      },
-      {
-        "element-type":"courses-list",
-        "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
-        "options":{
-          'max_courses' : 7, ## required, sets max number of courses to be displayed in the block
-          'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
-          'course_template' : 'single-course/_course-tile-01.html', ## required
-          'section_heading' : "Our latest courses:",
-          'section_text' : "",
-          'optional_classes' : "centered", ## can be "centered" to have all text centered
-          'extra_css' : "" ## add custom css to be added inline to the wrapper element
-        }
-      },
+      }
     ]
   %>
 </%def>
@@ -316,31 +406,96 @@
 <%def name="get_tos_content()">
   <%
     return [
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_hero-section-01.html",
-          "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
+      {
+        "element-type":"layout-50:50",
+        "element-path":"page-builder/layouts/_two-col-50-50.html",
+        "options":{
+          "layout-bg-image":"",
+          "bg-color":"#2B9C3B",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-50",
+          "align-content":"align-content-left",
+          "text-alignment":"text-align--left",
+          "padding-top":"padd-t-200",
+          "padding-left":"padd-l-0"
         },
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_plain-content-01.html",
-          "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
+        "children":{
+          "column-1":[
+            {
+              "element-type":"heading",
+              "element-path":"page-builder/elements/_heading.html",
+              "options":{
+                "font-size":"font-size--48px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-20",
+                "text-color":"#ffffff",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":"JFrog Academy Terms of Use",
+                "font-family":"font--primary--regular",
+                "text-alignment":"text-align--left"
+              }
+            },
+            {
+              "element-type":"paragraph-text",
+              "element-path":"page-builder/elements/_paragraph.html",
+              "options":{
+                "font-size":"font-size--18px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-5",
+                "text-color":"#ffffff",
+                "margin-top":"marg-t-5",
+                "margin-left":"marg-l-0",
+                "text-content":"Last Revised: August 27, 2017",
+                "font-family":"font--primary--regular",
+                "text-alignment":"text-align--left"
+              }
+            }
+          ],
+          "column-2":[]
+        }
+      },
+      {
+        "element-type":"layout-single-col",
+        "element-path":"page-builder/layouts/_single-col.html",
+        "options":{
+          "layout-bg-image":"",
+          "bg-color":"#fff",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-20",
+          "align-content":"align-content-center",
+          "text-alignment":"text-align--left",
+          "padding-top":"padd-t-20",
+          "padding-left":"padd-l-0"
         },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"content-block",
+              "element-path":"page-builder/elements/_content-block.html",
+              "options":{
+                "content":'<p>JFrog Ltd. and its affiliates (“<strong>JFrog</strong>“, “<strong>Company</strong>”, “<strong>us</strong>” or “<strong>we</strong>”) is the operator of Company’s online academy available at: jfrog.tahoe.appsembler.com (the “<strong>Site</strong>”). These Terms of Use apply to your use of the Site. Please read these terms carefully before using this Site. &nbsp;&nbsp;</p><p><br></p><p><strong>1.</strong> <strong>Your Consent (PLEASE READ CAREFULLY!)</strong> BY ENTERING, CONNECTING TO, ACCESSING AND/OR USING THE SITE AND/OR ANY PART THEREOF, YOU AGREE TO THESE TERMS OF USE (THE <strong>“TOU”</strong>).<strong> IF YOU DISAGREE TO ANY TERM PROVIDED HEREIN, PLEASE DO NOT ACCESS AND USE THE SITE.</strong> &nbsp;&nbsp;</p><p><strong>2.</strong> <strong>Changes to the Terms of Use</strong>&nbsp;</p><p>These Terms of Use will govern the use of the Site and the content available therein. JFrog reserves the right to change these TOU at any time, so please re-visit this page frequently. We will provide notice of substantial changes of these TOU on the homepage of the Site and/or we will send you an e-mail regarding such changes to the e-mail address that you may have provided us with. Such substantial changes will take effect seven (7) days after such notice was provided on our Site or sent by e-mail, whichever is the earlier. Otherwise, all other changes to these TOU are effective as of the stated “Last Revised” date and your continued use of the Site after the Last Revised date will constitute acceptance of, and agreement to be bound by, those changes. In the event that the terms should be amended to comply with any legal requirements, the amendments may take effect immediately, or as required by the law and without any prior notice. &nbsp;&nbsp;</p><p><strong>3.</strong> <strong>Privacy</strong>&nbsp;</p><p>JFrog respects your privacy. Our <a href="https://pearlcohen.com/privacy-policy">Privacy Policy</a> explains the accepted privacy practices on the Site and the use thereof and is incorporated by reference to these TOU. Kindly read our Privacy Policy (available at <a href="https://jfrog.tahoe.appsembler.com/privacy">https://jfrog.tahoe.appsembler.com/privacy</a>) before using the Site &nbsp;&nbsp;</p><p><strong>4.</strong> <strong>Intellectual Property</strong>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;4.1. As between you and us, all rights, title and interest in and to the Site, including its copyrights, trademarks, trade names, marks (collectively “<strong>Marks</strong>”), content and other intellectual property rights (registered or not), and any goodwill associated therewith, are owned by JFrog or are licensed to it. Unless expressly permitted herein, you may not copy, reproduce, republish, disassemble, decompile, reverse engineer, download, post, broadcast, transmit, make available to the public, or otherwise use any of JFrog’s content in any way except for your own personal, non-commercial use.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;4.2. The foregoing rights and all associated limitations and restrictions apply to any of the materials and content on the Site including, for example, images, videos and text, whether directly on a page of the Site or a third party site, or contained in a document (e.g. a pdf) accessible from a page of the Site) (“<strong>Materials”</strong>). You may not use any of the Materials in anyway other than as provided herein. &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;4.3. For the removal of any doubt, we do not represent that information contained on or available via the Site is accurate or complete and accordingly it should not be relied on as such. You should not rely on any such information. &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;4.4. If you wish to use any of JFrog’s Marks, kindly refer to our brand guidelines which are available at: <a href="https://www.jfrog.com/brand-guidelines/">https://www.jfrog.com/brand-guidelines/</a>. If you wish to use Mark of any other third party, kindly refer to such party’s applicable website.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;4.5. If you believe that the content of this site including any Marks or Materials has been copied or used in a way that constitutes copyright infringement, please contact us at <a href="mailto:info@jfrog.com">info@jfrog.com</a>. &nbsp;&nbsp;&nbsp;</p><p><strong>5.</strong> <strong>Compliance with Law</strong>&nbsp;</p><p>Your use of this website is subject to all applicable local, state, national and international laws and regulations, and you agree not to violate such laws and regulations. Any attempt by any person to deliberately damage the Site is a violation of criminal and civil laws. When using the Site, you agree to refrain from, either directly or indirectly (a) breaching these TOU or any other applicable rules and instructions related to your use of the Site from time to time; (b) interfering with or disrupting the functionality of the Site; (c) You may not engage in any activity on this Site that restricts or inhibits any other user from using or enjoying this website by "hacking", "cracking", "spoofing", or defacing any portions of this Site. JFrog reserves the right to seek damages from any person to the fullest extent permitted by law. &nbsp;&nbsp;</p><p><strong>6.</strong> <strong>User Name</strong> &nbsp;</p><p>In order for you to view all Materials you may be required to register to the Site, by providing us with certain information as further detailed in our Privacy Policy. You may also be asked to choose a password and/or to generate authorization keys. You are solely and fully responsible for maintaining the confidentiality of the password and and for all activities that occur under your account. You may not assign or transfer your rights or delegate your duties under the account without JFrog’s prior written consent. You must notify us immediately of any unauthorized use of your password or Account or any other breach of security. &nbsp;&nbsp;</p><p><strong>7.</strong> <strong>Availability</strong>&nbsp;</p><p>The Site’s availability and functionality depends on various factors, such as communication networks. The Company does not warrant or guarantee that the Site will operate and/or be available at all times without disruption or interruption, or that it will be immune from unauthorized access or error-free. The Company explicitly states, and you hereby acknowledge, that no representation or guaranty is given with regards to the availability of the Site and/or any Material available therein. &nbsp;&nbsp;&nbsp;</p><p><strong>8.</strong> <strong>Disclaimer of Warranty</strong>&nbsp;</p><p>TO THE FULLEST EXTENT LEGALLY PERMISSIBLE, THE SITE, INCLUDING WITHOUT LIMITATION ANY CONTENT THEREIN, IS PROVIDED ON AN <strong>“AS IS”</strong> AND <strong>“AS AVAILABLE”</strong> BASIS, AND JFROG DISCLAIMS ALL WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF TITLE OR NON-INFRINGEMENT OR IMPLIED WARRANTIES OF USE, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE AND THOSE ARISING FROM A COURSE OF DEALING OR USAGE OF TRADE. WE DO NOT WARRANT THAT THE SITE (INCLUDING WITHOUT LIMITATION THE CONTENT AVAILABLE THEREIN) WILL BE FREE OF VIRUSES, DEFECTS, WORMS, OTHER HARMFUL COMPONENTS OR OTHER PROGRAM LIMITATIONS. THE COMPANY MAKES NO REPRESENTATION ABOUT THE SUITABILITY OF THE SITE AND/OR ANY AND ALL CONTENT AND INFORMATION PROVIDED THROUGH THE SITE FOR A CERTAIN PURPOSE OR ANY PURPOSE AT ALL. YOU AGREE THAT USE OF THE SITE IS ENTIRELY AT YOUR OWN RISK, SUBJECT TO LIMITATIONS SET BY APPLICABLE LAW. &nbsp;&nbsp;</p><p><strong>9.</strong> <strong>Limitation of Liability</strong>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;9.1. TO THE MAXIMUM EXTENT LEGALLY PERMISSIBLE, IN NO EVENT SHALL JFROG, INCLUDING JFROG’S REPRESENTATIVES BE LIABLE FOR ANY DAMAGES WHATSOEVER INCLUDING, BUT NOT LIMITED TO, DIRECT, INDIRECT, SPECIAL, PUNITIVE, EXEMPLARY, INCIDENTAL OR CONSEQUENTIAL DAMAGES OF ANY KIND UNDER ANY LEGAL THEORY (INCLUDING, WITHOUT LIMITATION, CONTRACT, NEGLIGENCE, TORT OR STRICT LIABILITY) (INCLUDING WITHOUT LIMITATION, LOSS OF GOODWILL, PROFITS OR DATA AND BUSINESS INTERRUPTION AND/OR DEFAMATORY) RESULTING FROM OR ARISING OUT OF THE SITE (INCLUDING WITHOUT LIMITATION THE CONTENT AVAILABLE THEREIN), OR THE USE OR INABILITY TO USE THE SITE. AND/OR THE FAILURE OF THE SITE TO PERFORM AS REPRESENTED OR EXPECTED, OR FROM THE PERFORMANCE OR FAILURE OF JFROG TO PERFORM UNDER THESE TERMS, ANY OTHER ACT OR OMISSION OF JFROG BY ANY OTHER CAUSE WHATSOEVER; OR FROM YOUR RELIANCE ON CONTENT AVAILABLE ON THE SITE, BASED UPON BREACH OF WARRANTY, GUARANTEE OR CONDITION, BREACH OF CONTRACT, NEGLIGENCE, STRICT LIABILITY, TORT, OR ANY OTHER LEGAL THEORY, REGARDLESS OF WHETHER THE COMPANY OR JFROG’S REPRESENTATIVES HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9.2. IN ANY CASE, WITHOUT LIMITING THE GENERALITY OF THE AFOREGOING AND TO THE MAXIMUM EXTENT LEGALLY PERMISSIBLE, JFROG’S AND JFROG’S REPRESENTATIVES’ TOTAL AGGREGATE LIABILITY FOR ALL DAMAGES OR LOSSES WHATSOEVER ARISING HEREUNDER OR IN CONNECTION WITH YOUR USE OR INABILITY TO USE THE SITE OR THE CONTENT AVAILABLE THEREIN SHALL BE LIMITED TO $US20.00. &nbsp;&nbsp;&nbsp;</p><p><strong>10.</strong> <strong>Indemnification</strong>&nbsp;</p><p>You will defend, indemnify and hold harmless us, our affiliates and our officers, directors, employees and agents from and against any and all claims, liabilities, damages, losses or expenses, including reasonable legal costs, arising out of or in any way connected with any breach by you of these TOU. &nbsp;&nbsp;</p><p><strong>11.</strong> <strong>Governing Law, Jurisdiction</strong>&nbsp;</p><p>This Agreement will be governed by and construed in accordance with the laws of the State of California, without regard to its conflict of laws principles and without regard to the United Nations Convention on Contracts for the International Sale of Good. Any legal action or proceeding relating to this Agreement shall be instituted in any state or federal court in San Francisco or Santa Clara County, California. The Parties agree to submit to the jurisdiction of, and agree that venue is proper in, the aforesaid courts in any such legal action or proceeding. In any action or proceeding to enforce rights under this Agreement, the prevailing party shall be entitled to recover costs and attorneys’ fees. &nbsp;&nbsp;</p><p><strong>12.</strong> <strong>General</strong>&nbsp;</p><p>If any provision of this Agreement is held to be invalid or unenforceable by a court of competent jurisdiction, that provision of the Agreement will be enforced to the maximum extent permissible so as to affect the intent of the Agreement, and the remainder of the provisions of this Agreement shall remain in full force and effect. &nbsp;The failure of either party to enforce any rights granted hereunder or to take action against the other party in the event of any breach hereunder shall not be deemed a waiver by that party as to subsequent enforcement of rights or subsequent actions in the event of future breaches. These TOU (including JFrog’s Privacy Policy), sets the entire understanding and agreement between you and us with respect to your use of the Site. &nbsp;&nbsp;&nbsp;</p>',
+                "margin-top":"marg-t-30",
+                "margin-bottom":"marg-b-100",
+                "margin-left":"marg-l-0",
+                "margin-right":"marg-r-0"
+              }
+            }
+          ]
+        }
+      }
     ]
   %>
 </%def>
@@ -350,33 +505,7 @@
 
 <%def name="get_copyright_content()">
   <%
-    return [
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_hero-section-01.html",
-          "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        },
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_plain-content-01.html",
-          "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        },
-    ]
+    return []
   %>
 </%def>
 
@@ -385,33 +514,7 @@
 
 <%def name="get_about_content()">
   <%
-    return [
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_hero-section-01.html",
-          "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        },
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_plain-content-01.html",
-          "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        },
-    ]
+    return []
   %>
 </%def>
 
@@ -485,6 +588,97 @@
 
 <%def name="get_privacy_content()">
   <%
-    return []
+    return [
+      {
+        "element-type":"layout-50:50",
+        "element-path":"page-builder/layouts/_two-col-50-50.html",
+        "options":{
+          "layout-bg-image":"",
+          "bg-color":"#2B9C3B",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-50",
+          "align-content":"align-content-left",
+          "text-alignment":"text-align--left",
+          "padding-top":"padd-t-200",
+          "padding-left":"padd-l-0"
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"heading",
+              "element-path":"page-builder/elements/_heading.html",
+              "options":{
+                "font-size":"font-size--48px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-20",
+                "text-color":"#ffffff",
+                "margin-top":"marg-t-0",
+                "margin-left":"marg-l-0",
+                "text-content":"JFrog Academy Privacy Policy",
+                "font-family":"font--primary--regular",
+                "text-alignment":"text-align--left"
+              }
+            },
+            {
+              "element-type":"paragraph-text",
+              "element-path":"page-builder/elements/_paragraph.html",
+              "options":{
+                "font-size":"font-size--18px",
+                "margin-right":"marg-r-0",
+                "margin-bottom":"marg-b-5",
+                "text-color":"#ffffff",
+                "margin-top":"marg-t-5",
+                "margin-left":"marg-l-0",
+                "text-content":"Last Revised: August 27, 2017",
+                "font-family":"font--primary--regular",
+                "text-alignment":"text-align--left"
+              }
+            }
+          ],
+          "column-2":[]
+        }
+      },
+      {
+        "element-type":"layout-single-col",
+        "element-path":"page-builder/layouts/_single-col.html",
+        "options":{
+          "layout-bg-image":"",
+          "bg-color":"#fff",
+          "margin-right":"marg-r-0",
+          "margin-bottom":"marg-b-0",
+          "layout-bg-image-size":"bg-img-size--cover",
+          "text-color":"#000",
+          "margin-top":"marg-t-0",
+          "padding-right":"padd-r-0",
+          "margin-left":"marg-l-0",
+          "padding-bottom":"padd-b-20",
+          "align-content":"align-content-center",
+          "text-alignment":"text-align--left",
+          "padding-top":"padd-t-20",
+          "padding-left":"padd-l-0"
+        },
+        "children":{
+          "column-1":[
+            {
+              "element-type":"content-block",
+              "element-path":"page-builder/elements/_content-block.html",
+              "options":{
+                "content":'<p>JFrog Ltd. and its affiliates (“<strong>JFrog</strong>“, “<strong>Company</strong>”, “<strong>us</strong>” or “<strong>we</strong>”) respect the privacy of the users &nbsp;of the Company’s online academy available at: jfrog.tahoe.appsembler.com (the “<strong>Site</strong>”) (“<strong>User</strong>” or “<strong>you</strong>”). The Company is committed to protect the personal information that its User’s share with it. We believe that you have a right to know our practices regarding the information we may collect and use when you visit and/or use our Site including without limitation the products available therein. &nbsp;&nbsp;</p><p> <br></p><p>Capitalized terms which are not defined herein, shall have the meaning ascribed to them in our Terms of Use at: https://jfrog.tahoe.appsembler.com/tos (“<strong>TOU</strong>“), into which this Privacy Policy is incorporated thereto by reference. &nbsp;&nbsp;&nbsp;</p><p><strong>1.</strong> <strong>Your Consent (PLEASE READ CAREFULLY!)</strong>&nbsp;</p><p>BY ENTERING, CONNECTING TO, ACCESSING AND/OR USING THE SITE AND/OR ANY PART THEREOF, YOU AGREE TO THE TERMS AND CONDITIONS SET FORTH IN THIS PRIVACY POLICY (THE <strong>“PRIVACY POLICY”</strong>), INCLUDING TO THE COLLECTION AND PROCESSING OF YOUR PERSONAL INFORMATION (AS DEFINED BELOW).<strong> IF YOU DISAGREE TO ANY TERM PROVIDED HEREIN, PLEASE DO NOT ACCESS AND USE THE SITE.</strong> &nbsp;&nbsp;</p><p><strong>2.</strong> <strong>Which information we may collect on our Users?</strong>&nbsp;</p><p>We may collect two types of data and information from our Users:&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;2.1. The first type of information is non-identifiable and anonymous information (“<strong>Non-personal Information</strong>“).<strong> We are not aware of the identity of the User from whom we have collected the Non-personal Information.</strong> Non-Personal Information is any unconcealed information which does not enable identification of an individual User, and which is available to us while such User is entering and/or using the Site. Non-personal Information which is being gathered consists of technical information, behavioral information and aggregated information and may contain, among other things, type of operating system, type of browser/user agent, screen resolution browser and keyboard language, flash version etc. &nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;2.2. The second type of information is individually identifiable information (<strong>“Personal Information</strong>”). <strong>This information may identify an individual or may be of a private and/or sensitive nature</strong>.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· Users of the Site automatically provide their IP address mainly for enhancing the User’s experience and for geolocation and security purposes as further detailed below. &nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· In order to contact us and/or receive access to the content on the Site Users are required to provide certain information such as full name, e-mail address, phone number, company name and country.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· &nbsp;&nbsp;For avoidance of doubt, any Non-Personal Information connected or linked to any Personal Information shall be deemed as Personal Information as long as such connection or linkage exists.&nbsp;</p><p><strong>We do not collect any Personal Information from you or related to you without your approval, which is obtained, </strong><em><strong>inter alia</strong></em><strong>, through your acceptance to the TOU and this Privacy Policy.</strong> &nbsp;&nbsp;</p><p><strong>3.</strong> <strong>How do we collect information on our Users?</strong>&nbsp;</p><p>There are two main methods we use:&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.1. <strong>We collect information through your entry and use of the Site.</strong> In other words, when you access or use the Site, we are aware of your usage of Site, and may gather, collect and store the information relating to such usage, either independently or through the help of third-party service providers as detailed below. &nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.2. <strong>We collect information which you provide us voluntarily</strong>. We collect Personal Information when you complete the registration form on our Site and/or provide us information through other communication channels such as e-mail.. We may gather, collect and store the Personal Information either independently or through the help of our authorized third-party service providers as detailed below. &nbsp;&nbsp;</p><p><strong>4.</strong> <strong>What are the purposes of the collection of information?</strong>&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Non-personal Information is collected in order to:&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· Enhance the User’s experience on the Site.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· Use it for statistical and research purposes and for customization and improvement of our Site’s interface.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· Learn about the preferences of Users and general trends relating to the Site. &nbsp;&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.1. Personal Information is collected in order to:&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· Provide you with access to the content of the Site.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· Allow us to contact you with proposals and tailored information regarding new products, events, offers, services, features, enhancements, special offers, upgrade opportunities, and events of interest etc.&nbsp;</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;· Be able to contact Users for the purpose of providing them with technical assistance and support. &nbsp;&nbsp;</p><p><strong>5.</strong> <strong>Sharing Information with Third Parties</strong>&nbsp;</p><p>JFrog will not share any Personal Information it collects with any third party. Notwithstanding, JFrog may share Personal Information in the following cases: (a) to satisfy any applicable law, regulation, legal process, subpoena or governmental request; (b) to enforce these Privacy Policy or the TOU, including investigation of potential violations thereof; (c) to detect, prevent, or otherwise address fraud, security or technical issues; (d) to respond to claims that any content published on the Site violates any right or endangers the safety of any third-party; (e) to protect the rights, property, or personal safety of the Company or its affiliates and agents; (f) to respond to claims that any content available on the Site violates the rights of third-parties; &nbsp;(g) when the Company is undergoing any change in control, including by means of merger, acquisition or purchase of all or substantially all of the assets of Company; (h) to collect, hold and/or manage your Personal Information through the Company’s authorized third party service providers (including, as applicable, their affiliates as necessary to provide us with the requested services), as reasonable for business purposes, which may be located in a country that does not have the same data protection laws as your jurisdiction; (i) cooperate with third parties for the purpose of enhancing the User’s experience and/or in order to provide the services; or (k) pursuant to your explicit approval prior to the disclosure. &nbsp;&nbsp;</p><p>For avoidance of doubt, JFrog may transfer and disclose Non-personal Information to third parties at any time and at its own discretion. &nbsp;&nbsp;</p><p><strong>6.</strong> <strong>Minors</strong>&nbsp;</p><p>The Site is intended for Users over the age of thirteen (13). Therefore, JFrog does not intend and does not knowingly collect Personal Information from children under the age of thirteen (13) and does not wish to do so. We reserve the right to request proof of age at any stage so that we can verify that minors under the age of thirteen (13) are not using the Site. If we learn that we collected Personal Information from children under the age of thirteen (13) we will delete that information as quickly as possible. Please contact JFrog at <a target="_blank" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=info@jfrog.com">info@jfrog.com</a> if you have reasons to suspect that JFrog collected Personal Information from children under the age of thirteen (13) and we will delete that information as quickly as possible. &nbsp;&nbsp;&nbsp;</p><p><strong>7.</strong> <strong>Direct Marketing</strong>&nbsp;</p><p>You hereby agree that we may use your contact details for the purpose of informing you regarding products, services and new features which may interest you, and to send to you other material, transmitted to the e-mail address you have provided. You may withdraw your consent by sending a written notice to JFrog by e-mail to the following address: <a target="_blank" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=info@jfrog.com">info@jfrog.com</a> or alternatively following the instructions for removing yourself from the mailing list which are available in the e-mail transmitted to you. &nbsp;&nbsp;</p><p><strong>8.</strong> <strong>Social Media Features</strong>&nbsp;</p><p>Our Site includes social media features (“<strong>Features</strong>“), for example share posts and comments on or through your Social Network Account. The Features may enable the applicable social networks to collect your IP address, Non-personal Information and may set a cookie to enable the functionality of the Feature. Your interactions with the Features are governed by the privacy policy of the third party who provided such Features. &nbsp;&nbsp;&nbsp;</p><p><strong>9.</strong> <strong>Modifications or Deletion of Personal Information</strong>&nbsp;</p><p>If for any reason you wish to modify or delete your Personal Information, you may contact us via e-mail to the following address <a target="_blank" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=info@jfrog.com">info@jfrog.com</a>. We will make reasonable efforts to modify or delete any such Personal Information pursuant to any applicable privacy laws. Aggregated and/or anonymous data may remain on our servers indefinitely all as permitted under any applicable privacy laws. Note that unless requested otherwise, we may retain your Personal Information for as long as reasonably required for the purposes of which such Personal Information was collected, all as permitted under any applicable privacy laws. &nbsp;&nbsp;</p><p><strong>10.</strong> <strong>International Data Transfer</strong>&nbsp;</p><p>We may transfer information collected about you, including Personal Information, to affiliated entities, or to other third party service provides (as provided herein) across borders and from your country or jurisdiction to other countries or jurisdictions around the world. Please note that we may transfer such information to a country and jurisdiction that does not have the same data protection laws as your jurisdiction, and you consent to such transfer of information. &nbsp;&nbsp;</p><p><strong>11.</strong> <strong>Cookies &amp; Local Storage</strong>&nbsp;</p><p>When you access or use our Site, the Company may use industry-wide technologies such as “cookies” and Flash (or similar technologies), which stores certain information on your computer (“<strong>Local Storage</strong>”) and which will allow us to enable automatic activation of certain features, and make your experience much more convenient and effortless. It is easy to prohibit the Local Storage. The cookies used by the Site do not include any personal information about you. Most browsers will allow you to erase cookies from your computer’s hard drive, block acceptance of cookies, or receive a warning before a cookie is stored. In order to erase or disable the Local Storage option in Flash you should use the settings option of Flash according to the specific instructions provided by the technology provider. However, if you block or erase cookies, or change the settings of Flash, your online experience may be limited. &nbsp;&nbsp;</p><p><strong>12.</strong> <strong>Security</strong>&nbsp;</p><p>We take reasonable measures to maintain the security and integrity of our Site and User information and prevent unauthorized access to it or use thereof through generally accepted industry standard technologies and internal procedures (including without limitation, through the use of tokens and encryption mechanisms). Please note, however, that there are inherent risks in transmission of information over the Internet or other methods of electronic storage and we cannot guarantee that unauthorized access or use of your Personal Information will never occur. &nbsp;&nbsp;</p><p><strong>13.</strong> <strong>Links to Third Party Websites</strong>&nbsp;</p><p>Certain links provided herein permit our Users to leave this Site and enter other sites or services. Those linked sites and services are provided solely as a convenience to you. These linked sites and services are not under the control of JFrog and it is not responsible for the availability of such external sites or services, and does not endorse and is not responsible or liable for any content including but not limited to content advertising, products or other information on or available from such linked sites and services or any link contained in linked sites or service. In addition, JFrog is not responsible or liable for such linked sites and services’ privacy practices and/or any other practices. Your access to, use of and reliance upon any such sites, services and content and your dealings with such third parties are at your sole risk and expense. JFrog reserves the right to terminate any link at any time. You further acknowledge and agree that JFrog shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused, by or in connection with use of or reliance on any services, content, products or other materials available on or through such linked sites or resources. Most of such linked sites and services provide legal documents, including terms of use and privacy policy, governing the use thereof. It is always advisable to read such documents carefully before using those sites and services, inter alia, in order to know what kind of information they are collecting. &nbsp;&nbsp;</p><p><strong>14.</strong> <strong>Third Party Service Providers</strong>&nbsp;</p><p>We may be using third party software or service in order to collect, host, store and/or process the information detailed herein. JFrog uses commercially reasonable efforts to engage with third parties that post a privacy policy governing their collection, processing and use of non-personal and personal information. Such software include without limitation, Softlayer which privacy policy can be found at: <a href="http://www.softlayer.com/privacy-agreement">http://www.softlayer.com/privacy-agreement</a>, , Gravatar which its privacy policy can be found at: <a href="http://automattic.com/privacy/">http://automattic.com/privacy/</a> &nbsp;Amazon cloud services which its privacy policy can be found at: <a href="http://aws.amazon.com/privacy/">http://aws.amazon.com/privacy/</a> and AppSembler which privacy policy can be found at https://appsembler.com/privacy-policy/. Please read such third party service providers’ terms of use and privacy policies to understand their privacy practices. &nbsp;&nbsp;&nbsp;</p><p><strong>15.</strong> <strong>Changes to the Privacy Policy</strong>&nbsp;</p><p>The terms of this Privacy Policy will govern the use of the Site and any information collected therein. JFrog reserves the right to change this policy at any time, so please re-visit this page frequently. We will provide notice of substantial changes of this policy on the homepage of the Site and/or we will send you an e-mail regarding such changes to the e-mail address that you may have provided us with. Such substantial changes will take effect seven (7) days after such notice was provided on our Site or sent by e-mail, whichever is the earlier. Otherwise, all other changes to this Privacy Policy are effective as of the stated “Last Revised” date and your continued use of the Site after the Last Revised date will constitute acceptance of, and agreement to be bound by, those changes. In the event that the terms should be amended to comply with any legal requirements, the amendments may take effect immediately, or as required by the law and without any prior notice. &nbsp;&nbsp;</p><p><strong>16.</strong> <strong>Got any Questions?</strong>&nbsp;</p><p>If you have any questions (or comments) concerning this Privacy Policy, you are more than welcome to send us an e-mail to the following address:<a target="_blank" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;tf=1&amp;to=info@jfrog.com">info@jfrog.com</a> and we will make an effort to reply within a reasonable timeframe. &nbsp;&nbsp;&nbsp;</p>',
+                "margin-top":"marg-t-30",
+                "margin-bottom":"marg-b-100",
+                "margin-left":"marg-l-0",
+                "margin-right":"marg-r-0"
+              }
+            }
+          ]
+        }
+      }
+    ]
   %>
 </%def>

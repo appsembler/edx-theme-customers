@@ -3,17 +3,17 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
+$brand-primary-color: rgba(47,156,54,1);
 $brand-accent-color: #7f8c8d;
 $navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$base-text-color: #000;
 
-$primary-font-name: "Open Sans";
+$primary-font-name: "Roboto";
 $primary-font-weight-light: 300;
 $primary-font-weight-regular: 400;
 $primary-font-weight-bold: 700;
 $primary-font-weight-black: 800;
-$accent-font-name: "Bebas";
+$accent-font-name: "Delius Unicase";
 
 $font-size-base-body: 14px;
 $line-height-base-body: 150%;
@@ -34,13 +34,13 @@ $global-font-base-body: "primary-font-regular";
 $global-font-header-links: "primary-font-regular";
 $global-font-cta-buttons: "primary-font-regular";
 
-$cta-button-bg: $brand-accent-color;
+$cta-button-bg: $brand-primary-color;
 $cta-button-text-color: #fff;
 $cta-button-border: none;
 $buttons-border-radius: 0.5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
+$header-logo-height: 6rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
@@ -49,7 +49,7 @@ $header-group-separation: 4rem;
 $header-font-size: 1.6rem;
 $header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
-$navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
+$navbar-button-bg: $brand-primary-color;
 $navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
 $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
