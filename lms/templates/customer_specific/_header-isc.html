@@ -9,9 +9,7 @@ from django.utils.translation import ugettext as _
 <section class="isc--header-design-01 isc--site-nav">
   <div class="bs-container a--container isc--site-nav__container">
     <h1 class="isc--site-nav__group-left">
-      <a href="${logo_url}" class="isc--site-nav__logo__container isc--site-nav__logo__positive">
         <img class="isc--site-nav__logo isc--logo-full" src="${logo_positive}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}">
-      </a>
       <a href="${logo_url}" class="isc--site-nav__logo__container isc--site-nav__logo__negative">
         <img class="isc--site-nav__logo isc--logo-full" src="${logo_negative}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}">
       </a>
@@ -23,13 +21,6 @@ from django.utils.translation import ugettext as _
     </h1>
     <nav class="isc--site-nav__group-right" id="site-menu">
       <ul class="isc--site-menu__container">
-        <li class="isc--site-menu__group">
-          <ul>
-            <li>
-              <a href="/courses">${_("Find Courses")}</a>
-            </li>
-          </ul>
-        </li>
         <li class="isc--site-menu__group isc--course-exit-message">
           <span>${_("Please close this window or tab to exit your course")}</span>
         </li>
