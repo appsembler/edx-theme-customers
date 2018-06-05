@@ -59,3 +59,9 @@
 .a--discovery-search-01__filters {
   display: none;
 }
+
+// Fixes for floated content imported from texasgateway.org
+#seq-content .wrap-instructor-info,
+nav.sequence-bottom {
+  clear: both;
+}
