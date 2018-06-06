@@ -1,8 +1,8 @@
 <%! from django.utils.translation import ugettext as _ %>
 
 <%
-	course_about_url = 'https://{}/courses/{}/about'.format(request.site, course.id.to_deprecated_string())
-	course_url 			 = 'https://{}/courses/{}/'.format(request.site, course.id.to_deprecated_string())
+  course_about_url = 'https://{}/courses/{}/about'.format(request.site, course.id.to_deprecated_string())
+  course_url 			 = 'https://{}/courses/{}/'.format(request.site, course.id.to_deprecated_string())
 %>
 
 ${_("Dear {full_name}").format(full_name=full_name)}

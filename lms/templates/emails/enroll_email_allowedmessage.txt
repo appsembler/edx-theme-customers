@@ -3,7 +3,7 @@
 <%
   registration_url = 'https://{}/register'.format(request.site)
   course_about_url = 'https://{}/courses/{}/about'.format(request.site, course.id.to_deprecated_string())
-	course_url 			 = 'https://{}/courses/{}/'.format(request.site, course.id.to_deprecated_string())
+  course_url       = 'https://{}/courses/{}/'.format(request.site, course.id.to_deprecated_string())
 %>
 
 ${_("Dear student,")}
