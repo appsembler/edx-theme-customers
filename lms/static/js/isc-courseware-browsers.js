@@ -75,9 +75,8 @@
         closer[0].addEventListener("click", function(e){
             e.preventDefault();
 
-            // set a cookie that user wishes to continue to use; but expire in 1 yr
-            var host = window.location.host;
-            document.cookie = "oldBrowserContinue=1; expires=31536000";
+            // set a cookie that user wishes to continue to use
+            document.cookie = "oldBrowserContinue=1";
 
             // remove the overlay
             $(overlay).remove();
