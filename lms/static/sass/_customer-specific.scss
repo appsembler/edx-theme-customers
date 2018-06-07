@@ -105,3 +105,22 @@
     }
   }
 }
+
+.browserWarning {
+    position: absolute;
+    z-index: 10000;
+    background-color: #000;
+    padding: 5rem 10rem;
+
+    p {
+      color: #fff !important;
+      font-size: 1.75rem;
+    }
+
+    a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+}
+
