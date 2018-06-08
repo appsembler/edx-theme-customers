@@ -44,7 +44,7 @@
     are not supported.</p> \
     <p>If you wish you access the course, please first \
     <a href='https://www.microsoft.com/en-us/windows/microsoft-edge' target='_blank'>upgrade your browser</a> \
-    to a more recent version or contact <a href='mailto:support@intersystems.com'>support@intersystems.com</a>.";
+    to a more recent version or contact <a href='mailto:onlinetraining@intersystems.com'>onlinetraining@intersystems.com</a>.";
 
     var warningHTML = isIE10 ? warningHTMLIE10 : warningHTMLIELT10;
 
