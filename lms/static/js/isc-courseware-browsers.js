@@ -7,15 +7,6 @@
     Internet Explorer versions for ISC warnings.  Gets the job done.
     */
 
-    // check for cookie that IE10 user confirmed using site
-    // prefer plain JS over $.cookie as Hawthorne will deprecate for js-cookie
-    if (document.cookie.split(';').filter(function(item) {
-        return item.indexOf('oldBrowserContinue=1') >= 0;
-    }).length) {
-        console.info('User chooses to continue in old browser.')
-        return;
-    }
-
     var browserMVer = $.browser.version.split('.')[0];
     var isIE = (navigator.appName == 'Microsoft Internet Explorer' || navigator.userAgent.indexOf('MSIE') != -1);
     if (!isIE) {
@@ -26,6 +17,15 @@
 
     var isIE10 = (isIE && browserMVer == 10);
     var isIELT10 = (isIE && browserMVer < 10);
+
+    // check for cookie that IE10 user confirmed using site
+    // prefer plain JS over $.cookie as Hawthorne will deprecate for js-cookie
+    if (isIE10 && document.cookie.split(';').filter(function(item) {
+        return item.indexOf('oldBrowserContinue=1') >= 0;
+    }).length) {
+        console.info('User chooses to continue in old browser.')
+        return;
+    }    
 
     // for IE10 allow user to continue by closing overlay
     var warningHTMLIE10 = "\
@@ -72,18 +72,20 @@
         
         // listen for close button listener
         var closer = $(".browserWarning .closer");
-        closer[0].addEventListener("click", function(e){
-            e.preventDefault();
+        if (closer[0] != undefined) {
+            closer[0].addEventListener("click", function(e){
+              e.preventDefault();
 
-            // set a cookie that user wishes to continue to use
-            document.cookie = "oldBrowserContinue=1";
+              // set a cookie that user wishes to continue to use
+              document.cookie = "oldBrowserContinue=1";
 
-            // remove the overlay
-            $(overlay).remove();
-            
-            //unshrink the content
-            $(content).css('height', origContentHeight + 'px');            
-        } );
+              // remove the overlay
+              $(overlay).remove();
+              
+              //unshrink the content
+              $(content).css('height', origContentHeight + 'px');            
+            } );
+        }
 
         //resize the overlay if the content area resizes
         window.addEventListener("resize", function() {
