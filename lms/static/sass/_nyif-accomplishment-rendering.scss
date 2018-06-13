@@ -105,11 +105,9 @@
 		}
 
 		.accomplishment-metadata {
-			.metadata .value.copy-meta {
-				font-size: 0.8rem;
-			}
+
 			.signatories-note {
-				font-size: 0.8rem;
+				margin-bottom: 0;
 			}
 
 		}
@@ -122,12 +120,19 @@
 
 			.wrapper-signatories {
 
+				margin-left: 0;
+
+				.list-signatories .signatory {
+					margin-left: 0;
+				}
+
 				.list-signatories .signatory:first-child {
 					float:left;
 				}
 
 	    		.signatory-signature {
 	    			min-height: 100px;
+	    			padding-left: 0;
 	    		}
 			}
 		}
@@ -161,10 +166,15 @@
 			.accomplishment-type-label {
 				font-size: 2.2rem;
 				white-space: nowrap;
+				margin-bottom: 0;
 			}
 
 			.wrapper-statement-and-signatories {
 				border-width: 0;
+			}
+
+			.nyif--certificates__wrapper-accomplishment-credits-explanation {
+				margin-top: 0;
 			}
 		}
 
@@ -185,7 +195,7 @@
 			}
 
 			.accomplishment-type-label {
-				margin-bottom: 0.5em;
+				margin-bottom: 0.5rem !important;
 			}
 
 			.nyif--certificates__accomplishment-statement-detail {
@@ -217,9 +227,17 @@
 				font-size: 80%;
 			}
 
+			.accomplishment-signatories {
+				margin-left: 0;
+			}
+
 			.list-signatories .signatory {
 				display: inline-block;
 				max-width: 40%;
+
+				.signatory-credentials {
+					line-height: 0.125em;
+				}
 			}
 
 			img.signatory-signature {
@@ -227,7 +245,12 @@
 				max-height: 70px !important;
 			}
 
+			.wrapper-metadata {
 
+			  	.signatories-note, .value.copy-meta, .label.copy-meta {
+					font-size: 0.6rem !important;
+				}
+			}
 
 		}
 	}
