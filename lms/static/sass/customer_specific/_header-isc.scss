@@ -29,11 +29,6 @@
       &__logo {
         height: $header-logo-height;
 
-        // IE fix hack
-        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-           width: 100%;
-        }
-
         // Edge fix hack
         @supports (-ms-accelerator:true) {
           width: 100%;
