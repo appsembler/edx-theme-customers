@@ -144,14 +144,15 @@
 @media print {
 
     @page {
-       size: A4 portrait;
+       size: A4 landscape; /* only supported by Chrome */
+       margin: 0; /* force remove browser headers and footers */
     }
 
 	.nyif--certificates__certificate {
-		margin:0 !important;
-		padding: 1em 0 0;
+		margin:1cm 0.5cm 0 0.5cm !important;
 		border: 12px solid rgb(56,65,149);
 		width: 100%;
+		page-break-inside : avoid; 
 
 		.header-app {
 			height: 80px;
@@ -245,7 +246,7 @@
 				max-height: 70px !important;
 			}
 
-			.wrapper-metadata {
+			.wrapper-metadata {				
 
 			  	.signatories-note, .value.copy-meta, .label.copy-meta {
 					font-size: 0.6rem !important;
