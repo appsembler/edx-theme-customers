@@ -145,11 +145,11 @@
 
     @page {
        size: A4 landscape; /* only supported by Chrome */
-       margin: 0; /* force remove browser headers and footers */
+       margin: 1.5cm;
     }
 
 	.nyif--certificates__certificate {
-		margin:1cm 0.5cm 0 0.5cm !important;
+		margin: 0 !important;
 		border: 12px solid rgb(56,65,149);
 		width: 100%;
 		page-break-inside : avoid; 
