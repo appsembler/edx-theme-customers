@@ -3,6 +3,7 @@
 <%namespace file='/theme-variables.html' import="get_certificates_settings" />
 <%
 course_mode_class = course_mode if course_mode else ''
+cert_org_name = get_certificates_settings().get('certificate_custom_org_name') if (get_certificates_settings().get('certificate_custom_org_name') != "") else accomplishment_copy_course_org
 %>
 
 <main class="a--accomplishment--wrapper a--accomplishment--main">
@@ -41,7 +42,7 @@ course_mode_class = course_mode if course_mode else ''
                 % endif
               </span>
               <h3 class="course-info">
-                ${document_title}
+                ${cert_org_name} ${course_number} ${_('Certificate')} | ${get_certificates_settings()['platform_name']}
               </h3>
             </div>
             <span class="vertical-divider-bar"></span>
@@ -52,7 +53,7 @@ course_mode_class = course_mode if course_mode else ''
             <p>
               ${get_certificates_settings()['successfully_completed_text']}
             </p>
-            <h2 class="course-name-main"><span class="course-organization">${accomplishment_copy_course_org}</span> | <span class="course-number">${course_number}</span>: <span class="course-name">${accomplishment_copy_course_name}</span></h2>
+            <h2 class="course-name-main"><span class="course-organization">${cert_org_name}</span> | <span class="course-number">${course_number}</span>: <span class="course-name">${accomplishment_copy_course_name}</span></h2>
             <p>
               ${get_certificates_settings()['optional_cert_text']}
             </p>
