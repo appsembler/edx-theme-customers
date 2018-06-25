@@ -144,7 +144,7 @@
 @media print {
 
     @page {
-       size: A4 landscape; /* only supported by Chrome */
+       size: A4 portrait; /* only supported by Chrome */
        margin: 1.5cm;
     }
 
