@@ -1,0 +1,29 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="/main.html" />
+
+<%namespace file='/theme-variables.html' import="get_privacy_content, get_global_settings" />
+
+<% page_enabled = get_global_settings().get('privacy_enabled', True) %>
+
+<%block name="pagetitle">
+  % if get_global_settings().get('page_status', {}).get('privacy', True):
+    ${_("Privacy Shield Policy")}
+  % else:
+    ${_("Page Not Found")}
+  % endif
+</%block>
+
+% if get_global_settings().get('page_status', {}).get('privacy', True):
+  % for element in get_privacy_content():
+    % if (element['element-type'].startswith('layout')):
+      <%include file = '/${element["element-path"]}' args = "options = element['options'], children = element['children'], page_specific_args = []" />
+    % elif (element['element-type'].startswith('static-block')):
+      <%include file = '/${element["element-path"]}' args = "template_settings = element['options']" />
+    % endif
+  % endfor
+% else:
+  <%block name="headextra">
+    <meta name="robots" content="noindex" />
+  </%block>
+  <%include file = '/design-templates/pages/404/_404-block.html' />
+% endif

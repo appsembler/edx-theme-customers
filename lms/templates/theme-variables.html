@@ -100,12 +100,24 @@
 <%def name="get_footer_menu_items()">
   <%
     return [
-    {
-      'link_title': 'New Horizons Homepage',
-      'link_URL': 'https://www.newhorizons.com/',
-      'special_class': '',
-      'open_in_new_tab': False,
-    },
+      {
+        'link_title': 'New Horizons Homepage',
+        'link_URL': 'https://www.newhorizons.com/',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Terms and Conditions',
+        'link_URL': '/tos',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Privacy Shield Policy',
+        'link_URL': '/privacy',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
     ]
   %>
 </%def>
@@ -302,33 +314,323 @@
 
 <%def name="get_tos_content()">
   <%
-    return [
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_hero-section-01.html",
-          "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
-            'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
-            'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
-            'text_color' : "#fff",
-            'bg_image_url' : '', ## leave empty if you want just a full color background
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
+  return [
+      {
+        "element-type":"static-block",
+        "element-path":"design-templates/static-blocks/_plain-content-01.html",
+        "options":{
+          "optional_classes" : "",
+          "extra_css" : "",
+          "content": """<h1>
+  Terms of Use
+</h1>
+<p>
+  PLEASE READ THIS TERMS OF USE (the “TOU” or “Agreement”) CAREFULLY BEFORE
+  USING THE NEW HORIZONS COMPUTER LEARNING CENTERS, INC.'S WEBSITE (the
+  “Site”) OR ANY SERVICE PROVIDED THEREIN (“Service”). This TOU is between
+  you (“You”, “Your”, and “Yours”) and New Horizons Computer Learning
+  Centers, Inc. (“New Horizons”).
+</p>
+<p>
+  <strong>
+      By using this Site or any Service of New Horizons, you signify your
+      agreement to these terms of use. If you do not agree to these Terms of
+      Use, do not use this Site or Service
+  </strong>
+  . New Horizons may modify these TOU at any time and such changes will be
+  effective on the date that such modified TOU is posted on this Site. Use of
+  the Site or Services after such changes have taken effect constitutes
+  acceptance of all changes.
+</p>
+<h2>
+  Restrictions On Use of Materials and Intellectual Property Rights
+</h2>
+<p>
+  This Site or Service and all of New Horizons’ products, trade names, marks,
+  and logos are protected by copyright, trademark, and other intellectual
+  property laws, and all intellectual property rights therein belong to New
+  Horizons and/or its affiliates and/or its suppliers (collectively, the "New
+  Horizons’ Intellectual Property"). Any textual or graphic material you
+  copy, print, or download from this Site or Service is licensed to you by
+  New Horizons for your personal, non-commercial home use only, provided that
+  you do not change or delete any copyright, trademark or other proprietary
+  notices. You may not sell, reproduce, distribute, modify, display, prepare
+  derivative works based on, re-post or otherwise use any of New Horizons’
+  Intellectual Property in any way.
+</p>
+<p>
+  Furthermore, you may not use New Horizons’ Intellectual Property on any
+  other site or service, in a networked computer environment or in any other
+  medium for any purpose. New Horizons reserves the right to terminate your
+  access to this Site and to use any of its intellectual property at any
+  time.
+</p>
+
+<h2>Cisco Acknowledgement</h2>
+<p>
+  Material on this Site relative to Cisco is not sponsored by, endorsed by,
+  or affiliated with Cisco Systems, Inc., Cisco, Cisco Systems, and the Cisco
+  Systems logo are trademarks or registered trademarks of Cisco Systems, Inc.
+  or its affiliates. All other trademarks are trademarks of their respective
+  owners.
+</p>
+<p>
+  CCDA, CCDP, CCIE, CCIP, CCNA, CCNP, Cisco, Cisco IOS, Cisco Systems, the
+  Cisco Systems logo, and Networking Academy are registered trademarks or
+  trademarks of Cisco Systems, Inc. and/or its affiliates in the U.S. and
+  certain other countries. All other trademarks mentioned in this document or
+  Site are the property of their respective owners.
+</p>
+
+<h2>Use of Content</h2>
+<p>
+  By posting communications to or transmitting through the Site or Service,
+  you hereby grant New Horizons a royalty-free, perpetual, irrevocable,
+  transferable, non-exclusive license to use, reproduce, modify, publish,
+  edit, translate, distribute, perform, and display such communication(s)
+  alone, for marketing purposes, or as a part of other works in any form,
+  media, or technology, whether now known of hereafter developed and to
+  sublicense such rights to anyone.
+</p>
+<p>
+  Anything you transmit or post may be used by New Horizons or licensed to
+  others by New Horizons for any purpose, including but not limited to
+  reproduction, disclosure, transmission, publication, broadcast and posting,
+  or developing, manufacturing and marketing products using such information.
+</p>
+
+<h2>Conduct</h2>
+<p>
+  As a user, you are responsible for your own actions, and the consequences
+  of those actions. Proper conduct on the New Horizons Site includes
+  refraining from posting material that is:
+</p>
+<ul>
+  <li>
+      <p>
+          Copyrighted, unless you are the copyright owner or have the
+          permission of the copyright owner.
+      </p>
+  </li>
+  <li>
+      <p>
+          Revealing of trade secrets, unless you own them or have the
+          permission of the owner.
+      </p>
+  </li>
+  <li>
+      <p>
+          In violation of any law or infringing on any other intellectual
+          property rights of others, or on the privacy or
+          <br/>
+          publicity rights of others.
+      </p>
+  </li>
+  <li>
+      <p>
+          Obscene, sexually explicit, defamatory, threatening, harassing,
+          abusive, hateful, or embarrassing to another
+          <br/>
+          user or any other person or entity.
+      </p>
+  </li>
+  <li>
+      <p>
+          An advertisement, promotional material, "junk mail," "Spam," chain
+          letter, pyramid scheme or any other form
+          <br/>
+          of solicitation of business.
+      </p>
+  </li>
+</ul>
+<p>
+  Users also must not:
+</p>
+<ol>
+  <li>
+      <p>
+          impersonate another person;
+      </p>
+  </li>
+  <li>
+      <p>
+          misrepresent their affiliation with any person or organization;
+      </p>
+  </li>
+  <li>
+      <p>
+          access the Site to obtain a list of users of the Site;
+      </p>
+  </li>
+  <li>
+      <p>
+          use password protected, secure, or non-public areas of the Site (or
+          frames or links to the Site) without
+          <br/>
+          proper authorization;
+      </p>
+  </li>
+  <li>
+      <p>
+          distribute computer viruses, worms, or any software intended to
+          damage or alter a computer system
+          <br/>
+          without the owner's consent;
+      </p>
+  </li>
+  <li>
+      <p>
+          use any mechanisms that generate excessive network traffic;
+      </p>
+  </li>
+  <li>
+      <p>
+          either directly or through any person or entity, in any form or
+          manner, copy, distribute, reproduce,
+          <br/>
+          incorporate, or allow unauthorized access to the Site, its content,
+          or the Services; or
+      </p>
+  </li>
+  <li>
+      <p>
+          modify, decompile, reverse engineer, disassemble or otherwise
+          attempt to derive source code from the
+          <br/>
+          Services.
+      </p>
+  </li>
+</ol>
+<p>
+  Use of the Services for transmission, distribution, retrieval, or storage
+  of any information, data, or other material in violation of any applicable
+  law or regulation is prohibited.
+</p>
+<p>
+  New Horizons does not represent or guarantee the truthfulness, accuracy, or
+  reliability or any of communications posted by other users or endorse any
+  opinions expressed by users. You acknowledge that any reliance on material
+  posted by other users will be at your own risk. New Horizons does not
+  screen communications in advance and is not responsible for screening or
+  monitoring material posted by users.
+</p>
+<p>
+  New Horizons has no liability or responsibility to you for performance or
+  nonperformance of such activities. New Horizons reserves the right to expel
+  users and prevent their further access to the Site or Service for violating
+  this Agreement or the law and the right to remove communications which
+  violate the terms of this Agreement.
+</p>
+
+<h2>System and Network Security</h2>
+<p>
+  Violations of system or network security of the Site or Service are
+  prohibited, and may subject you to criminal and/or civil liability. New
+  Horizons will investigate potential security violations, and may notify
+  applicable law enforcement agencies if violations are suspected. You may
+  not attempt to circumvent the authentication procedures or security of any
+  host, network, network component, or account to access data, accounts, or
+  systems that you are not expressly permitted to access. You may not
+  interfere or attempt to interfere with service to any other user, host,
+  system, or network on the Internet unless expressly permitted to do so. You
+  may not share any passwords provided to you by New Horizons with any
+  third-parties. If you would like New Horizons to make the Site available to
+  third parties, please make such request by e-mail to
+      <a href="mailto:helpdesk@newhorizons.com">helpdesk@newhorizons.com</a>.
+</p>
+<p>
+  NEW HORIZONS IS NOT RESPONSIBLE FOR ANY UNAUTHORIZED USE OR DISCLOSURE OF
+  ANY PASSWORD.
+</p>
+
+<h2>Disclaimers and Limitation of Liability</h2>
+<p>
+  The materials in this Site or Service are provided "as is" and without
+  warranties of any kind either express or implied. Moreover, any portion of
+  the materials available on this Site or Service may include inaccuracies or
+  typographical errors. Changes may be made, from time to time and without
+  notice, to the materials available on this Site or Service, the Site or
+  Service itself, and to the products described on this Site or Service.
+</p>
+<p>
+  To the fullest extent permissible pursuant to applicable law, New Horizons
+  disclaims all warranties, express or implied, including, but not limited to
+  implied warranties of merchantability, fitness for a particular purpose,
+  quiet enjoyment, accuracy of data, non-infringement, security, or title.
+  New Horizons does not warrant the accuracy, completeness or usefulness of
+  any information contained on this Site or Service. New Horizons does not
+  warrant that the functions contained in the materials available on this
+  Site or Service will be uninterrupted or error-free, that defects will be
+  corrected, or that the materials, this Site or Service or the server that
+  makes them available are free of viruses or other harmful components. You
+  (and not New Horizons) assume the entire cost of all necessary servicing,
+  repair and correction.
+</p>
+<p>
+  Under no circumstances, including, but not limited to, negligence, shall
+  New Horizons be liable for any special, incidental, indirect, or
+  consequential damages that result from the use of, or the inability to use,
+  Site or Service or any downloaded materials, even if New Horizons or its
+  representative has been advised of the possibility of such damages. In no
+  event shall New Horizons' total liability to you from all damages, losses,
+  and causes of action (whether in contract, or otherwise) exceed the amount
+  you paid to New Horizons, if any, for products purchased on this Site or
+  Service.
+</p>
+
+<h2>
+  Links to Other Site or Services
+</h2>
+<p>
+  New Horizons makes no representation whatsoever regarding the content of
+  any other site or services, which you may access from this Site or Service.
+  When you access a third party's site or service, please understand that it
+  is independent from New Horizons and that New Horizons has no control over
+  the content on that site or service. A link to a third party's site or
+  service does not mean that New Horizons endorses or accepts any
+  responsibility for the content or use of such site or service.
+</p>
+
+<h2>Cancellation and Refund Policy</h2>
+<p>
+  Because legal regulations vary from one governmental agency's jurisdiction
+  to another, New Horizons policies on issues such as cancellations and
+  refunds may vary from location to location. Please be certain that you
+  receive and understand the written policies that are in force for the
+  location with which you conduct business.
+</p>
+
+<h2>General Provisions</h2>
+<p>
+  This Site or Service is controlled and operated by New Horizons from its
+  offices within the State of California, United States of America. New
+  Horizons makes no representation that materials in the Site or Service are
+  appropriate or available for use in other locations. Those who choose to
+  access this Site or Service from other locations do so on their own
+  initiative and are responsible for compliance with any applicable national,
+  state or local laws.
+</p>
+<p>
+  This agreement and the use of this Site shall be governed by and construed
+  in accordance with laws of the State of California, United States of
+  America, without giving effect to any principles of conflicts of law. If
+  any provision of this agreement is held to be unlawful, void, or for any
+  reason unenforceable, then that provision shall be deemed severable from
+  this agreement and shall not affect the validity and enforceability of any
+  remaining provisions. Any legal action or proceeding relating to your
+  access to, or use of, the Site or Service or New Horizons Intellectual
+  Property on or through this Site or any purchase of New Horizons products
+  on or through this Site will be instituted in a state or federal court in
+  Orange County, California. You waive any right you may have to move or
+  dismiss or transfer on the basis of personal jurisdiction or venue, or for
+  convenience of any party or witness. This is the entire agreement between
+  the parties relating to the subject matter hereof and you agree to
+  indemnify New Horizons for any claims or damages resulting from your
+  failure to abide by these terms and conditions.
+</p>""",
         },
-        {
-          "element-type":"static-block",
-          "element-path":"design-templates/static-blocks/_plain-content-01.html",
-          "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
-            'optional_classes' : "", ##
-            'extra_css' : "" ## add custom css to be added inline to the wrapper element
-          }
-        },
-    ]
+      },
+  ]
   %>
 </%def>
 
@@ -471,7 +773,284 @@
 ## privacy page content
 
 <%def name="get_privacy_content()">
-  <%
-    return []
+<%
+    return [
+        {
+          "element-type":"static-block",
+          "element-path":"design-templates/static-blocks/_plain-content-01.html",
+          "options":{
+            "optional_classes" : "",
+            "extra_css" : "",
+            "content": """<h1>Privacy Shield Policy</h1>
+
+<p>
+    This Privacy Shield Policy (“Policy”) applies to all personal information
+    received by New Horizons Computer Learning Centers, Inc. (“New Horizons”,
+    “we”, “our”, or “us”) in the United States from the European Economic Area
+    (EEA) (which includes the member states of the European Union (EU) plus
+    Iceland, Liechtenstein and Norway) and from Switzerland. This Policy also
+    applies to all personal information previously received under the U.S.-EU
+    Safe Harbor Framework and U.S.-Swiss Safe Harbor Framework and still held
+    by New Horizons. This Policy sets out our practices for collecting, using,
+    maintaining, protecting and disclosing that personal information.
+</p>
+
+<h2>Definitions</h2>
+
+<p>
+    For purposes of this Policy, the following definitions shall apply:
+</p>
+<p>
+    “<strong>Agent</strong>” means any third party that collects or uses
+    personal information under the instructions of, and solely for, New
+    Horizons or to which New Horizons discloses personal information for use on
+    New Horizons’<sup> </sup>behalf.
+</p>
+<p>
+    “<strong>New Horizons</strong>” means New Horizons Computer Learning
+    Centers, Inc., New Horizons Franchising Group, Inc., and any predecessors
+    and successors in the United States.
+</p>
+<p>
+    “<strong>Personal information</strong>” means any information or set of
+    information that identifies or could be used by or on behalf of New
+    Horizons to identify (together with other information) a living individual.
+    Personal information does not include information that is anonymized or
+    aggregated.
+</p>
+<p>
+    “<strong>Sensitive information</strong>” means any personal information
+    that reveals race, ethnic origin, political opinions, religious or
+    philosophical beliefs, or trade union membership; information that concerns
+    health or sex life; information specifying personal sexuality, ideological,
+    or trade union-related views or activities; and information about criminal
+    or administrative proceedings and sanctions (which are treated outside
+    pending proceedings), or social security measures.
+</p>
+
+<h2>EU-U.S. and Swiss-U.S. Privacy Shields</h2>
+
+<p>
+    New Horizons participates in and complies with the EU-U.S. Privacy Shield
+    Framework and the Swiss-U.S. Privacy Shield Framework (collectively,
+    “Privacy Shield”) as set forth by the U.S. Department of Commerce regarding
+    the collection, use, and retention of personal information transferred from
+the EEA and Switzerland to the United States, respectively. New Horizons    <sup> </sup>has certified to the Department of Commerce that it adheres to
+    the Privacy Shield Principles of Notice, Choice, Accountability for Onward
+    Transfers, Security, Data Integrity and Purpose Limitation, Access, and
+    Recourse, Enforcement, and Liability, which are the basis for the
+    principles of this Policy. If there is any conflict between this Policy and
+    the Privacy Shield Principles, the Privacy Shield Principles shall govern.
+    To learn more about the Privacy Shield program, and to view New Horizons’
+certification, please visit    <a href="https://www.privacyshield.gov/">https://www.privacyshield.gov/</a>
+    .
+</p>
+
+<h2>Principles</h2>
+
+
+<h3>Notice</h3>
+
+<p>
+    Where New Horizons receives personal information about individuals in the
+    EEA and Switzerland collected by New Horizons and its franchisees, it will
+    publicly inform them about its compliance with the Privacy Shield in clear,
+    concise language. This personal information may include basic contact
+    information like name and email address, billing information, and courses
+    and training taken by students.
+</p>
+<p>
+    New Horizons uses this information to provide our educational and
+    training-related services to franchisees, customer support for such
+    services, to bill customers, and to correspond with customers. This
+    information also facilitates our affiliates’ and franchisees’ services.
+</p>
+<p>
+    New Horizons also receives information about employees of New Horizons who
+    are located in the EEA and Switzerland, and which is transferred in the
+    context of the employment relationship. New Horizons uses this information
+    for internal employment and human resources purposes. New Horizons commits
+    to cooperate in investigations by and to comply with the advice of
+    competent EEA and Swiss authorities.
+</p>
+<p>
+    New Horizons will subject all personal information received via the EU-U.S.
+    Privacy Shield Framework and Swiss-U.S. Privacy Shield Framework to their
+    respective Privacy Shield Principles.
+</p>
+<p>
+    New Horizons is subject to the investigative and enforcement authority of
+    the Federal Trade Commission (FTC), is obliged to disclose personal
+    information in response to lawful requests by public authorities, for law
+    enforcement, and national security purposes, and has potential liability
+    for onward transfers to third parties.
+</p>
+<p>
+    Additionally, an individual may be allowed to invoke binding arbitration to
+    resolve disputes under certain limited conditions.
+</p>
+
+<h3>Choice</h3>
+
+<p>
+    New Horizons will offer individuals the opportunity to choose whether their
+    personal information is to be used for a purpose other than the purpose for
+    which it was originally collected or subsequently authorized by the
+    individual. An individual may opt-out of such uses of their personal
+    information by contacting us at the address given below. New Horizons does
+    not disclose personal information to non-agent third parties. If this
+    changes, New Horizons will offer an opt-out to individuals.
+</p>
+<p>
+    New Horizons will not use sensitive personal information for a purpose
+    other than the purpose for which it was originally collected or
+    subsequently authorized by the individual unless New Horizons has received
+    the individual’s affirmative and explicit consent (opt-in). New Horizons
+    will treat as sensitive any personal information received from a third
+    party where the third party identifies and treats it as sensitive.
+</p>
+
+<h3>Data Integrity</h3>
+
+<p>
+    New Horizons<sup> </sup>will use personal information only in ways that are
+    compatible with the purposes for which it was collected or subsequently
+    authorized by the individual. New Horizons<sup> </sup>will take reasonable
+    steps to ensure that personal information is relevant to its intended use,
+    accurate, complete and current.
+</p>
+
+<h3>Transfers to Agents</h3>
+
+<p>
+    New Horizons contracts with third parties who perform business functions on
+    our behalf. New Horizons uses these third parties to manage its IT system
+    infrastructure, provide live, online support to customers, and to manage
+    email lists. These entities may have access to personal information if
+    needed to perform their functions for New Horizons. New Horizons does not
+    disclose personal information to non-agent third parties.
+</p>
+<p>
+    For information received under the Privacy Shield, New Horizons will
+    require its agents to safeguard personal information consistent with this
+    Policy by contract, obligating the agent to provide at least the same level
+    of protection as is required by the Privacy Shield Principles.
+</p>
+<p>
+    Under certain circumstances, New Horizons may bear liability for onward
+    transfers of personal information from the EEA or Switzerland where its
+    agent processes such personal information inconsistent with the Privacy
+    Shield Principles, unless New Horizons proves that it is not responsible
+    for the event giving rise to the damage.
+</p>
+
+<h3>Access and Correction</h3>
+
+<p>
+    New Horizons acknowledges the right of individuals to access their personal
+    information. Upon request, New Horizons<sup> </sup>will grant individuals
+    reasonable access to personal information that it holds about them. In
+    addition, New Horizons<sup> </sup>will take reasonable steps to permit
+    individuals to correct, amend, or delete information that is demonstrated
+    to be inaccurate or incomplete. An individual may request to access their
+    information, or otherwise correct, amend, or delete their information by
+    contacting us at the address given below.
+</p>
+
+<h3>Security</h3>
+
+<p>
+    New Horizons<sup> </sup>will take reasonable and appropriate precautions to
+    protect personal information in its possession from loss, misuse and
+    unauthorized access, disclosure, alteration and destruction.
+</p>
+
+<h3>Enforcement</h3>
+
+<p>
+    New Horizons<sup> </sup>will conduct compliance audits of its relevant
+    privacy practices to verify adherence to this Policy. Any employee that New
+    Horizons<sup> </sup>determines is in violation of this policy will be
+    subject to disciplinary action.
+</p>
+<p>
+    New Horizons is subject to the investigative and enforcement authority of
+    the FTC.
+</p>
+<h3>Dispute Resolution—Privacy Shield</h3>
+<p>
+    In compliance with the Privacy Shield, New Horizons commits to resolve
+    complaints about your privacy and our collection or use of your personal
+    information. EEA or Swiss individuals with inquiries or complaints
+    regarding this Policy should first contact New Horizons<sup> </sup>at the
+    address given below. New Horizons<sup> </sup>will investigate and attempt
+    to resolve complaints regarding use and disclosure of personal information
+    by reference to the principles contained in this Policy.
+</p>
+<p>
+    New Horizons commits to cooperating with European Data Protection
+    Authorities and the Swiss Federal Data Protection and Information
+    Commissioner.
+</p>
+<p>
+    New Horizons<sup> </sup>has further committed to refer unresolved privacy
+    complaints under the Privacy Shield Principles to the International Centre
+    for Dispute Resolution (“ICDR”), the international division of the American
+    Arbitration Association (“AAA”), a non-profit alternative dispute
+    resolution provider located in the United States. If you do not receive
+    timely acknowledgment of your complaint, or if your complaint is not
+    satisfactorily addressed, please visit the ICDR web site at
+    http://go.adr.org/privacyshield.html for more information and to file a
+    complaint. Under certain limited conditions, an individual may be able to
+    invoke binding arbitration as provided under the Privacy Shield to address
+    an otherwise unresolved complaint.
+</p>
+
+<h2>Contact Information</h2>
+
+<p>
+Questions regarding this Policy should be submitted to New Horizons    <sup> </sup>by mail to:
+</p>
+<p>
+    Privacy Liaison
+    <br/>
+    New Horizons Computer Learning Centers, Inc.
+    <br/>
+    1900 S. State College Blvd. Suite 450
+    <br/>
+    Anaheim, CA 92806-6135
+    <br/>
+    +1 (714) 940-8000
+</p>
+<p>
+    Or by e-mail to:
+    <a href="mailto:privacy.policy@newhorizons.com">
+        <u>privacy.policy@newhorizons.com</u>
+    </a>
+</p>
+
+<h2>Limitations &amp; Changes</h2>
+
+<p>
+    We may also be required to disclose an individual’s personal information in
+    response to a lawful request by public authorities or in connection with a
+    legal obligation. Adherence by New Horizons<sup> </sup>to these Privacy
+    Shield Principles may also be limited to the extent required to respond to
+    a legal obligation, to the extent necessary to meet national security,
+    public interest or law enforcement obligations, and to the extent expressly
+    permitted by an applicable law, rule or regulation.
+</p>
+<p>
+    This Policy may be amended from time to time, consistent with the
+    requirements of the Privacy Shield Principles. The amended Policy will be
+    made publicly available via New Horizons’ website.
+</p>
+<p>
+    Effective Date: June 6th, 2018.
+</p>
+""",
+          }
+        }
+    ]
   %>
 </%def>
