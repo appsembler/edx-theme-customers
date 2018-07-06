@@ -61,13 +61,15 @@ cert_org_name = get_certificates_settings().get('certificate_custom_org_name') i
         </div>
       </div>
       <div class="a--accomplishment-design-01__certificate-info-print-only">
-        <div class="info-left">
-          Certificate ID number: <b>${certificate_id_number}</b>
+        <div class="info-upper">
+          <div class="info-left">
+            Certificate ID number: <b>${certificate_id_number}</b>
+          </div>
+          <div class="info-right">
+            Date issued: <b>${certificate_date_issued}</b>
+          </div>
         </div>
-        <div class="info-right">
-          <b>${certificate_date_issued}</b>
-        </div>
-        <div>
+        <div class="info-bottom">
           Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a>
         </div>
       </div>

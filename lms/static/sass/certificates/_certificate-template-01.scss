@@ -170,9 +170,26 @@
 
 .a--accomplishment-design-01__certificate-info-print-only {
   overflow: visible;
+  color: #fff;
+
+  .info-upper {
+    @include display(flex);
+    @include align-items(center);
+    margin-bottom: 1em;
+  }
+
+  .info-right {
+    margin-left: auto;
+  }
+
+  a {
+    color: #fff;
+    font-weight: bolder;
+  }
 
   @media screen {
-    display: none;
+    padding: 0 2em 2em;
+    font-size: 0.8rem;
   }
 }
 
@@ -305,15 +322,14 @@
     }
 
     &__certificate-info-print-only {
-      @include display(flex);
-      @include align-items(center);
       margin-bottom: 0.7cm;
       font-size: 0.25cm;
       padding: 0 1.1cm;
       color: #fff;
 
-      .info-right {
-        margin-left: auto;
+      .info-upper {
+        @include display(flex);
+        @include align-items(center);
       }
     }
   }
