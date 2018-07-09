@@ -29,12 +29,11 @@
 
     // for IE10 allow user to continue by closing overlay
     var warningHTMLIE10 = "\
-    <p>The courses work best with newest versions of Chrome, Firefox, Safari or Edge, \
-    or with Internet Explorer version 11.</p> \
-    <p>It appears you are not using the newest version of Internet Explorer, so be aware \
-    that certain features may display incorrectly or may not work.</p>\
-    <p>If you really want to proceed and access this course, <a href='#' class='closer'>continue</a>\
-    to the course.</p>";
+    <p>This course works best with the newest versions of Chrome, Firefox, Safari, and Edge. \
+    It also works with Internet Explorer version 11.</p>\
+    <p>It appears you are using an older version of Internet Explorer. While you may \
+    <a href='#' class='closer'>continue to the course</a> using this browser, be aware that  \
+    certain features/content may display incorrectly or may not work as a result.</p>";
 
     // older browser versions must be upgraded
     var warningHTMLIELT10 = "\
