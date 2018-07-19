@@ -65,3 +65,11 @@
 nav.sequence-bottom {
   clear: both;
 }
+
+
+/* Set a maximum content XBlock/xmodule width of 700px
+to match styling of content imported from texasgateway.org
+*/
+.xblock-student_view-vertical {
+  max-width: 700px;
+}
