@@ -75,5 +75,6 @@ to match styling of content imported from texasgateway.org
 }
 
 .xblock-student_view .sequence-list-wrapper {
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
 }
