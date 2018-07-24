@@ -2,7 +2,7 @@
     <a href="/courses/<%- course %>/about">
         <header class="course-image">
             <div class="cover-image">
-                <img src="<%- image_url %>" alt="<%= content.display_name %> <%= content.number %>" />
+                <img src="<%- image_url %>" alt="<%= content.display_name %> <%= display_number_with_default %>" />
                 <div class="learn-more" aria-hidden=true><%= gettext("LEARN MORE") %></div>
             </div>
         </header>
@@ -22,7 +22,7 @@
         <div class="sr">
             <ul>
                 <li><%= org %></li>
-                <li><%= content.number %></li>
+                <li><%= display_number_with_default %></li>
                 <li><%= gettext("Starts") %><time itemprop="startDate" datetime="<%- start %>"><%- start %></time></li>
             </ul>
         </div>
