@@ -1,0 +1,20 @@
+<%! from django.utils.translation import ugettext as _ %>
+
+${_("Dear {full_name}").format(full_name=full_name)}
+
+${_("Congratulations, you have been registered for {course_name} "
+	"on Penn State Extension's learning management system.").format(
+		course_name=display_name or course.display_name_with_default_escaped
+	)}
+
+${_("First, to log in, please use this link: {login_url}").format(
+	login_url="https://learn.extension.psu.edu/staff_login"
+    )}
+
+${_("And then you can access your course here: {course_url}").format(
+		course_url=course_url
+	)}
+
+${_("If you have questions about your account or accessing the course, "
+    "please contact your Technical Communications Specialist."
+    )}

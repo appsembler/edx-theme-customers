@@ -1,0 +1,19 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%! from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers %>
+${_("Thank you for creating an account with Penn State Extension's learning management system.")}
+
+${_("There's just one more step before you can enroll in a course: "
+    "you need to activate your account. To activate "
+    "your account, click the following link or "
+    "copy and paste the link into your browser's address bar."
+   )
+ }
+
+% if is_secure:
+  https://${ site }/activate/${ key }
+% else:
+  http://${ site }/activate/${ key }
+% endif
+
+${_("If you have questions about your account or accessing the system, "
+    "please contact your Technical Communications Specialist.")}

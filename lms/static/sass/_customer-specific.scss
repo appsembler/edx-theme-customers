@@ -1,0 +1,27 @@
+@import "customer-specific/psu-hero-01";
+
+a.nav-skip {
+  display: none;
+}
+
+// Courseware
+.page-subtitle {
+  margin-bottom: 0;
+  font-size: 2.5rem;
+}
+
+.a--courseware--updates-article {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+// Fix for "Hairline Element between Components" in Course content
+.a--courseware-wrapper__content .vert-mod .vert {
+  border-bottom: 0.1rem solid #ddd;
+  padding-bottom: 1rem;
+  margin: 1rem 0;
+
+  &:last-of-type {
+    border: none;
+  }
+}
