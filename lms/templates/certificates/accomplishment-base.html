@@ -19,14 +19,19 @@ course_mode_class = course_mode if course_mode else ''
 
     <%static:css group='style-certificates'/>
     <style type="text/css">
-        .asu--certificates__certificate .btn,
-        .asu--certificates__certificate .btn:hover
-         {
-            color: #fff !important;
+        .asu--certificates__certificate .btn:hover {
             border-color: #fff !important;
         }
+        .asu--certificates__certificate .btn:hover i {
+            color: #fff !important;
+        }
     </style>
-
+    <style type="text/css" media="print">
+        /* force hiding of browser header/footer /*
+        @page {
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} asu--certificates__certificate certificate-${course_mode_class}" data-view="valid-accomplishment">
