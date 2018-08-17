@@ -3,7 +3,7 @@
 
     define('edx-theme-codebase/js/discovery/discovery_factory',
         ['backbone', 'edx-theme-codebase/js/discovery/models/search_state', 'js/discovery/collections/filters',
-        'js/discovery/views/search_form', 'edx-theme-codebase/js/discovery/views/courses_listing',
+        'js/discovery/views/search_form', 'js/discovery/views/courses_listing',
         'js/discovery/views/filter_bar', 'js/discovery/views/refine_sidebar'],
         function(Backbone, SearchState, Filters, SearchForm, CoursesListing, FilterBar, RefineSidebar) {
 
