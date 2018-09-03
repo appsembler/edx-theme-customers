@@ -41,7 +41,13 @@ site_status_msg = get_site_status_msg(course_id)
 
   <% logo_positive = get_brand_logos()['logo_positive'] %>
   <% logo_negative = get_brand_logos()['logo_negative'] %>
-  <% logo_url = get_global_settings().get('header_logo_target',marketing_link('ROOT')) %>
+  <%
+    if user.is_authenticated():
+      logo_url = marketing_link('ROOT')
+    else:
+      logo_url = 'https://getyouredge.org/'
+    endif
+  %>
   <%
     if should_display_shopping_cart_func() and not (course and microsite.is_request_in_microsite()):
       display_shopping_cart = True
