@@ -69,6 +69,25 @@
   font-size: 1.4rem;
 }
 
+.xmodule_display.xmodule_StaticTabModule table td {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #c8c8c8;
+  font-size: 14px;
+}
+
+.xmodule_display.xmodule_StaticTabModule table th {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #c8c8c8;
+  font-size: 14px;
+}
+
+.xmodule_display.xmodule_StaticTabModule th {
+  background: #eee;
+  font-weight: bold;
+}
+
 .a--course-content__main-content, .a--course-content__main-content .course-content, .a--course-static-page, .xmodule_display.xmodule_StaticTabModule {
 
   h1 {
