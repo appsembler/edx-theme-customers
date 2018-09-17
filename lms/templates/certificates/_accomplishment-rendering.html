@@ -1,0 +1,71 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_certificates_settings" />
+<%
+course_mode_class = course_mode if course_mode else ''
+%>
+
+<main class="a--accomplishment--wrapper a--accomplishment--main">
+  <div class="bs-container a--container">
+    <div class="a--accomplishment__body-wrapper a--accomplishment-design-01__body-wrapper ${get_certificates_settings()['paper_orientation']} paper-eu-a4">
+      <div class="a--accomplishment__body a--accomplishment-design-01__body">
+        <div class="a--accomplishment-design-01__platform-info">
+          <div class="a--accomplishment-design-01__platform-info__main">
+            <img class="organisation-logo" src="${get_certificates_settings()['cert_logo']}" role="presentation" style="width: ${get_certificates_settings()['logo_width']};" />
+            <span class="platform-name">${get_certificates_settings()['platform_name']}</span>
+            <p>
+              ${get_certificates_settings()['short_platform_description']}
+            </p>
+          </div>
+          <div class="a--accomplishment-design-01__platform-info__signatures">
+            % if certificate_data:
+                % for signatory in certificate_data.get('signatories', []):
+                  <div class="signature-container">
+                    <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" />
+                    <span class="signee-name">${signatory['name']}</span>
+                    <span class="signee-title">${signatory['title']}</span>
+                    <span class="signee-organisation">${signatory['organization']}</span>
+                  </div>
+                % endfor
+            % endif
+          </div>
+        </div>
+        <div class="a--accomplishment-design-01__main">
+          <div class="a--accomplishment-design-01__main__content">
+            <div class="main-header">
+              <span class="accomplishment-type-symbol">
+                  <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="">
+              </span>
+              <h3 class="course-info">
+                ${document_title}
+              </h3>
+            </div>
+            <span class="vertical-divider-bar"></span>
+            <p>
+              ${get_certificates_settings()['we_hereby_text']}
+            </p>
+            <h1 class="student-name">${accomplishment_copy_name | h}</h1>
+            <p>
+              ${get_certificates_settings()['successfully_completed_text']}
+            </p>
+            <h2 class="course-name-main"><span class="course-organization">${accomplishment_copy_course_org}</span> | <span class="course-number">${course_number}</span>: <span class="course-name">${accomplishment_copy_course_name}</span></h2>
+            <p>
+              ${get_certificates_settings()['optional_cert_text']}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="a--accomplishment-design-01__certificate-info-print-only">
+        <div class="info-left">
+          Certificate ID number: <b>${certificate_id_number}</b>
+        </div>
+        <div class="info-right">
+          <b>${certificate_date_issued}</b>
+        </div>
+        <div>
+          Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

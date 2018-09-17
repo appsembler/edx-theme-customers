@@ -1,0 +1,16 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_certificates_settings" />
+
+<div class="wrapper-header">
+
+    <header class="header-app" role="banner">
+        <h1 class="header-app-title">
+            <a class="logo" href="${logo_url}" style="width: auto;">
+                <img class="a--accomplishment--header-logo" style="width: ${get_certificates_settings()['header_logo_width']}; height: auto;" src="${get_certificates_settings()['header_logo']}" alt="${get_certificates_settings()['platform_name']}" />
+            </a>
+            <span class="sr-only">${logo_subtitle}</span>
+        </h1>
+    </header>
+
+</div>
