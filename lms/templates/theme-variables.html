@@ -7,7 +7,7 @@
 
 
 <%!
-  theme_name = "eucalyptus-theme-codebase"
+  theme_name = "edx-theme-codebase"
 %>
 
 
@@ -79,6 +79,12 @@
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
     return [
+    {
+        'link_title': 'FAQ',
+        'link_URL': '/faq',
+        'special_class': '',
+        'open_in_new_tab': False,
+      }
     ]
   %>
 </%def>
@@ -89,6 +95,12 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     return [
+        {
+        'link_title': 'FAQ',
+        'link_URL': '/faq',
+        'special_class': '',
+        'open_in_new_tab': False,
+      }
     ]
   %>
 </%def>
