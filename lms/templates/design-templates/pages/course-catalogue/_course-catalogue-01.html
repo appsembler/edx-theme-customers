@@ -1,0 +1,44 @@
+<%!
+from django.utils.translation import ugettext as _
+%>
+
+<%page args="options, courses, discovery_enabled" />
+
+<%namespace name='static' file='/static_content.html'/>
+
+
+% if (discovery_enabled & options['search-enabled']):
+
+  <section class="a--course-catalogue-01__discovery bs-container a--container">
+    <%include file = "/design-templates/live-blocks/discovery/_discovery-search-01.html" args='search_wrapper_id = "discovery-form"' />
+  </section>
+
+  <section class="a--course-catalogue-01__courses">
+    <div class="bs-container a--container courses">
+      <div class="col-xs-12 a--course-catalogue-01__courses-container courses-listing courses-listing-narrower a--${options['course-card']}-parent-element">
+        % for course in courses:
+            <%include file="/design-templates/live-blocks/single-course/_${options['course-card']}.html" args="course=course" />
+        % endfor
+      </div>
+      <!-- JFrog wants text search but no discovery facets
+        <aside class="hidden-xs col-sm-4 col-md-3 a--course-catalogue-01__discovery-facet-container a--discovery-facets search-facets">
+        <h2 class="a--discovery-facets__heading">${_('Refine Your Search')}</h2>
+        <div class="search-facets-lists">
+        </div>
+      </aside> -->
+    </div>
+  </section>
+
+% else:
+
+  <section class="a--course-catalogue-01__courses">
+    <div class="bs-container a--container courses">
+      <div class="col-xs-12 a--course-catalogue-01__courses-container courses-listing a--${options['course-card']}-parent-element">
+        % for course in courses:
+            <%include file="/design-templates/live-blocks/single-course/_${options['course-card']}.html" args="course=course" />
+        % endfor
+      </div>
+    </div>
+  </section>
+
+% endif
