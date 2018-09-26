@@ -45,13 +45,11 @@
 
 // remove course catalogue facets
 .a--course-catalogue-01__courses-container {
-  width: 100%;
 
   &.courses-listing-narrower {
 
     li.courses-listing-item {
       padding: 1.5rem;
-      width: 25%;
       @include display(flex);
 
       @media(max-width:$screen-md-max) {
@@ -67,10 +65,6 @@
       }
     }
   }
-}
-
-.a--course-catalogue-01__discovery-facet-container {
-  display: none;
 }
 
 // footer changes
