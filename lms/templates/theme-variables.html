@@ -44,11 +44,11 @@
 <%def name="get_brand_logos()">
   <%
   return {
-    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
-    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.svg'), ## required
-    'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.svg'), ## required
-    'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.svg'), ## required
-    'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.svg'), ## required
+    'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.png'), ## required
+    'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.png'), ## required
+    'icon_color' : get_value('icon_color', '') or static('images/branding/icon-color.png'), ## required
+    'icon_white' : get_value('icon_white', '') or static('images/branding/icon-white.png'), ## required
+    'icon_black' : get_value('icon_black', '') or static('images/branding/icon-black.png'), ## required
   }
   %>
 </%def>
