@@ -6,12 +6,23 @@
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
 <%! from django.utils.translation import ugettext as _ %>
 <%! from datetime import date %>
+<%! from django.utils import translation %>
 
 
 
 <%!
   theme_name = "eucalyptus-theme-codebase"
+  current_language = translation.get_language()
+  site_default_language = get_value('site_default_language', "en")
 %>
+
+<%def name="return_translation(translations_object)">
+  % if (isinstance(translations_object, dict)):
+    ${translations_object.get(current_language, translations_object.get(site_default_language, ""))}
+  % else:
+    ${translations_object}
+  % endif
+</%def>
 
 
 
@@ -74,9 +85,9 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : 'design-templates/header/_header-appsembler-{}.html'.format(
+    'header_template' : '/design-templates/header/_header-appsembler-{}.html'.format(
       get_current_site_configuration().page_elements.get('header', {}).get('type', '01')), ## required
-    'footer_template' : 'design-templates/footer/_footer-appsembler-{}.html'.format(
+    'footer_template' : '/design-templates/footer/_footer-appsembler-{}.html'.format(
       get_current_site_configuration().page_elements.get('footer', {}).get('type', '01')), ## required
   }
   %>
