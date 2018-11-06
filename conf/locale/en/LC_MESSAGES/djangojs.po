@@ -2,13 +2,10 @@
 # you will need to run $ /edx/app/edxapp/edx-platform/manage.py lms compilemessages --settings=aws_appsembler
 # paver i18n_fastgenerate will not properly compile these
 
-# 'Gateway Courses' is an abbreviated version of the platform name
-# which we want to use in many cases
-
 #: lms/templates/student_account/register.underscore
 msgid "Create your account"
-msgstr "Create your Gateway Courses account"
+msgstr "Create your TEA Educator Academies account"
 
 #: lms/templates/student_account/login.underscore
 msgid "New to %(platformName)s?"
-msgstr "New to Gateway Courses?"
+msgstr "New to TEA Educator Academies?"
