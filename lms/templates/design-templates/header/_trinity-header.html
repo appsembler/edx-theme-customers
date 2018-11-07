@@ -130,6 +130,12 @@
                    <a href="${reverse('sysadmin')}">${_("SysAdmin")}</a>
                  </li>
                % endif
+               % if user.is_staff:
+                 <li class="a--spacer"></li>
+                 <li>
+                   <a target="_blank" href="https://facilitator-support.texascourses.org/hc/en-us">${_("Facilitator Help Center")}</a>
+                 </li>
+               % endif
                <li class="a--spacer"></li>
                <li>
                  <a href="${reverse('logout')}">${_("Sign Out")}</a>
