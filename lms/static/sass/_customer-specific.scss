@@ -78,3 +78,14 @@ to match styling of content imported from texasgateway.org
   overflow-x: scroll;
   overflow-y: hidden;
 }
+
+
+/* Hide View Unit in Studio link if not course staff
+(don't show to Instructors as is normal)
+*/
+.wrap-instructor-action.studio-view {
+  display: none;
+}
+body.view-as-staff .wrap-instructor-action.studio-view {
+  display: block;
+}
