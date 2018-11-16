@@ -91,7 +91,7 @@ ${static.get_page_title_breadcrumbs(course_name())}
   </%static:require_module>
 
   % if staff_access:
-  	<%include file="xqa_interface.html"/>
+  	<%include file="/courseware/xqa_interface.html"/>
   % endif
 
   <script type="text/javascript">
@@ -207,10 +207,10 @@ ${HTML(fragment.foot_html())}
     % if settings.FEATURES.get("LICENSING", False):
       <div class="course-license">
       % if getattr(course, "license", None):
-        <%include file="../license.html" args="license=course.license" />
+        <%include file="/license.html" args="license=course.license" />
       % else:
         ## Default course license: All Rights Reserved, if none is explicitly set.
-        <%include file="../license.html" args="license='all-rights-reserved'" />
+        <%include file="/license.html" args="license='all-rights-reserved'" />
       % endif
       </div>
     % endif
@@ -229,4 +229,4 @@ ${HTML(fragment.foot_html())}
   % endif
 </nav>
 
-<%include file="../modal/accessible_confirm.html" />
+<%include file="/modal/accessible_confirm.html" />
