@@ -7,12 +7,12 @@ course_mode_class = course_mode if course_mode else ''
 
 <header class="header-app">
     <h5 class="header-app-title">
-        <a class="logo" href="${logo_url}" style="width:40rem">
+        <a class="logo" href="${logo_url}" style="width:40rem; max-width: 100%; margin: 1rem auto;">
             <img class="logo-img" src="${get_brand_logos()['logo_positive']}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
         </a>
         <span class="sr-only">${logo_subtitle}</span>
     </h5>
-</header>    
+</header>
 
 <main class="accomplishment accomplishment-main">
 
@@ -71,17 +71,17 @@ course_mode_class = course_mode if course_mode else ''
             </div>
         </div>
     </div>
-    % endif    
+    % endif
 
     <div class="wrapper-accomplishment-metadata">
         <div class="accomplishment-metadata">
 <!--             <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
  -->
             <div class="wrapper-metadata">
-               
+
                 <dl class="metadata accomplishment-id" style="width: auto">
                     <dt class="label copy copy-meta">Verify the authenticity of this certificate at</dt>
-                    <dd class="value copy copy-meta"><a href="${url}/certificates/user/${accomplishment_user_id}/course/${course_id}">${url}/certificates/user/${accomplishment_user_id}/course/${course_id}</a></dd>
+                    <dd class="value copy copy-meta"><a href="http://isusova.edx.test:8000/certificates/user/8/course/course-v1:edX+DemoX+Demo_Course?preview=honor" style="max-width: 100%; word-break: break-all;">http://isusova.edx.test:8000/certificates/user/8/course/course-v1:edX+DemoX+Demo_Course?preview=honor</dd>
                 </dl>
 
             </div>
