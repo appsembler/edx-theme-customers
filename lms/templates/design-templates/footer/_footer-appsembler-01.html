@@ -1,7 +1,7 @@
 <%page args="footer_links, footer_logo, footer_logo_alt_text, footer_copyright_text, display_edx_disclaimer, edx_disclaimer, display_poweredby" />
 <%namespace file='/theme-variables.html' import="get_footer_settings" />
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='/theme-variables.html' import="return_translation" />
+<%namespace file='/theme-variables.html' import="translate" />
 <%! from django.utils.translation import ugettext as _ %>
 
 <footer class="a--footer">
@@ -29,7 +29,7 @@
               % if item['open_in_new_tab']:
                 target="_blank"
               % endif
-              >${return_translation(item['link_title'])}</a>
+              >${item['link_title'] | translate}</a>
             </li>
             % endfor
           </ul>

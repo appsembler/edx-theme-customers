@@ -1,6 +1,6 @@
 ## mako
 <%page args="options" />
-<%namespace file='/theme-variables.html' import="return_translation" />
+<%namespace file='/theme-variables.html' import="translate" />
 
 <%
   element_style = ""
@@ -8,5 +8,5 @@
 %>
 
 <a class="amc--element--cta-button amc--style-classes ${options['font-size']} ${options['font-family']} ${options['border-width']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']} ${options['padding-top']} ${options['padding-right']} ${options['padding-bottom']} ${options['padding-left']}" style="${element_style}" href="${options['url']}">
-  ${return_translation(options['text-content'])}
+  ${options['text-content'] | translate}
 </a>
