@@ -10,7 +10,15 @@
   theme_name = "edx-theme-codebase"
 %>
 
-
+<%def name="register_url()">
+  <%
+      if 'academies-stg' in settings.SITE_NAME:
+        custom_register_url = 'https://staging.texascourses.org/auth/login/trinity/?auth_entry=register&next=https://staging.texascourses.org/dashboard'
+      else:
+        custom_register_url = 'https://texascourses.org/auth/login/trinity/?auth_entry=register&next=https://texascourses.org/dashboard'
+      return custom_register_url
+  %>
+</%def>
 
 ## =======================================================
 ## this template is used to define content to be displayed
@@ -174,7 +182,7 @@
           # template settings
           'hero_title' : "Explore TEA Educator Academies",
           'hero_subtitle' : "",
-          'cta_link' : "https://pass.texasgateway.org/register/", ## leave value empty if you don't want a CTA button displayed.
+          'cta_link' : register_url(), ## leave value empty if you don't want a CTA button displayed.
           'cta_link_text' : "Register Now", ## leave value empty if you don't want a CTA button displayed.
           'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
           'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
@@ -444,7 +452,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h2>About TEA Educator Academies</h2><p>TEA Educator Academies offer statewide online professional development opportunities for Texas teachers. Through TEA Educator Academies, teachers have anytime, anywhere access to trainings that offer</p><ul><li>extensive instruction in the TEKS, the ELPS, and the RtI model;</li><li>strategies on providing effective instructional support for English language learners, Gifted and Talented students, and struggling students; and</li><li>CPE credits and certifications.</li></ul><p>The courses are all TEA-approved and available at no cost to practicing and pre-service teachers across the state. Teachers simply register to get instant access to courses where they can watch instructional videos, engage in interactive activities, participate in discussions, and earn CPE credits.</p><p><a href="https://pass.texasgateway.org/register/">Create your Gateway Courses account and get started today!</a></p><p>Have questions? Visit our <a href="https://support.texascourses.org/hc/en-us">Help page</a> for tips and answers to frequently asked questions.</p>', ## block content, place iline HTML here
+            'content' : '<h2>About TEA Educator Academies</h2><p>TEA Educator Academies offer statewide online professional development opportunities for Texas teachers. Through TEA Educator Academies, teachers have anytime, anywhere access to trainings that offer</p><ul><li>extensive instruction in the TEKS, the ELPS, and the RtI model;</li><li>strategies on providing effective instructional support for English language learners, Gifted and Talented students, and struggling students; and</li><li>CPE credits and certifications.</li></ul><p>The courses are all TEA-approved and available at no cost to practicing and pre-service teachers across the state. Teachers simply register to get instant access to courses where they can watch instructional videos, engage in interactive activities, participate in discussions, and earn CPE credits.</p><p><a href=register_url()>Create your Gateway Courses account and get started today!</a></p><p>Have questions? Visit our <a href="https://support.texascourses.org/hc/en-us">Help page</a> for tips and answers to frequently asked questions.</p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
