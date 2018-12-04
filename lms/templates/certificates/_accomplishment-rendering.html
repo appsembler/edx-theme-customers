@@ -7,7 +7,7 @@ course_mode_class = course_mode if course_mode else ''
 
 <header class="header-app">
     <h5 class="header-app-title">
-        <a class="logo" href="${logo_url}" style="width:12rem; margin: 2rem auto;">
+        <a class="logo" href="${logo_url}" style="width:12rem; margin: 2rem auto; max-width: 100%;">
             <img class="logo-img" src="${get_brand_logos()['logo_positive']}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
         </a>
         <span class="sr-only">${logo_subtitle}</span>
@@ -89,7 +89,7 @@ course_mode_class = course_mode if course_mode else ''
 
                 <dl class="metadata accomplishment-id" style="width: auto">
                     <dt class="label copy copy-meta">Verify the authenticity of this certificate at</dt>
-                    <dd class="value copy copy-meta"><a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a></dd>
+                    <dd class="value copy copy-meta"><a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}" style="max-width: 100%; word-break: break-all;">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a></dd>
                 </dl>
 
             </div>
