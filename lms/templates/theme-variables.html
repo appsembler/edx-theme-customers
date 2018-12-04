@@ -23,7 +23,7 @@
   <%
   return {
     ##'header_logo_target' : ''
-    'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
+    'fonts_url' : 'https://fonts.googleapis.com/css?family=Exo:300,300i,400,400i,700,700i,900&amp;subset=latin-ext',
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
@@ -152,129 +152,10 @@
   <%
     return [
       {
-        "element-type":"layout-single-col",
-        "element-path":"page-builder/layouts/_single-col.html",
+        "element-type":"static-block",
+        "element-path":"customer-specific/_jfrog-index.html",
         "options":{
-          "layout-bg-image":static('images/jfrog-HeroImageFinal-centered.jpg'),
-          "bg-color":"#1c1f30",
-          "margin-right":"marg-r-0",
-          "margin-bottom":"marg-b-0",
-          "layout-bg-image-size":"bg-img-size--default",
-          "text-color":"#000",
-          "margin-top":"marg-t-0",
-          "padding-right":"padd-r-0",
-          "margin-left":"marg-l-0",
-          "padding-bottom":"padd-b-200",
-          "align-content":"align-content-center",
-          "text-alignment":"text-align--center",
-          "padding-top":"padd-t-200",
-          "padding-left":"padd-l-0"
-        },
-        "children":{
-          "column-1":[
-            {
-              "element-type":"layout-single-col",
-              "element-path":"page-builder/layouts/_single-col.html",
-              "options":{
-                "layout-bg-image":"",
-                "bg-color":"#",
-                "margin-right":"marg-r-0",
-                "margin-bottom":"marg-b-0",
-                "layout-bg-image-size":"jfrog-hero-width-hack",
-                "text-color":"#000",
-                "margin-top":"marg-t-0",
-                "padding-right":"padd-r-0",
-                "margin-left":"marg-l-0",
-                "padding-bottom":"padd-b-20",
-                "align-content":"align-content-center",
-                "text-alignment":"text-align--center",
-                "padding-top":"padd-t-20",
-                "padding-left":"padd-l-0"
-              },
-              "children":{
-                "column-1":[
-                  {
-                    "element-type":"heading",
-                    "element-path":"page-builder/elements/_heading.html",
-                    "options":{
-                      "font-size":"font-size--42px",
-                      "margin-right":"marg-r-0",
-                      "margin-bottom":"marg-b-20",
-                      "text-color":"#fff",
-                      "margin-top":"marg-t-0",
-                      "margin-left":"marg-l-0",
-                      "text-content":"Welcome to JFrog Academy",
-                      "font-family":"font--primary--bold",
-                      "text-alignment":"text-align--center"
-                    }
-                  },
-                  {
-                    "element-type":"paragraph-text",
-                    "element-path":"page-builder/elements/_paragraph.html",
-                    "options":{
-                      "font-size":"font-size--24px",
-                      "margin-right":"marg-r-0",
-                      "margin-bottom":"marg-b-5",
-                      "text-color":"#f9f9f9",
-                      "margin-top":"marg-t-5",
-                      "margin-left":"marg-l-0",
-                      "text-content":"Your fast track to learn - fully featured, self paced, best instructors!",
-                      "font-family":"font--primary--regular",
-                      "text-alignment":"text-align--center"
-                    }
-                  },
-                  {
-                    "element-type":"layout-1:1:1",
-                    "element-path":"page-builder/layouts/_three-col.html",
-                    "options":{
-                      "layout-bg-image":"",
-                      "bg-color":"#",
-                      "margin-right":"marg-r-0",
-                      "margin-bottom":"marg-b-0",
-                      "layout-bg-image-size":"bg-img-size--cover",
-                      "text-color":"#000",
-                      "margin-top":"marg-t-0",
-                      "padding-right":"padd-r-0",
-                      "margin-left":"marg-l-0",
-                      "padding-bottom":"padd-b-20",
-                      "align-content":"align-content-center",
-                      "text-alignment":"text-align--center",
-                      "padding-top":"padd-t-20",
-                      "padding-left":"padd-l-0"
-                    },
-                    "children":{
-                      "column-1":[],
-                      "column-3":[],
-                      "column-2":[
-                        {
-                          "element-type":"cta-button",
-                          "element-path":"page-builder/elements/_cta-button.html",
-                          "options":{
-                            "font-size":"font-size--18px",
-                            "bg-color":"#24A82A",
-                            "border-color":"#24A82A",
-                            "margin-right":"marg-r-auto",
-                            "border-width":"border-width--none",
-                            "margin-bottom":"marg-b-5",
-                            "text-color":"#fff",
-                            "margin-top":"marg-t-5",
-                            "padding-right":"padd-r-10",
-                            "margin-left":"marg-l-auto",
-                            "url":"http://www.jfrog.com",
-                            "padding-bottom":"padd-b-10",
-                            "text-content":"Visit JFrog.com",
-                            "padding-top":"padd-t-10",
-                            "font-family":"font--primary--regular",
-                            "padding-left":"padd-l-10"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
+
         }
       }
     ]

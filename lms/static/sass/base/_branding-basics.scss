@@ -8,12 +8,12 @@ $brand-accent-color: #7f8c8d;
 $navbar-style: "white";  // brand or white
 $base-text-color: #000;
 
-$primary-font-name: "Roboto";
+$primary-font-name: "Exo";
 $primary-font-weight-light: 300;
 $primary-font-weight-regular: 400;
 $primary-font-weight-bold: 700;
-$primary-font-weight-black: 800;
-$accent-font-name: "Delius Unicase";
+$primary-font-weight-black: 900;
+$accent-font-name: "BebasNeue";
 
 $font-size-base-body: 14px;
 $line-height-base-body: 150%;
@@ -37,7 +37,7 @@ $global-font-cta-buttons: "primary-font-regular";
 $cta-button-bg: $brand-primary-color;
 $cta-button-text-color: #fff;
 $cta-button-border: none;
-$buttons-border-radius: 0.5rem;
+$buttons-border-radius: 0;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
 $header-logo-height: 5rem;
