@@ -1,6 +1,6 @@
 ## mako
 <%page args="options" />
-<%namespace file='/theme-variables.html' import="return_translation" />
+<%namespace file='/theme-variables.html' import="translate" />
 <%! from django.utils import translation %>
 
 <%
@@ -9,5 +9,5 @@
 %>
 
 <h2 class="amc--element--heading amc--style-classes ${options['font-size']} ${options['font-family']} ${options['text-alignment']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']}" style="${element_style}">
-  ${return_translation(options['text-content'])}
+  ${options['text-content'] | translate}
 </h2>

@@ -3,7 +3,7 @@
 from django.utils.translation import ugettext as _
 %>
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='/theme-variables.html' import="return_translation" />
+<%namespace file='/theme-variables.html' import="translate" />
 ## mako
 
 <!-- top navigation -->
@@ -33,7 +33,7 @@ from django.utils.translation import ugettext as _
               % if item['open_in_new_tab']:
                 target="_blank"
               % endif
-              >${return_translation(item['link_title'])}</a>
+              >${item['link_title'] | translate}</a>
             </li>
             % endfor
           </ul>
@@ -65,7 +65,7 @@ from django.utils.translation import ugettext as _
                     % if item['open_in_new_tab']:
                       target="_blank"
                     % endif
-                    >${return_translation(item['link_title'])}</a>
+                    >${item['link_title'] | translate}</a>
                   </li>
                 % endfor
                 <% first_slideout_item = False %>

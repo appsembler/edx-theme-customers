@@ -9,29 +9,21 @@
 <%! from django.utils import translation %>
 
 
-
 <%!
   theme_name = "eucalyptus-theme-codebase"
   current_language = translation.get_language()
   site_default_language = get_value('site_default_language', "en")
 %>
 
-<%def name="return_translation(translations_object)">
-  % if (isinstance(translations_object, dict)):
-    ${translations_object.get(current_language, translations_object.get(site_default_language, ""))}
-  % else:
-    ${translations_object}
-  % endif
-</%def>
 
-<%def name="return_translation_to_var(translations_object)">
+<%def name="translate(translations_object)">
   % if (isinstance(translations_object, dict)):
     <%
-      return "%s" % (translations_object.get(current_language, translations_object.get(site_default_language, "")))
+      return str(translations_object.get(current_language, translations_object.get(site_default_language, "")))
     %>
   % else:
     <%
-      return "%s" % (translations_object)
+      return str(translations_object)
     %>
   % endif
 </%def>
@@ -140,9 +132,9 @@
     footer_options = get_current_site_configuration().page_elements.get('footer', {}).get('options', {})
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : return_translation_to_var(footer_options.get('footer_copyright_text', '©' + date.today().strftime('%Y') + ' Company Name. All rights reserved.')),  ## leave value empty if you don't want it displayed.
+      'footer_copyright_text' : translate(footer_options.get('footer_copyright_text', '©' + date.today().strftime('%Y') + ' Company Name. All rights reserved.')),  ## leave value empty if you don't want it displayed.
       'display_edx_disclaimer' : footer_options.get('display_edx_disclaimer', True), ## bool value required
-      'edx_disclaimer' : return_translation_to_var(footer_options.get('edx_disclaimer', 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.')), ## leave value empty if you don't want it displayed.
+      'edx_disclaimer' : translate(footer_options.get('edx_disclaimer', 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.')), ## leave value empty if you don't want it displayed.
       'display_poweredby' : footer_options.get('display_poweredby', True), ## bool value required
       'display_app_link' : footer_options.get('display_app_link', False),
       'app_url' : footer_options.get('app_url', '')
@@ -333,21 +325,21 @@
     'header_logo_width': get_value('certificates', {}).get('header_logo_width', '240px'),
     'cert_logo': get_value('certificates', {}).get('cert_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
     'logo_width': get_value('certificates', {}).get('cert_logo_width', '160px'),
-    'platform_name': return_translation_to_var(get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', 'Platform Name'))),
-    'header_text': return_translation_to_var(get_value('certificates', {}).get('header_text', 'Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
-    'short_platform_description': return_translation_to_var(get_value('certificates', {}).get('short_platform_description', '')),
-    'we_hereby_text': return_translation_to_var(get_value('certificates', {}).get('we_hereby_text', 'We hereby certify that:')),
-    'successfully_completed_text': return_translation_to_var(get_value('certificates', {}).get('successfully_completed_text', "successfully completed, received a passing grade, and was awarded this platforms' Honor Code Certificate of Completion in:")),
-    'optional_cert_text': return_translation_to_var(get_value('certificates', {}).get('optional_cert_text', '')),
-    'footer_about_platform_text': return_translation_to_var(get_value('certificates', {}).get('footer_about_platform_text', 'Our platform offers interactive online classes and MOOCs.')),
+    'platform_name': translate(get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', 'Platform Name'))),
+    'header_text': translate(get_value('certificates', {}).get('header_text', 'Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
+    'short_platform_description': translate(get_value('certificates', {}).get('short_platform_description', '')),
+    'we_hereby_text': translate(get_value('certificates', {}).get('we_hereby_text', 'We hereby certify that:')),
+    'successfully_completed_text': translate(get_value('certificates', {}).get('successfully_completed_text', "successfully completed, received a passing grade, and was awarded this platforms' Honor Code Certificate of Completion in:")),
+    'optional_cert_text': translate(get_value('certificates', {}).get('optional_cert_text', '')),
+    'footer_about_platform_text': translate(get_value('certificates', {}).get('footer_about_platform_text', 'Our platform offers interactive online classes and MOOCs.')),
     'footer_about_platform_url': get_value('certificates', {}).get('footer_about_platform_url', '#'),
-    'footer_about_accomplishments_text': return_translation_to_var(get_value('certificates', {}).get('footer_about_accomplishments_text', "Our platform acknowledges achievements through certificates, which are awarded for course activities that our platform students complete.")),
-    'footer_copyright_text': return_translation_to_var(get_value('certificates', {}).get('footer_copyright_text', "")),
+    'footer_about_accomplishments_text': translate(get_value('certificates', {}).get('footer_about_accomplishments_text', "Our platform acknowledges achievements through certificates, which are awarded for course activities that our platform students complete.")),
+    'footer_copyright_text': translate(get_value('certificates', {}).get('footer_copyright_text', "")),
     'footer_tos_url': get_value('certificates', {}).get('footer_tos_url', "#"),
     'footer_privacy_url': get_value('certificates', {}).get('footer_privacy_url', "#"),
     'accomplishment_icon': get_value('certificates', {}).get('cert_accomplishment_icon', ''),
     'accomplishment_icon_width': get_value('certificates', {}).get('cert_accomplishment_icon_width', '60px'),
-    'certificate_custom_org_name': return_translation_to_var(get_value('certificates', {}).get('certificate_custom_org_name', "")),
+    'certificate_custom_org_name': translate(get_value('certificates', {}).get('certificate_custom_org_name', "")),
   }
   %>
 </%def>
