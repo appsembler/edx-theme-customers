@@ -18,10 +18,10 @@
      custom_login_url = '/login'
 
    if 'staging' in settings.SITE_NAME:
-     custom_register_url = 'https://staging.texascourses.org/auth/login/trinity/?auth_entry=register&next=https://staging.texascourses.org/dashboard'
+     custom_register_url = 'https://pass-staging.texasgateway.org/oauth/v2/auth?redirect_uri=https://staging.texascourses.org/auth/complete/trinity/&auth_entry=register'
      custom_profile_url = 'https://pass-staging.texasgateway.org/profile_edit'
    else:
-     custom_register_url = 'https://texascourses.org/auth/login/trinity/?auth_entry=register&next=https://texascourses.org/dashboard'
+     custom_register_url = 'https://pass.texasgateway.org/oauth/v2/auth?redirect_uri=https://texascourses.org/auth/complete/trinity/&auth_entry=register'
      custom_profile_url = 'https://pass.texasgateway.org/profile_edit'
 
  %>
