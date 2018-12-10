@@ -12,15 +12,15 @@
 
 <%!
   theme_name = "eucalyptus-theme-codebase"
-  current_language = translation.get_language()
-  site_default_language = get_value('site_default_language', "en")
 %>
 
 
 <%def name="translate(translations_object)">
   % if (isinstance(translations_object, dict)):
     <%
-      return force_text(translations_object.get(current_language, translations_object.get(site_default_language, "")))
+      current_language = translation.get_language()
+      site_default_language = get_value('site_default_language', 'en')
+      return force_text(translations_object.get(current_language, translations_object.get(site_default_language, '')))
     %>
   % else:
     <%
