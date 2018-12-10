@@ -4,9 +4,10 @@
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%! from django.utils.encoding import force_text %>
+<%! from django.utils import translation %>
 <%! from django.utils.translation import ugettext as _ %>
 <%! from datetime import date %>
-<%! from django.utils import translation %>
 
 
 <%!
@@ -19,11 +20,11 @@
 <%def name="translate(translations_object)">
   % if (isinstance(translations_object, dict)):
     <%
-      return str(translations_object.get(current_language, translations_object.get(site_default_language, "")))
+      return force_text(translations_object.get(current_language, translations_object.get(site_default_language, "")))
     %>
   % else:
     <%
-      return str(translations_object)
+      return force_text(translations_object)
     %>
   % endif
 </%def>

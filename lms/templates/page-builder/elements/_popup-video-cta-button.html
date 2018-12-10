@@ -8,7 +8,7 @@
 %>
 
 <a class="amc--element--popup-video-cta-button amc--style-classes ${options['font-size']} ${options['font-family']} ${options['border-width']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']} ${options['padding-top']} ${options['padding-right']} ${options['padding-bottom']} ${options['padding-left']}" style="${element_style}" href="#" data-toggle="modal" data-target="#${options['youtube-video-id']}Modal">
-  ${options['text-content'] | translate}
+  ${translate(options['text-content'])}
 </a>
 
 <div class="modal a--modal a--modal__video fade" id="${options['youtube-video-id']}Modal" tabindex="-1" role="dialog" aria-labelledby="${options['youtube-video-id']}Modal">
