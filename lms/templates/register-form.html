@@ -6,10 +6,10 @@ from django.utils.translation import ugettext as _
 from django_countries import countries
 from openedx.core.djangoapps.site_configuration.helpers import get_value
 from student.models import UserProfile
-
-
-reg_extra_fields = get_value('REGISTRATION_EXTRA_FIELDS', settings.REGISTRATION_EXTRA_FIELDS)
 %>
+
+<% reg_extra_fields = get_value('REGISTRATION_EXTRA_FIELDS', settings.REGISTRATION_EXTRA_FIELDS) %>
+
 
 <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
 
