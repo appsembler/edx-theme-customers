@@ -22,6 +22,15 @@
 % if apple_app_id:
   <meta name="apple-itunes-app" content="app-id=${get_global_settings()['apple_app_id']}">
 % endif
+% if get_global_settings().get('custom_site_meta_tags'):
+  % for meta_tag in get_global_settings().get('custom_site_meta_tags'):
+    % if meta_tag.get('tagName'):
+      <meta name="${meta_tag['tagName']}" content="${meta_tag['tagContent']}" />
+    % elif meta_tag.get('tagProperty'):
+      <meta property="${meta_tag['tagProperty']}" content="${meta_tag['tagContent']}" />
+    % endif
+  % endfor
+% endif
 
 <%include file="partials/analytics.html" />
 
