@@ -89,3 +89,9 @@ to match styling of content imported from texasgateway.org
 body.view-as-staff .a--courseware-wrapper__content .wrap-instructor-info.studio-view {
   display: block;
 }
+
+
+/* Hide "points possible" (graded) etc. */
+.a--courseware-wrapper__content .problem-progress {
+  display: none!important;
+}
