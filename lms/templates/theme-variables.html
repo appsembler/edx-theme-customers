@@ -39,7 +39,7 @@
     'enable_course_catalogue_for_non-auth_users': False,
     'appsembler_ga_code': "", ## need to enter correct one
     'client_ga_code': "UA-73620512-8",
-    'allow_search_engine_indexing': True,
+    'allow_search_engine_indexing': False,
   }
   %>
 </%def>
@@ -196,7 +196,7 @@
         "element-type":"courses-list",
         "element-path":"design-templates/live-blocks/course-listing/_course-listing-01.html",
         "options":{
-          'max_courses' : 8, ## required, sets max number of courses to be displayed in the block
+          'max_courses' : 0, ## required, sets max number of courses to be displayed in the block
           'course_template_class' : 'a--course-tile-01', ## required, defined as "a--{template-name}"
           'course_template' : 'single-course/_course-tile-01.html', ## required
           'section_heading' : "Featured Courses:",
@@ -444,7 +444,7 @@
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
             'text_color' : "#fff",
-            'bg_image_url' : static('images/hero.jpg'), ## leave empty if you want just a full color background
+            'bg_image_url' : static('images/Academies_-_Hero.jpg'), ## leave empty if you want just a full color background
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
         },
@@ -452,7 +452,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h2>About TEA Educator Academies</h2><p>TEA Educator Academies offer statewide online professional development opportunities for Texas teachers. Through TEA Educator Academies, teachers have anytime, anywhere access to trainings that offer</p><ul><li>extensive instruction in the TEKS, the ELPS, and the RtI model;</li><li>strategies on providing effective instructional support for English language learners, Gifted and Talented students, and struggling students; and</li><li>CPE credits and certifications.</li></ul><p>The courses are all TEA-approved and available at no cost to practicing and pre-service teachers across the state. Teachers simply register to get instant access to courses where they can watch instructional videos, engage in interactive activities, participate in discussions, and earn CPE credits.</p><p><a href=register_url()>Create your Gateway Courses account and get started today!</a></p><p>Have questions? Visit our <a href="https://support.texascourses.org/hc/en-us">Help page</a> for tips and answers to frequently asked questions.</p>', ## block content, place iline HTML here
+            'content' : '<h2>About TEA Educator Academies</h2><p>The Texas Education Agency offers the following academies as established by the Texas Legislature.</p><div style="align:center"><img src="/static/academies-theme-codebase/images/branding/MathAcademies-Logo.png" alt="logo for Grades K-3 Mathematics Achievement Academies" width="682" height="198"/></div><h4>Mathematics Achievement Academies</h4><p>Senate Bill 934, 84th Texas Legislature, 2015 established mathematics achievement academies for teachers who provide mathematics instruction to students at the kindergarten or first, second, or third grade level. Funding for these academies were renewed by the 85th Texas Legislature, 2017.</p><p>Participants in the Mathematics Achievement Academies will be able to:<ul><li>examine the TEKS based on learning progressions and critical checkpoints for understanding;</li><li>experience classroom-ready activities, including formative assessment and follow-up activities that account for leaner variability;</li><li>build a toolkit of strategies and key questions through analysis of activities for students with disabilities, English language learners, students struggling to learn mathematics, and gifted learners; and</li><li>explore structures that provide opportunities for meaningful practice and feedback.</li></ul></p><p>For additional details, contact your Texas Regional Educational Service Center.</p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
