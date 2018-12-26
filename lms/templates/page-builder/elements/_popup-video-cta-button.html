@@ -1,0 +1,21 @@
+## mako
+<%page args="options" />
+<%namespace file='/theme-variables.html' import="translate" />
+
+<%
+  element_style = ""
+  element_style = element_style + "color: " + options['text-color'] + ";" + element_style + "background-color: " + options['bg-color'] + ";" + element_style + "border-color: " + options['border-color'] + ";"
+%>
+
+<a class="amc--element--popup-video-cta-button amc--style-classes ${options['font-size']} ${options['font-family']} ${options['border-width']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']} ${options['padding-top']} ${options['padding-right']} ${options['padding-bottom']} ${options['padding-left']}" style="${element_style}" href="#" data-toggle="modal" data-target="#${options['youtube-video-id']}Modal">
+  ${translate(options['text-content'])}
+</a>
+
+<div class="modal a--modal a--modal__video fade" id="${options['youtube-video-id']}Modal" tabindex="-1" role="dialog" aria-labelledby="${options['youtube-video-id']}Modal">
+  <div class="a--modal__outer-container">
+    <div class="a--modal__video__container bs-container a--container">
+      <button type="button" class="a--modal__close-button" id="a--video-modal-close-${options['youtube-video-id']}" data-dismiss="modal" aria-label="Close"><i class="fa fa-remove"></i></button>
+      <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe class="youtube-modal-iframe" id="${options['youtube-video-id']}" src='https://www.youtube.com/embed/${options['youtube-video-id']}?rel=0&controls=0&showinfo=0&enablejsapi=1' frameborder='0' allowfullscreen></iframe></div>
+    </div>
+  </div>
+</div>

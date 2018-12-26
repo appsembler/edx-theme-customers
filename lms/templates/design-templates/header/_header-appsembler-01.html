@@ -1,0 +1,80 @@
+<%page args="user_authenticated, user_name, logo_positive, logo_negative, logo_url, display_shopping_cart, shopping_cart_url, display_course_name, course_number, course_name, menu_items, slideout_menu_items" />
+<%!
+from django.utils.translation import ugettext as _
+%>
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="translate" />
+## mako
+
+<!-- top navigation -->
+<section class="a--header-design-01 a--site-nav">
+  <div class="bs-container a--container a--site-nav__container">
+    <h1 class="a--site-nav__group-left">
+      <a href="${logo_url}" class="a--site-nav__logo__container a--site-nav__logo__positive">
+        <img class="a--site-nav__logo a--logo-full" src="${logo_positive}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}">
+      </a>
+      <a href="${logo_url}" class="a--site-nav__logo__container a--site-nav__logo__negative">
+        <img class="a--site-nav__logo a--logo-full" src="${logo_negative}" alt="${_("{platform_name} Home Page").format(platform_name=static.get_platform_name())}">
+      </a>
+      % if display_course_name:
+      <div class="a--site-nav__course-name">
+        <span>${course_number}</span>${course_name}
+      </div>
+      % endif
+    </h1>
+    <nav class="a--site-nav__group-right" id="site-menu">
+      <ul class="a--site-menu__container">
+        % for menu_group in menu_items:
+        <li class="a--site-menu__group">
+          <ul>
+            % for item in menu_group:
+            <li class="${item['special_class']}">
+              <a href="${item['link_URL']}"
+              % if item['open_in_new_tab']:
+                target="_blank"
+              % endif
+              >${translate(item['link_title'])}</a>
+            </li>
+            % endfor
+          </ul>
+        </li>
+        % endfor
+        % if user_authenticated:
+        <li class="a--site-menu__group a--user-avatar">
+          ${_("Welcome")}, <span>${user_name}</span>.
+        </li>
+        % endif
+        <li class="a--site-menu__group a--slide-menu">
+          <button type="button" id="site-menu-toggle" class="a--button a--site-nav__mobile-toggle" aria-label="toggle menu">
+            <span class="a--toggle-bar"></span>
+            <span class="a--toggle-bar"></span>
+            <span class="a--toggle-bar"></span>
+            <span class="a--toggle-pulsar a--toggle-pulsar__1"></span>
+            <span class="a--toggle-pulsar a--toggle-pulsar__2"></span>
+          </button>
+          <ul class="a--slide-menu__container" id="slide-menu">
+            <% first_slideout_item = True %>
+            % for menu_group in slideout_menu_items:
+              % if menu_group and menu_group[0]['link_title']:
+                % if not first_slideout_item:
+                  <li class="a--spacer"></li>
+                % endif
+                % for item in menu_group:
+                  <li class="${item['special_class']}">
+                    <a href="${item['link_URL']}"
+                    % if item['open_in_new_tab']:
+                      target="_blank"
+                    % endif
+                    >${translate(item['link_title'])}</a>
+                  </li>
+                % endfor
+                <% first_slideout_item = False %>
+              % endif
+            % endfor
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+		<!-- end of top navigation -->

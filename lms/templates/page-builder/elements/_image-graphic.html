@@ -1,0 +1,11 @@
+## mako
+<%page args="options" />
+<%namespace file='/theme-variables.html' import="translate" />
+
+% if options['link-url']:
+  <a class="amc--element--image-graphic__link-wrapper" href="${options['link-url']}">
+% endif
+  <img src="${options['image-file']}" role="presentation" alt="${translate(options['image-alt-text'])}" class="amc--element--image-graphic amc--style-classes ${options['image-width']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']}" />
+% if options['link-url']:
+  </a>
+% endif
