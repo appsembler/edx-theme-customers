@@ -92,6 +92,10 @@ body.view-as-staff .instructor-dashboard-content-2 .wrap-instructor-info.studio-
   display: block;
 }
 
+.a--courseware-wrapper__content .wrap-instructor-info {
+  margin-bottom: -1rem;
+}
+
 /* Hide "points possible" (graded) etc. */
 .a--courseware-wrapper__content .problem-progress {
   display: none!important;
