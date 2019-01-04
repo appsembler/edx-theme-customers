@@ -19,8 +19,8 @@
   % if (isinstance(translations_object, dict)):
     <%
       current_language = translation.get_language()
-      site_default_language = get_value('site_default_language', 'en')
-      return force_text(translations_object.get(current_language, translations_object.get(site_default_language, '')))
+      language_code = get_value('LANGUAGE_CODE', 'en')
+      return force_text(translations_object.get(current_language, translations_object.get(language_code, '')))
     %>
   % else:
     <%
