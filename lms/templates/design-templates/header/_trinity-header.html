@@ -1,6 +1,7 @@
 <%!
  from django.utils.translation import ugettext as _
  from django.core.urlresolvers import reverse
+ from courseware.access import has_access
  %>
 
  <%page args="user_authenticated, user_name, logo_positive, logo_negative, logo_url, display_shopping_cart, shopping_cart_url, display_course_name, course_number, course_name, menu_items, slideout_menu_items" />
@@ -116,7 +117,7 @@
                    <a href="${reverse('sysadmin')}">${_("SysAdmin")}</a>
                  </li>
                % endif
-               % if user.is_staff:
+               % if has_access(request.user, 'instructor', course) or has_access(request.user, 'staff', course) or user.is_staff:
                  <li class="a--spacer"></li>
                  <li>
                    <a target="_blank" href="https://facilitator-support.texascourses.org/hc/en-us">${_("Facilitator Help Center")}</a>
