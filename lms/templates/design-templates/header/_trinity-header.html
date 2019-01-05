@@ -123,7 +123,7 @@ from opaque_keys.edx.keys import CourseKey
                    <a href="${reverse('sysadmin')}">${_("SysAdmin")}</a>
                  </li>
                % endif
-               % if False or (user_role == 'instructor' or user_role == 'staff'):
+               % if user.is_staff or (user_role == 'instructor' or user_role == 'staff'):
                  <li class="a--spacer"></li>
                  <li>
                    <a target="_blank" href="https://facilitator-support.texascourses.org/hc/en-us">${_("Facilitator Help Center")}</a>
