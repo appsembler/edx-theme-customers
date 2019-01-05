@@ -1,7 +1,8 @@
 <%!
  from django.utils.translation import ugettext as _
  from django.core.urlresolvers import reverse
- from courseware.access import has_access
+from opaque_keys.edx.keys import CourseKey
+ from courseware.access import get_user_role
  %>
 
  <%page args="user_authenticated, user_name, logo_positive, logo_negative, logo_url, display_shopping_cart, shopping_cart_url, display_course_name, course_number, course_name, menu_items, slideout_menu_items" />
@@ -19,11 +20,16 @@
      custom_login_url = '/login'
 
    if 'staging' in settings.SITE_NAME:
-     custom_register_url = 'https://pass-staging.texasgateway.org/oauth/v2/auth?redirect_uri=http://academies-stg.texascourses.org/auth/complete/academies/&auth_entry=register'
+     custom_register_url = 'https://pass-staging.texasgateway.org/oauth/v2/auth?redirect_uri=http://academies-stg.texascourses.org/dashboard&auth_entry=register'
      custom_profile_url = 'https://pass-staging.texasgateway.org/profile_edit'
    else:
-     custom_register_url = 'https://pass.texasgateway.org/oauth/v2/auth?redirect_uri=http://academies.texascourses.org/auth/complete/academies/&auth_entry=register'
+     custom_register_url = 'https://pass.texasgateway.org/oauth/v2/auth?redirect_uri=http://academies.texascourses.org/dashboard&auth_entry=register'
      custom_profile_url = 'https://pass.texasgateway.org/profile_edit'
+
+   try:
+       user_role = get_user_role(request.user, CourseKey.from_string(course_id))
+   except AttributeError:
+       user_role = None
 
  %>
 
@@ -117,7 +123,7 @@
                    <a href="${reverse('sysadmin')}">${_("SysAdmin")}</a>
                  </li>
                % endif
-               % if has_access(request.user, 'instructor', course) or has_access(request.user, 'staff', course) or user.is_staff:
+               % if False or (user_role == 'instructor' or user_role == 'staff'):
                  <li class="a--spacer"></li>
                  <li>
                    <a target="_blank" href="https://facilitator-support.texascourses.org/hc/en-us">${_("Facilitator Help Center")}</a>
@@ -137,6 +143,10 @@
                  <li class="a--spacer"></li>
                % endif
                <li>
+                 <a href="/courses">${_("Find Courses")}</a>
+               </li>
+               <li class="a--spacer"></li>
+               <li>
                  <a href="${custom_login_url}">Login</a>
                </li>
                <li class="a--spacer"></li>
@@ -150,4 +160,4 @@
      </nav>
    </div>
  </section>
- 		<!-- end of top navigation -->
+    <!-- end of top navigation -->
