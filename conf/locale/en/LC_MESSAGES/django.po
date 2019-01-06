@@ -478,3 +478,7 @@ msgstr "Read the list of academies in which you are an instructor."
 msgid "Pre-Course Survey"
 msgstr "Pre-Academy Survey"
 
+#: common/lib/xmodule/xmodule/course_module.py
+#: lms/templates/courseware/info.html
+msgid "Course Handouts"
+msgstr "Academy Handouts"
