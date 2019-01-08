@@ -136,11 +136,11 @@ from openedx.core.djangolib.markup import HTML, Text
           </section>
           % else:
           <section class="updates">
-            <h3 class="handouts-header a--courseware-wrapper__content__sidebar__main-title">${_("Course Updates and News")}</h1>
+            <h3 class="handouts-header a--courseware-wrapper__content__sidebar__main-title">${_("Academy Updates and News")}</h1>
             ${HTML(get_course_info_section(request, masquerade_user, course, 'guest_updates'))}
           </section>
           <section aria-label="${_('Handout Navigation')}" class="handouts">
-            <h1 class="handouts-header a--courseware-wrapper__content__sidebar__main-title">${_("Course Handouts")}</h1>
+            <h1 class="handouts-header a--courseware-wrapper__content__sidebar__main-title">${_("Academy Handouts")}</h1>
             ${HTML(get_course_info_section(request, masquerade_user, course, 'guest_handouts'))}
           </section>
           % endif
