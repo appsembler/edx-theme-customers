@@ -29,7 +29,7 @@ ${_("Once you have registered and activated your account, you will see "
 	)}
 % elif course_about_url is not None:
 ${_("Once you have registered and activated your account, visit {course_about_url} "
-	"to join the course.").format(course_about_url=course_about_url)}
+	"to join the academy.").format(course_about_url=course_about_url)}
 % else:
 ${_("You can then enroll in {course_name}.").format(course_name=display_name or course.display_name_with_default_escaped)}
 % endif
