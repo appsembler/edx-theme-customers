@@ -60,7 +60,7 @@ from openedx.core.lib.courses import course_image_url
     ## making the conditional around this entire JS block for sanity
     %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
       <%
-        perms_error = _('The currently logged-in user account does not have permission to enroll in this course. '
+        perms_error = _('The currently logged-in user account does not have permission to enroll in this academy. '
                         'You may need to {start_logout_tag}log out{end_tag} then try the enroll button again. '
                         'Please visit the {start_help_tag}help page{end_tag} for a possible solution.').format(
                           start_help_tag="<a href='{url}'>".format(url=marketing_link('FAQ')), end_tag='</a>',
@@ -132,7 +132,7 @@ from openedx.core.lib.courses import course_image_url
         facebook_link = static.get_value('course_about_facebook_link', settings.PLATFORM_FACEBOOK_ACCOUNT)
 
         email_subject = u"mailto:?subject={subject}&body={body}".format(
-            subject=_("Take a course with {platform} online").format(platform=platform_name),
+            subject=_("Take an academy with {platform} online").format(platform=platform_name),
             body=_("I just enrolled in {number} {title} through {platform} {url}").format(
                 number=course.number,
                 title=course.display_name_with_default_escaped,
