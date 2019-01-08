@@ -10,7 +10,7 @@
 %>
 
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='../theme-variables.html' import="get_course_catalogue_content, get_global_settings" />
+<%namespace file='/theme-variables.html' import="get_course_catalogue_content, get_global_settings" />
 
 <%block name="pagetitle">
   % if get_global_settings().get('course-catalogue_enabled', True):
