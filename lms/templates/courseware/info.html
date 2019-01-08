@@ -131,7 +131,7 @@ from openedx.core.djangolib.markup import HTML, Text
               </div>
             % endif
 
-            <h3 class="handouts-header a--courseware-wrapper__content__sidebar__main-title">${_(course.info_sidebar_name)}</h1>
+            <h3 class="handouts-header a--courseware-wrapper__content__sidebar__main-title">${"Academy Handouts"}</h1>
             ${HTML(get_course_info_section(request, masquerade_user, course, 'handouts'))}
           </section>
           % else:
