@@ -90,7 +90,11 @@ include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and
           %>
           <li class="a--courseware-top-nav__item">
             <a href="${tab.link_func(course, reverse) | h}" class="${url_class(tab_is_active)}">
-              ${_(tab.name) | h}
+              % if tab.name.lower() == 'course':
+                  ${"Academy" | h}
+              % else:
+                  ${tab.name | h}
+              % endif
             </a>
           </li>
         % endfor
