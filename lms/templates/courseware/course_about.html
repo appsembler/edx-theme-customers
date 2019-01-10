@@ -7,7 +7,20 @@ from courseware.courses import get_course_about_section
 from django.conf import settings
 from edxmako.shortcuts import marketing_link
 from openedx.core.lib.courses import course_image_url
+from student.roles import GlobalStaff
 %>
+
+<%def name="course_admin_class()">   
+<%
+  # courseware.access doesn't differentiate between course staff and course instructor roles so we will...
+  # instructor (called admin in instructor dashboard) is a higher level of access than staff
+  css_class = ""
+  if GlobalStaff().has_user(user):
+      css_class = "view-as-staff"
+  return css_class
+%>
+</%def>
+
 
 <%namespace file='/theme-variables.html' import="get_course_about_content" />
 
@@ -18,6 +31,9 @@ from openedx.core.lib.courses import course_image_url
   <meta property="og:title" content="${course.display_name_with_default_escaped}" />
   <meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}" />
 </%block>
+
+<%block name="bodyclass">${course_admin_class()}</%block>
+
 
 <%block name="js_extra">
   ## CourseTalk widget js script
