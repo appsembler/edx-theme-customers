@@ -83,10 +83,12 @@ to match styling of content imported from texasgateway.org
 /* Hide View Unit in Studio link if not course staff
 (don't show to Instructors as is normal)
 */
-.wrap-instructor-info.studio-view {
+.wrap-instructor-info.studio-view,
+.wrap-instructor-info .studio-view {
   display: none !important;
 }
 body.view-as-staff .wrap-instructor-info.studio-view,
+body.view-as-staff .wrap-instructor-info .studio-view
  {
   display: block !important;
 }
