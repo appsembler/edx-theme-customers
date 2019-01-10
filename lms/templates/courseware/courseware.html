@@ -14,7 +14,7 @@ from student.roles import GlobalStaff
 <%
   include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and (course.enable_proctored_exams or course.enable_timed_exams)
 %>
-<%def name="course_admin_class(course)">   
+<%def name="course_admin_class()">   
 <%
   # courseware.access doesn't differentiate between course staff and course instructor roles so we will...
   # instructor (called admin in instructor dashboard) is a higher level of access than staff
@@ -28,7 +28,7 @@ from student.roles import GlobalStaff
  <% return _("{course_number} Courseware").format(course_number=course.display_number_with_default) %>
 </%def>
 
-<%block name="bodyclass">view-in-course view-courseware courseware ${course.css_class or ''} ${course_admin_class(course.id)}</%block>
+<%block name="bodyclass">view-in-course view-courseware courseware ${course.css_class or ''} ${course_admin_class()}</%block>
 
 <%block name="title"><title>
     % if section_title:

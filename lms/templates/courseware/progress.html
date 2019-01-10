@@ -12,6 +12,7 @@ from django.conf import settings
 from django.utils.http import urlquote_plus
 from student.roles import GlobalStaff
 %>
+<%def name="course_admin_class()">   
 <%
   # courseware.access doesn't differentiate between course staff and course instructor roles so we will...
   # instructor (called admin in instructor dashboard) is a higher level of access than staff
@@ -20,8 +21,9 @@ from student.roles import GlobalStaff
       css_class = "view-as-staff"
   return css_class
 %>
+</%def>
 
-<%block name="bodyclass">view-in-course view-progress ${css_class}</%block>
+<%block name="bodyclass">view-in-course view-progress ${course_admin_class()}</%block>
 
 
 <%block name="headextra">
