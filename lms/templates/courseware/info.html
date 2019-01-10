@@ -11,6 +11,7 @@ from django.utils.translation import ugettext as _
 from courseware.courses import get_course_info_section, get_course_date_blocks
 from openedx.core.djangoapps.self_paced.models import SelfPacedConfiguration
 from openedx.core.djangolib.markup import HTML, Text
+from student.roles import GlobalStaff
 %>
 
 <%block name="pagetitle">${_("{course_number} Course Info").format(course_number=course.display_number_with_default)}</%block>
@@ -19,6 +20,18 @@ from openedx.core.djangolib.markup import HTML, Text
 <%static:css group='style-course-vendor'/>
 <%static:css group='style-course'/>
 </%block>
+
+<%def name="course_admin_class()">   
+<%
+  # courseware.access doesn't differentiate between course staff and course instructor roles so we will...
+  # instructor (called admin in instructor dashboard) is a higher level of access than staff
+  css_class = ""
+  if GlobalStaff().has_user(user):
+      css_class = "view-as-staff"
+  return css_class
+%>
+</%def>
+
 
 % if user.is_authenticated():
 
@@ -50,7 +63,7 @@ from openedx.core.djangolib.markup import HTML, Text
     % endif
   </%block>
 
-  <%block name="bodyclass">view-in-course view-course-info ${course.css_class or ''}</%block>
+  <%block name="bodyclass">view-in-course view-course-info ${course.css_class or ''} ${course_admin_class()}</%block>
 
   <main id="main" aria-label="Content" tabindex="-1">
       <div class="a--courseware-wrapper">

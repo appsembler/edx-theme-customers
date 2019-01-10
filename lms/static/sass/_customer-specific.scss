@@ -80,16 +80,20 @@ to match styling of content imported from texasgateway.org
 }
 
 
-/* Hide View Unit in Studio link if not course staff
+/* Hide View Unit in Studio
+Hide View Updates in Studio
+Hide View Grading in Studio...
+if not course staff
 (don't show to Instructors as is normal)
 */
 .wrap-instructor-info.studio-view,
-.wrap-instructor-info .studio-view {
+.wrap-instructor-info .studio-view,
+.a--courseware-wrapper__admin-notifications {
   display: none !important;
 }
 body.view-as-staff .wrap-instructor-info.studio-view,
-body.view-as-staff .wrap-instructor-info .studio-view
- {
+body.view-as-staff .wrap-instructor-info .studio-view,
+body.view-as-staff .a--courseware-wrapper__admin-notifications {
   display: block !important;
 }
 
