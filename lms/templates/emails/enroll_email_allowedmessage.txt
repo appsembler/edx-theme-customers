@@ -7,14 +7,10 @@ ${"You have been invited to join {course_name} at {site_name}.".format(
 		site_name=site_name
 	)}
 
-${"To complete your registration, please visit {registration_url}.  If you
-already have a Pass account, click Log In and enter your credentials.".format(
-		registration_url=registration_url
-	)}
+${"To complete your registration, please visit {registration_url}.  If you already have a Pass account, click Log In and enter your credentials.".format(registration_url=registration_url)}
 ${"This should take you back to {course_about_url} where you could start accessing the materials.".format(course_about_url=course_about_url)}
 
-${"If you don’t have a Pass account, click Sign Up and
-fill out the registration form making sure to use student-email in the E-mail field. Once you have registered and activated your account, you will see the {course_name} listed on your dashboard.".format(course_name=display_name or course.display_name_with_default_escaped)}
+${"If you don’t have a Pass account, click Sign Up and fill out the registration form making sure to use student-email in the E-mail field. Once you have registered and activated your account, you will see the {course_name} listed on your dashboard.".format(course_name=display_name or course.display_name_with_default_escaped)}
 
 ----
 ${_("This email was automatically sent from {site_name} to "
