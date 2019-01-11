@@ -25,3 +25,17 @@ a.nav-skip {
     border: none;
   }
 }
+
+
+// If there is only one Course Update, don't display its date.
+
+.a--courseware--updates-article:only-child {
+
+  .a--courseware--updates-article__date {
+    display: none;
+  }
+}
+
+.a--courseware--updates-article__content {
+  text-align: left;
+}
