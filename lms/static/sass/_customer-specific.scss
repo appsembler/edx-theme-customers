@@ -90,13 +90,13 @@ if not course staff
 .wrap-instructor-info.studio-view,
 .wrap-instructor-info .studio-view,
 .a--courseware-wrapper__admin-notifications,
-.a--course-about-01__courseware-btn[href^="https://studio"] {
+.a--course-about-01__courseware-btn[href^="//studio"] {
   display: none !important;
 }
 body.view-as-staff .wrap-instructor-info.studio-view,
 body.view-as-staff .wrap-instructor-info .studio-view,
 body.view-as-staff .a--courseware-wrapper__admin-notifications,
-body.view-as-staff .a--course-about-01__courseware-btn[href^="https://studio"]  {
+body.view-as-staff .a--course-about-01__courseware-btn[href^="//studio"]  {
   display: block !important;
 }
 
