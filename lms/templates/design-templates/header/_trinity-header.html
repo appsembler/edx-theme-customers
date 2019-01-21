@@ -14,8 +14,7 @@ from opaque_keys.edx.keys import CourseKey
    import third_party_auth
    from third_party_auth import pipeline
    try:
-     tpa_idp = third_party_auth.provider.Registry.accepting_logins()[0]
-     custom_login_url = pipeline.get_login_url(tpa_idp.provider_id, pipeline.AUTH_ENTRY_REGISTER, redirect_url=request.path)
+     custom_login_url = "https://pass-staging.texasgateway.org/oauth/v2/auth?redirect_uri=http://academies-stg.texascourses.org/dashboard&auth_entry=login"
    except:
      custom_login_url = '/login'
 
