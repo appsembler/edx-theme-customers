@@ -39,3 +39,16 @@ a.nav-skip {
 .a--courseware--updates-article__content {
   text-align: left;
 }
+
+// Override color-code of border above question score
+
+.xmodule_display.xmodule_CapaModule div.problem {
+
+  .notification {
+    border-top-color: #ccc !important;
+  }
+
+  .notification .icon {
+    color: #ccc !important;
+  }
+}
