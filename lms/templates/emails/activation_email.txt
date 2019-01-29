@@ -1,14 +1,13 @@
 <%! from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers %>
-<% base_url=configuration_helpers.get_value('SITE_NAME', settings.SITE_NAME) %>
+<% 
+base_url=configuration_helpers.get_value('SITE_NAME', settings.SITE_NAME)
+prefix = "https" if is_secure else "http"
+link = "{}://{  }/activate/{  }".format(prefix, base_url, key)
+%>
 
 Thank you for registering to the JFrog Academy!
 
-Activate your account here. 
-% if is_secure:
-  https://${ base_url }/activate/${ key }
-% else:
-  http://${ base_url }/activate/${ key }
-% endif
+Activate your account here. ${link}
 
 If this link does not work, copy and paste it into your browser.
 
