@@ -52,7 +52,7 @@ include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and
                         <select class="action-preview-select" id="action-preview-select" name="select">
                             <option value="staff" ${staff_selected}>${_("Staff")}</option>
                             <option value="student" ${student_selected}>${_("Student")}</option>
-                            <option value="specific student" ${specific_student_selected}>${_("Specific student")}</option>
+                            <!-- <option value="specific student" ${specific_student_selected}>${_("Specific student")}</option> -->
                             % if cohorted_user_partition:
                                 % for group in sorted(cohorted_user_partition.groups, key=lambda group: group.name):
                                 <option value="group.id" data-group-id="${group.id}" ${selected(masquerade_group_id == group.id)}>
@@ -61,10 +61,10 @@ include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and
                                 % endfor
                             % endif
                         </select>
-                        <div class="action-preview-username-container">
+                        <!-- <div class="action-preview-username-container">
                           <label for="action-preview-username" class="action-preview-label">${_("Username or email:")}</label>
                           <input type="text" class="action-preview-username" id="action-preview-username">
-                        </div>
+                        </div> -->
                         <button type="submit" class="sr" name="submit" value="submit">${_("Set preview mode")}</button>
                     </form>
                 </li>
