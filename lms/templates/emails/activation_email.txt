@@ -2,7 +2,7 @@
 <% 
 base_url=configuration_helpers.get_value('SITE_NAME', settings.SITE_NAME)
 prefix = "https" if is_secure else "http"
-link = "{}://{  }/activate/{  }".format(prefix, base_url, key)
+link = "{}://{}/activate/{}".format(prefix, base_url, key)
 %>
 
 Thank you for registering to the JFrog Academy!
