@@ -4,7 +4,13 @@
   @media (max-width: 1200px) {
     height: 2.3rem;
   }
+
+  // IE fix hack is making the logo tiny on IE11 when set to 100%
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+     width: auto;
+  }
 }
+
 
 .a--header-design-01.a--site-nav .a--site-nav__course-name {
   margin-left: 0;
