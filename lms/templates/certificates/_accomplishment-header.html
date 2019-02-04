@@ -6,10 +6,10 @@
 
     <header class="header-app" role="banner">
         <h1 class="header-app-title">
-            <a class="logo" href="${logo_url}" style="width: auto;">
+            <a class="logo" href="${request.site}" style="width: auto;">
                 <img class="a--accomplishment--header-logo" style="width: ${get_certificates_settings()['header_logo_width']}; height: auto;" src="${get_certificates_settings()['header_logo']}" alt="${get_certificates_settings()['platform_name']}" />
             </a>
-            <span class="sr-only">${logo_subtitle}</span>
+            <span class="sr-only">${get_certificates_settings()['platform_name']}</span>
         </h1>
     </header>
 
