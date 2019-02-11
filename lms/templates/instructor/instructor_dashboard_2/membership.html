@@ -132,8 +132,9 @@ from openedx.core.djangoapps.course_groups.partition_scheme import get_cohorted_
         </label>
     </div>
     <div class="enroll-option">
+        ## modified to uncheck by default
         <label class="has-hint">
-            <input type="checkbox" name="email-students-beta" id="email-students-beta" value="Notify-students-by-email" checked="yes" aria-describedby="heading-batch-beta-testers">
+            <input type="checkbox" name="email-students-beta" id="email-students-beta" value="Notify-students-by-email" aria-describedby="heading-batch-beta-testers">
             <span class="label-text">${_("Notify users by email")}</span>
             <div class="hint email-students-beta-hint">
                 <span class="hint-caret"></span>
