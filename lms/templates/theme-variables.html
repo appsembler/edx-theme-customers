@@ -4,6 +4,7 @@
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
 <%! from certificates.models import CertificateHtmlViewConfiguration %>
+<%! from courseware.courses import get_course_by_id %>
 
 
 
@@ -599,7 +600,7 @@
 ## certificate content: edx-platform's define/override pattern is problematic for our usage
 ## so get from course cert override, then from any CertificateHtmlViewConfiguration values set, then these defaults
 
-<%def name="get_certificate_content(course)">
+<%def name="get_certificate_content(course_id)">
   <%
     variables = [
       "logo_src", "logo_url", "logo_subtitle", "certificate_title", "certificate_subtitle",
@@ -618,9 +619,11 @@
 
     config = CertificateHtmlViewConfiguration.get_config()
     cert_config = config.get('default', {})
+    course_overrides = get_course_by_id(course_id).cert_html_view_overrides
+
     content = {}
     for var in variables:
-      content[var] = course.cert_html_view_overrides.get(var, cert_config.get(var, defaults[var]))
+      content[var] = course_overrides.get(var, cert_config.get(var, defaults[var]))
     return content
   %>
 </%def>
