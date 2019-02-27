@@ -1,19 +1,17 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='/theme-variables.html' import="get_brand_logos" />
+<%namespace file='/theme-variables.html' import="get_brand_logos, get_certificate_content" />
 <%
 course_mode_class = course_mode if course_mode else ''
-
-def get_course_cert_logo():
-    return course.cert_html_view_overrides.get("logo_src", get_brand_logos()['logo_certs'])
+cert_content = get_certificate_content(course)
 %>
 
 <header class="header-app">
     <h5 class="header-app-title">
-        <a class="logo" href="${logo_url}" style="width:50rem; padding-bottom: 1rem">
-            <img class="logo-img" src="${get_course_cert_logo()}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
+        <a class="logo" href="${cert_content['logo_url']}" style="width:50rem; padding-bottom: 1rem">
+            <img class="logo-img" src="${cert_content['logo_src']}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
         </a>
-        <span class="sr-only">${logo_subtitle}</span>
+        <span class="sr-only">${cert_content['logo_subtitle']}</span>
     </h5>
 </header>    
 
@@ -24,22 +22,22 @@ def get_course_cert_logo():
 
 
             <div class="accomplishment-type">
-                <span class="accomplishment-type-label hd-1">${certificate_title}</span>
-                ${document_banner}
+                <span class="accomplishment-type-label hd-1">${cert_content['certificate_title']}</span>
+                ${cert_content['certificate_subtitle']}
             </div>
 
             <div class="wrapper-statement-and-signatories">
                 <div class="accomplishment-statement" style="padding-bottom: 1rem">
                     <p class="accomplishment-statement-lead">
                         <strong class="accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name | h}</strong>
-                        <span class="accomplishment-summary copy copy-lead">${accomplishment_copy_description_full}</span>
+                        <span class="accomplishment-summary copy copy-lead">${cert_content['accomplishment_copy_description_full']}</span>
 
                         <span class="accomplishment-course-number">${course_number}</span>
                         <span class="accomplishment-course hd-1 emphasized">
                             <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
                         </span>
                     </p>
-                    <p class="accomplishment-statement-detail copy copy-lead">${accomplishment_copy_course_description}</p>
+                    <p class="accomplishment-statement-detail copy copy-lead">${cert_content['accomplishment_copy_course_description']}</p>
 
                     <div class="accomplishment-statement-detail">
 

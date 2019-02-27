@@ -3,6 +3,7 @@
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%! from certificates.models import CertificateHtmlViewConfiguration %>
 
 
 
@@ -35,6 +36,7 @@
   }
   %>
 </%def>
+
 
 
 ## define logo files. All the variables need to be defined.
@@ -592,3 +594,35 @@
     return []
   %>
 </%def>
+
+
+## certificate content: edx-platform's define/override pattern is problematic for our usage
+## so get from course cert override, then from any CertificateHtmlViewConfiguration values set, then these defaults
+
+<%def name="get_certificate_content(course)">
+  <%
+    variables = [
+      "logo_src", "logo_url", "logo_subtitle", "certificate_title", "certificate_subtitle",
+      "accomplishment_copy_description_full", "accomplishment_copy_course_description",
+    ]
+
+    defaults = {
+      "logo_src": get_brand_logos()['logo_certs'],
+      "logo_url": "/",
+      "logo_subtitle": "",
+      "certificate_title": "Certificate of Completion",
+      "certificate_subtitle": "This is to certify that",
+      "accomplishment_copy_description_full": "has successfully completed",
+      "accomplishment_copy_course_description": "a DHIS2 Academy online course offered by the University of Oslo",
+    }
+
+    config = CertificateHtmlViewConfiguration.get_config()
+    cert_config = configuration.get('default', {}))
+    content = {}
+    for var in variables:
+      content[var] = course.cert_html_view_overrides.get(var, cert_config.get(var, defaults[var]))
+    return content
+  }
+  %>
+</%def>
+
