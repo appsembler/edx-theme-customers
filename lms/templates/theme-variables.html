@@ -617,12 +617,11 @@
     }
 
     config = CertificateHtmlViewConfiguration.get_config()
-    cert_config = configuration.get('default', {}))
+    cert_config = configuration.get('default', {})
     content = {}
     for var in variables:
       content[var] = course.cert_html_view_overrides.get(var, cert_config.get(var, defaults[var]))
     return content
-  }
   %>
 </%def>
 
