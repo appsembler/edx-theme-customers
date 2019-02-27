@@ -5,6 +5,7 @@
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
 <%! from certificates.models import CertificateHtmlViewConfiguration %>
 <%! from courseware.courses import get_course_by_id %>
+<%! from opaque_keys.edx.keys import CourseKey %>
 
 
 
@@ -619,7 +620,7 @@
 
     config = CertificateHtmlViewConfiguration.get_config()
     cert_config = config.get('default', {})
-    course_overrides = get_course_by_id(course_id).cert_html_view_overrides
+    course_overrides = get_course_by_id(CourseKey.from_string(course_id)).cert_html_view_overrides
 
     content = {}
     for var in variables:
