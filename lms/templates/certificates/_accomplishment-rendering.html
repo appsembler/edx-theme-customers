@@ -1,13 +1,17 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_brand_logos" />
 <%
 course_mode_class = course_mode if course_mode else ''
+
+def get_course_cert_logo():
+    return course.cert_html_view_overrides.get("logo_src", get_brand_logos()['logo_certs'])
 %>
 
 <header class="header-app">
     <h5 class="header-app-title">
         <a class="logo" href="${logo_url}" style="width:50rem; padding-bottom: 1rem">
-            <img class="logo-img" src="${logo_src}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
+            <img class="logo-img" src="${get_course_cert_logo()}" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
         </a>
         <span class="sr-only">${logo_subtitle}</span>
     </h5>
