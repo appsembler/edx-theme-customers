@@ -7,7 +7,9 @@ link = "{}://{}/activate/{}".format(prefix, base_url, key)
 
 Thank you for registering to the JFrog Academy!
 
-Activate your account here. ${link}
+Activate your account here. 
+
+${link}
 
 If this link does not work, copy and paste it into your browser.
 
