@@ -47,15 +47,17 @@
      <nav class="a--site-nav__group-right" id="site-menu">
        <ul class="a--site-menu__container">
          % if user_authenticated:
-           <li class="a--site-menu__group">
-             <ul>
-               % for menu_item in get_header_menu_logged_in_extra_items():
-                 <li class="a--${menu_item['special_class']}">
-                   <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
-                 </li>
-               % endfor
-             </ul>
-           </li>
+          % if get_header_menu_logged_in_extra_items():
+             <li class="a--site-menu__group">
+               <ul>
+                 % for menu_item in get_header_menu_logged_in_extra_items():
+                   <li class="a--${menu_item['special_class']}">
+                     <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
+                   </li>
+                 % endfor
+               </ul>
+             </li>
+           % endif
            <li class="a--site-menu__group">
              <ul>
                <li>
@@ -64,15 +66,17 @@
              </ul>
            </li>
          % else:
-           <li class="a--site-menu__group">
-             <ul>
-               % for menu_item in get_header_menu_logged_out_extra_items():
-                 <li class="a--${menu_item['special_class']}">
-                   <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
-                 </li>
-               % endfor
-             </ul>
-           </li>
+           % if get_header_menu_logged_out_extra_items():
+             <li class="a--site-menu__group">
+               <ul>
+                 % for menu_item in get_header_menu_logged_out_extra_items():
+                   <li class="a--${menu_item['special_class']}">
+                     <a href="${menu_item['link_URL']}">${_(menu_item['link_title'])}</a>
+                   </li>
+                 % endfor
+               </ul>
+             </li>
+           % endif
            <li class="a--site-menu__group">
              <ul>
                <li>
