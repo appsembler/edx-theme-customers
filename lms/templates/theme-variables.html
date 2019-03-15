@@ -561,7 +561,7 @@
 ## certs settings
 
 <%def name="get_certificates_settings()">
-  <%c
+  <%
   return {
     'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
     'header_logo': get_value('certificates', {}).get('header_logo', get_value('logo_positive', static('images/branding/Academy_Page_Logo_R3-01.png'))),
