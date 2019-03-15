@@ -5,7 +5,7 @@ prefix = "https" if is_secure else "http"
 link = "{}://{}/activate/{}".format(prefix, base_url, key)
 %>
 
-Thank you for registering to the JFrog Academy!
+Thank you for registering for the JFrog Academy!
 
 Activate your account here: 
 
