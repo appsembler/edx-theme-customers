@@ -13,7 +13,7 @@ ${link}
 
 If this link does not work, copy and paste it into your browser.
 
-For further assistance contact training@jfrog.com.
+For further assistance contact academy@training.jfrog.com.
 
 Regards,
 The JFrog Team
