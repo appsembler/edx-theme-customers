@@ -8,4 +8,12 @@
   }
 }
 
+// hide Receive Notifications option from Discussions until it actually works
+.view-discussion-home {
+
+  .helpgrid-row.helpgrid-row-notification {
+    display: none;
+  }
+}
+
 @import "customer-sass-input";
