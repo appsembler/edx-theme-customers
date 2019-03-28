@@ -1,0 +1,48 @@
+## mako
+<%page args="options, children, page_specific_args" />
+
+<%
+  layout_style = ""
+  if options['layout-bg-image']:
+    layout_style = "background-image: url('" + options['layout-bg-image'] + "'); "
+  endif
+  layout_style = layout_style + "color: " + options['text-color'] + "; background-color: " + options['bg-color'] + ";"
+%>
+
+<section class="amc--layout amc--layout--three-col amc--style-classes ${options['align-content']} ${options['text-alignment']} ${options['padding-top']} ${options['padding-right']} ${options['padding-bottom']} ${options['padding-left']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']} ${options['layout-bg-image-size']}" style="${layout_style}">
+  <div class="a--container bs-container amc--layout__container">
+    <div class="amc--layout__column amc--column-one amc--layout--three-col__column">
+      % for element in children['column-1']:
+        % if (element['element-type'].startswith('layout')):
+          <%include file = '/${element["element-path"]}' args = "options = element['options'], children = element['children'], page_specific_args = page_specific_args" />
+        % elif (element['element-type']=='courses-listing'):
+          <%include file = '/${element["element-path"]}' args = "options = element['options'], courses = page_specific_args" />
+        % else:
+          <%include file = '/${element["element-path"]}' args = "options = element['options']" />
+        % endif
+      % endfor
+    </div>
+    <div class="amc--layout__column amc--column-two amc--layout--three-col__column">
+      % for element in children['column-2']:
+        % if (element['element-type'].startswith('layout')):
+          <%include file = '/${element["element-path"]}' args = "options = element['options'], children = element['children'], page_specific_args = page_specific_args" />
+        % elif (element['element-type']=='courses-listing'):
+          <%include file = '/${element["element-path"]}' args = "options = element['options'], courses = page_specific_args" />
+        % else:
+          <%include file = '/${element["element-path"]}' args = "options = element['options']" />
+        % endif
+      % endfor
+    </div>
+    <div class="amc--layout__column amc--column-three amc--layout--three-col__column">
+      % for element in children['column-3']:
+        % if (element['element-type'].startswith('layout')):
+          <%include file = '/${element["element-path"]}' args = "options = element['options'], children = element['children'], page_specific_args = page_specific_args" />
+        % elif (element['element-type']=='courses-listing'):
+
+        % else:
+          <%include file = '/${element["element-path"]}' args = "options = element['options']" />
+        % endif
+      % endfor
+    </div>
+  </div>
+</section>
