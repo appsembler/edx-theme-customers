@@ -4,8 +4,8 @@
   from django.conf import settings
   from django.core.urlresolvers import reverse
   from django.utils.translation import ugettext as _
-  from contentstore.context_processors import doc_url
   from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+  from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled
 %>
 <div class="wrapper-header wrapper" id="view-top">
   <header class="primary" role="banner">
@@ -189,7 +189,7 @@
     </div>
 
     <div class="wrapper wrapper-r">
-      % if static.show_language_selector():
+      % if header_language_selector_is_enabled():
         <% languages = static.get_released_languages() %>
         % if len(languages) > 1:
         <nav class="user-language-selector">
