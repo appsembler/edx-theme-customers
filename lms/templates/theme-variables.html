@@ -318,6 +318,14 @@
   %>
 </%def>
 
+## embargo page content
+
+<%def name="get_embargo_content()">
+  <%
+    return get_current_site_configuration().page_elements.get('embargo', {}).get('content', [])
+  %>
+</%def>
+
 ## certs settings
 
 <%def name="get_certificates_settings()">
