@@ -9,17 +9,17 @@ from django.conf import settings
 from edxnotes.helpers import is_feature_enabled as is_edxnotes_enabled
 from openedx.core.djangolib.markup import HTML
 from openedx.core.djangolib.js_utils import js_escaped_string
-from student.roles import GlobalStaff
+from student.roles import GlobalStaff, CourseStaffRole
 %>
 <%
   include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and (course.enable_proctored_exams or course.enable_timed_exams)
 %>
-<%def name="course_admin_class()">   
+<%def name="course_admin_class()">
 <%
   # courseware.access doesn't differentiate between course staff and course instructor roles so we will...
   # instructor (called admin in instructor dashboard) is a higher level of access than staff
   css_class = ""
-  if GlobalStaff().has_user(user):
+  if GlobalStaff().has_user(user) or CourseStaffRole(course.id).has_user(user):
       css_class = "view-as-staff"
   return css_class
 %>
