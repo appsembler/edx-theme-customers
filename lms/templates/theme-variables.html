@@ -15,19 +15,15 @@
 %>
 
 
-<%def name="translate(translations_object)">
-  % if (isinstance(translations_object, dict)):
-    <%
-      current_language = translation.get_language()
-      language_code = get_value('LANGUAGE_CODE', 'en')
-      return force_text(translations_object.get(current_language, translations_object.get(language_code, '')))
-    %>
-  % else:
-    <%
-      return force_text(translations_object)
-    %>
-  % endif
-</%def>
+<%def name="translate(translations_object)"><%
+  if isinstance(translations_object, dict):
+    current_language = translation.get_language()
+    language_code = get_value('LANGUAGE_CODE', 'en')
+    return force_text(translations_object.get(current_language, translations_object.get(language_code, '')))
+  else:
+    return force_text(translations_object)
+  endif
+%></%def>
 
 
 
