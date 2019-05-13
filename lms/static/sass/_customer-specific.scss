@@ -16,4 +16,9 @@
   }
 }
 
+// Patch: Hide the export buttons on Tahoe Hawthorn temporally
+.poll-block .export-results-button-wrapper {
+  visibility: hidden;
+}
+
 @import "customer-sass-input";
