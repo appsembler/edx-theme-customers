@@ -73,6 +73,13 @@ blockquote {
   color: $base-text-color;
 }
 
+//override gray background of content wrapper from codebase
+.window-wrap {
+  .content-wrapper {
+    background: #fff;
+  }
+}
+
 // Temp static course list, move to new Sass file when ready
 .a--course-listing-04__wrapper {
   padding-bottom: 4rem;
