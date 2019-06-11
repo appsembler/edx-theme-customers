@@ -80,7 +80,8 @@ from openedx.core.djangolib.js_utils import js_escaped_string
                       </span>
                       <span class="tip tip-error is-hidden"></span>
                     </li>
-                    <li class="field text required">
+                    ## Appsembler: Show organization input only for Appsembler admins, otherwiser get it from the user organization automatically
+                    <li class="field text required" style="display: none;">
                       <label for="rerun-course-org">${_("Organization")}</label>
                       <input class="rerun-course-org" id="rerun-course-org" type="text" name="rerun-course-org" aria-required="true" value="${source_course_key.org}" placeholder="${_('e.g. UniversityX or OrganizationX')}" />
                       <span class="tip">
