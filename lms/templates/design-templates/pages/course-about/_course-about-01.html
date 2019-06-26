@@ -16,8 +16,8 @@ from django.utils.translation import ugettext as _
   courseware_button_course_full_text = translate(template_settings.get('courseware-button-course-full-text', _("Course is full")))
   courseware_button_invitation_only_text = translate(template_settings.get('courseware-button-invitation-only-text', _("Enrollment in this course is by invitation only")))
   courseware_button_enrollment_closed_text = translate(template_settings.get('courseware-button-enrollment-closed-text', _("Enrollment is Closed")))
-  courseware_button_add_to_cart_text = "{text} {price}".format(text=translate(template_settings.get('courseware-button-add-to-cart-text', _("Add to Cart / Price: "))), price=course_vars['course_price'])
-  courseware_button_enroll_text = "{text} {price}".format(text=translate(template_settings.get('courseware-button-enroll-text', _("Enroll in "))), price=course_vars['course_name'])
+  courseware_button_add_to_cart_text = u"{text} {price}".format(text=translate(template_settings.get('courseware-button-add-to-cart-text', _("Add to Cart / Price: "))), price=course_vars['course_price'])
+  courseware_button_enroll_text = u"{text} {price}".format(text=translate(template_settings.get('courseware-button-enroll-text', _("Enroll in "))), price=course_vars['course_name'])
   view_in_studio_button_text = translate(template_settings.get('view-in-studio-button-text', _("View About Page in studio")))
 %>
 
