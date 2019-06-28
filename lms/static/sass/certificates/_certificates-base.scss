@@ -13,6 +13,13 @@
     @media (min-width: 900px) and (max-width: 1200px) {
       font-size: 3px;
     }
+
+    &>.a--container {
+      @media (max-width: 639px) {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+    }
   }
   &__body-wrapper {
     width: 100%;
