@@ -21,7 +21,6 @@
 
 <%def name="get_global_settings()">
   <%
-  current_year = str(datetime.now().year)
   return {
     ##'header_logo_target' : ''
     'fonts_url' : 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext',
@@ -133,6 +132,7 @@
 
 <%def name="get_footer_settings()">
   <%
+    current_year = str(datetime.now().year)
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
       'footer_copyright_text' : '&copy; {current_year} University of Washington | Seattle, WA. All rights reserved.'.format(current_year=current_year),
