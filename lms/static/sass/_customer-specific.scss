@@ -1,7 +1,7 @@
 
 // Header and hero
 .a--header-design-01.a--site-nav .a--site-nav__logo {
-  height: 7rem;
+  height: 3rem;
 }
 
 .a--hero-section-01 {
@@ -13,6 +13,9 @@
   }
 }
 
+.a--header-design-01 .a--site-menu__group ul li {
+    margin: 1.5rem 1.5rem;
+}
 // Footer
 .a--footer__powered-by #footer-openedx-logo {
   align-self: baseline;
