@@ -37,7 +37,7 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 
 % if get_dashboard_settings()['dashboard_search_enabled']:
   <section class="a--dashboard-01__discovery bs-container a--container">
-    <%include file = "/design-templates/${get_dashboard_settings()['discovery-search-template']}" args='search_wrapper_id = "dashboard-search-bar"' />
+    <%include file = "/design-templates/live-blocks/discovery/_discovery-search-01.html" args='search_wrapper_id = "dashboard-search-bar"' />
     <script>
       $( "#discovery-message" ).append("${_("My Courses")}");
     </script>
@@ -108,9 +108,11 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
           </ul>
         % else:
           <div class="a--dashboard-01__main__no-enrollments__container">
-            <p>${_("You are not registered for any courses yet.")}</p>
-            % if get_dashboard_settings()['promote_course_catalog']:
-              <a class="a--dashboard-01__main__no-enrollments__cta" href="${marketing_link('COURSES')}">${_("Find Courses")}!</a>
+            <p>${_("You are not enrolled in any courses yet.")}</p>
+            % if settings.FEATURES.get('ENABLE_COURSE_DISCOVERY') and get_global_settings().get('course-catalogue_enabled', True):
+              % if get_dashboard_settings()['promote_course_catalog']:
+                <a class="a--dashboard-01__main__no-enrollments__cta" href="${marketing_link('COURSES')}">${_("Find Courses")}!</a>
+              % endif
             % endif
           </div>
         % endif
