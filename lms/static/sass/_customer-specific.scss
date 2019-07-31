@@ -218,10 +218,14 @@ blockquote {
     text-overflow: ellipsis;
     width: 218px; 
   }
-  h2 {  // style as an h3
+}
+
+.course-content .freetextresponse.problem h2 {  // style as a content h3
   @include fontVariantInclude($global-font-h3);
-  font-size: $font-size-h3;
+  font-size: 18px;
   line-height: $line-height-h3;
   margin: $font-size-h3 0;
+  color: $base-text-color;
 }
-}
+
+
