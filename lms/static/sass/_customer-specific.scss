@@ -211,5 +211,11 @@ blockquote {
   .messageCheckbox,  
   span {
     display: none;
-  } 
+  }
+  .user_alert {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 218px; 
+  }
 }
