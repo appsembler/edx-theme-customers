@@ -203,3 +203,13 @@ blockquote {
 .test {
   text-align: center;
 }
+
+// freetextesponse xblock
+.freetextresponse {
+  .action .Submit, 
+  .responses-box, 
+  .messageCheckbox,  
+  span {
+    display: none;
+  } 
+}
