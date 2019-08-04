@@ -7,22 +7,9 @@ from django.utils.translation import ugettext as _
 
 <%page args="template_settings, course_vars" />
 
-<%
-  course_image = course_vars['course_image']
-
-  courseware_button_already_enrolled_text = translate(template_settings.get('courseware-button-already-enrolled-text', _("You are enrolled in this course")))
-  courseware_button_view_courseware_text = translate(template_settings.get('courseware-button-view-courseware-text', _("View Course")))
-  courseware_button_in_cart_text = translate(template_settings.get('courseware-button-in-cart-text', _("Course is in your cart.")))
-  courseware_button_course_full_text = translate(template_settings.get('courseware-button-course-full-text', _("Course is full")))
-  courseware_button_invitation_only_text = translate(template_settings.get('courseware-button-invitation-only-text', _("Enrollment in this course is by invitation only")))
-  courseware_button_enrollment_closed_text = translate(template_settings.get('courseware-button-enrollment-closed-text', _("Enrollment is Closed")))
-  courseware_button_add_to_cart_text = u"{text} {price}".format(text=translate(template_settings.get('courseware-button-add-to-cart-text', _("Add to Cart / Price: "))), price=course_vars['course_price'])
-  courseware_button_enroll_text = u"{text} {price}".format(text=translate(template_settings.get('courseware-button-enroll-text', _("Enroll in "))), price=course_vars['course_name'])
-  view_in_studio_button_text = translate(template_settings.get('view-in-studio-button-text', _("View About Page in studio")))
-%>
 
 <section class="a--course-about-01__header">
-  <div class="a--course-about-01__header__background" style="background-image: url('${course_image}')">
+  <div class="a--course-about-01__header__background" style="background-image: url('${course_vars['course_image']}')">
 
   </div>
   <div class="a--course-about-01__header__overlay">
@@ -32,7 +19,7 @@ from django.utils.translation import ugettext as _
       % if course_vars['course_video']:
         <a href="#" data-toggle="modal" data-target="#videoModal" class="a--course-about-01__header__video-trigger"><i class="fa fa-play-circle"></i></a>
       % endif
-      <img src="${course_image}">
+      <img src="${course_vars['course_image']}">
     </div>
     <div class="a--course-about-01__header__info">
       <h1 class="a--course-about-01__header__title">${course_vars['course_name']}</h1>
@@ -49,49 +36,49 @@ from django.utils.translation import ugettext as _
         % if course_vars['user_authenticated'] and course_vars['course_registered']:
           % if course_vars['show_courseware_link']:
             <a href="${course_vars['course_href_target']}" class="a--course-about-01__courseware-btn">
-              ${courseware_button_view_courseware_text}
+              ${_("View Course")}
             </a>
           % else:
             <span class="a--course-about-01__courseware-btn register disabled">
-              ${courseware_button_already_enrolled_text}
+              ${_("You are enrolled in this course")}
             </span>
           % endif
         % elif course_vars['course_in_cart']:
           <a href="${course_vars['cart_link']}" class="a--course-about-01__courseware-btn add-to-cart">
-            ${courseware_button_already_enrolled_text}
+            ${_("You are enrolled in this course")}
           </a>
         % elif course_vars['course_is_full']:
           <span class="a--course-about-01__courseware-btn register disabled">
-            ${courseware_button_course_full_text}
+            ${_("Course is full")}
           </span>
         % elif course_vars['course_is_invitation_only'] and not course_vars['user_can_enroll']:
           <span class="a--course-about-01__courseware-btn register disabled">
-            ${courseware_button_invitation_only_text}
+            ${_("Enrollment in this course is by invitation only")}
           </span>
         % elif not course_vars['is_shib_course'] and not course_vars['user_can_enroll']:
           <span class="a--course-about-01__courseware-btn register disabled">
-            ${courseware_button_enrollment_closed_text}
+            ${_("Enrollment is Closed")}
           </span>
         % elif course_vars['can_add_course_to_cart']:
           % if course_vars['user_authenticated']:
             <a href="#" id="${course_vars['user_authenticated_reg_element_id']}" class="a--course-about-01__courseware-btn add-to-cart">
-              ${courseware_button_add_to_cart_text}
+              ${_("Add to Cart / Price: {price}").format(price=course_vars['course_price'])}
             </a>
           % else:
             <a href="${course_vars['public_reg_element_href']}" id="${course_vars['public_reg_element_id']}" class="a--course-about-01__courseware-btn add-to-cart">
-              ${courseware_button_add_to_cart_text}
+              ${_("Add to Cart / Price: {price}").format(price=course_vars['course_price'])}
             </a>
           % endif
         % else:
           <a href="#" class="a--course-about-01__courseware-btn register">
-            ${courseware_button_enroll_text}
+            ${_("Enroll in {course}").format(course=course_vars['course_name'])}
           </a>
           <div id="register_error"></div>
         % endif
 
         % if course_vars['user_has_staff_access'] and course_vars['course_studio_url'] is not None:
           <a href="${course_vars['course_studio_url']}" class="a--course-about-01__courseware-btn">
-            ${view_in_studio_button_text}
+            ${_("View About Page in studio")}
           </a>
         % endif
       </div>
