@@ -12,17 +12,24 @@
 
 <%!
   theme_name = "edx-theme-codebase"
+
+  def _translate(translations_object, default=''):
+    current_language = translation.get_language()
+    fallback_language = get_value('LANGUAGE_CODE', 'en')
+
+    if not translations_object:
+      return force_text(default)
+
+    if not isinstance(translations_object, dict):
+      translations_object = {fallback_language: translations_object}
+
+    default_text = default if default else translations_object.get(fallback_language, '')
+    return force_text(translations_object.get(current_language, default_text))
 %>
 
 
-<%def name="translate(translations_object)"><%
-  if isinstance(translations_object, dict):
-    current_language = translation.get_language()
-    language_code = get_value('LANGUAGE_CODE', 'en')
-    return force_text(translations_object.get(current_language, translations_object.get(language_code, '')))
-  else:
-    return force_text(translations_object)
-  endif
+<%def name="translate(translations_object, default='')"><%
+    return _translate(translations_object, default)
 %></%def>
 
 
