@@ -2,7 +2,7 @@
 <%namespace file='/theme-variables.html' import="translate" />
 
 <%!
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 %>
 
 <%page args="template_settings, course_vars" />
@@ -10,15 +10,15 @@ from django.utils.translation import ugettext as _
 <%
   course_image = course_vars['course_image']
 
-  courseware_button_already_enrolled_text = translate(template_settings.get('courseware-button-already-enrolled-text', _("You are enrolled in this course")))
-  courseware_button_view_courseware_text = translate(template_settings.get('courseware-button-view-courseware-text', _("View Course")))
-  courseware_button_in_cart_text = translate(template_settings.get('courseware-button-in-cart-text', _("Course is in your cart.")))
-  courseware_button_course_full_text = translate(template_settings.get('courseware-button-course-full-text', _("Course is full")))
-  courseware_button_invitation_only_text = translate(template_settings.get('courseware-button-invitation-only-text', _("Enrollment in this course is by invitation only")))
-  courseware_button_enrollment_closed_text = translate(template_settings.get('courseware-button-enrollment-closed-text', _("Enrollment is Closed")))
-  courseware_button_add_to_cart_text = u"{text} {price}".format(text=translate(template_settings.get('courseware-button-add-to-cart-text', _("Add to Cart / Price: "))), price=course_vars['course_price'])
-  courseware_button_enroll_text = u"{text} {price}".format(text=translate(template_settings.get('courseware-button-enroll-text', _("Enroll in "))), price=course_vars['course_name'])
-  view_in_studio_button_text = translate(template_settings.get('view-in-studio-button-text', _("View About Page in studio")))
+  courseware_button_already_enrolled_text = translate(template_settings.get('courseware-button-already-enrolled-text'), default=_("You are enrolled in this course"))
+  courseware_button_view_courseware_text = translate(template_settings.get('courseware-button-view-courseware-text'), default=_("View Course"))
+  courseware_button_in_cart_text = translate(template_settings.get('courseware-button-in-cart-text'), default=_("Course is in your cart."))
+  courseware_button_course_full_text = translate(template_settings.get('courseware-button-course-full-text'), default=_("Course is full"))
+  courseware_button_invitation_only_text = translate(template_settings.get('courseware-button-invitation-only-text'), default=_("Enrollment in this course is by invitation only"))
+  courseware_button_enrollment_closed_text = translate(template_settings.get('courseware-button-enrollment-closed-text'), default=_("Enrollment is Closed"))
+  courseware_button_add_to_cart_text = u"{text} {price}".format(text=translate(template_settings.get('courseware-button-add-to-cart-text'), default=_("Add to Cart / Price: ")), price=course_vars['course_price'])
+  courseware_button_enroll_text = u"{text} {price}".format(text=translate(template_settings.get('courseware-button-enroll-text'), default=_("Enroll in ")), price=course_vars['course_name'])
+  view_in_studio_button_text = translate(template_settings.get('view-in-studio-button-text'), default=_("View About Page in studio"))
 %>
 
 <section class="a--course-about-01__header">
