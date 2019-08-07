@@ -206,9 +206,9 @@ blockquote {
 
 // freetextesponse xblock
 .freetextresponse {
-  .action .Submit, 
-  .responses-box, 
-  .messageCheckbox,  
+  .action .Submit,
+  .responses-box,
+  .messageCheckbox,
   span {
     display: none;
   }
@@ -216,7 +216,7 @@ blockquote {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 218px; 
+    width: 218px;
   }
 }
 
@@ -228,4 +228,45 @@ blockquote {
   color: $base-text-color;
 }
 
+.sga--footer-apps {
+  @include display(flex);
+  @include align-items(center);
+  @include justify-content(center);
+  @include flex-wrap(wrap);
+  margin: 0 auto;
+  padding: 1rem 3rem;
 
+  &__text {
+    display: block;
+    @include flex-shrink(0);
+    @include flex-grow(0);
+    padding: 1.5rem;
+  }
+
+  .app-button {
+    display: block;
+    @include flex-shrink(0);
+    @include flex-grow(0);
+    padding: 1.5rem;
+    opacity: 1;
+    @include transition(all 0.3s ease-in-out);
+
+    img {
+      display: block;
+      height: 4rem;
+      width: auto;
+    }
+
+    &.app-store-button {
+
+    }
+
+    &.play-store-button {
+
+    }
+
+    &:hover, &:focus {
+      opacity: 0.6;
+    }
+  }
+}
