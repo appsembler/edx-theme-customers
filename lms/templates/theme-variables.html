@@ -140,13 +140,14 @@
   <%
     footer_options = get_current_site_configuration().page_elements.get('footer', {}).get('options', {})
 
-    def _default_copy_right():
-      return ugettext('{copy_sign} {year} Company Name. All rights reserved.').format(
-        copy_sign='©',
+    def _default_copyright():
+      return ugettext('{copy_sign} {year} {platform_name}. All rights reserved.').format(
+        copy_sign=u'©',
+        platform_name=force_text(get_value('PLATFORM_NAME', ugettext('Company Name'))),
         year=date.today().strftime('%Y'),
       )
 
-    default_copy_right = lazy(_default_copy_right, six.text_type)
+    default_copyright = lazy(_default_copyright, six.text_type)
 
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
