@@ -7,6 +7,7 @@
 <%! from django.utils.encoding import force_text %>
 <%! from django.utils import translation %>
 <%! from django.utils.translation import ugettext, ugettext_lazy as _ %>
+<%! from django.utils.functional import Promise %>
 <%! from django.utils import six %>
 <%! from django.utils.functional import lazy %>
 <%! from datetime import date %>
@@ -20,13 +21,15 @@
     fallback_language = get_value('LANGUAGE_CODE', 'en')
 
     if not translations_object:
+      if not default:
+        raise Exception('translate: Please provide either the AMC-provided translation or the default fallback.')
       return default
 
-    if not isinstance(translations_object, dict):
+    if isinstance(translations_object, (basestring, Promise)):
       translations_object = {fallback_language: translations_object}
 
     default_text = default if default else force_text(translations_object.get(fallback_language, ''))
-    return force_text(translations_object.get(current_language)) or default_text
+    return force_text(translations_object.get(current_language, '')) or default_text
 %>
 
 
@@ -140,13 +143,14 @@
   <%
     footer_options = get_current_site_configuration().page_elements.get('footer', {}).get('options', {})
 
-    def _default_copy_right():
-      return ugettext('{copy_sign} {year} Company Name. All rights reserved.').format(
-        copy_sign='©',
+    def _default_copyright():
+      return ugettext('{copy_sign} {year} {platform_name}. All rights reserved.').format(
+        copy_sign=u'©',
+        platform_name=force_text(get_value('PLATFORM_NAME', ugettext('Company Name'))),
         year=date.today().strftime('%Y'),
       )
 
-    default_copy_right = lazy(_default_copy_right, six.text_type)
+    default_copyright = lazy(_default_copyright, six.text_type)
 
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
