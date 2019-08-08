@@ -8,7 +8,6 @@
   % if not courses is UNDEFINED:
     % for course in courses:
       <%include file="/design-templates/live-blocks/single-course/_${options['tile-type']}.html" args="course=course" />
-        <% course_count = course_count + 1 %>
       % endif
     % endfor
   % endif
