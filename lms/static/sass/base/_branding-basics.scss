@@ -3,9 +3,9 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
-$navbar-style: "white";  // brand or white
+$brand-primary-color: #1d5288;
+$brand-accent-color: #368BD8;
+$navbar-style: "brand";  // brand or white
 $base-text-color: #2C2A2F;
 
 $primary-font-name: "Open Sans";
@@ -48,7 +48,7 @@ $header-padding-sm-bottom: 1.5rem;
 $header-group-separation: 4rem;
 $header-font-size: 1.6rem;
 $header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
-$navbar-button-border: calcNavbarButtonBorder($navbar-style);
+$navbar-button-border: none;
 $navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
 $navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
 $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"

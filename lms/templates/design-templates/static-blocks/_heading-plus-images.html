@@ -1,0 +1,24 @@
+<%page args="template_settings" />
+<%namespace name='static' file='/static_content.html'/>
+
+<%
+  heading = template_settings['heading']
+  optional_classes = template_settings['optional_classes']
+  extra_css = template_settings['extra_css']
+  text_color = template_settings.get('text_color',"")
+  background_color = template_settings.get('background_color',"")
+%>
+
+<section class="a--heading-plus-text-plus-cta ${optional_classes} heading-images" style="color: ${text_color}; background-color: ${background_color}; ${extra_css}">
+  <div class="bs-container a--container a--heading-plus-text-plus-cta__container">
+      <h2>${heading}</h2>
+      <div class="heading-images-list">
+        <img src="${static.url('images/sponsors/research.png')}" />
+        <img src="${static.url('images/sponsors/globalfund.png')}" />
+        <img src="${static.url('images/sponsors/norad.png')}" />
+        <img src="${static.url('images/sponsors/pepfar.png')}" />
+        <img src="${static.url('images/sponsors/universityofoslo.png')}" />
+      </div>
+
+  </div>
+</section>
