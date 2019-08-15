@@ -206,7 +206,8 @@ blockquote {
 
 // freetextesponse xblock
 .freetextresponse {
-  .action .Submit,
+  // .action .Submit,  temporarily re-show the submit button
+  // since mobile apps have the save button hidden, accidentally
   .responses-box,
   .messageCheckbox,
   span {
