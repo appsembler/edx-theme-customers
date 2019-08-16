@@ -21,8 +21,6 @@
     fallback_language = get_value('LANGUAGE_CODE', 'en')
 
     if not translations_object:
-      if not default:
-        raise Exception('translate: Please provide either the AMC-provided translation or the default fallback.')
       return default
 
     if isinstance(translations_object, (basestring, Promise)):
