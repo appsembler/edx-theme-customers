@@ -6,11 +6,8 @@
 
 <section class="amc--element--courses-listing courses-listing ${options['tile-type']}--parent-element amc--style-classes ${options['text-alignment']}">
   % if not courses is UNDEFINED:
-    % for course in courses:
-      % if not course_count == options['num-of-courses']:
-        <%include file="/design-templates/live-blocks/single-course/_${options['tile-type']}.html" args="course=course" />
-        <% course_count = course_count + 1 %>
-      % endif
+    % for course in courses[:int(options['num-of-courses'])]:
+      <%include file="/design-templates/live-blocks/single-course/_${options['tile-type']}.html" args="course=course" />
     % endfor
   % endif
 </section>
