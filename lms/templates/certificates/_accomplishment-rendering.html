@@ -20,12 +20,14 @@ course_mode_class = course_mode if course_mode else ''
           <div class="a--accomplishment-design-01__platform-info__signatures">
             % if certificate_data:
                 % for signatory in certificate_data.get('signatories', []):
-                  <div class="signature-container">
-                    <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" />
-                    <span class="signee-name">${signatory['name']}</span>
-                    <span class="signee-title">${signatory['title']}</span>
-                    <span class="signee-organisation">${signatory['organization']}</span>
-                  </div>
+                  % if signatory.get('signature_image_path'):
+                    <div class="signature-container">
+                      <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" />
+                      <span class="signee-name">${signatory['name']}</span>
+                      <span class="signee-title">${signatory['title']}</span>
+                      <span class="signee-organisation">${signatory['organization']}</span>
+                    </div>
+                  % endif
                 % endfor
             % endif
           </div>
@@ -33,11 +35,8 @@ course_mode_class = course_mode if course_mode else ''
         <div class="a--accomplishment-design-01__main">
           <div class="a--accomplishment-design-01__main__content">
             <div class="main-header">
-              <span class="accomplishment-type-symbol">
-                  <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="">
-              </span>
               <h3 class="course-info">
-                ${document_title}
+                CERTIFICATE OF MASTERY
               </h3>
             </div>
             <span class="vertical-divider-bar"></span>
@@ -48,7 +47,7 @@ course_mode_class = course_mode if course_mode else ''
             <p>
               ${get_certificates_settings()['successfully_completed_text']}
             </p>
-            <h2 class="course-name-main"><span class="course-organization">${accomplishment_copy_course_org}</span> | <span class="course-number">${course_number}</span>: <span class="course-name">${accomplishment_copy_course_name}</span></h2>
+            <h2 class="course-name-main"><span class="course-name">${accomplishment_copy_course_name}</span></h2>
             <p>
               ${get_certificates_settings()['optional_cert_text']}
             </p>
