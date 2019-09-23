@@ -165,3 +165,28 @@
     right: 7rem;
   }
 }
+
+// Tahoe-style certificates
+
+.a--accomplishment-design-01 {
+  &__main {
+    &__content {
+      .main-header {
+        .course-info {
+          color: $brand-primary-color;
+          @include primary-font-light;
+          font-size: 8.5em;
+          font-weight: bolder;
+          line-height: 100%;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+      &__optional-cert-text  {
+        address {
+          font-size: 3.25em !important;
+        }
+      }
+    }
+  }
+}
