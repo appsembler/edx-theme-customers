@@ -168,7 +168,25 @@
 
 // Tahoe-style certificates
 
+body.certificate {
+  .wrapper-banner-user {
+    margin-top: 0;
+  }
+  .header-app {
+    .header-app-title .logo {
+      max-width: 500px;
+    }
+  }
+}
+
 .a--accomplishment-design-01 {
+  &__platform-info {
+    background-color: #fff;
+    &__additional-course-info ul {
+        list-style: none;
+        margin-left: 4em;
+    }
+  }
   &__main {
     &__content {
       .main-header {

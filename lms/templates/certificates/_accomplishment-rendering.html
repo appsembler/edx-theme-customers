@@ -17,6 +17,23 @@ course_mode_class = course_mode if course_mode else ''
               ${get_certificates_settings()['short_platform_description']}
             </p>
           </div>
+          <div class="a--accomplishment-design-01__platform-info__additional-course-info">
+            <ul>
+              <li>Date of Completion: ${certificate_date_issued}</li>
+              %if credits:
+                <li>CPE Credits Awarded: ${'{0:g}'.format(credits)}</li>
+              %endif
+              %if field_of_study:
+                <li>Field of Study: ${field_of_study}</li>
+              %endif
+              %if instruction_location:
+                <li>Location: ${instruction_location}</li>                      
+              %endif
+              %if instructional_method:
+                <li>Instructional Method: ${instructional_method}</li>
+              %endif
+            </ul>
+          </div>
           <div class="a--accomplishment-design-01__platform-info__signatures">
             % if certificate_data:
                 % for signatory in certificate_data.get('signatories', []):
@@ -57,9 +74,6 @@ course_mode_class = course_mode if course_mode else ''
       <div class="a--accomplishment-design-01__certificate-info-print-only">
         <div class="info-left">
           Certificate ID number: <b>${certificate_id_number}</b>
-        </div>
-        <div class="info-right">
-          <b>${certificate_date_issued}</b>
         </div>
         <div>
           Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a>
