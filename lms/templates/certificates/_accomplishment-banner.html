@@ -72,7 +72,7 @@ from django.template.defaultfilters import escapejs
                       <div class="message-hints message-copy">
                         <p class="copy copy-base">To share on LinkedIn,
                           <i aria-hidden="true" class="icon fa fa-chevron-circle-right"></i>
-                          <a class="linkedin-hint-link" style="color:#fff !important" href="javascript:$('#linkedin-hint').removeClass('collapse').addClass('expand'); void(0);">view information</a> you will need to enter on the form.</p>
+                          <a class="linkedin-hint-link" href="javascript:$('#linkedin-hint').removeClass('collapse').addClass('expand'); void(0);">view information</a> you will need to enter on the form.</p>
                         <dl id="linkedin-hint" class="row collapse">
                           <dt class="col-md-3">Certification name:</dt>
                           <dd class="col-md-9">${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>

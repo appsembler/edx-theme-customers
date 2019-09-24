@@ -177,7 +177,17 @@ body.certificate {
       max-width: 500px;
     }
   }
+  .linkedin-hint-link {
+      color: #fff;
+      font-weight: bold;
+    }
+
+  #linkedin-hint {
+    dt:not(:first-of-type){margin-top:0}
+  }
 }
+
+
 
 .a--accomplishment-design-01 {
   &__platform-info {
