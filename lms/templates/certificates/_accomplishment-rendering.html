@@ -3,18 +3,22 @@
 <%namespace file='/theme-variables.html' import="get_certificates_settings" />
 <%
 course_mode_class = course_mode if course_mode else ''
+
+cert_settings = get_certificates_settings(context)
+logo_primary = cert_settings['cert_logos']['primary']
+logo_secondary = cert_settings['cert_logos']['secondary'] or None
 %>
 
 <main class="a--accomplishment--wrapper a--accomplishment--main">
   <div class="bs-container a--container">
-    <div class="a--accomplishment__body-wrapper a--accomplishment-design-01__body-wrapper ${get_certificates_settings()['paper_orientation']} paper-eu-a4">
+    <div class="a--accomplishment__body-wrapper a--accomplishment-design-01__body-wrapper ${cert_settings['paper_orientation']} paper-eu-a4">
       <div class="a--accomplishment__body a--accomplishment-design-01__body">
         <div class="a--accomplishment-design-01__platform-info">
           <div class="a--accomplishment-design-01__platform-info__main">
-            <img class="organisation-logo" src="${get_certificates_settings()['cert_logo']}" role="presentation" style="width: ${get_certificates_settings()['logo_width']};" />
-            <span class="platform-name">${get_certificates_settings()['platform_name']}</span>
+            <img class="organisation-logo" src="${logo_primary['image_url']}" role="presentation" style="width: ${logo_primary['image_width']};" />
+            <span class="platform-name">${logo_primary['name']}</span>
             <p>
-              ${get_certificates_settings()['short_platform_description']}
+              ${cert_settings['short_platform_description']}
             </p>
           </div>
           <div class="a--accomplishment-design-01__platform-info__additional-course-info">
@@ -58,15 +62,15 @@ course_mode_class = course_mode if course_mode else ''
             </div>
             <span class="vertical-divider-bar"></span>
             <p>
-              ${get_certificates_settings()['we_hereby_text']}
+              ${cert_settings['we_hereby_text']}
             </p>
             <h1 class="student-name">${accomplishment_copy_name | h}</h1>
             <p>
-              ${get_certificates_settings()['successfully_completed_text']}
+              ${cert_settings['successfully_completed_text']}
             </p>
             <h2 class="course-name-main"><span class="course-name">${accomplishment_copy_course_name}</span></h2>
             <div class="a--accomplishment-design-01__main__content__optional-cert-text">
-              ${get_certificates_settings()['optional_cert_text']}
+              ${cert_settings['optional_cert_text']}
             </div>
           </div>
         </div>

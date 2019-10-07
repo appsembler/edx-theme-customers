@@ -494,14 +494,38 @@
 
 ## certs settings
 
-<%def name="get_certificates_settings()">
+<%def name="get_certificate_logos()">
   <%
-  return {
+  # allow SiteConfiguration to override as little of the defaults as desired
+  cert_logo_defaults = {
+    'primary': {
+      'name': get_value('PLATFORM_NAME', settings.PLATFORM_NAME),
+      'link_url': get_value('logo_url', '#'),
+      'image_url': get_value('logo_positive', get_brand_logos()['logo_positive']),
+      'image_width': '',
+    },
+    # secondary: no default defined
+    'secondary': {},
+  }
+
+  certificate_logos_config = get_value('certificates', {}).get('cert_logos', {})
+  cert_logos = cert_logos_defaults
+  cert_logos['primary'].update(certificate_logos_config['primary'])
+  cert_logos['secondary'].update(certificate_logos_config['secondary'])
+
+  return [cert_logos['primary'], cert_logos['secondary']]
+  %>
+</%def>
+
+<%def name="get_certificates_settings(course_context={})">
+  <%
+  cert_logos = get_certificate_logos()
+
+  cert_settings = {
     'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
     'header_logo': get_value('certificates', {}).get('header_logo', get_brand_logos()['logo_positive']),
     'header_logo_width': get_value('certificates', {}).get('header_logo_width', ''),
-    'cert_logo': get_value('certificates', {}).get('cert_logo', get_brand_logos()['logo_positive']),
-    'logo_width': get_value('certificates', {}).get('cert_logo_width', ''),
+    'cert_logos': cert_logos,
     'platform_name': get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
     'header_text': get_value('certificates', {}).get('header_text', 'Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.'),
     'short_platform_description': get_value('certificates', {}).get('short_platform_description', ''),
@@ -515,5 +539,14 @@
     'footer_tos_url': get_value('certificates', {}).get('footer_tos_url', "#"),
     'footer_privacy_url': get_value('certificates', {}).get('footer_privacy_url', "#"),
   }
+
+  # Support override per-course via cert_html_view_overrides Advanced Setting.
+  # Note: None of the variables defined in get_certificate_settings and used in our
+  # custom certificate template are the original variables passed in context from
+  # certificates.views.webview.  The following also allows inclusion of extra values
+  # from appsembler_credentials_extensions webview._update_certificate_context monkeypatch
+  cert_settings.update(course_context)
+
+  return cert_settings
   %>
 </%def>
