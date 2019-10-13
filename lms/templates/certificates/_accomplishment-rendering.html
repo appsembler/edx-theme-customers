@@ -15,11 +15,15 @@ logo_secondary = cert_settings['cert_logos'][1] or None
       <div class="a--accomplishment__body a--accomplishment-design-01__body">
         <div class="a--accomplishment-design-01__platform-info">
           <div class="a--accomplishment-design-01__platform-info__main">
-            <img class="organisation-logo" src="${logo_primary['image_url']}" role="presentation" style="width: ${logo_primary['image_width']};" />
-            <span class="platform-name">${logo_primary['name']}</span>
+            <img class="organisation-logo" src="${logo_primary['image_url']}" role="presentation" style="width: ${logo_primary['image_width']};" alt="${logo_primary['name']}"/>
+            % if logo_primary.get('show_textual_name', False):
+              <span class="platform-name">${logo_primary['name']}</span>
+            % endif
             % if logo_secondary:
               <img class="organisation-logo" src="${logo_secondary['image_url']}" role="presentation" style="width: ${logo_secondary['image_width']};" />
-              <span class="platform-name">${logo_secondary['name']}</span>
+              % if logo_secondary.get('show_textual_name', False):
+                <span class="platform-name">${logo_secondary['name']}</span>
+              % endif
             % endif
           </div>
           <div class="a--accomplishment-design-01__platform-info__additional-course-info">
