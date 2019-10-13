@@ -5,8 +5,8 @@
 course_mode_class = course_mode if course_mode else ''
 
 cert_settings = get_certificates_settings(context)
-logo_primary = cert_settings['cert_logos']['primary']
-logo_secondary = cert_settings['cert_logos']['secondary'] or None
+logo_primary = cert_settings['cert_logos'][0]
+logo_secondary = cert_settings['cert_logos'][1] or None
 %>
 
 <main class="a--accomplishment--wrapper a--accomplishment--main">
@@ -17,9 +17,10 @@ logo_secondary = cert_settings['cert_logos']['secondary'] or None
           <div class="a--accomplishment-design-01__platform-info__main">
             <img class="organisation-logo" src="${logo_primary['image_url']}" role="presentation" style="width: ${logo_primary['image_width']};" />
             <span class="platform-name">${logo_primary['name']}</span>
-            <p>
-              ${cert_settings['short_platform_description']}
-            </p>
+            % if logo_secondary:
+              <img class="organisation-logo" src="${logo_secondary['image_url']}" role="presentation" style="width: ${logo_secondary['image_width']};" />
+              <span class="platform-name">${logo_secondary['name']}</span>
+            % endif
           </div>
           <div class="a--accomplishment-design-01__platform-info__additional-course-info">
             <ul>
@@ -31,7 +32,7 @@ logo_secondary = cert_settings['cert_logos']['secondary'] or None
                 <li>Field of Study: ${field_of_study}</li>
               %endif
               %if instruction_location:
-                <li>Location: ${instruction_location}</li>                      
+                <li>Location: ${instruction_location}</li>
               %endif
               %if instructional_method:
                 <li>Instructional Method: ${instructional_method}</li>
