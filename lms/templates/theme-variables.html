@@ -1,13 +1,15 @@
 ## mako
+<%! from django.conf import settings %>
 <%! from django.core.urlresolvers import reverse %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
-
+<%! from django.utils.translation import ugettext as _ %>
+<%! from datetime import datetime %>
 
 
 <%!
-  theme_name = "eucalyptus-theme-codebase"
+  theme_name = "edx-theme-codebase"
 %>
 
 
@@ -27,11 +29,12 @@
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
-    'course-catalogue_enabled': True,
+    'course-catalogue_enabled': False,
     'enable_course_catalogue_for_non-auth_users': False,
     'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
     'client_ga_code': "",
     'allow_search_engine_indexing': True,
+    'combine_privacy_and_tos': False,
     'small_screen_optimized_courseware': False,
   }
   %>
@@ -167,9 +170,11 @@
 
 <%def name="get_footer_settings()">
   <%
+    current_year = str(datetime.now().year)
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '© 1922-2017 New York Institute of Finance inc. All rights reserved.',
+      'footer_logo_alt_text' : 'New York Institute of Finance',
+      'footer_copyright_text' : '© 1922-{} New York Institute of Finance inc. All rights reserved.'.format(current_year),
       'display_edx_disclaimer' : False, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
@@ -249,7 +254,7 @@
         "options":{
           "discovery-facet-option":"facet_option-01",
           "course-card":"course-tile-02",
-          "search-enabled":False,
+          "search-enabled":True,
           "discovery-facet":"facet-01"
         }
       }
@@ -270,8 +275,8 @@
       'discovery_facet' : '_facet-01.underscore', ## define which template for facets to use
       'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
       'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html', ## design which discovery-search block design to use
-      'promote_course_catalog' : get_value('promote_course_catalog', True),
-      'promote_course_catalog_text' : "Check out our course catalog and enroll in some awesome courses!"
+      'promote_course_catalog' : False,
+      'promote_course_catalog_text' : _("Browse recently launched courses and see what's new in your favorite subjects.")
     }
   %>
 </%def>
@@ -527,5 +532,65 @@
 <%def name="get_privacy_content()">
   <%
     return []
+  %>
+</%def>
+
+## certs settings
+
+<%def name="get_certificate_logos()">
+  <%
+  # allow SiteConfiguration to override as little of the defaults as desired
+  cert_logos_defaults = {
+    'primary': {
+      'name': get_value('PLATFORM_NAME', settings.PLATFORM_NAME),
+      'link_url': get_value('logo_url', '#'),
+      'image_url': get_value('logo_positive', get_brand_logos()['logo_positive']),
+      'image_width': '',
+      'show_textual_name': False,  # whether or not to display name below logo image.
+    },
+    # secondary: no default defined
+    'secondary': {},
+  }
+
+  certificate_logos_config = get_value('certificates', {}).get('cert_logos', {})
+  cert_logos = cert_logos_defaults
+  cert_logos['primary'].update(certificate_logos_config.get('primary', {}))
+  cert_logos['secondary'].update(certificate_logos_config.get('secondary', {}))
+
+  return [cert_logos['primary'], cert_logos['secondary']]
+  %>
+</%def>
+
+<%def name="get_certificates_settings(course_context={})">
+  <%
+  cert_logos = get_certificate_logos()
+
+  cert_settings = {
+    'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
+    'header_logo': get_value('certificates', {}).get('header_logo', get_brand_logos()['logo_positive']),
+    'header_logo_width': get_value('certificates', {}).get('header_logo_width', ''),
+    'cert_logos': cert_logos,
+    'platform_name': get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
+    'header_text': get_value('certificates', {}).get('header_text', 'Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.'),
+    'short_platform_description': get_value('certificates', {}).get('short_platform_description', ''),
+    'we_hereby_text': get_value('certificates', {}).get('we_hereby_text', 'This certificate is awarded to'),
+    'successfully_completed_text': get_value('certificates', {}).get('successfully_completed_text', "for the successful completion of the course"),
+    'optional_cert_text': get_value('certificates', {}).get('optional_cert_text', '<p>In accordance with the standards of the National Registry of CPE Sponsors, CPE Credits have been granted based on a 50-minute hour.<br/>National Registry of CPE Sponsors<br/>New York Institute of Finance ID Number 103413<br/>New York State Sponsor ID Number 002308</p><address>New York Institute of Finance<br/>160 Broadway, 15th Floor, New York, NY 10038<br/>www.nyif.com</address>'),
+    'footer_about_platform_text': get_value('certificates', {}).get('footer_about_platform_text', '90+ years of essential education for finance professionals delivered by leading industry experts'),
+    'footer_about_platform_url': get_value('certificates', {}).get('footer_about_platform_url', '#'),
+    'footer_about_accomplishments_text': get_value('certificates', {}).get('footer_about_accomplishments_text', "New York Institute of Finance acknowledges achievements through certificates, which are awarded for course activities that our students complete. Signor of this certificate is subject to change. For all inquiries/mismatches contact customerservice@nyif.com"),
+    'footer_copyright_text': get_value('certificates', {}).get('footer_copyright_text', ""),
+    'footer_tos_url': get_value('certificates', {}).get('footer_tos_url', "#"),
+    'footer_privacy_url': get_value('certificates', {}).get('footer_privacy_url', "#"),
+  }
+
+  # Support override per-course via cert_html_view_overrides Advanced Setting.
+  # Note: None of the variables defined in get_certificate_settings and used in our
+  # custom certificate template are the original variables passed in context from
+  # certificates.views.webview.  The following also allows inclusion of extra values
+  # from appsembler_credentials_extensions' webview._update_certificate_context monkeypatch
+  cert_settings.update(course_context)
+
+  return cert_settings
   %>
 </%def>
