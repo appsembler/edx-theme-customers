@@ -2,7 +2,10 @@
 from django.utils.translation import ugettext as _
 from django.template.defaultfilters import escapejs
 %>
+<% cert_settings = get_certificates_settings(context)
+%>
 <%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_certificates_settings" />
 <%block name="js_extra">
   <%static:js group='certificates_wv'/>
   <script type="text/javascript">
@@ -37,77 +40,69 @@ from django.template.defaultfilters import escapejs
   </script>
 </%block>
 <div id="fb-root"></div>
-<div class="wrapper-banner wrapper-banner-user" style="margin-top:0">
+<div class="wrapper-banner wrapper-banner-user">
     <section class="banner banner-user">
         <div class="message message-block message-notice">
             <h2 class="message-title hd-5 emphasized">${accomplishment_banner_opening | h}</h2>
             <div class="wrapper-copy-and-actions">
-                <p class="message-copy copy copy-base emphasized">${accomplishment_banner_congrats}</p>
-
-                %if linked_in_url:
-                <div class="message-hints message-copy"> 
-                  <p class="copy copy-base">To share on LinkedIn, 
-                    <i aria-hidden="true" class="icon fa fa-chevron-circle-right"></i>
-                    <a class="linkedin-hint-link" href="javascript:$('#linkedin-hint').removeClass('collapse').addClass('expand'); void(0);">view information</a> you will need to enter on the form.</p>
-                  <dl id="linkedin-hint" class="row collapse">
-                    <dt class="col-md-3">Certification name:</dt>
-                    <dd class="col-md-9">${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
-                    <dt class="col-md-3">Certification authority:</dt>
-                    <dd class="col-md-9">Enter <strong>${platform_name}</strong> and/or select from drop-down list once available</dd>
-                    <!-- 
-                    <dt class="col-md-3">License number:</dt>
-                    <dd class="col-md-9"> NASBA 103413</dd>
-                     -->
-                    <dt class="col-md-3">From:</dt>
-                    <dd class="col-md-9">${certificate_date_issued}</dd>
-                    <dt class="col-md-3">Expiration:</dt>
-                    <dd class="col-md-9">Check "This certificate does not expire"</dd>
-                    <dt class="col-md-3">Certification url:</dt>
-                    <dd class="col-md-9">${share_url}</dd>
-                  </dl>
-                </div>
-                %endif
-
+                <p class="message-copy copy copy-base emphasized">${cert_settings['header_text']}</p>
                 <div class="message-actions">
                     <h3 class="sr-only">${_("Print or share your certificate:")}</h3>
                     % if facebook_share_enabled:
-                      <button class="action action-share-facebook btn btn-inverse btn-small icon-only" id="action-share-facebook"
+                      <button class="action action-share-facebook btn-inverse btn-small icon-only" id="action-share-facebook"
                          onclick="FaceBook.share({
                           share_text: '${facebook_share_text | escapejs}',
                           share_link: '${share_url}',
                           picture_link: '${full_course_image_url}',
                           description: '${_('Click the link to see my certificate.') | escapejs}'
                           });">
-                          <i class="icon fa fa-facebook-official" aria-hidden="true"></i>
+                          <span class="icon fa fa-facebook-official" aria-hidden="true"></span>
                           <span class="action-label">${_("Post on Facebook")}</span>
                       </button>
                     %endif
                     % if twitter_share_enabled:
                       <button data-tooltip="${_('Share on Twitter')}"
-                        class="action action-share-twitter btn btn-inverse btn-small icon-only"
+                        class="action action-share-twitter btn-inverse btn-small icon-only"
                         title="${_('Share on Twitter')}"
                         onclick="popupWindow('${twitter_url}', 'tweetWindow', 640, 480); return false;">
-                          <i class="icon fa fa-twitter" aria-hidden="true"></i>
+                          <span class="icon fa fa-twitter" aria-hidden="true"></span>
                           <span class="action-label">${_("Tweet this Accomplishment. Pop up window.")}</span>
                       </button>
                     %endif
 
-                    %if linked_in_url:
-                    <button class="action action-linkedin-profile btn btn-inverse btn-small icon-only" id="action-share-linkedin" title="${_('Add to LinkedIn Profile')}" data-course-id="${course_id}" data-certificate-mode="${course_mode}">
-                        <i class="icon fa fa-linkedin" aria-hidden="true"></i>
-                        <span>&nbsp;${_("Add to LinkedIn Profile")}</span>
-                    </button>
+                    %if linked_in_url or 1:
+                      <div class="message-hints message-copy">
+                        <p class="copy copy-base">To share on LinkedIn,
+                          <i aria-hidden="true" class="icon fa fa-chevron-circle-right"></i>
+                          <a class="linkedin-hint-link" href="javascript:$('#linkedin-hint').removeClass('collapse').addClass('expand'); void(0);">view information</a> you will need to enter on the form.</p>
+                        <dl id="linkedin-hint" class="row collapse">
+                          <dt class="col-md-3">Certification name:</dt>
+                          <dd class="col-md-9">${accomplishment_copy_name | h} &mdash; ${accomplishment_copy_course_name} </dd>
+                          <dt class="col-md-3">Certification authority:</dt>
+                          <dd class="col-md-9">Enter <strong>${platform_name}</strong> and/or select from drop-down list once available</dd>
+                          <!--
+                          <dt class="col-md-3">License number:</dt>
+                          <dd class="col-md-9"> NASBA 103413</dd>
+                           -->
+                          <dt class="col-md-3">From:</dt>
+                          <dd class="col-md-9">${certificate_date_issued}</dd>
+                          <dt class="col-md-3">Expiration:</dt>
+                          <dd class="col-md-9">Check "This certificate does not expire"</dd>
+                          <dt class="col-md-3">Certification url:</dt>
+                          <dd class="col-md-9">${share_url}</dd>
+                        </dl>
+                    </div>
                     %endif
 
                     %if badge:
-                    <button class="action action-share-mozillaopenbadges btn btn-inverse btn-small">
+                    <button class="action action-share-mozillaopenbadges btn btn-overlay btn-small">
                         <img class="icon icon-mozillaopenbadges" src="/static/certificates/images/ico-mozillaopenbadges.png" alt="Mozilla Open Badges Backpack">
                         ${_("Add to Mozilla Backpack")}
                     </button>
                     %endif
 
-                    <button class="action action-print btn btn-inverse btn-small" id="action-print-view">
-                        <i class="icon fa fa-print" aria-hidden="true"></i>
+                    <button class="action action-print btn-inverse btn-small" id="action-print-view">
+                        <span class="icon fa fa-print" aria-hidden="true"></span>
                         ${_("Print Certificate")}
                     </button>
                 </div>

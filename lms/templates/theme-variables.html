@@ -564,13 +564,13 @@
 <%def name="get_certificates_settings(course_context={})">
   <%
   cert_logos = get_certificate_logos()
-
   cert_settings = {
     'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
     'header_logo': get_value('certificates', {}).get('header_logo', get_brand_logos()['logo_positive']),
     'header_logo_width': get_value('certificates', {}).get('header_logo_width', ''),
     'cert_logos': cert_logos,
     'platform_name': get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
+    'document_banner': get_value('certificates', {}).get('certificate_banner_text', course_context.get('document_banner', '')),
     'header_text': get_value('certificates', {}).get('header_text', 'Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.'),
     'short_platform_description': get_value('certificates', {}).get('short_platform_description', ''),
     'we_hereby_text': get_value('certificates', {}).get('we_hereby_text', 'This certificate is awarded to'),
