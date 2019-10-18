@@ -1,8 +1,12 @@
+@charset "UTF-8";
 .wrapper-header .branding a img {
   max-height: 48px; }
 
+body.view-settings .group-settings.basic .list-actions {
+  display: none; }
+
 .a--howitworks-intro {
-  padding: 10rem 0;
+  padding: 12rem 0;
   background: linear-gradient(90deg, #154d64, #231f26); }
   .a--howitworks-intro__container {
     padding: 3rem;
@@ -33,3 +37,41 @@
     .a--howitworks-intro__login-cta:hover, .a--howitworks-intro__login-cta:focus {
       color: #fff;
       opacity: 0.7; }
+
+.amc--notification__content {
+  max-width: 1280px;
+  min-width: 900px;
+  width: 100%;
+  padding: 2rem 1.5rem;
+  border-radius: 3rem;
+  margin-top: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  border: 0.2rem solid #E4572E;
+  color: #1a1a1a;
+  font-size: 1.4rem; }
+
+.amc--notification--button {
+  padding: 0.7rem 2rem;
+  margin: 0.5rem;
+  border-radius: 3rem;
+  text-decoration: none; }
+  .amc--notification--button.primary-action  {
+    background-color: #0090c1;
+    border: 0.2rem solid #0090c1;
+    color: #fff; }
+  .amc--notification--button.secondary-action {
+    background: none;
+    border: 0.2rem solid #0090c1;
+    color: #0090c1; }
+
+.amc--notification--tier-expiration {
+  display: flex;
+  align-items: center; }
+
+.amc--notification__text-left {
+  display: flex;
+  align-items: center; }
+
+.amc--notification__actions-right {
+  margin-left: auto; }
