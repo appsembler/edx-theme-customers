@@ -2,6 +2,16 @@
   max-height: 48px;
 }
 
+body.view-settings {
+  .group-settings.basic {
+    // RED-348: Hide the "Invite your students" button from the Schedule & Details Page
+    //          This button is just a `mailto` link that we think it's better removed.
+    .list-actions {
+      display: none;
+    }
+  }
+}
+
 .a--howitworks-intro {
   padding: 12rem 0;
   background: linear-gradient(90deg,#154d64,#231f26);
@@ -91,8 +101,8 @@
   }
 
   &__text-left {
-    @include display(flex);
-    @include align-items(center);
+    display: flex;
+    align-items: center;
   }
 
   &__actions-right {
