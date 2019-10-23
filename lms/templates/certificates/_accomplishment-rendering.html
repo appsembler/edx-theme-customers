@@ -1,6 +1,6 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='/theme-variables.html' import="get_certificates_settings" />
+<%namespace file='/theme-variables.html' import="get_certificates_settings, get_contact_settings" />
 <%
 course_mode_class = course_mode if course_mode else ''
 
@@ -76,6 +76,23 @@ logo_secondary = cert_settings['cert_logos'][1] or None
             <h2 class="course-name-main"><span class="course-name">${accomplishment_copy_course_name}</span></h2>
             <div class="a--accomplishment-design-01__main__content__optional-cert-text">
               ${cert_settings['optional_cert_text']}
+
+              <address  style="margin-top:1em;">
+                New York Institute of Finance<br/>
+                160 Broadway, 15th Floor, New York, NY 10038<br/>
+                www.nyif.com
+              </address>
+
+              <address style="margin-top:1em;">
+                ${get_contact_settings()['mailing']['mailing_org']}<br/>
+                % for line in get_contact_settings()['mailing']['mailing_address']:
+                    ${line}<br/>
+                % endfor
+                % if get_contact_settings()['website']['url']:
+                  ${get_contact_settings()['website']['url']}
+                % endif
+              </address>
+
             </div>
           </div>
         </div>

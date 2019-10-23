@@ -473,9 +473,24 @@
 
 ## contact page content
 
-<%def name="get_contact_content()">
+<%def name="get_contact_settings()">
   <%
-    return []
+    return {
+      'mailing': {
+        'mailing_org': get_value('contact_mailing_org', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
+        'mailing_address': get_value('contact_mailing_address', ''),
+      },
+      'website': {
+        'name': get_value('contact_website_name', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
+        'url': get_value('contact_website_url', ''),
+      },
+    }
+  %>
+</%def>
+
+<%def name="get_contact_content()">
+  <% return 
+
   %>
 </%def>
 
