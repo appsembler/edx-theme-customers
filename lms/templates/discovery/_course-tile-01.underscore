@@ -4,7 +4,7 @@
     </div>
     <div class="a--course-tile-01__info">
       <div>
-        <p class="a--course-tile-01__code"><%= display_number_with_default %></p>
+        <p class="a--course-tile-01__code"><%= content.number %></p>
         <p class="a--course-tile-01__title"><%= content.display_name %></p>
       </div>
       <div>
