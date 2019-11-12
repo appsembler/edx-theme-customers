@@ -4,13 +4,4 @@
 <ul data-facet="<%- name %>" class="facet-list"> <!--remove .collapse by default -->
     <%= HtmlUtils.ensureHtml(optionsHtml) %>
 </ul>
-<% if (listIsHuge) { %>
-    <div class="toggle ">
-        <button class="show-more discovery-button">
-            <%- gettext("More") %>
-        </button>
-        <button class="show-less hidden discovery-button">
-            <%- gettext("Less") %>
-        </button>
-    </div>
-<% } %>
+
