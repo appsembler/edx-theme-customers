@@ -1,130 +1,93 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_certificates_settings" />
 <%
 course_mode_class = course_mode if course_mode else ''
+
+cert_settings = get_certificates_settings(context)
+logo_primary = cert_settings['cert_logos'][0]
+logo_secondary = cert_settings['cert_logos'][1] or None
 %>
 
-<header class="header-app">
-    <h5 class="nyif--certificates__header-app-title">
-        <a class="logo" href="${logo_url}" style="width:20rem">
-            <img class="logo-img" src="/static/edx-theme-codebase/images/branding/brand-logo.svg" alt="${_('{platform_name} Home').format(platform_name=platform_name)}" />
-        </a>
-        <span class="sr-only">${logo_subtitle}</span>
-    </h5>
-</header>    
-
-<main class="accomplishment accomplishment-main">
-
-    <div class="nyif--certificates__wrapper-accomplishment-rendering">
-        <div class="nyif--certificates__accomplishment-rendering accomplishment-rendering">
-
-
-            <div class="nyif--certificates__accomplishment-type">
-                <span class="accomplishment-type-label hd-1">${certificate_title}</span>
-                This certificate is awarded to
-            </div>
-
-            <div class="wrapper-statement-and-signatories">
-                <div class="nyif--certificates__accomplishment-statement">
-                    <p class="accomplishment-statement-lead">
-                        <strong class="nyif--certificates__accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name | h}</strong>
-                        <span class="accomplishment-summary copy copy-lead">for the successful completion of the course</span>
-
-                        <span class="accomplishment-course hd-1 emphasized">
-                            <span class="nyif--certificates__accomplishment-course-name">${accomplishment_copy_course_name}</span>
-                        </span>
-                    </p>
-
-                    <div class="nyif--certificates__accomplishment-statement-detail">
-
-                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-date">
-                            <dt class="label copy copy-meta">Date of Completion</dt>
-                            <dd class="value copy copy-meta">${certificate_date_issued}</dd>
-                        </dl>
-                        %if credits:
-                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-credits">
-                            <dt class="label copy copy-meta">CPE Credits Awarded</dt>
-                            <dd class="value copy copy-meta">${'{0:g}'.format(credits)}</dd>
-                        </dl>
-                        %endif 
-                        %if field_of_study:
-                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-field_of_study">
-                            <dt class="label copy copy-meta">Field of Study</dt>
-                            <dd class="value copy copy-meta">${field_of_study}</dd>
-                        </dl>
-                        %endif 
-                        %if instruction_location:                          
-                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-location">
-                            <dt class="label copy copy-meta">Location</dt>
-                            <dd class="value copy copy-meta">${instruction_location}</dd>
-                        </dl>
-                        %endif
-                        %if instructional_method:                  
-                        <dl class="nyif--certificates__wrapper-accomplishment-metadata accomplishment-instructional_method">
-                            <dt class="label copy copy-meta">Instructional Method</dt>
-                            <dd class="value copy copy-meta">${instructional_method}</dd>
-                        </dl>
-                        %endif
-
-                        <p class="nyif--certificates__wrapper-accomplishment-credits-explanation">
-                        In accordance with the standards of the National Registry of CPE Sponsors,
-                        CPE Credits have been granted based on a 50-minute hour.
-                        </p>
-
-                        <p class="nyif--certificates__wrapper-accomplishment-accreditation-info">
-                        National Registry of CPE Sponsors<br/>
-                        New York Institute of Finance ID Number 103413<br/>
-                        New York State Sponsor ID Number 002308<br/>
-                        New York Institute of Finance<br/>
-                        160 Broadway, 15th Floor, New York, NY 10038<br/>
-                        <a href="http://www.nyif.com">www.nyif.com</a>
-                        </p>
-
+<main class="a--accomplishment--wrapper a--accomplishment--main">
+  <div class="bs-container a--container">
+    <div class="a--accomplishment__body-wrapper a--accomplishment-design-01__body-wrapper ${cert_settings['paper_orientation']} paper-eu-a4">
+      <div class="a--accomplishment__body a--accomplishment-design-01__body">
+        <div class="a--accomplishment-design-01__platform-info">
+          <div class="a--accomplishment-design-01__platform-info__main">
+            <img class="organisation-logo" src="${logo_primary['image_url']}" role="presentation" style="width: ${logo_primary['image_width']};" alt="${logo_primary['name']}"/>
+            % if logo_primary.get('show_textual_name', False):
+              <span class="platform-name">${logo_primary['name']}</span>
+            % endif
+            % if logo_secondary:
+              <img class="organisation-logo" src="${logo_secondary['image_url']}" role="presentation" style="width: ${logo_secondary['image_width']};" />
+              % if logo_secondary.get('show_textual_name', False):
+                <span class="platform-name">${logo_secondary['name']}</span>
+              % endif
+            % endif
+          </div>
+          <div class="a--accomplishment-design-01__platform-info__additional-course-info">
+            <ul>
+              <li>Date of Completion: ${certificate_date_issued}</li>
+              %if credits:
+                <li>CPE Credits Awarded: ${'{0:g}'.format(credits)}</li>
+              %endif
+              %if field_of_study:
+                <li>Field of Study: ${field_of_study}</li>
+              %endif
+              %if instruction_location:
+                <li>Location: ${instruction_location}</li>
+              %endif
+              %if instructional_method:
+                <li>Instructional Method: ${instructional_method}</li>
+              %endif
+            </ul>
+          </div>
+          <div class="a--accomplishment-design-01__platform-info__signatures">
+            % if certificate_data:
+                % for signatory in certificate_data.get('signatories', []):
+                  % if signatory.get('signature_image_path'):
+                    <div class="signature-container">
+                      <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" />
+                      <span class="signee-name">${signatory['name']}</span>
+                      <span class="signee-title">${signatory['title']}</span>
+                      <span class="signee-organisation">${signatory['organization']}</span>
                     </div>
-                </div>
-
-
-    % if mode != 'base':
-    <div class="accomplishment-signatories">
-        <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
-
-        <div class="wrapper-signatories">
-            <div class="list-signatories">
-                % if certificate_data:
-                    % for signatory in certificate_data.get('signatories', []):
-                    <div class="signatory">
-                        <img class="signatory-signature" src="${signatory['signature_image_path']}" alt="${signatory['name']}"
-                        style="display:inline">
-
-                        <h4 class="signatory-name hd-5">${signatory['name']}</h4>
-                        <p class="signatory-credentials copy copy-micro">
-                            <span class="role">${signatory['title']}</span>
-                        </p>
-                    </div>
-                    % endfor
-                % endif
-            </div>
+                  % endif
+                % endfor
+            % endif
+          </div>
         </div>
-    </div>
-    % endif    
-
-    <div class="nyif--certificates__wrapper-accomplishment-metadata">
-        <div class="accomplishment-metadata">
-<!--             <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about | h}</h2>
- -->
-            <div class="wrapper-metadata">
-                <p class="signatories-note">Signor of this certificate is subject to change. For all inquiries/mismatches contact <a href="mailto:customerservice@nyif.com">customerservice@nyif.com</a></p>               
-                <dl class="metadata accomplishment-id">
-                    <dt class="label copy copy-meta">Verify the authenticity of this certificate at</dt>
-                    <dd class="value copy copy-meta"><a href="${url}/certificates/user/${accomplishment_user_id}/course/${course_id}">${url}/certificates/user/${accomplishment_user_id}/course/${course_id}</a></dd>
-                </dl>
-
-
-
+        <div class="a--accomplishment-design-01__main">
+          <div class="a--accomplishment-design-01__main__content">
+            <div class="main-header">
+              <h3 class="course-info">
+                ${certificate_title}
+              </h3>
             </div>
+            <span class="vertical-divider-bar"></span>
+            <p>
+              ${cert_settings['we_hereby_text']}
+            </p>
+            <h1 class="student-name">${accomplishment_copy_name | h}</h1>
+            <p>
+              ${cert_settings['successfully_completed_text']}
+            </p>
+            <h2 class="course-name-main"><span class="course-name">${accomplishment_copy_course_name}</span></h2>
+            <div class="a--accomplishment-design-01__main__content__optional-cert-text">
+              ${cert_settings['optional_cert_text']}
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="a--accomplishment-design-01__certificate-info-print-only">
+        <div class="info-left">
+          Certificate ID number: <b>${certificate_id_number}</b>
+        </div>
+        <div>
+          Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a>
+        </div>
+      </div>
     </div>
-
-
-
+  </div>
 </main>
