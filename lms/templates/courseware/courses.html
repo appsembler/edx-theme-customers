@@ -1,0 +1,71 @@
+<%!
+  import json
+  from django.utils.translation import ugettext as _
+  from microsite_configuration import microsite
+  from openedx.core.djangolib.js_utils import dump_js_escaped_json
+%>
+<%inherit file="/main.html" />
+<%
+  course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
+%>
+
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_course_catalogue_content, get_global_settings" />
+
+<%block name="pagetitle">
+  % if get_global_settings().get('course-catalogue_enabled', True):
+    % if not get_global_settings().get('enable_course_catalogue_for_non-auth_users', True) and not user.is_authenticated():
+      ${_("Page Not Found")}
+    % else:
+      ${_("Courses")}
+    % endif
+  % else:
+    ${_("Page Not Found")}
+  % endif
+</%block>
+
+% if get_global_settings().get('course-catalogue_enabled', True) and (get_global_settings().get('enable_course_catalogue_for_non-auth_users', True) or (not get_global_settings().get('enable_course_catalogue_for_non-auth_users', True) and user.is_authenticated())):  
+  % for element in get_course_catalogue_content():
+    % if (element['element-type'].startswith('layout')):
+      <%include file = '/${element["element-path"]}' args = "options = element['options'], children = element['children'], page_specific_args = course_about_vars" />
+    % elif (element['element-type'].startswith('static-block')):
+      <%include file = '/${element["element-path"]}' args = "template_settings = element['options']" />
+    % elif (element['element-type'].startswith('course-catalogue-template')):
+      <%include file = '/${element["element-path"]}' args = "options = element['options'], courses = courses, discovery_enabled = course_discovery_enabled" />
+      % if (course_discovery_enabled & element['options']['search-enabled']):
+        <%
+        discovery_card_template = "_" + element['options']['course-card'] + ".underscore"
+        discovery_facet_template = "_" + element['options']['discovery-facet'] + ".underscore"
+        discovery_facet_option_template = "_" + element['options']['discovery-facet-option'] + ".underscore"
+        %>
+        % for template_name in ["filter_bar", "filter"]:
+        <script type="text/template" id="${template_name}-tpl">
+            <%static:include path="discovery/${template_name}.underscore" />
+        </script>
+        % endfor
+        <script type="text/template" id="course_card-tpl">
+            <%static:include path="discovery/${discovery_card_template}" />
+        </script>
+        <script type="text/template" id="facet-tpl">
+            <%static:include path="discovery/${discovery_facet_template}" />
+        </script>
+        <script type="text/template" id="facet_option-tpl">
+            <%static:include path="discovery/${discovery_facet_option_template}" />
+        </script>
+        <%static:require_module module_name="edx-theme-codebase/js/discovery/discovery_factory" class_name="DiscoveryFactory">
+        DiscoveryFactory(
+          ${course_discovery_meanings | n, dump_js_escaped_json},
+          getParameterByName('search_query'),
+          "${user_language}",
+          "${user_timezone}"
+        );
+        </%static:require_module>
+      % endif
+    % endif
+  % endfor
+% else:
+  <%block name="headextra">
+    <meta name="robots" content="noindex" />
+  </%block>
+  <%include file = '/design-templates/pages/404/_404-block.html' />
+% endif

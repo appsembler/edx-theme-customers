@@ -1,0 +1,7 @@
+<h3 class="header-facet">
+    <%- displayName %>
+</h3>
+<ul data-facet="<%- name %>" class="facet-list"> <!--remove .collapse by default -->
+    <%= HtmlUtils.ensureHtml(optionsHtml) %>
+</ul>
+
