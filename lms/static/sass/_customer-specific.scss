@@ -64,3 +64,12 @@ form#passwordreset-form .form-field.new_password2-new_password2 {
 .welcome-message a {
   text-decoration: underline;
 }
+
+#register-form .checkbox-optional_fields_toggle {
+  display: none;
+}
+
+#register-form .optional-fields {
+  display: none;
+}
+
