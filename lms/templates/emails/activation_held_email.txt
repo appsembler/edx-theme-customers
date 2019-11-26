@@ -23,4 +23,4 @@ ${_("We've received your request to access {platform_name}.  "
 % endif
 
 ${_("If you didn't create an account, you don't need to do anything; you "
-      "won't receive any more email from us.")
+      "won't receive any more email from us.")}
