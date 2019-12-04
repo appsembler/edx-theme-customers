@@ -68,3 +68,13 @@ form#passwordreset-form .form-field.new_password2-new_password2 {
 #register-form .optional-fields {
   display: none;
 }
+
+/* RG student statistics, match styling of instructor dash */
+body.view-instructor_statistics main {
+  width: 100%;
+  margin: 0 auto;
+
+  @media(min-width: 1680px) {
+    width: 1640px;
+  }
+}
