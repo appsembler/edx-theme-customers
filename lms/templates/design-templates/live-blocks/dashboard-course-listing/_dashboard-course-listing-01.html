@@ -462,3 +462,11 @@ from student.helpers import (
 <%static:require_module_async module_name="js/dateutil_factory" class_name="DateUtilFactory">
     DateUtilFactory.transform(iterationKey=".localized-datetime");
 </%static:require_module_async>
+
+<script>
+  // hide course listing when user search something via dashboard search
+  $(".a--discovery-search-01__search-button").click(function(){
+    //if($(".search-count")[0]){$(".a--dashboard-course-listing-01").hide()};
+    $(".a--dashboard-course-listing-01").hide();
+  });
+</script>
