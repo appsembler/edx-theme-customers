@@ -29,7 +29,7 @@
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
-    'course-catalogue_enabled': False,
+    'course-catalogue_enabled': True,
     'enable_course_catalogue_for_non-auth_users': False,
     'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
     'client_ga_code': "",
@@ -254,7 +254,7 @@
         "options":{
           "discovery-facet-option":"facet_option-01",
           "course-card":"course-tile-02",
-          "search-enabled":True,
+          "search-enabled":False,
           "discovery-facet":"facet-01"
         }
       }
@@ -275,8 +275,8 @@
       'discovery_facet' : '_facet-01.underscore', ## define which template for facets to use
       'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
       'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html', ## design which discovery-search block design to use
-      'promote_course_catalog' : False,
-      'promote_course_catalog_text' : _("Browse recently launched courses and see what's new in your favorite subjects.")
+      'promote_course_catalog' : get_value('promote_course_catalog', True),
+      'promote_course_catalog_text' : "Check out our course catalog and enroll in some awesome courses!"      
     }
   %>
 </%def>
