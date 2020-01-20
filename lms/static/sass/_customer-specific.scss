@@ -79,6 +79,18 @@ body.view-instructor_statistics main {
   }
 }
 
+.complete-checkmark {
+  display: none !important;
+}
+
+.check-circle {
+  display: none !important;
+}
+
+.search-results .search-results-item .result-type {
+  bottom: 10px;
+}
+
 .choicegroup .ubcpi_submit:hover {
   background: #0075ad !important;
 }
