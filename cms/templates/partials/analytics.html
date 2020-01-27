@@ -1,10 +1,11 @@
-% if SHOW_GOOGLE_ANALYTICS:
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  % if SHOW_GOOGLE_ANALYTICS:
 
     ga('create', '${GOOGLE_ANALYTICS_APP_ID}', 'auto');
     %if USER_EMAIL_HASH:
@@ -12,9 +13,64 @@
       ga('set', 'dimension1', '${USER_EMAIL_HASH }');
     %endif
     ga('send', 'pageview');
-  </script>
-  <!-- End Google Analytics -->
-% endif
+
+  % endif
+</script>
+<!-- End Google Analytics -->
+
+<!-- Add new Analytics system. Note: for now we'll be duplicating analytics while we're testing the new Analytics organisation. Once we're satisfied with how it works, we'll remove the old one and keep just the new one. -->
+<!--
+  usedId: we keep a consistent userId in Analytics in order to keep tracking a single user properly
+  Dimension1: Organisation
+  Dimension2: LMS Visitor type
+  Dimension3: Visited course name
+  Dimension4: LMS or Studio
+-->
+
+<%
+  if user.is_authenticated():
+    userType = 'Staff'
+    userOrganization = request.user.organizations.first().name
+  else:
+    userType = 'Not authenticated'
+    userOrganization = 'Not authenticated'
+  endif
+  if context_course:
+    courseName = "%s | %s" % (context_course.display_number_with_default, context_course.display_name_with_default)
+  else:
+    courseName = 'Not in course'
+  endif
+
+  appsemblerStudioTrackingCode = 'UA-18398802-26'
+%>
+
+<script>
+  % if appsemblerStudioTrackingCode:
+    ga('create', '${appsemblerStudioTrackingCode}', 'auto', 'appsemblerStudioTracker');
+    ga('appsemblerStudioTracker.send', 'pageview', {
+      %if USER_EMAIL_HASH:
+        'userId': '${USER_EMAIL_HASH}',
+      %endif
+      'dimension1': '${userOrganization}',
+      'dimension2': '${userType}',
+      'dimension3': '${courseName}',
+      'dimension4': 'Studio'
+    });
+  % endif
+</script>
+<!-- /new analytics -->
+
+<!-- add tracking of xBlock usage -->
+<script>
+  function triggerXBlockAnalytics(label) {
+    ga('appsemblerStudioTracker.send', 'event', {
+      eventCategory: 'Studio xBlock added',
+      eventAction: 'click',
+      eventLabel: label
+    })
+  }
+</script>
+<!-- /add tracking of xBlock usage -->
 
 % if SHOW_MIXPANEL:
   <!-- Mixpanel -->

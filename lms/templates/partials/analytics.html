@@ -1,20 +1,71 @@
-% if SHOW_GOOGLE_ANALYTICS:
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<%namespace file='/theme-variables.html' import="get_global_settings" />
+<%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 
-    ga('create', '${GOOGLE_ANALYTICS_APP_ID}', 'auto');
-    %if USER_EMAIL_HASH:
-      ga('set', 'userId', '${USER_EMAIL_HASH}');
-      ga('set', 'dimension1', '${USER_EMAIL_HASH }');
-    %endif
-    ga('send', 'pageview');
-  </script>
-  <!-- End Google Analytics -->
+% if SHOW_GOOGLE_ANALYTICS:
+
 % endif
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '${GOOGLE_ANALYTICS_APP_ID}', 'auto');
+  %if USER_EMAIL_HASH:
+    ga('set', 'userId', '${USER_EMAIL_HASH}');
+    ga('set', 'dimension1', '${USER_EMAIL_HASH }');
+  %endif
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+<!-- Add new Analytics system. Note: for now we'll be duplicating analytics while we're testing the new Analytics organisation. Once we're satisfied with how it works, we'll remove the old one and keep just the new one. -->
+<!--
+  usedId: we keep a consistent userId in Analytics in order to keep tracking a single user properly
+  Dimension1: Organisation
+  Dimension2: LMS Visitor type
+  Dimension3: Visited course name
+  Dimension4: LMS or Studio
+-->
+
+<%
+  siteOrganization = get_value('course_org_filter');
+  if user.is_authenticated():
+    if show_intercom_widget:
+      userType = 'Staff'
+    else:
+      userType = 'Learner'
+    endif
+  else:
+    userType = 'Not authenticated'
+  endif
+  if course:
+    courseName = "%s | %s" % (course.display_number_with_default, course.display_name_with_default)
+  else:
+    courseName = 'Not in course'
+  endif
+
+  appsemblerLmsTrackingCode = get_global_settings().get('appsembler_lms_tracking_code')
+%>
+
+<script>
+  % if get_global_settings().get('appsembler_lms_tracking_code'):
+    ga('create', '${appsemblerLmsTrackingCode}', 'auto', 'appsemblerLmsTracker');
+    ga('appsemblerLmsTracker.send', 'pageview', {
+      %if USER_EMAIL_HASH:
+        'userId': '${USER_EMAIL_HASH}',
+      %endif
+      'dimension1': '${siteOrganization}',
+      'dimension2': '${userType}',
+      'dimension3': '${courseName}',
+      'dimension4': 'LMS'
+    });
+  % endif
+</script>
+<!-- /new analytics -->
+
 
 % if SHOW_MIXPANEL:
   <!-- Mixpanel -->
