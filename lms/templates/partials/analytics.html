@@ -76,7 +76,7 @@
           'userId': '${USER_EMAIL_HASH | n, js_escaped_string}',
         %endif
         'dimension1': '${siteOrganization | n, js_escaped_string}',
-        'dimension2': '${userType}',
+        'dimension2': '${userType | n, js_escaped_string}',
         'dimension3': '${courseName}',
         'dimension4': 'LMS'
       });
