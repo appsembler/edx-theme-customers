@@ -75,7 +75,7 @@
         %if USER_EMAIL_HASH:
           'userId': '${USER_EMAIL_HASH | n, js_escaped_string}',
         %endif
-        'dimension1': '${siteOrganization}',
+        'dimension1': '${siteOrganization | n, js_escaped_string}',
         'dimension2': '${userType}',
         'dimension3': '${courseName}',
         'dimension4': 'LMS'
