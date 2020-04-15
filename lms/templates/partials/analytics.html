@@ -73,7 +73,7 @@
       ga('create', '${appsemblerLmsTrackingCode | n, js_escaped_string}', 'auto', 'appsemblerLmsTracker');
       ga('appsemblerLmsTracker.send', 'pageview', {
         %if USER_EMAIL_HASH:
-          'userId': '${USER_EMAIL_HASH}',
+          'userId': '${USER_EMAIL_HASH | n, js_escaped_string}',
         %endif
         'dimension1': '${siteOrganization}',
         'dimension2': '${userType}',
