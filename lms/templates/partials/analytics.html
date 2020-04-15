@@ -70,7 +70,7 @@
 
   <script>
     % if get_global_settings().get('appsembler_lms_tracking_code'):
-      ga('create', '${appsemblerLmsTrackingCode}', 'auto', 'appsemblerLmsTracker');
+      ga('create', '${appsemblerLmsTrackingCode | n, js_escaped_string}', 'auto', 'appsemblerLmsTracker');
       ga('appsemblerLmsTracker.send', 'pageview', {
         %if USER_EMAIL_HASH:
           'userId': '${USER_EMAIL_HASH}',
