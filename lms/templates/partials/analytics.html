@@ -25,7 +25,7 @@
   %>
   <script>
     dataLayer = [{
-      'visitorType': '${userType}',
+      'visitorType': '${userType | n, js_escaped_string}',
       'courseName': '${courseName}'
     }];
   </script>
