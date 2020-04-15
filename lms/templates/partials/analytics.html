@@ -49,7 +49,7 @@
 
     ga('create', '${GOOGLE_ANALYTICS_APP_ID | n, js_escaped_string}', 'auto');
     %if USER_EMAIL_HASH:
-      ga('set', 'userId', '${USER_EMAIL_HASH}');
+      ga('set', 'userId', '${USER_EMAIL_HASH | n, js_escaped_string}');
       ga('set', 'dimension1', '${USER_EMAIL_HASH }');
     %endif
     ga('send', 'pageview');
