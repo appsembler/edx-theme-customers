@@ -1,5 +1,6 @@
 <%namespace file='/theme-variables.html' import="get_global_settings" />
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
+<%! from openedx.core.djangolib.js_utils import js_escaped_string %>
 
 <%
   siteOrganization = get_value('course_org_filter');
