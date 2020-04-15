@@ -1,4 +1,15 @@
+<%namespace file='/theme-variables.html' import="get_global_settings" />
 <%!
   from hijack.templatetags.hijack_tags import _render_hijack_notification
 %>
 ${_render_hijack_notification((request))}
+
+% if (get_global_settings().get('customer_gtm_enabled') and get_global_settings().get('customer_gtm_id')):
+  <%
+    customerGtmId = get_global_settings().get('customer_gtm_id')
+  %>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${customerGtmId}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+% endif
