@@ -47,7 +47,7 @@
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', '${GOOGLE_ANALYTICS_APP_ID}', 'auto');
+    ga('create', '${GOOGLE_ANALYTICS_APP_ID | n, js_escaped_string}', 'auto');
     %if USER_EMAIL_HASH:
       ga('set', 'userId', '${USER_EMAIL_HASH}');
       ga('set', 'dimension1', '${USER_EMAIL_HASH }');
