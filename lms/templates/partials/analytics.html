@@ -77,7 +77,7 @@
         %endif
         'dimension1': '${siteOrganization | n, js_escaped_string}',
         'dimension2': '${userType | n, js_escaped_string}',
-        'dimension3': '${courseName}',
+        'dimension3': '${courseName | n, js_escaped_string}',
         'dimension4': 'LMS'
       });
     % endif
