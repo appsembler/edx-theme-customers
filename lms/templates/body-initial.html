@@ -5,7 +5,7 @@
 %>
 ${_render_hijack_notification((request))}
 
-% if (get_global_settings().get('customer_gtm_enabled') and get_global_settings().get('customer_gtm_id')):
+% if (get_global_settings().get('customer_gtm_id') != ""):
   <%
     customerGtmId = get_global_settings().get('customer_gtm_id')
   %>
