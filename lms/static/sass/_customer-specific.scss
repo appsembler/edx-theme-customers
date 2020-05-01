@@ -1,5 +1,6 @@
 @import "certificates/certificates-base";
 @import "certificates/certificate-template-01";
+@import "specific/site-unavailable";
 
 // hide Linked Accounts option
 @if $hide-linked-accounts-tab != "False" {

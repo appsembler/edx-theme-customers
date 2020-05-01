@@ -1,0 +1,47 @@
+.a--site-message {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+
+    .header-logo {
+      height: $header-logo-height;
+      width: auto;
+      display: block;
+    }
+  }
+
+  &__content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+    width: 92rem;
+    max-width: 90%;
+    text-align: center;
+    padding-bottom: 5rem;
+
+    h1 {
+      font-size: 6.4rem;
+      font-weight: bold;
+      color: $brand-primary-color;
+      margin: 0 0 3rem;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    svg {
+      fill: $brand-primary-color;
+      max-width: 48rem;
+      width: 80%;
+      margin-bottom: 5rem;
+    }
+  }
+}
