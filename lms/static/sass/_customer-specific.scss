@@ -65,3 +65,56 @@
 .course-outline .block-tree .outline-item .section-name h3 {
   font-size: 20px !important;
 }
+
+// Tahoe-style certificates
+
+body.certificate {
+  .wrapper-banner-user {
+    margin-top: 0;
+  }
+  .header-app {
+    .header-app-title .logo {
+      max-width: 500px;
+    }
+  }
+  .linkedin-hint-link {
+      color: #fff;
+      font-weight: bold;
+    }
+
+  #linkedin-hint {
+    dt:not(:first-of-type){margin-top:0}
+  }
+}
+
+
+
+.a--accomplishment-design-01 {
+  &__platform-info {
+    background-color: #fff;
+    &__additional-course-info ul {
+        list-style: none;
+        margin-left: 4em;
+    }
+  }
+  &__main {
+    &__content {
+      .main-header {
+        .course-info {
+          color: $brand-primary-color;
+          @include primary-font-light;
+          font-size: 8.5em;
+          font-weight: bolder;
+          line-height: 100%;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+      &__optional-cert-text  {
+        address {
+          font-size: 3.25em !important;
+        }
+      }
+    }
+  }
+}

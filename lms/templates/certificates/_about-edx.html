@@ -1,0 +1,15 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace file='/theme-variables.html' import="get_certificates_settings" />
+<%
+cert_settings = get_certificates_settings(context)
+%>
+<section class="about-item about-edx">
+    <h2 class="about-edx-title hd-4">About New York Institute of Finance</h2><!-- don't want microsite name here -->
+
+    <div class="about-edx-copy copy copy-meta">
+        <p>${cert_settings['footer_about_platform_text']}</p>
+        % if (cert_settings['footer_about_platform_url'] != "#") and (cert_settings['footer_about_platform_url'] != ""):
+          <a class="action" href="${cert_settings['footer_about_platform_url']}">${company_about_urltext}</a>
+        % endif
+    </div>
+</section>
