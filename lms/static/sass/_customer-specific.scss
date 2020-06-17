@@ -1,3 +1,5 @@
+@import "certificates/certificates-base";
+@import "certificates/certificate-template-01";
 @import "customer-specific/psu-hero-01";
 
 // Courseware
@@ -77,42 +79,46 @@ body.certificate {
       max-width: 500px;
     }
   }
-  .linkedin-hint-link {
-      color: #fff;
-      font-weight: bold;
-    }
-
-  #linkedin-hint {
-    dt:not(:first-of-type){margin-top:0}
-  }
 }
-
-
 
 .a--accomplishment-design-01 {
   &__platform-info {
-    background-color: #fff;
-    &__additional-course-info ul {
-        list-style: none;
-        margin-left: 4em;
-    }
+
   }
   &__main {
     &__content {
+      .student-name {
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .vertical-divider-bar {
+        background-color: rgb(152,182,212);
+      }
       .main-header {
         .course-info {
           color: $brand-primary-color;
           @include primary-font-light;
-          font-size: 8.5em;
-          font-weight: bolder;
+          font-weight: 600;
           line-height: 100%;
           margin-top: 0;
           margin-bottom: 0;
+          text-transform: uppercase;
         }
       }
       &__optional-cert-text  {
-        address {
-          font-size: 3.25em !important;
+       
+      }
+    }
+  }
+}
+
+@media print {
+
+  .a--accomplishment-design-01 {
+    &__main {
+      &__content {
+        p {
+          font-size: 11pt;
         }
       }
     }

@@ -1,15 +1,40 @@
 ## mako
+<%! import urllib %>
 <%! from django.core.urlresolvers import reverse %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
-<%! from datetime import datetime %>
+<%! from django.utils.encoding import force_text %>
+<%! from django.utils import translation %>
+<%! from django.utils.translation import ugettext, ugettext_lazy as _ %>
+<%! from django.utils.functional import Promise %>
+<%! from django.utils import six %>
+<%! from django.utils.functional import lazy %>
+<%! from datetime import date %>
 
 
 
 <%!
-  theme_name = "eucalyptus-theme-codebase"
+  theme_name = "edx-theme-codebase"
+
+  def _translate(translations_object, default=''):
+    current_language = translation.get_language()
+    fallback_language = get_value('LANGUAGE_CODE', 'en')
+
+    if not translations_object:
+      return default
+
+    if isinstance(translations_object, (basestring, Promise)):
+      translations_object = {fallback_language: translations_object}
+
+    default_text = default if default else force_text(translations_object.get(fallback_language, ''))
+    return force_text(translations_object.get(current_language, '')) or default_text
 %>
+
+
+<%def name="translate(translations_object, default='')"><%
+    return _translate(translations_object, default)
+%></%def>
 
 
 
@@ -556,51 +581,30 @@
 
 ## certs settings
 
-<%def name="get_certificate_logos()">
-  <%
-  # allow SiteConfiguration to override as little of the defaults as desired
-  cert_logos_defaults = {
-    'primary': {
-      'name': get_value('PLATFORM_NAME', settings.PLATFORM_NAME),
-      'link_url': get_value('logo_url', '#'),
-      'image_url': get_value('logo_positive', get_brand_logos()['logo_positive']),
-      'image_width': '',
-      'show_textual_name': False,  # whether or not to display name below logo image.
-    },
-    # secondary: no default defined
-    'secondary': {},
-  }
-
-  certificate_logos_config = get_value('certificates', {}).get('cert_logos', {})
-  cert_logos = cert_logos_defaults
-  cert_logos['primary'].update(certificate_logos_config.get('primary', {}))
-  cert_logos['secondary'].update(certificate_logos_config.get('secondary', {}))
-
-  return [cert_logos['primary'], cert_logos['secondary']]
-  %>
-</%def>
-
 <%def name="get_certificates_settings(course_context={})">
   <%
-  cert_logos = get_certificate_logos()
   cert_settings = {
     'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
-    'header_logo': get_value('certificates', {}).get('header_logo', get_brand_logos()['logo_positive']),
-    'header_logo_width': get_value('certificates', {}).get('header_logo_width', ''),
-    'cert_logos': cert_logos,
-    'platform_name': get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
-    'certificate_banner_text': get_value('certificates', {}).get('certificate_banner_text', course_context.get('document_banner', '')),
-    'header_text': get_value('certificates', {}).get('header_text', 'Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.'),
-    'short_platform_description': get_value('certificates', {}).get('short_platform_description', ''),
-    'we_hereby_text': get_value('certificates', {}).get('we_hereby_text', 'This certificate is awarded to'),
-    'successfully_completed_text': get_value('certificates', {}).get('successfully_completed_text', "for the successful completion of the course"),
-    'optional_cert_text': get_value('certificates', {}).get('optional_cert_text', ''),
-    'footer_about_platform_text': get_value('certificates', {}).get('footer_about_platform_text', ''),
+    'header_logo': get_value('certificates', {}).get('header_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
+    'header_logo_width': get_value('certificates', {}).get('header_logo_width', '240px'),
+    'cert_logo': get_value('certificates', {}).get('cert_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
+    'logo_width': get_value('certificates', {}).get('cert_logo_width', '160px'),
+    'platform_name': translate(get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', '')), default=_('Platform Name')),
+    'header_text': translate(get_value('certificates', {}).get('header_text', ''), default=_('Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
+    'short_platform_description': translate(get_value('certificates', {}).get('short_platform_description', 'Penn State Extension short description')),
+    'we_hereby_text': translate(get_value('certificates', {}).get('we_hereby_text', ''), default=_('We hereby certify that:')),
+    'successfully_completed_text': translate(get_value('certificates', {}).get('successfully_completed_text', ''), default=_('successfully completed, received a passing grade, and was awarded this platform\'s Honor Code Certificate of Completion in:')),
+    'optional_cert_text': translate(get_value('certificates', {}).get('optional_cert_text', '')),
+    'footer_about_platform_text': translate(get_value('certificates', {}).get('footer_about_platform_text'), default=_('About Penn State Extension text')),
     'footer_about_platform_url': get_value('certificates', {}).get('footer_about_platform_url', '#'),
-    'footer_about_accomplishments_text': get_value('certificates', {}).get('footer_about_accomplishments_text', ""),
-    'footer_copyright_text': get_value('certificates', {}).get('footer_copyright_text', ""),
+    'footer_about_accomplishments_text': translate(get_value('certificates', {}).get('footer_about_accomplishments_text'), default=_('Our platform acknowledges achievements through certificates, which are awarded for course activities that our platform students complete.')),
+    'footer_copyright_text': translate(get_value('certificates', {}).get('footer_copyright_text', "")),
     'footer_tos_url': get_value('certificates', {}).get('footer_tos_url', "#"),
     'footer_privacy_url': get_value('certificates', {}).get('footer_privacy_url', "#"),
+    'accomplishment_icon': static('images/branding/icon-color.svg'),
+    'accomplishment_icon_width': get_value('certificates', {}).get('cert_accomplishment_icon_width', '60px'),
+    'certificate_custom_org_name': translate(get_value('certificates', {}).get('certificate_custom_org_name', "")),
+    'certificate_show_url': get_value('certificates', {}).get('certificate_show_url', True),
   }
 
   # Support override per-course via cert_html_view_overrides Advanced Setting.
