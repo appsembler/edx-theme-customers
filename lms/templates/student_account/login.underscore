@@ -1,13 +1,9 @@
 <div class="js-form-feedback" aria-live="assertive" tabindex="-1">
 </div>
 
-<form id="login" class="login-form" tabindex="-1" method="POST">
+<h2><%- gettext("Sign In") %></h2>
 
-    <div class="section-title lines">
-        <h2>
-            <span class="text"><%- gettext("Sign in") %></span>
-        </h2>
-    </div>
+<form id="login" class="login-form" tabindex="-1" method="POST">
 
     <p class="sr">
         <% if ( context.providers.length > 0 && !context.currentProvider || context.hasSecondaryProviders ) { %>
@@ -25,9 +21,9 @@
     <% if ( context.providers.length > 0 && !context.currentProvider || context.hasSecondaryProviders ) { %>
     <div class="login-providers">
         <div class="section-title lines">
-            <h2>
+            <h3>
                 <span class="text"><%- gettext("or sign in with") %></span>
-            </h2>
+            </h3>
         </div>
 
         <% _.each( context.providers, function( provider ) {
