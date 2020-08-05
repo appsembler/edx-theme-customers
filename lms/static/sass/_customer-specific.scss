@@ -1,3 +1,5 @@
+@import "certificates/certificates-base";
+@import "certificates/certificate-template-01";
 @import "customer-specific/psu-hero-01";
 
 // Courseware
@@ -64,4 +66,64 @@
 
 .course-outline .block-tree .outline-item .section-name h3 {
   font-size: 20px !important;
+}
+
+// Tahoe-style certificates
+
+body.certificate {
+  .wrapper-banner-user {
+    margin-top: 0;
+  }
+  .header-app {
+    .header-app-title .logo {
+      max-width: 500px;
+    }
+  }
+}
+
+.a--accomplishment-design-01 {
+  &__platform-info {
+
+  }
+  &__main {
+    
+    align-items: inherit;
+
+    &__content {
+      .student-name {
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .vertical-divider-bar {
+        background-color: rgb(152,182,212);
+      }
+      .main-header {
+        .course-info {
+          color: $brand-primary-color;
+          @include primary-font-light;
+          font-weight: 600;
+          line-height: 100%;
+          margin-top: 0;
+          margin-bottom: 0;
+          text-transform: uppercase;
+        }
+      }
+      &__optional-cert-text  {
+       
+      }
+    }
+  }
+}
+
+@media print {
+
+  .a--accomplishment-design-01 {
+    &__main {
+      &__content {
+        p {
+          font-size: 11pt;
+        }
+      }
+    }
+  }
 }

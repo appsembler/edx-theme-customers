@@ -1,5 +1,7 @@
 <%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_global_settings" />
 <%! from django.utils.translation import ugettext as _ %>
+<%! from openedx.core.djangoapps.site_configuration.helpers import get_value %>
 
 <%
 # set doc language direction
@@ -8,8 +10,15 @@ dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
 course_mode_class = course_mode if course_mode else ''
 %>
 
+<%
+style_overrides_file = get_value('css_overrides_file')
+if style_overrides_file:
+  style_overrides_file = 'customer_themes/' + style_overrides_file
+endif
+%>
+
 <!DOCTYPE html>
-<html class="no-js" lang="en" style="font-size: 1rem">
+<html class="certs-page no-js" lang="en">
 <head dir="${dir_rtl}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -18,35 +27,26 @@ course_mode_class = course_mode if course_mode else ''
     <title>${document_title}</title>
 
     <%static:css group='style-certificates'/>
-    <style type="text/css">
-        .psu--certificates__certificate .btn:hover
-         {
-            color: #fff !important;
-            border-color: #fff !important;
-        }
-    </style>
-    <style type="text/css" media="print">
-        @page {
-           size: A4 portrait;
-        }
-        .accomplishment-signatories .signatory {
-            width: 25% !important;
-            padding: 0 1em;
-        }
-    </style>
 
-
+    % if style_overrides_file:
+      <link rel="stylesheet" type="text/css" href="${static.url(style_overrides_file)}" />
+    % else:
+      <link rel="stylesheet" type="text/css" href="${static.url('css/main.css')}">
+    % endif
+    <link href="${get_global_settings()['fonts_url']}" rel="stylesheet" />
 </head>
 
-<body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} psu--certificates__certificate certificate-${course_mode_class}" data-view="valid-accomplishment">
+<body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} certificate certificate-${course_mode_class}" data-view="valid-accomplishment">
 
     <div class="wrapper-view" dir="${dir_rtl}">
-
 
         <hr class="divider sr-only">
 
         ${self.body()}
 
+        <hr class="divider sr-only">
+
+        <%include file="/certificates/_accomplishment-footer.html" />
     </div>
 
     <%include file="/certificates/_assets-secondary.html" />
