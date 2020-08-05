@@ -35,13 +35,6 @@ cert_org_name = get_certificates_settings().get('certificate_custom_org_name') i
         <div class="a--accomplishment-design-01__main">
           <div class="a--accomplishment-design-01__main__content">
             <div class="main-header">
-              <span class="accomplishment-type-symbol" style="width: ${cert_settings['accomplishment_icon_width']};">
-                % if (get_certificates_settings()['accomplishment_icon'] != ''):
-                  <img class="src" src="${cert_settings['accomplishment_icon']}" alt="" />
-                % else:
-                  <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="" />
-                % endif
-              </span>
               <h3 class="course-info">
                 ${cert_org_name} | ${course_number} ${_('Certificate')}
               </h3>

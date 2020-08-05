@@ -4,7 +4,8 @@
 cert_settings = get_certificates_settings(context)
 %>
 <section class="about-item about-edx">
-    <h2 class="about-edx-title hd-4">${company_about_title}</h2>
+    ## always this about title regardless of which school/org offered course
+    <h2 class="about-edx-title hd-4">About Penn State Extension</h2>
 
     <div class="about-edx-copy copy copy-meta">
         <p>${cert_settings['footer_about_platform_text']}</p>

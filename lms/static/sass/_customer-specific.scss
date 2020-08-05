@@ -86,6 +86,9 @@ body.certificate {
 
   }
   &__main {
+    
+    align-items: inherit;
+
     &__content {
       .student-name {
         text-transform: uppercase;
