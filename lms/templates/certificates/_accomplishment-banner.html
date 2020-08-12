@@ -44,7 +44,7 @@ from django.template.defaultfilters import escapejs
         <div class="message message-block message-notice">
             <h2 class="message-title hd-5 emphasized">${accomplishment_banner_opening | h}</h2>
             <div class="wrapper-copy-and-actions">
-                <p class="message-copy copy copy-base emphasized">${get_certificates_settings()['header_text']}</p>
+                <p class="message-copy copy copy-base emphasized">${cert_settings['header_text']}</p>
                 <div class="message-actions">
                     <h3 class="sr-only">${_("Print or share your certificate:")}</h3>
                     % if facebook_share_enabled:
