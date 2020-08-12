@@ -3,19 +3,21 @@
 <%namespace file='/theme-variables.html' import="get_certificates_settings" />
 <%
 course_mode_class = course_mode if course_mode else ''
+
+cert_settings = get_certificates_settings(context)
+
 cert_org_name = get_certificates_settings().get('certificate_custom_org_name') if (get_certificates_settings().get('certificate_custom_org_name') != "") else accomplishment_copy_course_org
 %>
 
 <main class="a--accomplishment--wrapper a--accomplishment--main">
   <div class="bs-container a--container">
-    <div class="a--accomplishment__body-wrapper a--accomplishment-design-01__body-wrapper ${get_certificates_settings()['paper_orientation']} paper-eu-a4">
+    <div class="a--accomplishment__body-wrapper a--accomplishment-design-01__body-wrapper ${cert_settings['paper_orientation']} paper-eu-a4">
       <div class="a--accomplishment__body a--accomplishment-design-01__body">
         <div class="a--accomplishment-design-01__platform-info">
           <div class="a--accomplishment-design-01__platform-info__main">
-            <img class="organisation-logo" src="${get_certificates_settings()['cert_logo']}" role="presentation" style="width: ${get_certificates_settings()['logo_width']};" />
-            <span class="platform-name">${get_certificates_settings()['platform_name']}</span>
+            <img class="organisation-logo" src="${cert_settings['cert_logo']}" role="presentation" style="width: ${cert_settings['logo_width']};" />
             <p>
-              ${get_certificates_settings()['short_platform_description']}
+              ${cert_settings['short_platform_description']}
             </p>
           </div>
           <div class="a--accomplishment-design-01__platform-info__signatures">
@@ -34,28 +36,28 @@ cert_org_name = get_certificates_settings().get('certificate_custom_org_name') i
         <div class="a--accomplishment-design-01__main">
           <div class="a--accomplishment-design-01__main__content">
             <div class="main-header">
-              <span class="accomplishment-type-symbol" style="width: ${get_certificates_settings()['accomplishment_icon_width']};">
+              <span class="accomplishment-type-symbol" style="width: ${cert_settings['accomplishment_icon_width']};">
                 % if (get_certificates_settings()['accomplishment_icon'] != ''):
-                  <img class="src" src="${get_certificates_settings()['accomplishment_icon']}" alt="" />
+                  <img class="src" src="${cert_settings['accomplishment_icon']}" alt="" />
                 % else:
                   <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="" />
                 % endif
               </span>
               <h3 class="course-info">
-                ${cert_org_name} | ${course_number} ${_('Certificate')} | ${get_certificates_settings()['platform_name']}
+                ${cert_org_name} | ${course_number} ${_('Certificate')} | ${cert_settings['platform_name']}
               </h3>
             </div>
             <span class="vertical-divider-bar"></span>
             <p>
-              ${get_certificates_settings()['we_hereby_text']}
+              ${cert_settings['we_hereby_text']}
             </p>
             <h1 class="student-name">${accomplishment_copy_name | h}</h1>
             <p>
-              ${get_certificates_settings()['successfully_completed_text']}
+              ${cert_settings['successfully_completed_text']}
             </p>
             <h2 class="course-name-main"><span class="course-organization">${cert_org_name}</span> | <span class="course-number">${course_number}</span>: <span class="course-name">${accomplishment_copy_course_name}</span></h2>
             <p>
-              ${get_certificates_settings()['optional_cert_text']}
+              ${cert_settings['optional_cert_text']}
             </p>
           </div>
         </div>
@@ -69,7 +71,7 @@ cert_org_name = get_certificates_settings().get('certificate_custom_org_name') i
             Date issued: <b>${certificate_date_issued}</b>
           </div>
         </div>
-        % if (get_certificates_settings()['certificate_show_url']):
+        % if cert_settings['certificate_show_url']):
           <div class="info-bottom">
             Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a>
           </div>

@@ -4,6 +4,7 @@ from django.template.defaultfilters import escapejs
 %>
 <%namespace name='static' file='/static_content.html'/>
 <%namespace file='/theme-variables.html' import="get_certificates_settings" />
+<% cert_settings = get_certificates_settings(context) %>
 <%block name="js_extra">
   <%static:js group='certificates_wv'/>
   <script type="text/javascript">
