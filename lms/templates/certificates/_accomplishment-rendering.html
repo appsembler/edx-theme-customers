@@ -6,7 +6,7 @@ course_mode_class = course_mode if course_mode else ''
 
 cert_settings = get_certificates_settings(context)
 
-cert_org_name = get_certificates_settings().get('certificate_custom_org_name') if (get_certificates_settings().get('certificate_custom_org_name') != "") else accomplishment_copy_course_org
+cert_org_name = cert_settings.get('certificate_custom_org_name') if (cert_settings.get('certificate_custom_org_name') != "") else accomplishment_copy_course_org
 %>
 
 <main class="a--accomplishment--wrapper a--accomplishment--main">
