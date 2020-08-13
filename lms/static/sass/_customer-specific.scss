@@ -321,3 +321,19 @@ body.discussion, .xblock-student_view-discussion {
 .complete-checkmark {
   display: none !important;
 }
+
+// Spacing Fixes
+
+.a--course-content__main-content .course-content #seq_content {
+      padding-top: 0px !important;
+}
+
+.a--courseware-wrapper__content .wrap-instructor-info.studio-view {
+      margin: 0;
+      padding: 10px;
+      border-bottom: none;
+}
+
+.a--course-content__main-content h2.unit-title:first-of-type, .a--course-content__main-content .course-content h2.unit-title:first-of-type {
+  margin: 0px ;
+}
