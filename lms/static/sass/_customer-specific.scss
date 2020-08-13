@@ -315,3 +315,9 @@ body.discussion, .xblock-student_view-discussion {
 
 
 // discussions responsiveness fixes
+
+
+// Hide completion green checkmark
+.complete-checkmark {
+  display: none !important;
+}
