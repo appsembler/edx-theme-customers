@@ -337,3 +337,13 @@ body.discussion, .xblock-student_view-discussion {
 .a--course-content__main-content h2.unit-title:first-of-type, .a--course-content__main-content .course-content h2.unit-title:first-of-type {
   margin: 0px ;
 }
+
+// Course updates line height and spacing fixes
+.all-updates .updates-article .article-content {
+  margin-top: 30px !important;
+}
+
+.all-updates .updates-article .article-content p{
+    line-height: 2;
+    width: 70%;
+}
