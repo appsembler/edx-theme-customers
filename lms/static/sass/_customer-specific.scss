@@ -364,3 +364,8 @@ body.discussion, .xblock-student_view-discussion {
   background: transparent !important;
 }
 
+.a--container {
+  @media (min-width: 1440px) {
+    width: 1280px;
+  }
+}
