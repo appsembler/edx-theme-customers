@@ -369,3 +369,7 @@ body.discussion, .xblock-student_view-discussion {
     width: 1280px;
   }
 }
+
+.xmodule_display.xmodule_SequenceModule .sequence-nav-button {
+  min-width: 40px;
+}
