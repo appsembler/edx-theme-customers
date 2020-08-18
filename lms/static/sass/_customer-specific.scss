@@ -373,3 +373,9 @@ body.discussion, .xblock-student_view-discussion {
     min-width: 40px;
   }
 }
+
+#discussion-container {
+  @media (min-width: 1400px){
+    width: 1280 px;
+  }
+}
