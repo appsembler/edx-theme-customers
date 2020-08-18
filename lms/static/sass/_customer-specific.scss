@@ -347,3 +347,18 @@ body.discussion, .xblock-student_view-discussion {
     line-height: 1.5;
     width: 70%;
 }
+
+.response-body p {
+  line-height: 1.3 !important;
+}
+
+.forum-nav {
+  @media (min-width: 768px) {
+    max-width: 320px;
+    width: 29%;
+  }
+}
+
+.forum-nav-thread .forum-nav-thread-link {
+  width: 90% !important;
+}
