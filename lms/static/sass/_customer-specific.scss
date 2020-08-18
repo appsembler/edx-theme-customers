@@ -365,11 +365,11 @@ body.discussion, .xblock-student_view-discussion {
 }
 
 .a--container {
-  @media (min-width: 1440px) {
-    width: 1280px;
-  }
+    width: 90%;
 }
 
 .xmodule_display.xmodule_SequenceModule .sequence-nav-button {
-  min-width: 40px;
+  @media (min-width: 768px){
+    min-width: 40px;
+  }
 }
