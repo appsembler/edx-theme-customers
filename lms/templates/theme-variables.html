@@ -348,15 +348,16 @@
 
 ## certs settings
 
-<%def name="get_certificates_settings()">
+<%def name="get_certificates_settings(course_context={})">
   <%
-  return {
+  cert_settings = {
     'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
     'header_logo': get_value('certificates', {}).get('header_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
     'header_logo_width': get_value('certificates', {}).get('header_logo_width', '240px'),
     'cert_logo': get_value('certificates', {}).get('cert_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
     'logo_width': get_value('certificates', {}).get('cert_logo_width', '160px'),
     'platform_name': translate(get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', '')), default=_('Platform Name')),
+    'certificate_banner_text': translate(get_value('certificates', {}).get('certificate_banner_text', course_context.get('document_banner', ''))),
     'header_text': translate(get_value('certificates', {}).get('header_text', ''), default=_('Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
     'short_platform_description': translate(get_value('certificates', {}).get('short_platform_description', '')),
     'we_hereby_text': translate(get_value('certificates', {}).get('we_hereby_text', ''), default=_('We hereby certify that:')),
@@ -373,5 +374,13 @@
     'certificate_custom_org_name': translate(get_value('certificates', {}).get('certificate_custom_org_name', "")),
     'certificate_show_url': get_value('certificates', {}).get('certificate_show_url', True),
   }
+
+  # Support override per-course via cert_html_view_overrides Advanced Setting.
+  # Note: None of the variables defined in get_certificate_settings and used in our
+  # custom certificate template are the original variables passed in context from
+  # certificates.views.webview.
+  cert_settings.update(course_context)
+
+  return cert_settings
   %>
 </%def>
