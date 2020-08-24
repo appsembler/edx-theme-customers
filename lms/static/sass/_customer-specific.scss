@@ -395,11 +395,19 @@ body.discussion, .xblock-student_view-discussion {
   }
 }
 
-.discussion-body .forum-nav {
+.discussion-body .forum-nav .forum-nav-browse-menu-wrapper, .discussion-thread-list-container .forum-nav-thread-list {
   border: 1px solid #aaa;
 }
 
 .a--courseware-wrapper__content .wrap-instructor-info {
   margin: 3rem 0 -6rem !important;
   border-bottom: none;
+}
+
+.btn-link.forum-nav-load-more-link {
+  border: none;
+}
+
+.forum-nav-load-more {
+  margin: 0;
 }
