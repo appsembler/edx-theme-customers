@@ -318,9 +318,10 @@ body.discussion, .xblock-student_view-discussion {
 
 
 // Hide completion green checkmark
-.complete-checkmark {
+.complete-checkmark, #sequence-list .fa-check-circle {
   display: none !important;
 }
+
 
 // Spacing Fixes
 
