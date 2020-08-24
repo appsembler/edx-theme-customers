@@ -366,7 +366,7 @@ body.discussion, .xblock-student_view-discussion {
 }
 
 .a--container {
-  @media (max-width: 1440px) and (min-width: 1200px) {
+  @media (min-width: 1440px) {
     width: 1280px;
   }
 
