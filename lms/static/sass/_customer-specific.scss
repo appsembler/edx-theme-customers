@@ -365,7 +365,8 @@ body.discussion, .xblock-student_view-discussion {
   background: transparent !important;
 }
 
-.a--container {
+.a--container,
+#discussion-container, .content-wrapper .page-content-container {
   @media (min-width: 1440px) {
     width: 1280px;
   }
@@ -389,11 +390,11 @@ body.discussion, .xblock-student_view-discussion {
   }
 }
 
-#discussion-container {
-  @media (min-width: 1400px){
-    width: 1280 px;
-  }
-}
+// #discussion-container {
+//   @media (min-width: 1400px){
+//     width: 1280 px;
+//   }
+// }
 
 .discussion-body .forum-nav .forum-nav-browse-menu-wrapper, .discussion-thread-list-container .forum-nav-thread-list {
   border: 1px solid #aaa;
