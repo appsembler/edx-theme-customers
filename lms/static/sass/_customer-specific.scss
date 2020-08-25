@@ -352,6 +352,12 @@ body.discussion, .xblock-student_view-discussion {
 .response-body p {
   line-height: 1.3 !important;
 }
+.xblock-student_view.xblock-student_view-vertical {
+  padding-top: 20px;
+}
+.wrap-instructor-info.studio-view {
+  padding-top: 0px;
+}
 
 .forum-nav {
   @media (min-width: 768px) {
