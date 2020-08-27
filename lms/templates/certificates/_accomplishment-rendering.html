@@ -6,7 +6,8 @@ course_mode_class = course_mode if course_mode else ''
 
 cert_settings = get_certificates_settings(context)
 
-cert_org_name = cert_settings.get('certificate_custom_org_name') if (cert_settings.get('certificate_custom_org_name') != "") else accomplishment_copy_course_org
+cert_org_name_base = cert_settings.get('certificate_custom_org_name') if (cert_settings.get('certificate_custom_org_name') != "") else accomplishment_copy_course_org
+cert_org_name = accomplishment_copy_course_org if (context.get('partner_short_name_overridden', False)) else cert_org_name_base
 %>
 
 <main class="a--accomplishment--wrapper a--accomplishment--main">
@@ -44,7 +45,7 @@ cert_org_name = cert_settings.get('certificate_custom_org_name') if (cert_settin
                 % endif
               </span>
               <h3 class="course-info">
-                ${cert_org_name} | ${course_number} ${_('Certificate')} | ${cert_settings['platform_name']}
+                ${cert_org_name} | ${course_number} ${_('Certificate')} | ${cert_settings['platform_name_amc']}
               </h3>
             </div>
             <span class="vertical-divider-bar"></span>
