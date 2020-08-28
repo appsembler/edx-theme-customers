@@ -356,7 +356,7 @@
     'header_logo_width': get_value('certificates', {}).get('header_logo_width', '240px'),
     'cert_logo': get_value('certificates', {}).get('cert_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
     'logo_width': get_value('certificates', {}).get('cert_logo_width', '160px'),
-    'platform_name': translate(get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', '')), default=_('Platform Name')),
+    'platform_name_amc': translate(get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', '')), default=_('Platform Name')),
     'certificate_banner_text': translate(get_value('certificates', {}).get('certificate_banner_text', course_context.get('document_banner', ''))),
     'header_text': translate(get_value('certificates', {}).get('header_text', ''), default=_('Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
     'short_platform_description': translate(get_value('certificates', {}).get('short_platform_description', '')),
