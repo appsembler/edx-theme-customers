@@ -1,0 +1,83 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_certificates_settings" />
+<%
+course_mode_class = course_mode if course_mode else ''
+
+cert_settings = get_certificates_settings(context)
+
+cert_org_name_base = cert_settings.get('certificate_custom_org_name') if (cert_settings.get('certificate_custom_org_name') != "") else accomplishment_copy_course_org
+cert_org_name = accomplishment_copy_course_org if (context.get('partner_short_name_overridden', False)) else cert_org_name_base
+%>
+
+<main class="a--accomplishment--wrapper a--accomplishment--main">
+  <div class="bs-container a--container">
+    <div class="a--accomplishment__body-wrapper a--accomplishment-design-01__body-wrapper ${cert_settings['paper_orientation']} paper-eu-a4">
+      <div class="a--accomplishment__body a--accomplishment-design-01__body">
+        <div class="a--accomplishment-design-01__platform-info">
+          <div class="a--accomplishment-design-01__platform-info__main">
+            <img class="organisation-logo" src="${cert_settings['cert_logo']}" role="presentation" style="width: ${cert_settings['logo_width']};" />
+            <p>
+              ${cert_settings['short_platform_description']}
+            </p>
+          </div>
+          <div class="a--accomplishment-design-01__platform-info__signatures">
+            % if certificate_data:
+                % for signatory in certificate_data.get('signatories', []):
+                  <div class="signature-container">
+                    <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" />
+                    <span class="signee-name">${signatory['name']}</span>
+                    <span class="signee-title">${signatory['title']}</span>
+                    <span class="signee-organisation">${signatory['organization']}</span>
+                  </div>
+                % endfor
+            % endif
+          </div>
+        </div>
+        <div class="a--accomplishment-design-01__main">
+          <div class="a--accomplishment-design-01__main__content">
+            <div class="main-header">
+              <span class="accomplishment-type-symbol" style="width: ${cert_settings['accomplishment_icon_width']};">
+                % if (get_certificates_settings()['accomplishment_icon'] != ''):
+                  <img class="src" src="${cert_settings['accomplishment_icon']}" alt="" />
+                % else:
+                  <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="" />
+                % endif
+              </span>
+              <h3 class="course-info">
+                ${cert_org_name} | ${course_number} ${_('Certificate')} | ${cert_settings['platform_name_amc']}
+              </h3>
+            </div>
+            <span class="vertical-divider-bar"></span>
+            <p>
+              ${cert_settings['we_hereby_text']}
+            </p>
+            <h1 class="student-name">${accomplishment_copy_name | h}</h1>
+            <p>
+              ${cert_settings['successfully_completed_text']}
+            </p>
+            <h2 class="course-name-main"><span class="course-organization">${cert_org_name}</span> | <span class="course-number">${course_number}</span>: <span class="course-name">${accomplishment_copy_course_name}</span></h2>
+            <p>
+              ${cert_settings['optional_cert_text']}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="a--accomplishment-design-01__certificate-info-print-only">
+        <div class="info-upper">
+          <div class="info-left">
+            Certificate ID number: <b>${certificate_id_number}</b>
+          </div>
+          <div class="info-right">
+            Date issued: <b>${certificate_date_issued}</b>
+          </div>
+        </div>
+        % if cert_settings['certificate_show_url']:
+          <div class="info-bottom">
+            Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a>
+          </div>
+        % endif
+      </div>
+    </div>
+  </div>
+</main>
