@@ -6,8 +6,16 @@ course_mode_class = course_mode if course_mode else ''
 
 cert_settings = get_certificates_settings(context)
 
-cert_org_name_base = cert_settings.get('certificate_custom_org_name') if (cert_settings.get('certificate_custom_org_name') != "") else accomplishment_copy_course_org
-cert_org_name = accomplishment_copy_course_org if (context.get('partner_short_name_overridden', False)) else cert_org_name_base
+if partner_short_name_overridden:
+  # Use the course.display_organization if overridden
+  cert_org_name = course_partner_short_name
+else:
+  if cert_settings.get('certificate_custom_org_name'):
+    # Use the SiteConfiguration certificate.certificate_custom_org_name` if configured
+    cert_org_name = cert_settings.get('certificate_custom_org_name')
+  else:
+    # Use the course.org if none is available
+    cert_org_name = accomplishment_copy_course_org
 %>
 
 <main class="a--accomplishment--wrapper a--accomplishment--main">
