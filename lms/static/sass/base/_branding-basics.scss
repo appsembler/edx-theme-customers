@@ -77,7 +77,7 @@ $footer-padding-top: 4rem;
 $footer-padding-bottom: 1.5*$footer-padding-top;
 $footer-bg-color: #eee;
 $footer-top-border: none;
-$footer-text-color: lighten($base-text-color, 15%);
+$footer-text-color: lighten($base-text-color, 5%);
 $footer-link-color: $footer-text-color;
 $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
@@ -86,7 +86,7 @@ $footer-logo-padding-vertical: 1rem;
 $footer-logo-width: 4rem;
 $footer-logo-opacity: 0.5;
 $footer-copyright-text-size: 1.2rem;
-$footer-copyright-text-color: lighten($footer-text-color, 15%);
+$footer-copyright-text-color: $footer-text-color;
 $footer-copyright-breathe-space: 1rem;
 
 
@@ -140,7 +140,7 @@ $login-register-input-border-right: none;
 $login-register-hover-border-color: $brand-accent-color;
 $login-register-textarea-min-height: 10rem;
 $login-register-input-text-size: 1.4rem;
-$login-register-tip-text-color: rgba($base-text-color, 0.7);
+$login-register-tip-text-color: rgba($base-text-color, 1);
 $login-register-tip-top-spacing: 1rem;
 $login-register-field-link-font-size: $login-register-input-text-size;
 $login-register-field-link-color: $brand-primary-color;

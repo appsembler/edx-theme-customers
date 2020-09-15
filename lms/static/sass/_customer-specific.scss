@@ -418,3 +418,36 @@ body.discussion, .xblock-student_view-discussion {
 .forum-nav-load-more {
   margin: 0;
 }
+
+.login-register, .a--plain-content, .wrapper-account-settings {
+
+  a, a:visited, a:not(.btn), a:visited:not(.btn), .btn-link {
+    text-decoration: none;
+    color: #e21481;
+    cursor: pointer;
+    @include transition(all 0.3s ease-in-out);
+  
+    &:hover, &:focus {
+      color: shade(#e21481, 20%);
+      text-decoration: none;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+  
+  p {
+    a, a:visited, a:not(.btn), a:visited:not(.btn), .btn-link {
+      text-decoration: none;
+      color: #e21481;
+      cursor: pointer;
+      @include transition(all 0.3s ease-in-out);
+    
+      &:hover, &:focus {
+        color: shade(#e21481, 20%);
+        text-decoration: none;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
