@@ -33,7 +33,7 @@ else:
             % if certificate_data:
                 % for signatory in certificate_data.get('signatories', []):
                   <div class="signature-container">
-                    <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" />
+                    <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" role="presentation" />
                     <span class="signee-name">${signatory['name']}</span>
                     <span class="signee-title">${signatory['title']}</span>
                     <span class="signee-organisation">${signatory['organization']}</span>
