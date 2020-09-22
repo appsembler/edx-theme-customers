@@ -4,12 +4,12 @@
 <%namespace file='/theme-variables.html' import="translate" />
 <%! from django.utils.translation import ugettext as _ %>
 
-<footer class="a--footer">
+<footer class="a--footer" role="contentinfo">
   <div class="bs-container a--container a--footer__container">
     <div class="a--footer__main-wrapper">
       <div class="a--footer__main">
         <div class="a--footer__logo">
-          <img src="${footer_logo}" alt="${footer_logo_alt_text}"/>
+          <img src="${footer_logo}" role="presentation" />
         </div>
         <div class="a--footer__nav">
           <p class="a--footer__copyright-text">
@@ -40,11 +40,11 @@
           <p>
             Powered by:
           </p>
-          <a href="https://www.appsembler.com" target="_blank" id="footer-appsembler-logo" alt="Appsembler">
-            <img src="${static.url('images/appsembler-logo-positive.svg')}" alt="Appsembler" />
+          <a href="https://www.appsembler.com" target="_blank" id="footer-appsembler-logo">
+            <img src="${static.url('images/appsembler-logo-positive.svg')}" role="presentation" />
           </a>
-          <a href="http://open.edx.org" target="_blank" id="footer-openedx-logo" alt="Open edX">
-            <img src="${static.url('images/openedx-logo.svg')}" alt="Open edX" />
+          <a href="http://open.edx.org" target="_blank" id="footer-openedx-logo">
+            <img src="${static.url('images/openedx-logo.svg')}" role="presentation" />
           </a>
         </div>
       % endif
