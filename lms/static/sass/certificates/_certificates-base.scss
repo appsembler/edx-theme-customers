@@ -1,0 +1,122 @@
+.a--accomplishment {
+
+  &--header-logo {
+    width: auto;
+  }
+
+  &--wrapper {
+    margin-bottom: 2.5rem;
+    width: 100%;
+    font-size: 4px;
+    background-color: #f0f0f0;
+
+    @media (min-width: 900px) and (max-width: 1200px) {
+      font-size: 3px;
+    }
+
+    &>.a--container {
+      @media (max-width: 639px) {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+    }
+  }
+  &__body-wrapper {
+    width: 100%;
+    position: relative;
+    margin: 0 auto;
+
+    @media screen {
+      position: relative;
+      top: -3rem;
+    }
+
+    @media (min-width: 900px) {
+
+      &.landscape {
+
+        &.paper-eu-a4 {
+          width: 297em;
+          height: 210em;
+        }
+
+        &.paper-us-letter {
+          width: 279.4em;
+          height: 215.9em;
+        }
+      }
+
+      &.portrait {
+
+        &.paper-eu-a4 {
+          width: 210em;
+          height: 297em;
+        }
+
+        &.paper-us-letter {
+          width: 215.9em;
+          height: 279.4em;
+        }
+      }
+    }
+  }
+
+  &__body {
+
+  }
+}
+
+@media print {
+
+  .layout-accomplishment {
+    margin: 0 !important;
+    padding: 0;
+  }
+
+  .a--accomplishment {
+
+    &--wrapper {
+      margin: 0;
+      padding: 0;
+
+      .bs-container {
+        padding: 0;
+      }
+    }
+    &__body-wrapper {
+
+      @media (min-width: 900px) {
+
+        &.landscape {
+
+          &.paper-eu-a4 {
+            width: 29.7cm;
+            height: 21cm;
+          }
+
+          &.paper-us-letter {
+            width: 27.94cm;
+            height: 21.59cm;
+          }
+        }
+
+        &.portrait {
+
+          &.paper-eu-a4 {
+            width: 29.7cm;
+            height: 21cm;
+          }
+
+          &.paper-us-letter {
+            width: 27.94cm;
+            height: 21.59cm;
+          }
+        }
+      }
+    }
+
+    &__body {
+
+    }
+  }
+}
