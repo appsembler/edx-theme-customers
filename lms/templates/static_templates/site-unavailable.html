@@ -1,3 +1,4 @@
+## mako
 <%! from django.utils.translation import ugettext as _ %>
 <%inherit file="/main-nohead-nofoot.html" />
 <%namespace name='static' file='/static_content.html'/>
@@ -11,7 +12,7 @@
 <div class="a--site-message">
 
   <section class="a--site-message__header a--container bs-container">
-    <img class="header-logo" src="${get_brand_logos()['logo_positive']}" alt="${_("{platform_name} Page Unavailable").format(platform_name=static.get_platform_name())}">
+    <img class="header-logo" src="${get_brand_logos()['logo_positive']}" alt="${_('{platform_name} Page Unavailable').format(platform_name=static.get_platform_name())}">
   </section>
 
   <section class="a--container bs-container a--site-message__content">
