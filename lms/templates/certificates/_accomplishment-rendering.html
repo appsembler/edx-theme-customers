@@ -25,7 +25,7 @@ cert_org_name = accomplishment_copy_course_org if (context.get('partner_short_na
             % if certificate_data:
                 % for signatory in certificate_data.get('signatories', []):
                   <div class="signature-container">
-                    <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" />
+                    <img class="signee-signature" src="${signatory['signature_image_path']}" alt="Signature | ${signatory['name']}" />
                     <span class="signee-name">${signatory['name']}</span>
                     <span class="signee-title">${signatory['title']}</span>
                     <span class="signee-organisation">${signatory['organization']}</span>
