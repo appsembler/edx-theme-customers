@@ -75,3 +75,27 @@ body.view-settings .group-settings.basic .list-actions {
 
 .amc--notification__actions-right {
   margin-left: auto; }
+
+.a--site-message__content {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  width: 86rem;
+  max-width: 90%;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin: 0 auto; }
+  .a--site-message__content h1 {
+    font-size: 6.4rem;
+    font-weight: bold;
+    color: #0090c1;
+    margin: 0 0 3rem;
+    line-height: 130%; }
+  .a--site-message__content p {
+    font-size: 1.6rem; }
+  .a--site-message__content svg {
+    fill: #0090c1;
+    max-width: 48rem;
+    width: 80%;
+    margin-bottom: 5rem; }
