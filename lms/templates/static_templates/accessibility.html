@@ -13,21 +13,20 @@ from openedx.core.djangolib.markup import HTML, Text
 
 <style>
   p, section, li {
-    line-height: 1.42857;
+    line-height: 1.5;
     font-size: 16px;
   }
   p {
     max-width: 800px;
   }
   .long-text {
-    line-height: 1.75;
     hyphens: auto;
   }
   h2 {
     font-size: 26px;
     color: #000;
     font-weight: 400;
-
+    margin-bottom: 1.3em;
   }
   h3 {
     color: #64647C;
@@ -41,7 +40,7 @@ from openedx.core.djangolib.markup import HTML, Text
     <h1>${_("Accessibility Statement")}</h1>
     <h2>Accessibility statement for Appsembler</h2>
     <p>This accessibility statement applies to the websites at: <a href="https://openedx.open.ac.uk">https://openedx.open.ac.uk</a></p>
-    <p> These websites are run by Appsembler. We want as many people as possible to be able to use this website. For example, that means you should be able to:
+    <p> These websites are run by Appsembler. We want as many people as possible to be able to use these websites. For example, that means you should be able to:
       <li>change colours, contrast levels and fonts</li>
       <li>navigate most of the website using just a keyboard</li>
       <li>navigate most of the website using speech recognition software</li>
@@ -75,6 +74,7 @@ from openedx.core.djangolib.markup import HTML, Text
     <p>This website is partially compliant with the <a href="https://www.w3.org/TR/WCAG21/">Web Content Accessibility Guidelines version 2.1</a> AA standard, due to the non-compliances and exemptions listed below.</p>
     <h2>Non-accessible content</h2>
     <p>The content listed below is non-accessible for the following reasons.</p>
+    <br>
     <h3>Non-compliance with the accessibility regulations</h3>
     <p class="long-text">A visual focus indicator is not always present when navigating the application with a keyboard. This is a failure of WCAG 2.1 success criterion 2.4.7 Focus Visible.
     We plan to add a consistent focus indicator by 1 July, 2021. 
@@ -97,14 +97,15 @@ from openedx.core.djangolib.markup import HTML, Text
     No detailed error suggestions are provided for the ‘email’ field on the Create an account’, ‘Sign in’ and ‘Account Settings’ pages. This is a failure of WCAG 2.1 success criterion 3.3.3 Error Suggestion.
     We plan to ensure that error suggestions are more detailed by 1 July, 2021.
     </p>
+    <br>
     <h3>Disproportionate burden</h3>
-    <p class="long-text">We have assessed the cost of fixing the issues with form elements not being grouped. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made">disproportionate burden</a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round in Q3 2021.
+    <p class="long-text">We have assessed the cost of fixing the issues with form elements not being grouped. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made">disproportionate burden</a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round by the end of June 2021.
  
-    We have assessed the cost of fixing the issues with at 200% text only zoom some text displays over other text or becomes cropped by the boundaries of components. This is a failure of WCAG 2.1 success criterion 1.4.4 Resize Text. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made">disproportionate burden </a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round in Q3 2021.
+    We have assessed the cost of fixing the issues with at 200% text only zoom some text displays over other text or becomes cropped by the boundaries of components. This is a failure of WCAG 2.1 success criterion 1.4.4 Resize Text. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made">disproportionate burden </a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round by the end of June 2021.
 
-    We have assessed the cost of fixing the issues with at 400% zoom at a 1280px viewport two-dimensional scrolling is present. This is a failure of WCAG 2.1 success criterion 1.4.10 Reflow. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made">disproportionate burden </a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round in Q3 2021.
-    We have assessed the cost of fixing the issue with no search or site map being present. This is a failure of WCAG 2.1 success criterion 2.4. Multiple Ways. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made">disproportionate burden </a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round in Q3 2021.
-    We have assessed the cost of fixing the issue with form input fields not utilising autocomplete attributes. This is a failure of WCAG 2.1 success criterion 1.3.5 Identify Input Purpose. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made"> disproportionate burden </a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round in Q3 2021.
+    We have assessed the cost of fixing the issues with at 400% zoom at a 1280px viewport two-dimensional scrolling is present. This is a failure of WCAG 2.1 success criterion 1.4.10 Reflow. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made">disproportionate burden </a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round by the end of June 2021.
+    We have assessed the cost of fixing the issue with no search or site map being present. This is a failure of WCAG 2.1 success criterion 2.4. Multiple Ways. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made">disproportionate burden </a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round by the end of June 2021.
+    We have assessed the cost of fixing the issue with form input fields not utilising autocomplete attributes. This is a failure of WCAG 2.1 success criterion 1.3.5 Identify Input Purpose. We believe that doing so now would be a <a href="https://www.legislation.gov.uk/uksi/2018/952/regulation/7/made"> disproportionate burden </a> within the meaning of the accessibility regulations. We will make another assessment when we have reviewed the budget for our next development round by the end of June 2021.
     </p>
     <h2>Content that’s not within the scope of the accessibility regulations</h2>
     <h3>User create content</h3>
@@ -112,6 +113,6 @@ from openedx.core.djangolib.markup import HTML, Text
     <h2>Preparation of this accessibility statement</h2>
     <p style="margin-bottom: 80px;">This statement was prepared on 21/09/2020. It was last reviewed on 21/09/2020.
     This website was last tested on 18/09/2020. The test was carried out by Zoonou.
-    We used this approach to deciding on a sample of pages to test <a href="https://www.w3.org/TR/WCAG-EM/">WCAG-EM.</a></p>
+    We used the <a href="https://www.w3.org/TR/WCAG-EM/">WCAG-EM.</a>approach when deciding on the sample of pages to test.</p>
   </section>
 </main>
