@@ -109,3 +109,38 @@ body.view-settings {
     margin-left: auto;
   }
 }
+
+
+.a--site-message {
+
+  &__content {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    width: 86rem;
+    max-width: 90%;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 6.4rem;
+      font-weight: bold;
+      color: #0090c1;
+      margin: 0 0 3rem;
+      line-height: 130%;
+    }
+
+    p {
+      font-size: 1.6rem;
+    }
+
+    svg {
+      fill: #0090c1;
+      max-width: 48rem;
+      width: 80%;
+      margin-bottom: 5rem;
+    }
+  }
+}
