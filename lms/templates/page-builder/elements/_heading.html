@@ -1,0 +1,13 @@
+## mako
+<%page args="options" />
+<%namespace file='/theme-variables.html' import="translate" />
+<%! from django.utils import translation %>
+
+<%
+  element_style = ""
+  element_style = element_style + "color: " + options['text-color'] + ";"
+%>
+
+<h2 class="amc--element--heading amc--style-classes ${options['font-size']} ${options['font-family']} ${options['text-alignment']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']}" style="${element_style}">
+  ${translate(options['text-content'])}
+</h2>

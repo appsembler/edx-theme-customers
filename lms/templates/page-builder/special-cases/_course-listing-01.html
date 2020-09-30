@@ -1,0 +1,40 @@
+<%page args="template_settings, courses" />
+
+<%
+  max_courses = template_settings['max_courses']
+  courses = courses
+  course_template = template_settings['course_template']
+  course_template_class = template_settings['course_template_class']
+%>
+
+
+<%
+  course_count = 0
+%>
+
+<section class="a--course-listing-01__wrapper" style="${template_settings['extra_css']}">
+  <div class="bs-container a--container a--course-listing-01__container ${template_settings['optional_classes']}">
+    % if template_settings['section_heading'] or template_settings['section_text']:
+      <div class="a--course-listing-01__header">
+        % if template_settings['section_heading']:
+          <h1 class="a--course-listing-01__section-heading">
+            ${template_settings['section_heading']}
+          </h1>
+        % endif
+        % if template_settings['section_text']:
+          <div class="a--course-listing-01__section-text">
+              ${template_settings['section_text']}
+          </div>
+        % endif
+      </div>
+    % endif
+    <div class="a--course-listing-01__courses courses-listing ${course_template_class}-parent-element">
+      % for course in courses:
+        % if not course_count == max_courses:
+          <%include file="../${course_template}" args="course=course" />
+          <% course_count = course_count + 1 %>
+        % endif
+      % endfor
+    </div>
+  </div>
+</section>

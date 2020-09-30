@@ -1,0 +1,7 @@
+## mako
+<%page args="options" />
+<%namespace file='/theme-variables.html' import="translate" />
+
+<div class="amc--element--content-block amc--style-classes ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']}">
+  ${translate(options['content'])}
+</div>
