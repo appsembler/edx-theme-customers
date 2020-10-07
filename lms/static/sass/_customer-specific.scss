@@ -87,9 +87,3 @@ body.view-instructor_statistics main {
   background: #0075ad !important;
 }
 
-/* slide menu needs to be at a higher z-index not to get covered on student statistics page */
-.uw--header-design-01 {
-  ul.a--slide-menu__container {
-    z-index: 1002;
-  }
-}
