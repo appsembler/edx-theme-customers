@@ -102,7 +102,8 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : '/design-templates/header/_header-appsembler-{}.html', ## required
+    'header_template' : '/design-templates/header/_header-appsembler-{}.html'.format(
+      get_current_site_configuration().page_elements.get('footer', {}).get('type', '01')), ## required
     'footer_template' : '/design-templates/footer/_footer-appsembler-{}.html'.format(
       get_current_site_configuration().page_elements.get('footer', {}).get('type', '01')), ## required
   }
