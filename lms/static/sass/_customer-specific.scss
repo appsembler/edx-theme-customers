@@ -113,6 +113,12 @@ body.certificate {
       }
     }
   }
+  &__certificate-info-print-only {
+    .info-bottom a:hover {
+      color: #fff !important;
+      text-decoration: underline !important;
+    }
+  }
 }
 
 @media print {
