@@ -4,6 +4,7 @@
 <%namespace file='/theme-variables.html' import="get_global_settings" />
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%! from openedx.core.lib.courses import course_image_url %>
 <% site_configuration = get_current_site_configuration() %>
 <% style_overrides_file = get_value('css_overrides_file') %>
 
@@ -33,6 +34,16 @@
       <meta property="${meta_tag['tagProperty']}" content="${meta_tag['tagContent']}" />
     % endif
   % endfor
+% endif
+
+<%
+  og_image_use_course_images = get_global_settings().get('og_image_use_course_images', True);
+  default_og_image = get_global_settings().get('default_og_image', '');
+%>
+% if (og_image_use_course_images and course):
+  <meta name="og:image" content="${course_image_url(course)}" />
+% else:
+  <meta name="og:image" content="${default_og_image}" />
 % endif
 
 <%include file="partials/analytics.html" />
