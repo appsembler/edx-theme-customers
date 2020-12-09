@@ -25,7 +25,7 @@ else:
         <div class="a--accomplishment-design-01__platform-info">
           <div class="a--accomplishment-design-01__platform-info__main">
             <img class="organisation-logo" src="${cert_settings['cert_logo']}" role="presentation" style="width: ${cert_settings['logo_width']};" />
-            <p>
+            <p class="short-platform-description">
               ${cert_settings['short_platform_description']}
             </p>
           </div>
@@ -53,19 +53,19 @@ else:
                 % endif
               </span>
               <h3 class="course-info">
-                ${cert_org_name} <span class="string-vertical-divider">|</span> ${course_number} ${_('Certificate')} <span class="string-vertical-divider">|</span> ${cert_settings['platform_name_amc']}
+                <span class="cert-org-name">${cert_org_name}</span> <span class="string-vertical-divider">|</span> ${course_number} ${_('Certificate')} <span class="string-vertical-divider">|</span> <span class="platform-name">${cert_settings['platform_name_amc']}</span>
               </h3>
             </div>
             <span class="vertical-divider-bar"></span>
-            <p>
+            <p class="we-hereby-text">
               ${cert_settings['we_hereby_text']}
             </p>
             <h1 class="student-name">${accomplishment_copy_name | h}</h1>
-            <p>
+            <p class="successfully-completed-text">
               ${cert_settings['successfully_completed_text']}
             </p>
             <h2 class="course-name-main"><span class="course-organization">${cert_org_name}</span> <span class="string-vertical-divider">|</span> <span class="course-number">${course_number}</span>: <span class="course-name">${accomplishment_copy_course_name}</span></h2>
-            <p>
+            <p class="optional-cert-text">
               ${cert_settings['optional_cert_text']}
             </p>
           </div>
