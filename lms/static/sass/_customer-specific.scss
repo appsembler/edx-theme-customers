@@ -52,6 +52,6 @@
 }
 
 // don't change visited link color for cta's
-.a--cta:visited {
-  color: $cta-button-text-color;  
+a.a--cta:visited {
+  color: $cta-button-text-color !!;
 }
