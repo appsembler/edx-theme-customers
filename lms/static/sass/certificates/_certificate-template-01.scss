@@ -29,7 +29,7 @@
     padding: 5em;
     position: relative;
     z-index: 1;
-    background-color: #F8F8F8;
+    background-color: #FFF;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
     @media (max-width: 900px) {
@@ -263,7 +263,7 @@
 
     &__platform-info {
       width: 30%;
-      background-color: #F8F8F8;
+      background-color: #FFF;
 
       &__main {
         margin: 0.2cm 0.5cm 0.5cm;
