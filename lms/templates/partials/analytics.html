@@ -4,7 +4,7 @@
 
 <%
   siteOrganization = get_value('course_org_filter');
-  if user.is_authenticated():
+  if user.is_authenticated:
     if show_intercom_widget:
       userType = 'Staff'
     else:
