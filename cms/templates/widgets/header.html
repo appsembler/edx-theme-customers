@@ -253,11 +253,11 @@
           ## Appsembler: Disabling signup in Studio
           % if False and static.get_value('ALLOW_PUBLIC_ACCOUNT_CREATION', settings.FEATURES.get('ALLOW_PUBLIC_ACCOUNT_CREATION')):
               <li class="nav-item nav-not-signedin-signup">
-                <a class="action action-signup" href="${reverse('signup')}">${_("Sign Up")}</a>
+                <a class="action action-signup" href="${reverse('register_redirect_to_lms')}">${_("Sign Up")}</a>
               </li>
           % endif
           <li class="nav-item nav-not-signedin-signin">
-            <a class="action action-signin" href="${reverse('login')}">${_("Sign In")}</a>
+            <a class="action action-signin" href="${reverse('login_redirect_to_lms')}">${_("Sign In")}</a>
           </li>
         </ol>
       </nav>
