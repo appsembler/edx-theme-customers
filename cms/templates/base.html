@@ -61,6 +61,7 @@ from openedx.core.release import RELEASE_LINE
     % endif
 
     <script type="text/javascript" src="${static.url(jsi18n_path)}"></script>
+    <%include file="gettext_staticfiles_fixes/patch_missing_gettext_hack.html" />
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="path_prefix" content="${EDX_ROOT_URL}">
 
