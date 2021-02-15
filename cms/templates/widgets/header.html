@@ -6,7 +6,8 @@
   from django.utils.translation import ugettext as _
   from openedx.core.djangoapps.lang_pref.api import header_language_selector_is_enabled, released_languages
   from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
-  from cms.djangoapps.contentstore.config.waffle_utils import should_show_checklists_page
+  # TODO: Matej fix this please
+  # koa: from cms.djangoapps.contentstore.config.waffle_utils import should_show_checklists_page
 %>
 <div class="wrapper-header wrapper" id="view-top">
   <header class="primary" role="banner">
@@ -20,22 +21,22 @@
       <%
             course_key = context_course.id
             current_organization = context_course.org
-            index_url = reverse('course_handler', kwargs={'course_key_string': unicode(course_key)})
-            course_team_url = reverse('course_team_handler', kwargs={'course_key_string': unicode(course_key)})
-            assets_url = reverse('assets_handler', kwargs={'course_key_string': unicode(course_key)})
-            textbooks_url = reverse('textbooks_list_handler', kwargs={'course_key_string': unicode(course_key)})
-            videos_url = reverse('videos_handler', kwargs={'course_key_string': unicode(course_key)})
-            import_url = reverse('import_handler', kwargs={'course_key_string': unicode(course_key)})
-            course_info_url = reverse('course_info_handler', kwargs={'course_key_string': unicode(course_key)})
-            export_url = reverse('export_handler', kwargs={'course_key_string': unicode(course_key)})
-            settings_url = reverse('settings_handler', kwargs={'course_key_string': unicode(course_key)})
-            grading_url = reverse('grading_handler', kwargs={'course_key_string': unicode(course_key)})
-            advanced_settings_url = reverse('advanced_settings_handler', kwargs={'course_key_string': unicode(course_key)})
-            tabs_url = reverse('tabs_handler', kwargs={'course_key_string': unicode(course_key)})
+            index_url = reverse('course_handler', kwargs={'course_key_string': str(course_key)})
+            course_team_url = reverse('course_team_handler', kwargs={'course_key_string': str(course_key)})
+            assets_url = reverse('assets_handler', kwargs={'course_key_string': str(course_key)})
+            textbooks_url = reverse('textbooks_list_handler', kwargs={'course_key_string': str(course_key)})
+            videos_url = reverse('videos_handler', kwargs={'course_key_string': str(course_key)})
+            import_url = reverse('import_handler', kwargs={'course_key_string': str(course_key)})
+            course_info_url = reverse('course_info_handler', kwargs={'course_key_string': str(course_key)})
+            export_url = reverse('export_handler', kwargs={'course_key_string': str(course_key)})
+            settings_url = reverse('settings_handler', kwargs={'course_key_string': str(course_key)})
+            grading_url = reverse('grading_handler', kwargs={'course_key_string': str(course_key)})
+            advanced_settings_url = reverse('advanced_settings_handler', kwargs={'course_key_string': str(course_key)})
+            tabs_url = reverse('tabs_handler', kwargs={'course_key_string': str(course_key)})
             certificates_url = ''
             if configuration_helpers.get_value_for_org(current_organization, "CERTIFICATES_HTML_VIEW", False) and context_course.cert_html_view_enabled:
-                certificates_url = reverse('certificates_list_handler', kwargs={'course_key_string': unicode(course_key)})
-            checklists_url = reverse('checklists_handler', kwargs={'course_key_string': unicode(course_key)})
+                certificates_url = reverse('certificates_list_handler', kwargs={'course_key_string': str(course_key)})
+            checklists_url = reverse('checklists_handler', kwargs={'course_key_string': str(course_key)})
       %>
       <h2 class="info-course">
         <span class="sr">${_("Current Course:")}</span>
@@ -95,7 +96,7 @@
                     <a href="${course_team_url}">${_("Course Team")}</a>
                   </li>
                   <li class="nav-item nav-course-settings-group-configurations">
-                    <a href="${reverse('group_configurations_list_handler', kwargs={'course_key_string': unicode(course_key)})}">${_("Group Configurations")}</a>
+                    <a href="${reverse('group_configurations_list_handler', kwargs={'course_key_string': str(course_key)})}">${_("Group Configurations")}</a>
                   </li>
                   <li class="nav-item nav-course-settings-advanced">
                     <a href="${advanced_settings_url}">${_("Advanced Settings")}</a>
@@ -123,10 +124,10 @@
                   </li>
                   % if settings.FEATURES.get('ENABLE_EXPORT_GIT') and context_course.giturl:
                   <li class="nav-item nav-course-tools-export-git">
-                    <a href="${reverse('export_git', kwargs=dict(course_key_string=unicode(course_key)))}">${_("Export to Git")}</a>
+                    <a href="${reverse('export_git', kwargs=dict(course_key_string=str(course_key)))}">${_("Export to Git")}</a>
                   </li>
                   % endif
-                  % if should_show_checklists_page(request.user):
+                  % if False:  ## Koa: if should_show_checklists_page(request.user):  # TODO: Matej fix this please
                   <li class="nav-item nav-course-tools-checklists">
                     <a href="${checklists_url}">${_("Checklists")}</a>
                   </li>
@@ -140,10 +141,10 @@
       % elif context_library:
        <%
             library_key = context_library.location.course_key
-            index_url = reverse('library_handler', kwargs={'library_key_string': unicode(library_key)})
-            import_url = reverse('import_handler', kwargs={'course_key_string': unicode(library_key)})
-            lib_users_url = reverse('manage_library_users', kwargs={'library_key_string': unicode(library_key)})
-            export_url = reverse('export_handler', kwargs={'course_key_string': unicode(library_key)})
+            index_url = reverse('library_handler', kwargs={'library_key_string': str(library_key)})
+            import_url = reverse('import_handler', kwargs={'course_key_string': str(library_key)})
+            lib_users_url = reverse('manage_library_users', kwargs={'library_key_string': str(library_key)})
+            export_url = reverse('export_handler', kwargs={'course_key_string': str(library_key)})
       %>
       <h2 class="info-course">
         <span class="sr">${_("Current Library:")}</span>
@@ -253,11 +254,11 @@
           ## Appsembler: Disabling signup in Studio
           % if False and static.get_value('ALLOW_PUBLIC_ACCOUNT_CREATION', settings.FEATURES.get('ALLOW_PUBLIC_ACCOUNT_CREATION')):
               <li class="nav-item nav-not-signedin-signup">
-                <a class="action action-signup" href="${reverse('signup')}">${_("Sign Up")}</a>
+                <a class="action action-signup" href="${reverse('register_redirect_to_lms')}">${_("Sign Up")}</a>
               </li>
           % endif
           <li class="nav-item nav-not-signedin-signin">
-            <a class="action action-signin" href="${reverse('login')}">${_("Sign In")}</a>
+            <a class="action action-signin" href="${reverse('login_redirect_to_lms')}">${_("Sign In")}</a>
           </li>
         </ol>
       </nav>

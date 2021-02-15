@@ -1,6 +1,6 @@
 ## mako
-<%! import urllib %>
-<%! from django.core.urlresolvers import reverse %>
+<%! import urllib.parse %>
+<%! from django.urls import reverse %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
@@ -46,8 +46,8 @@
 
 <%def name="get_global_settings()">
   <%
-  encoded_primary_font = urllib.quote(get_value('primary-font', ''))
-  encoded_accent_font = urllib.quote(get_value('accent-font', ''))
+  encoded_primary_font = urllib.parse.quote(get_value('primary-font', 'Roboto').encode('utf-8'))
+  encoded_accent_font = urllib.parse.quote(get_value('accent-font', 'Delius Unicase').encode('utf-8'))
   latin_extended = "&amp;subset=latin-ext" if get_value('accent-font', False) else ""
   return {
     'enable_registration_button' : get_value('enable_registration_button', True),

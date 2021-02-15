@@ -28,7 +28,7 @@
 -->
 
 <%
-  if user.is_authenticated():
+  if user.is_authenticated:
     userType = 'Staff'
     userOrganization = request.user.organizations.first().name
   else:
@@ -91,7 +91,7 @@
 % if False:
   <!-- Appcues code -->
   <script src="//fast.appcues.com/26227.js"></script>
-  % if user.is_authenticated():
+  % if user.is_authenticated:
     <script>
         // NOTE: These values should be specific to the current user.
         Appcues.identify('${user.id }', { // Unique identifier for current user
