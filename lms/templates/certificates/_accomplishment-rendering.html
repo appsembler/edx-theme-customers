@@ -1,0 +1,93 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_certificates_settings" />
+<%
+course_mode_class = course_mode if course_mode else ''
+
+cert_settings = get_certificates_settings(context)
+logo_primary = cert_settings['cert_logos'][0]
+logo_secondary = cert_settings['cert_logos'][1] or None
+%>
+
+<main class="a--accomplishment--wrapper a--accomplishment--main">
+  <div class="bs-container a--container">
+    <div class="a--accomplishment__body-wrapper a--accomplishment-design-01__body-wrapper ${cert_settings['paper_orientation']} paper-eu-a4">
+      <div class="a--accomplishment__body a--accomplishment-design-01__body">
+        <div class="a--accomplishment-design-01__platform-info">
+          <div class="a--accomplishment-design-01__platform-info__main">
+            <img class="organisation-logo" src="${logo_primary['image_url']}" role="presentation" style="width: ${logo_primary['image_width']};" alt="${logo_primary['name']}"/>
+            % if logo_primary.get('show_textual_name', False):
+              <span class="platform-name">${logo_primary['name']}</span>
+            % endif
+            % if logo_secondary:
+              <img class="organisation-logo" src="${logo_secondary['image_url']}" role="presentation" style="width: ${logo_secondary['image_width']};" />
+              % if logo_secondary.get('show_textual_name', False):
+                <span class="platform-name">${logo_secondary['name']}</span>
+              % endif
+            % endif
+          </div>
+          <div class="a--accomplishment-design-01__platform-info__additional-course-info">
+            <ul>
+              <li>Date of Completion: ${certificate_date_issued}</li>
+              %if credits:
+                <li>CPE Credits Awarded: ${'{0:g}'.format(credits)}</li>
+              %endif
+              %if field_of_study:
+                <li>Field of Study: ${field_of_study}</li>
+              %endif
+              %if instruction_location:
+                <li>Location: ${instruction_location}</li>
+              %endif
+              %if instructional_method:
+                <li>Instructional Method: ${instructional_method}</li>
+              %endif
+            </ul>
+          </div>
+          <div class="a--accomplishment-design-01__platform-info__signatures">
+            % if certificate_data:
+                % for signatory in certificate_data.get('signatories', []):
+                  % if signatory.get('signature_image_path'):
+                    <div class="signature-container">
+                      <img class="signee-signature" src="${static.url(signatory['signature_image_path'])}" alt="Signature | ${signatory['name']}" />
+                      <span class="signee-name">${signatory['name']}</span>
+                      <span class="signee-title">${signatory['title']}</span>
+                      <span class="signee-organisation">${signatory['organization']}</span>
+                    </div>
+                  % endif
+                % endfor
+            % endif
+          </div>
+        </div>
+        <div class="a--accomplishment-design-01__main">
+          <div class="a--accomplishment-design-01__main__content">
+            <div class="main-header">
+              <h3 class="course-info">
+                ${certificate_title}
+              </h3>
+            </div>
+            <span class="vertical-divider-bar"></span>
+            <p>
+              ${cert_settings['we_hereby_text']}
+            </p>
+            <h1 class="student-name">${accomplishment_copy_name | h}</h1>
+            <p>
+              ${cert_settings['successfully_completed_text']}
+            </p>
+            <h2 class="course-name-main"><span class="course-name">${accomplishment_copy_course_name}</span></h2>
+            <div class="a--accomplishment-design-01__main__content__optional-cert-text">
+              ${cert_settings['optional_cert_text']}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="a--accomplishment-design-01__certificate-info-print-only">
+        <div class="info-left">
+          Certificate ID number: <b>${certificate_id_number}</b>
+        </div>
+        <div>
+          Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}">https://${request.site}/certificates/user/${accomplishment_user_id}/course/${course_id}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

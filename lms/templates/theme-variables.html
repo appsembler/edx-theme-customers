@@ -1,14 +1,16 @@
 ## mako
+<%! from django.conf import settings %>
 <%! from django.core.urlresolvers import reverse %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%! from django.utils.translation import ugettext as _ %>
 <%! from datetime import datetime %>
 
 
 
 <%!
-  theme_name = "eucalyptus-theme-codebase"
+  theme_name = "hawthorn-theme-codebase"
 %>
 
 
@@ -28,13 +30,13 @@
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
-    'course-catalogue_enabled': True,
-    'enable_course_catalogue_for_non-auth_users': True,
+    'course-catalogue_enabled': False,
+    'enable_course_catalogue_for_non-auth_users': False,
     'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
     'client_ga_code': "",
     'allow_search_engine_indexing': True,
     'small_screen_optimized_courseware': False,
-    'enable_legacy_courseware_nav': True,
+    'enable_legacy_courseware_nav': False,
   }
   %>
 </%def>
@@ -81,10 +83,10 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'NYIF.COM',
+        'link_URL': 'http://www.nyif.com',
         'special_class': '',
-        'open_in_new_tab': False,
+        'open_in_new_tab': True,
       },
     ]
   %>
@@ -97,10 +99,10 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'NYIF.COM',
+        'link_URL': 'http://www.nyif.com',
         'special_class': '',
-        'open_in_new_tab': False,
+        'open_in_new_tab': True,
       },
     ]
   %>
@@ -113,11 +115,53 @@
   <%
     return [
       {
-        'link_title': 'Example item',
-        'link_URL': '#',
+        'link_title': 'Terms of Service',
+        'link_URL': 'http://www.nyif.com/terms-of-use',
         'special_class': '',
         'open_in_new_tab': False,
       },
+      {
+        'link_title': 'Privacy Policy',
+        'link_URL': 'http://www.nyif.com/privacy-cookie-policy',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Contact us',
+        'link_URL': 'mailto:customerservice@nyif.com',
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': 'Copyright',
+        'link_URL': reverse('tos'),
+        'special_class': '',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': '<i class="fa fa-linkedin"></i>',
+        'link_URL': 'https://www.linkedin.com/company/new-york-institute-of-finance',
+        'special_class': 'a--linkedin',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': '<i class="fa fa-facebook"></i>',
+        'link_URL': 'https://www.facebook.com/4NYIF',
+        'special_class': 'a--facebook',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': '<i class="fa fa-twitter"></i>',
+        'link_URL': 'https://www.twitter.com/NYIFinance',
+        'special_class': 'a--twitter',
+        'open_in_new_tab': False,
+      },
+      {
+        'link_title': '<i class="fa fa-phone"></i> +1 347 842 2501',
+        'link_URL': 'tel:+13478422501',
+        'special_class': '',
+        'open_in_new_tab': False,
+      }
     ]
   %>
 </%def>
@@ -130,8 +174,9 @@
     current_year = str(datetime.now().year)
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
-      'footer_copyright_text' : '&copy; {} Company Name. All rights reserved.'.format(current_year),
-      'display_edx_disclaimer' : True, ## bool value required
+      'footer_logo_alt_text' : 'New York Institute of Finance',
+      'footer_copyright_text' : '© 1922-{} New York Institute of Finance inc. All rights reserved.'.format(current_year),
+      'display_edx_disclaimer' : False, ## bool value required
       'edx_disclaimer' : 'edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.',
       'display_poweredby' : True, ## bool value required
       'display_app_link' : False,
@@ -209,7 +254,7 @@
         "element-path":"design-templates/pages/course-catalogue/_course-catalogue-01.html",
         "options":{
           "discovery-facet-option":"facet_option-01",
-          "course-card":"course-tile-01",
+          "course-card":"course-tile-02",
           "search-enabled":True,
           "discovery-facet":"facet-01"
         }
@@ -231,8 +276,8 @@
       'discovery_facet' : '_facet-01.underscore', ## define which template for facets to use
       'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
       'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html', ## design which discovery-search block design to use
-      'promote_course_catalog' : True,
-      'promote_course_catalog_text' : "Check out our course catalog and enroll in some awesome courses!"
+      'promote_course_catalog' : False,
+      'promote_course_catalog_text' : _("Browse recently launched courses and see what's new in your favorite subjects.")
     }
   %>
 </%def>
@@ -322,10 +367,10 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_hero-section-01.html",
           "options":{
-            'hero_title' : "Static page title",
-            'hero_subtitle' : "You can have a subtitle here as well, even an CTA button if you'd like (that leads to another page or opens a popup YouTube video)",
-            'cta_link' : "#", ## leave value empty if you don't want a CTA button displayed.
-            'cta_link_text' : "CTA Button", ## leave value empty if you don't want a CTA button displayed.
+            'hero_title' : "Terms of Service",
+            'hero_subtitle' : "",
+            'cta_link' : "", ## leave value empty if you don't want a CTA button displayed.
+            'cta_link_text' : "", ## leave value empty if you don't want a CTA button displayed.
             'popup_video_url' : "", ## YouTube video ID - leave value empty if you don't want a video button and modal displayed.
             'popup_video_text' : "", ## leave value empty if you don't want a video button and modal displayed.
             'popup_video_id' : "", ## leave value empty if you don't want a video button and modal displayed.
@@ -338,7 +383,7 @@
           "element-type":"static-block",
           "element-path":"design-templates/static-blocks/_plain-content-01.html",
           "options":{
-            'content' : '<h1>This is an example of h1 heading</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas rhoncus diam lectus, vitae porta purus varius ut. Praesent mollis pharetra odio, sed venenatis lectus bibendum non. Nullam laoreet in ipsum congue rhoncus. Curabitur tristique elementum sapien, et convallis magna auctor ac. Maecenas in sodales massa. Nulla ornare dui vel quam ornare, vel laoreet augue egestas. Curabitur ullamcorper justo nec nulla tincidunt accumsan. Maecenas ac risus venenatis, porta justo in, dignissim justo. Mauris tincidunt sed enim quis accumsan. Sed eget turpis sem. Vestibulum vel ante non quam facilisis hendrerit. Ut at maximus quam, sed imperdiet nisi. Aliquam sollicitudin felis varius, semper magna et, dignissim tellus. Duis iaculis, tortor et tincidunt condimentum, tellus tortor vehicula quam, in aliquet dui lorem eget erat. Suspendisse ut tempor tortor. Cras ut purus at odio sagittis pharetra eget sed ex.</p><h2>This is an example of h2 heading</h2><p>Curabitur placerat aliquet tortor nec dapibus. Sed fermentum, dolor hendrerit scelerisque pulvinar, erat arcu fermentum lacus, at commodo sapien nisl eu turpis. Vestibulum sodales sagittis ligula vitae bibendum. Cras pharetra sem sed lacus consequat, sit amet blandit velit rhoncus. Sed convallis scelerisque massa, et gravida tortor ullamcorper et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nulla convallis efficitur pulvinar. Aenean justo augue, varius id pellentesque in, posuere eu velit. Nam facilisis quis magna non sodales. In tempus, mi in consequat scelerisque, dui tortor molestie lectus, at dapibus nunc nibh interdum justo. In condimentum felis eget leo convallis fringilla. Curabitur eu neque fermentum, bibendum purus at, facilisis dui.</p><h3>This is an example of h3 heading</h3><p>Cras malesuada facilisis ipsum imperdiet tempus. Nullam ac consectetur orci. Nam bibendum ac velit et interdum. Mauris aliquet sit amet diam facilisis mollis. Integer volutpat ultrices elit id molestie. Duis iaculis consectetur sapien ornare vulputate. Quisque id est non metus consectetur feugiat. Integer enim justo, bibendum vitae cursus a, faucibus viverra est. Suspendisse ut laoreet nisi.</p><h3>This is an example of h3 heading</h3><p>In nec aliquam eros, eget facilisis tellus. Nullam non enim augue. Nulla lacus lorem, efficitur quis nisl in, congue gravida nulla. Nam placerat, nunc ut fermentum scelerisque, velit tellus pulvinar orci, id sagittis elit nulla quis odio. Nunc nisl quam, dapibus non nisi in, porta aliquam ante. Nunc eu elit malesuada est convallis accumsan et et elit. Integer dapibus pretium odio, vitae tincidunt dolor. Maecenas eget semper lectus. Mauris sollicitudin mattis ornare. In et mattis tellus. Suspendisse pellentesque urna a varius laoreet. Nulla ac pretium sapien. Maecenas in tempor arcu.</p><h3>This is an example of h3 heading</h3><p>Donec in orci accumsan, bibendum tortor et, lacinia elit. Aenean auctor ex in quam rutrum convallis. Pellentesque consectetur ut erat at molestie. Aliquam ultricies dapibus nulla, nec commodo odio bibendum ac. Vestibulum interdum, ante non placerat viverra, felis tortor mollis tortor, vitae blandit augue tellus in neque. Etiam mi dui, mattis at fermentum vitae, mattis vel ipsum. Donec interdum, quam a bibendum vulputate, massa dolor eleifend enim, at fringilla nisl risus vel dolor. Praesent id blandit magna.</p>', ## block content, place iline HTML here
+            'content' : '<p>To view the New York Institute of Finance Terms of Service, please visit: <a href="https://www.nyif.com/terms-of-use">https://www.nyif.com/terms-of-use</a> </p>', ## block content, place iline HTML here
             'optional_classes' : "", ##
             'extra_css' : "" ## add custom css to be added inline to the wrapper element
           }
@@ -488,5 +533,66 @@
 <%def name="get_privacy_content()">
   <%
     return []
+  %>
+</%def>
+
+## certs settings
+
+<%def name="get_certificate_logos()">
+  <%
+  # allow SiteConfiguration to override as little of the defaults as desired
+  cert_logos_defaults = {
+    'primary': {
+      'name': get_value('PLATFORM_NAME', settings.PLATFORM_NAME),
+      'link_url': get_value('logo_url', '#'),
+      'image_url': get_value('logo_positive', get_brand_logos()['logo_positive']),
+      'image_width': '',
+      'show_textual_name': False,  # whether or not to display name below logo image.
+    },
+    # secondary: no default defined
+    'secondary': {},
+  }
+
+  certificate_logos_config = get_value('certificates', {}).get('cert_logos', {})
+  cert_logos = cert_logos_defaults
+  cert_logos['primary'].update(certificate_logos_config.get('primary', {}))
+  cert_logos['secondary'].update(certificate_logos_config.get('secondary', {}))
+
+  return [cert_logos['primary'], cert_logos['secondary']]
+  %>
+</%def>
+
+<%def name="get_certificates_settings(course_context={})">
+  <%
+  cert_logos = get_certificate_logos()
+
+  cert_settings = {
+    'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
+    'header_logo': get_value('certificates', {}).get('header_logo', get_brand_logos()['logo_positive']),
+    'header_logo_width': get_value('certificates', {}).get('header_logo_width', ''),
+    'cert_logos': cert_logos,
+    'platform_name': get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
+    'certificate_banner_text': get_value('certificates', {}).get('certificate_banner_text', course_context.get('document_banner', '')),
+    'header_text': get_value('certificates', {}).get('header_text', 'Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.'),
+    'short_platform_description': get_value('certificates', {}).get('short_platform_description', ''),
+    'we_hereby_text': get_value('certificates', {}).get('we_hereby_text', 'This certificate is awarded to'),
+    'successfully_completed_text': get_value('certificates', {}).get('successfully_completed_text', "for the successful completion of the course"),
+    'optional_cert_text': get_value('certificates', {}).get('optional_cert_text', '<p>In accordance with the standards of the National Registry of CPE Sponsors, CPE Credits have been granted based on a 50-minute hour.<br/>National Registry of CPE Sponsors<br/>New York Institute of Finance ID Number 103413<br/>New York State Sponsor ID Number 002308</p><address>New York Institute of Finance<br/>160 Broadway, 15th Floor, New York, NY 10038<br/>www.nyif.com</address>'),
+    'footer_about_platform_text': get_value('certificates', {}).get('footer_about_platform_text', '90+ years of essential education for finance professionals delivered by leading industry experts'),
+    'footer_about_platform_url': get_value('certificates', {}).get('footer_about_platform_url', '#'),
+    'footer_about_accomplishments_text': get_value('certificates', {}).get('footer_about_accomplishments_text', "New York Institute of Finance acknowledges achievements through certificates, which are awarded for course activities that our students complete. Signor of this certificate is subject to change. For all inquiries/mismatches contact customerservice@nyif.com"),
+    'footer_copyright_text': get_value('certificates', {}).get('footer_copyright_text', ""),
+    'footer_tos_url': get_value('certificates', {}).get('footer_tos_url', "#"),
+    'footer_privacy_url': get_value('certificates', {}).get('footer_privacy_url', "#"),
+  }
+
+  # Support override per-course via cert_html_view_overrides Advanced Setting.
+  # Note: None of the variables defined in get_certificate_settings and used in our
+  # custom certificate template are the original variables passed in context from
+  # certificates.views.webview.  The following also allows inclusion of extra values
+  # from appsembler_credentials_extensions' webview._update_certificate_context monkeypatch
+  cert_settings.update(course_context)
+
+  return cert_settings
   %>
 </%def>
