@@ -55,3 +55,23 @@
 a.a--cta:visited {
   color: $cta-button-text-color;
 }
+
+@media print {
+
+//make left column wider to fit long signatory titles
+.a--accomplishment-design-01__platform-info {
+  width: 35%
+}
+.a--accomplishment-design-01__main {
+  width: 65%;
+}
+
+// shrink the max signature image size 
+.a--accomplishment-design-01__platform-info__signatures .signature-container .signee-signature {
+  max-height: 10em;
+}
+
+//smaller overall pading w/ bg color, use same as for screens
+.a--accomplishment-design-01__body
+  padding: 7.5em 6em 3em;
+}
