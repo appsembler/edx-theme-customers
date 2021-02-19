@@ -1,0 +1,220 @@
+@import "nyif-accomplishment-rendering";
+
+.a--header-design-01 .a--site-menu__group ul li a, .a--header-design-01 .a--site-menu__group ul li.a--nav-cta a {
+  text-transform: uppercase;
+  @include primary-font-bold;
+}
+
+// custom styling for login/register
+
+.login-register .form-type .section-title span.text, .login-register .form-type .section-title.lines span.text {
+  @include primary-font-bold;
+}
+
+.login-register .toggle-form {
+  margin-top: 2rem;
+  padding-top: 2rem;
+
+  .section-title {
+    margin: 0 0 2rem;
+    padding: 0 0 2rem;
+  }
+}
+
+// change color of course name in header
+
+.a--header-design-01.a--site-nav .a--site-nav__course-name {
+  color: #fff;
+  line-height: 130%;
+}
+
+// slight changes to discussions page
+
+.view-discussion-home .label {
+  font-size: 1.6rem;
+}
+
+.view-discussion-home .home-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+// hide unnecessary tabs on account settings
+
+.wrapper-account-settings .account-settings-container .wrapper-header .account-nav {
+
+  #accounts-tab, #orders-tab {
+    display: none;
+  }
+}
+
+// changes to courseware sidebar nav
+
+.a--course-content__nav .accordion .course-navigation {
+
+  .button-chapter {
+
+    &:hover, &:focus {
+      color: #4eb9ac;
+    }
+
+    &.is-open {
+      color: #4eb9ac;
+    }
+  }
+
+  .chapter-content-container .menu-item a {
+
+    &:hover, &:focus {
+
+      p {
+        @include primary-font-bold;
+        color: #4eb9ac;
+      }
+    }
+  }
+
+  .chapter-content-container .menu-item.active a {
+
+    p {
+      @include primary-font-bold;
+      color: #4eb9ac;
+    }
+  }
+}
+
+// changes to transcribed video player layout and style
+
+.xmodule_display.xmodule_VideoModule .video .wrapper-downloads {
+  padding: 0 1.5rem 2rem;
+  background-color: #ccc;
+  margin-top: 1.5rem;
+}
+
+@media(max-width: $screen-xs-max) {
+  .xmodule_display.xmodule_VideoModule .video .wrapper-downloads {
+    display: block;
+    padding: 1.5rem;
+  }
+}
+
+// changes to courseware bookmarks buttons
+
+.btn.btn-link.bookmark-button .bookmark-text {
+  margin-left: 1rem;
+}
+
+.a--course-content__nav__bookmarks-btn .bookmarks-list-button {
+  background-color: $brand-accent-color;
+  color: #000;
+
+  &:hover, &:focus, &:hover:not(:disabled) {
+    background-color: darken($brand-accent-color, 25%);
+    color: #fff;
+  }
+}
+
+// reduce logo size on smaller screens
+
+.a--header-design-01.a--site-nav .a--site-nav__logo {
+
+  @media(max-width: $screen-xs-max) {
+    height: 5rem;
+  }
+}
+
+// responsive fixes to account settings
+
+@media(max-width: $screen-xs-max) {
+
+  .wrapper-account-settings {
+    padding: 1.5rem;
+  }
+
+  .account-settings-sections .section .account-settings-section-body .u-field .u-field-message {
+    width: 100%;
+    padding: 1rem 0.5rem;
+  }
+
+  .account-settings-sections .section .account-settings-section-body .u-field .field {
+    width: 100%;
+  }
+}
+
+// IE fixes
+.xmodule_display.xmodule_CapaModule div.problem .choicegroup legend {
+  max-width: 100%;
+}
+
+
+// notes with calculator active fixes
+.nav-utilities.has-utility-calculator .wrapper-utility.edx-notes-visibility {
+  margin: 1rem 2rem 1rem 0;
+  padding: 0.1rem;
+
+  .action-toggle-message {
+    right: 7rem;
+  }
+}
+
+.nav-utilities .wrapper-utility.edx-notes-visibility {
+  margin: 1rem 2rem 1rem 0;
+  padding: 0.1rem;
+
+  .action-toggle-message {
+    right: 7rem;
+  }
+}
+
+// Tahoe-style certificates
+
+body.certificate {
+  .wrapper-banner-user {
+    margin-top: 0;
+  }
+  .header-app {
+    .header-app-title .logo {
+      max-width: 500px;
+    }
+  }
+  .linkedin-hint-link {
+      color: #fff;
+      font-weight: bold;
+    }
+
+  #linkedin-hint {
+    dt:not(:first-of-type){margin-top:0}
+  }
+}
+
+
+
+.a--accomplishment-design-01 {
+  &__platform-info {
+    background-color: #fff;
+    &__additional-course-info ul {
+        list-style: none;
+        margin-left: 4em;
+    }
+  }
+  &__main {
+    &__content {
+      .main-header {
+        .course-info {
+          color: $brand-primary-color;
+          @include primary-font-light;
+          font-size: 8.5em;
+          font-weight: bolder;
+          line-height: 100%;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+      &__optional-cert-text  {
+        address {
+          font-size: 3.25em !important;
+        }
+      }
+    }
+  }
+}

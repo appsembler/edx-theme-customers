@@ -3,17 +3,17 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #34495e;
-$brand-accent-color: #7f8c8d;
-$navbar-style: "white";  // brand or white
-$base-text-color: #2C2A2F;
+$brand-primary-color: #000;
+$brand-accent-color: #95BDB8;
+$navbar-style: "brand";  // brand or white
+$base-text-color: #000;
 
 $primary-font-name: "Open Sans";
 $primary-font-weight-light: 300;
 $primary-font-weight-regular: 400;
 $primary-font-weight-bold: 700;
 $primary-font-weight-black: 800;
-$accent-font-name: "Bebas";
+$accent-font-name: "Open Sans";
 
 $font-size-base-body: 14px;
 $line-height-base-body: 150%;
@@ -35,12 +35,12 @@ $global-font-header-links: "primary-font-regular";
 $global-font-cta-buttons: "primary-font-regular";
 
 $cta-button-bg: $brand-accent-color;
-$cta-button-text-color: #fff;
+$cta-button-text-color: #000;
 $cta-button-border: none;
-$buttons-border-radius: 0.5rem;
+$buttons-border-radius: 5rem;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 4.8rem;
+$header-logo-height: 6rem;
 $header-padding-top: 1.5rem;
 $header-padding-bottom: $header-padding-top;
 $header-padding-sm-top: 1.5rem;
@@ -75,16 +75,16 @@ $base-letter-spacing: 0;
 
 $footer-padding-top: 4rem;
 $footer-padding-bottom: 1.5*$footer-padding-top;
-$footer-bg-color: #eee;
+$footer-bg-color: #000;
 $footer-top-border: none;
-$footer-text-color: lighten($base-text-color, 15%);
+$footer-text-color: #fff;
 $footer-link-color: $footer-text-color;
 $footer-link-hover-color: lighten($footer-text-color, 15%);
 $footer-link-breathe-space: 1.5rem;
 $footer-logo-breathe-space: 3rem;
 $footer-logo-padding-vertical: 1rem;
-$footer-logo-width: 4rem;
-$footer-logo-opacity: 0.5;
+$footer-logo-width: 15rem;
+$footer-logo-opacity: 1;
 $footer-copyright-text-size: 1.2rem;
 $footer-copyright-text-color: lighten($footer-text-color, 15%);
 $footer-copyright-breathe-space: 1rem;
@@ -123,8 +123,8 @@ $facet-results-count-border-radius: 1rem;
 
 
 // login-register settings
-$login-register-wrapper-margin: 3rem auto 5rem;
-$login-register-section-title-spacing: 4rem;
+$login-register-wrapper-margin: 2rem auto 5rem;
+$login-register-section-title-spacing: 3rem;
 $login-register-section-title-border-bottom: 0.1rem solid rgba($base-text-color, 0.2);
 $login-register-section-title-font-size: 4.2rem;
 $login-register-section-title-color: $brand-primary-color;
@@ -138,13 +138,13 @@ $login-register-input-border-top: none;
 $login-register-input-border-left: none;
 $login-register-input-border-right: none;
 $login-register-hover-border-color: $brand-accent-color;
-$login-register-textarea-min-height: 10rem;
-$login-register-input-text-size: 1.4rem;
+$login-register-textarea-min-height: 8rem;
+$login-register-input-text-size: 1.2rem;
 $login-register-tip-text-color: rgba($base-text-color, 0.7);
 $login-register-tip-top-spacing: 1rem;
 $login-register-field-link-font-size: $login-register-input-text-size;
 $login-register-field-link-color: $brand-primary-color;
-$login-register-toggle-title-font-size: 2rem;
+$login-register-toggle-title-font-size: 1.6rem;
 $login-register-toggle-title-color: rgba($base-text-color, 0.7);
 
 
