@@ -23,7 +23,7 @@
     if not translations_object:
       return default
 
-    if isinstance(translations_object, (basestring, Promise)):
+    if isinstance(translations_object, (str, Promise)):
       translations_object = {fallback_language: translations_object}
 
     default_text = default if default else force_text(translations_object.get(fallback_language, ''))
