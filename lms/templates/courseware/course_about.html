@@ -1,0 +1,250 @@
+<%namespace name='static' file='/static_content.html'/>
+<%!
+from django.utils.translation import ugettext as _
+from django.utils.translation import pgettext
+from django.urls import reverse
+from courseware.courses import get_course_about_section
+from django.conf import settings
+from six import text_type
+from edxmako.shortcuts import marketing_link
+from openedx.core.lib.courses import course_image_url
+from six import string_types
+from hr_management.utils import requested_access_for_course
+%>
+
+<%
+    if require_access_request:
+      require_approval = True
+      form_action=reverse('require_course_access')
+      enrollment_action='request_access'
+      has_requested_access = requested_access_for_course(course, user)
+      active_reg_button = not has_requested_access
+    else:
+      require_approval = False
+      form_action=reverse('change_enrollment')
+      enrollment_action='enroll'
+      active_reg_button = True
+%>
+
+<%namespace file='/theme-variables.html' import="get_course_about_content" />
+
+<%inherit file="/main.html" />
+<%block name="headextra">
+  ## OG (Open Graph) title and description added below to give social media info to display
+  ## (https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content#tags)
+  <meta property="og:title" content="${course.display_name_with_default_escaped}" />
+  <meta property="og:description" content="${get_course_about_section(request, course, 'short_description')}" />
+</%block>
+
+<%block name="js_extra">
+  ## CourseTalk widget js script
+  % if show_coursetalk_widget:
+      <script src="//d3q6qq2zt8nhwv.cloudfront.net/s/js/widgets/coursetalk-read-reviews.js"></script>
+  % endif
+  <script type="text/javascript">
+  (function() {
+    $(".register").click(function(event) {
+      $("#class_enroll_form").submit();
+      event.preventDefault();
+    });
+
+    % if can_add_course_to_cart:
+      add_course_complete_handler = function(jqXHR, textStatus) {
+        if (jqXHR.status == 200) {
+          location.href = "${cart_link}";
+        }
+        if (jqXHR.status == 400) {
+          $("#register_error")
+            .html(jqXHR.responseText ? jqXHR.responseText : "${_("An error occurred. Please try again later.")}")
+            .css("display", "block");
+        }
+        else if (jqXHR.status == 403) {
+            location.href = "${reg_then_add_to_cart_link}";
+        }
+      };
+
+      $("#add_to_cart_post").click(function(event){
+        $.ajax({
+          url: "${reverse('add_course_to_cart', args=[text_type(course.id)])}",
+          type: "POST",
+          /* Rant: HAD TO USE COMPLETE B/C PROMISE.DONE FOR SOME REASON DOES NOT WORK ON THIS PAGE. */
+          complete: add_course_complete_handler
+        })
+        event.preventDefault();
+      });
+    % endif
+
+    ## making the conditional around this entire JS block for sanity
+    %if settings.FEATURES.get('RESTRICT_ENROLL_BY_REG_METHOD') and course.enrollment_domain:
+      <%
+        perms_error = _('The currently logged-in user account does not have permission to enroll in this course. '
+                        'You may need to {start_logout_tag}log out{end_tag} then try the enroll button again. '
+                        'Please visit the {start_help_tag}help page{end_tag} for a possible solution.').format(
+                          start_help_tag="<a href='{url}'>".format(url=marketing_link('FAQ')), end_tag='</a>',
+                          start_logout_tag="<a href='{url}'>".format(url=reverse('logout'))
+                          )
+      %>
+    $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
+      if(xhr.status == 200) {
+        location.href = "${reverse('dashboard')}";
+      } else if (xhr.status == 403) {
+        location.href = "${reverse('course-specific-register', args=[text_type(course.id)])}?course_id=${course.id | u}&enrollment_action=enroll";
+      } else if (xhr.status == 400) { //This means the user did not have permission
+        $('#register_error').html("${perms_error}").css("display", "block");
+      } else {
+        $('#register_error').html(
+            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
+        ).css("display", "block");
+      }
+    });
+
+    %else:
+
+    $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
+      if(xhr.status == 200) {
+        if (xhr.responseText == "") {
+          location.href = "${reverse('dashboard')}";
+        }
+        else {
+          location.href = xhr.responseText;
+        }
+      } else if (xhr.status == 403) {
+          location.href = "${reverse('register_user')}?course_id=${course.id | u}&enrollment_action=enroll";
+      } else {
+        $('#register_error').html(
+            (xhr.responseText ? xhr.responseText : "${_("An error occurred. Please try again later.")}")
+        ).css("display", "block");
+      }
+    });
+
+    %endif
+
+  })(this)
+  </script>
+
+  <script src="${static.url('js/course_info.js')}"></script>
+</%block>
+
+<%block name="pagetitle">${course.display_name_with_default_escaped}</%block>
+
+## Share button section settings
+
+<%
+        site_domain = static.get_value('site_domain', settings.SITE_NAME)
+        platform_name = static.get_platform_name()
+
+        ## Translators: This text will be automatically posted to the student's
+        ## Twitter account. {url} should appear at the end of the text.
+        tweet_text = _("I just enrolled in {number} {title} through {account}: {url}").format(
+            number=course.number,
+            title=course.display_name_with_default_escaped,
+            account=static.get_value('course_about_twitter_account', settings.PLATFORM_TWITTER_ACCOUNT),
+            url=u"http://{domain}{path}".format(
+                domain=site_domain,
+                path=reverse('about_course', args=[course.id.to_deprecated_string()])
+            )
+        ).replace(u" ", u"+")
+        tweet_action = u"http://twitter.com/intent/tweet?text={tweet_text}".format(tweet_text=tweet_text)
+
+        facebook_link = static.get_value('course_about_facebook_link', settings.PLATFORM_FACEBOOK_ACCOUNT)
+
+        email_subject = u"mailto:?subject={subject}&body={body}".format(
+            subject=_("Take a course with {platform} online").format(platform=platform_name),
+            body=_("I just enrolled in {number} {title} through {platform} {url}").format(
+                number=course.number,
+                title=course.display_name_with_default_escaped,
+                platform=platform_name,
+                url=u"http://{domain}{path}".format(
+                    domain=site_domain,
+                    path=reverse('about_course', args=[course.id.to_deprecated_string()]),
+                )
+            )
+        ).replace(u" ", u"%20")
+      %>
+
+
+<%
+  course_about_vars = {}
+
+  course_about_vars['user_authenticated'] = user.is_authenticated()
+  course_about_vars['course_registered'] = registered
+  course_about_vars['show_courseware_link'] = show_courseware_link
+  course_about_vars['course_in_cart'] = in_cart
+  course_about_vars['course_is_full'] = is_course_full
+  course_about_vars['course_requires_approval'] = require_approval and has_requested_access
+  course_about_vars['course_is_invitation_only'] = invitation_only
+  course_about_vars['user_can_enroll'] = can_enroll
+  course_about_vars['can_add_course_to_cart'] = can_add_course_to_cart
+  course_about_vars['is_cosmetic_price_enabled'] = is_cosmetic_price_enabled
+  course_about_vars['is_shib_course'] = is_shib_course
+  course_about_vars['user_has_staff_access'] = staff_access
+  course_about_vars['course_about_show_social_links'] = static.get_value('course_about_show_social_links')
+
+  course_about_vars['twitter_href'] = tweet_action
+  course_about_vars['email_href'] = email_subject
+  course_about_vars['facebook_href'] = facebook_link
+
+  course_about_vars['course_name'] = course.display_name_with_default
+  course_about_vars['course_number'] = course.number
+
+  course_about_vars['user_authenticated_reg_element_id'] = "add_to_cart_post"
+  course_about_vars['public_reg_element_id'] = "reg_then_add_to_cart"
+  course_about_vars['public_reg_element_href'] = reg_then_add_to_cart_link
+  course_about_vars['user_cart_link'] = cart_link
+  course_about_vars['course_href_target'] = course_target
+  course_about_vars['course_image'] = course_image_url(course)
+  course_about_vars['course_video'] = get_course_about_section(request, course, "video")
+  course_about_vars['short_description'] = get_course_about_section(request, course, "short_description")
+  course_about_vars['course_overview'] = get_course_about_section(request, course, "overview")
+  course_about_vars['course_studio_url'] = studio_url
+  course_about_vars['course_price'] = course_price
+  course_about_vars['course_effort'] = get_course_about_section(request, course, "effort")
+  course_about_vars['course_display_start_date'] = not course.start_date_is_still_default
+  course_about_vars['course_end_date'] = course.end
+  course_about_vars['self_paced'] = course.self_paced
+
+  if course.advertised_start is not None:
+    course_start_string = course.advertised_start
+    course_about_vars['course_start_is_custom'] = True
+  else:
+    course_about_vars['course_start_is_custom'] = False
+    if course.start is not None:
+      course_start_string = course.start.strftime('%Y-%m-%dT%H:%M:%S%z')
+    else:
+      course_start_string = ''
+    endif
+  endif
+
+  course_about_vars['course_start_date'] = course_start_string
+%>
+
+% for element in get_course_about_content():
+  % if (element['element-type'].startswith('layout')):
+    <%include file = '/${element["element-path"]}' args = "options = element['options'], children = element['children'], page_specific_args = course_about_vars" />
+  % elif (element['element-type'].startswith('static-block')):
+    <%include file = '/${element["element-path"]}' args = "template_settings = element['options']" />
+  % elif (element['element-type'].startswith('course-about-template')):
+    <%include file = '/${element["element-path"]}' args = "template_settings = element['options'], course_vars = course_about_vars" />
+  % endif
+% endfor
+
+
+
+
+## Need to put this hidden form on the page so that the registration button works.
+## Since it's no harm to display a hidden form, we display it with the most permissive conditional
+## which is when the student is not registered.
+%if active_reg_button or is_shib_course:
+  <div style="display: none;">
+    <form id="class_enroll_form" method="post" data-remote="true" action="${reverse('change_enrollment')}">
+      <fieldset class="enroll_fieldset">
+        <legend class="sr">${pgettext("self","Enroll")}</legend>
+        <input name="course_id" type="hidden" value="${course.id | h}">
+        <input name="enrollment_action" type="hidden" value="enroll">
+      </fieldset>
+      <div class="submit">
+        <input name="submit" type="submit" value="${pgettext('self', 'Enroll')}">
+      </div>
+    </form>
+  </div>
+%endif

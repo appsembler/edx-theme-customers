@@ -10,7 +10,7 @@
 
 
 <%!
-  theme_name = "hawthorn-theme-codebase"
+  theme_name = "edx-theme-codebase"
 %>
 
 
@@ -30,11 +30,12 @@
     'enable_registration_button' : True,
     'enable_registration_form' : True,
     'apple_app_id' : '',
-    'course-catalogue_enabled': False,
+    'course-catalogue_enabled': get_value('course_catalog_enabled', True),
     'enable_course_catalogue_for_non-auth_users': False,
     'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
     'client_ga_code': "",
     'allow_search_engine_indexing': True,
+    'combine_privacy_and_tos': False,
     'small_screen_optimized_courseware': False,
     'enable_legacy_courseware_nav': False,
   }
@@ -276,7 +277,7 @@
       'discovery_facet' : '_facet-01.underscore', ## define which template for facets to use
       'discovery_facet_option' : '_facet_option-01.underscore', ## define which template for a single facet to use
       'discovery-search-template' : 'live-blocks/discovery/_discovery-search-01.html', ## design which discovery-search block design to use
-      'promote_course_catalog' : False,
+      'promote_course_catalog' : get_value('promote_course_catalog', True),
       'promote_course_catalog_text' : _("Browse recently launched courses and see what's new in your favorite subjects.")
     }
   %>
@@ -473,6 +474,21 @@
 
 
 ## contact page content
+
+<%def name="get_contact_settings()">
+  <%
+    return {
+      'mailing': {
+        'mailing_org': get_value('contact_mailing_org', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
+        'mailing_address': get_value('contact_mailing_address', []),
+      },
+      'website': {
+        'name': get_value('contact_website_name', get_value('PLATFORM_NAME', settings.PLATFORM_NAME)),
+        'url': get_value('contact_website_url', ''),
+      },
+    }
+  %>
+</%def>
 
 <%def name="get_contact_content()">
   <%
