@@ -3,9 +3,10 @@
 @import "specific/site-unavailable";
 
 // hide Linked Accounts option
-@if $hide-linked-accounts-tab != "False" {
+@if $hide-linked-accounts-tab != 'False' {
   .wrapper-account-settings .account-settings-container .wrapper-header .account-nav #accounts-tab {
     display: none;
+    color: $hide-linked-accounts-tab;
   }
 }
 
