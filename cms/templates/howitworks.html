@@ -4,6 +4,7 @@
 <%namespace name='static' file='/static_content.html'/>
 <%!
   from django.urls import reverse
+  from django.conf import settings
   from django.utils.translation import ugettext as _
   from openedx.core.djangolib.markup import HTML, Text
 %>
@@ -17,7 +18,7 @@
   <div class="a--howitworks-intro__container">
     <h1>Welcome to Open edX Studio!</h1>
     <h4>Sign in to start authoring your courses.</h4>
-    <a href="${reverse('login_redirect_to_lms')}" class="a--howitworks-intro__login-cta">Sign in</a>
+    <a href="${settings.FRONTEND_LOGIN_URL}" class="a--howitworks-intro__login-cta">Sign in</a>
   </div>
 </div>
 

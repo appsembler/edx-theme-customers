@@ -258,7 +258,7 @@
               </li>
           % endif
           <li class="nav-item nav-not-signedin-signin">
-            <a class="action action-signin" href="${reverse('login_redirect_to_lms')}">${_("Sign In")}</a>
+            <a class="action action-signin" href="${settings.FRONTEND_LOGIN_URL}">${_("Sign In")}</a>
           </li>
         </ol>
       </nav>
