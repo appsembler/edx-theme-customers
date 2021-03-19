@@ -1,6 +1,12 @@
 <%!
+from django.conf import settings
 from django.utils.translation import ugettext as _
 from django.urls import reverse
+
+from openedx.core.djangoapps.theming.helpers import get_current_site
+
+site = get_current_site()
+is_default_site = site.id == settings.SITE_ID
 %>
 
 <header>
@@ -19,6 +25,7 @@ from django.urls import reverse
   <h3>${_("Not Enrolled?")}</h3>
   <p><a href="${reverse('register_user')}">${_("Sign up for {platform_name} today!").format(platform_name=platform_name)}</a></p>
 
+  %if not is_default_site:
   <h3>${_("Have a user account at learning.nyif.com but not for {platform_name}?".format(platform_name=platform_name))}</h3>
   <p>${_("Request access to {platform_name}").format(platform_name=platform_name)}</p>
   <form id="microsite-request-form" role="form" method="post" data-remote="true" action="${reverse('hr_management:request-microsite-access')}" style="margin-bottom:2em">
@@ -27,6 +34,7 @@ from django.urls import reverse
     <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
     <button style="background:rgb(149, 189, 184);border:0" name="submit" type="submit" id="submit" class="action action-primary action-update login-button">Request</button>    
   </form>
+  % endif 
 
 
   <h3>${_("Need Help?")}</h3>
