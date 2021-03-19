@@ -45,6 +45,7 @@ from third_party_auth import provider, pipeline
       toggleSubmitButton(true);
 
       $('#login-form').on('submit', function() {
+        debugger
         toggleSubmitButton(false);
       });
 
@@ -89,6 +90,17 @@ from third_party_auth import provider, pipeline
       $("#forgot-password-link").click(function() {
         $("#forgot-password-modal").show();
         $("#forgot-password-modal .close-modal").focus();
+      });
+
+      $('#microsite-request-form').on('ajax:success', function(event, json, xhr) {
+        if(json.success) {
+          $('.message.microsite-request-message').addClass('is-shown').focus();
+          $('.message.microsite-request-message').html(gettext("Your request has been sent to the managers of ${platform_name}. Please watch your email for a response."));
+        }
+        else {
+          $('.message.microsite-request-message').addClass('is-shown').focus();
+          $('.message.microsite-request-message .instructions').html(gettext("There was a problem with your request.  Please use the instructions below to get help."));
+        }
       });
 
     })(this);
@@ -154,6 +166,10 @@ from third_party_auth import provider, pipeline
         <ul class="message-copy">
           <li>${_("Your email or password is incorrect")}</li>
         </ul>
+      </div>
+
+      <div role="alert" class="status message microsite-request-message" tabindex="-1">
+        <p class="instructions"> </p>
       </div>
 
       <div role="alert" class="third-party-signin message" tabindex="-1">
