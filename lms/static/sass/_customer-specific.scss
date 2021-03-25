@@ -21,6 +21,12 @@
   }
 }
 
+.view-login, .view-register {
+  .cta-help {
+    font-size: 1rem !important;
+  }
+}
+
 // change color of course name in header
 
 .a--header-design-01.a--site-nav .a--site-nav__course-name {
