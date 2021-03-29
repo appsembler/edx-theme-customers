@@ -608,6 +608,8 @@
   # certificates.views.webview.  The following also allows inclusion of extra values
   # from appsembler_credentials_extensions' webview._update_certificate_context monkeypatch
   cert_settings.update(course_context)
+  # `credits` will always evaluate to true in Python 2 ;), so
+  cert_settings['credits_num'] = cert_settings.get('credits', None)
 
   return cert_settings
   %>

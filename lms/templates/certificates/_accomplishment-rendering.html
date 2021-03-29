@@ -29,8 +29,8 @@ logo_secondary = cert_settings['cert_logos'][1] or None
           <div class="a--accomplishment-design-01__platform-info__additional-course-info">
             <ul>
               <li>Date of Completion: ${certificate_date_issued}</li>
-              %if credits:
-                <li>CPE Credits Awarded: ${credits}</li>
+              %if credits_num:
+                <li>CPE Credits Awarded: ${credits_num}</li>
               %endif
               %if field_of_study:
                 <li>Field of Study: ${field_of_study}</li>
