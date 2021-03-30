@@ -83,7 +83,7 @@ logo_secondary = cert_settings['cert_logos'][1] or None
                 www.nyif.com
               </address>
 
-              % if platform_name != "New York Institute of Finance":
+              % if str(request.site) not in ("learning.nyif.com", "lms.nyif-hawthorn.customer.appsembler.com"):
                 <address style="margin-top:1em;">
                   ${get_contact_settings()['mailing']['mailing_org']}<br/>
                   % for line in get_contact_settings()['mailing']['mailing_address']:
