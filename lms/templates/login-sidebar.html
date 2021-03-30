@@ -26,8 +26,8 @@ is_default_site = site.id == settings.SITE_ID
   <p><a href="${reverse('register_user')}">${_("Sign up for {platform_name} today!").format(platform_name=platform_name)}</a></p>
 
   %if not is_default_site:
-  <h3>${_("Have a user account at learning.nyif.com but not for {platform_name}?".format(platform_name=platform_name))}</h3>
-  <p>${_("Request access to {platform_name}").format(platform_name=platform_name)}</p>
+  <h3>${_("Already a student on the New York Insitute of Finance learning portal?".format(platform_name=platform_name))}</h3>
+  <p>${_("Request access to {platform_name} learning portal").format(platform_name=platform_name)}</p>
   <form id="microsite-request-form" role="form" method="post" data-remote="true" action="${reverse('hr_management:request-microsite-access')}" style="margin-bottom:2em">
     <label for="email">Email address:</label>
     <input type="text" name="email" />
