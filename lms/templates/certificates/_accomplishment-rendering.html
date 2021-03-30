@@ -83,7 +83,7 @@ logo_secondary = cert_settings['cert_logos'][1] or None
                 www.nyif.com
               </address>
 
-              % if platform_name is not "New York Institute of Finance":
+              % if get_value("platform_name", None) is not "New York Institute of Finance":
                 <address style="margin-top:1em;">
                   ${get_contact_settings()['mailing']['mailing_org']}<br/>
                   % for line in get_contact_settings()['mailing']['mailing_address']:
