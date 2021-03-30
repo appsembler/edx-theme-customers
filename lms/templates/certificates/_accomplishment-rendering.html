@@ -83,15 +83,17 @@ logo_secondary = cert_settings['cert_logos'][1] or None
                 www.nyif.com
               </address>
 
-              <address style="margin-top:1em;">
-                ${get_contact_settings()['mailing']['mailing_org']}<br/>
-                % for line in get_contact_settings()['mailing']['mailing_address']:
-                    ${line}<br/>
-                % endfor
-                % if get_contact_settings()['website']['url']:
-                  ${get_contact_settings()['website']['url']}
-                % endif
-              </address>
+              % if platform_name is not "New York Institute of Finance":
+                <address style="margin-top:1em;">
+                  ${get_contact_settings()['mailing']['mailing_org']}<br/>
+                  % for line in get_contact_settings()['mailing']['mailing_address']:
+                      ${line}<br/>
+                  % endfor
+                  % if get_contact_settings()['website']['url']:
+                    ${get_contact_settings()['website']['url']}
+                  % endif
+                </address>
+              % endif 
 
             </div>
           </div>
