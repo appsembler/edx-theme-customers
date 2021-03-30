@@ -6,6 +6,10 @@
   @include primary-font-bold;
 }
 
+.a--dashboard-course-listing-01 .wrapper-messages-primary .messages-list .message .actions .action .btn {
+    font-size: 1.3rem;
+}
+
 // custom styling for login/register
 
 .login-register .form-type .section-title span.text, .login-register .form-type .section-title.lines span.text {
