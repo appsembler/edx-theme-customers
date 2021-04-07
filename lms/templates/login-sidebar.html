@@ -4,9 +4,6 @@ from django.utils.translation import ugettext as _
 from django.urls import reverse
 
 from openedx.core.djangoapps.theming.helpers import get_current_site
-
-site = get_current_site()
-is_default_site = site.id == settings.SITE_ID
 %>
 
 <header>
@@ -24,6 +21,12 @@ is_default_site = site.id == settings.SITE_ID
 <div class="cta cta-help">
   <h3>${_("Not Enrolled?")}</h3>
   <p><a href="${reverse('register_user')}">${_("Sign up for {platform_name} today!").format(platform_name=platform_name)}</a></p>
+
+
+  <% 
+  site = get_current_site()
+  is_default_site = site.id == settings.SITE_ID
+  %>
 
   %if not is_default_site:
   <h3>${_("Already a student on the New York Insitute of Finance learning portal?".format(platform_name=platform_name))}</h3>
