@@ -99,3 +99,6 @@ body.view-settings .group-settings.basic .list-actions {
     max-width: 48rem;
     width: 80%;
     margin-bottom: 5rem; }
+
+.xblock .mentoring .copyright {
+  display: none; }
