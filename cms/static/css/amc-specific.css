@@ -102,3 +102,16 @@ body.view-settings .group-settings.basic .list-actions {
 
 .xblock .mentoring .copyright {
   display: none; }
+
+body {
+  /*
+   * RED-1504: Hide the checklists feature because it's not designed to work for Tahoe customers
+   */ }
+  body .nav-dd .nav-sub .nav-course-tools-checklists {
+    display: none; }
+  body .nav-dd .nav-sub .nav-course-tools-export {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0; }
+  body #root.SFE > div > div.row.no-gutters > div:nth-child(3) {
+    display: none; }

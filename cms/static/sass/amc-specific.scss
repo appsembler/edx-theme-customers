@@ -148,3 +148,31 @@ body.view-settings {
 .xblock .mentoring .copyright {
   display: none;
 }
+
+body {
+  /*
+   * RED-1504: Hide the checklists feature because it's not designed to work for Tahoe customers
+   */
+
+  .nav-dd .nav-sub {
+    .nav-course-tools-checklists {
+      // Hide the Tools->Checklists nav button
+      display: none;
+    }
+
+    .nav-course-tools-export {
+      // Re-style the Tools->Export nav button remove useless border
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+  }
+
+  #root.SFE > div {
+    // SFE = Studio frontend
+    > div.row.no-gutters > div:nth-child(3) {
+      // Hide the styles status indicator on course outline: "Checklists 3/8 completed"
+      display: none;
+    }
+  }
+}
