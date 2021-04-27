@@ -206,9 +206,25 @@ body.certificate {
     &__additional-course-info ul {
         list-style: none;
         margin-left: 4em;
+
+        li {
+          margin: 0.25rem;
+        }
+    }
+
+    .signature-container {
+      margin: 3em;
     }
   }
   &__main {
+
+    margin-bottom: 1em;
+
+    /* need tighter spacing b/c of cobranded certs */
+    .organisation-logo {
+      margin: 0 auto 2em;
+    }
+
     &__content {
       .main-header {
         .course-info {
@@ -228,4 +244,12 @@ body.certificate {
       }
     }
   }
+
+  &__certificate-info-print-only {
+    a:visited { color: #fff !important; }
+  }
 }
+
+
+
+
