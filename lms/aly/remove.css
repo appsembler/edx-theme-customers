@@ -1,0 +1,14 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+.emailIcon {
+ fill: #A5B6B7;
+ }
+ button {
+   color: #016898;
+ }
+ button:hover {
+   color: #19B5FE;
+ }
+ p {
+ font-family: "Times New Roman", Times, serif;   
+ }
+# END ANSIBLE MANAGED BLOCK
