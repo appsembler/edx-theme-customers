@@ -18,15 +18,16 @@ ${_("To access the course visit {course_about_url} and register for the course."
 % endif
 % else:
 
-${_("To start accessing course materials, you need to first register and activate your account at {registration_url}.  To finish your registration, please visit {registration_url} and fill "
-    "out the registration form making sure to use {email_address} in the E-mail field.").format(
+${_("To start accessing course materials, you need to first create your learning account at {registration_url} and fill "
+    "out the registration form making sure to use {email_address} in the E-mail field. Then you will be prompted to activate your account.").format(
         registration_url=registration_url,
         email_address=email_address
     )}
 % if auto_enroll:
 ${_("Once you have registered and activated your account, you will see "
-    "{course_name} listed on your dashboard.").format(
-        course_name=display_name or course.display_name_with_default_escaped
+    "{course_name} {course_about_url} listed on your dashboard.").format(
+        course_name=display_name or course.display_name_with_default_escaped,
+        course_about_url=course_about_url        
     )}
 % elif course_about_url is not None:
 ${_("Once you have registered and activated your account, visit {course_about_url} "
