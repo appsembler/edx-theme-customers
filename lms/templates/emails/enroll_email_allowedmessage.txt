@@ -27,11 +27,11 @@ ${_("To start accessing course materials, you need to first create your learning
 ${_("Once you have registered and activated your account, you will see "
     "{course_name} {course_about_url} listed on your dashboard.").format(
         course_name=display_name or course.display_name_with_default_escaped,
-        course_about_url=course_about_url        
+        course_about_url=course_about_url.replace('/about', '/info')        
     )}
 % elif course_about_url is not None:
 ${_("Once you have registered and activated your account, visit {course_about_url} "
-    "to join the course.").format(course_about_url=course_about_url)}
+    "to join the course.").format(course_about_url=course_about_url.replace('/about', '/info'))}
 % else:
 ${_("You can then enroll in {course_name}.").format(course_name=display_name or course.display_name_with_default_escaped)}
 % endif
