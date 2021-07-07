@@ -143,7 +143,7 @@ from pipeline_mako import render_require_js_path_overrides
     <a class="nav-skip" href="#main">${_("Skip to main content")}</a>
 
     % if not disable_header:
-        <%include file="${static.get_template_path('header.html')}" args="online_help_token=online_help_token" />
+        <%include file=/${static.get_template_path('header.html')}" args="online_help_token=online_help_token" />
     % endif
 
     <div class="content-wrapper" id="content">
@@ -152,7 +152,7 @@ from pipeline_mako import render_require_js_path_overrides
     </div>
 
     % if not disable_footer:
-        <%include file="${static.get_template_path('footer.html')}" />
+        <%include file="/${static.get_template_path('footer.html')}" />
     % endif
 
 % if not disable_window_wrap:
