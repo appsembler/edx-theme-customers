@@ -74,15 +74,15 @@ else:
       <div class="a--accomplishment-design-01__certificate-info-print-only">
         <div class="info-upper">
           <div class="info-left">
-            Certificate ID number: <b>${certificate_id_number}</b>
+            ${_('Certificate ID number')}: <b>${certificate_id_number}</b>
           </div>
           <div class="info-right">
-            Date issued: <b>${certificate_date_issued}</b>
+            ${_('Date issued')}: <b>${certificate_date_issued}</b>
           </div>
         </div>
         % if cert_settings['certificate_show_url']:
           <div class="info-bottom">
-            Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/${certificate_id_number}">https://${request.site}/certificates/${certificate_id_number}</a>
+            ${_('Verify the authenticity of this certificate at')} <a href="https://${request.site}/certificates/${certificate_id_number}">https://${request.site}/certificates/${certificate_id_number}</a>
           </div>
         % endif
       </div>
