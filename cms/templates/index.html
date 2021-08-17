@@ -39,6 +39,10 @@ from openedx.core.djangolib.js_utils import (
           % if show_new_library_button:
             <a href="#" class="button new-button new-library-button"><span class="icon fa fa-plus icon-inline" aria-hidden="true"></span>
             ${_("New Library")}</a>
+          % endif          
+          % if user.is_staff:
+          <a href="/export/all/markdown" class="button new-button"><span class="icon fa fa-plus icon-inline" aria-hidden="true"></span>
+            ${_("Export ALL courses as Markdown")}</a>
           % endif
         </li>
       </ul>

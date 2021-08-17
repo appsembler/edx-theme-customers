@@ -30,6 +30,7 @@
             import_url = reverse('import_handler', kwargs={'course_key_string': six.text_type(course_key)})
             course_info_url = reverse('course_info_handler', kwargs={'course_key_string': six.text_type(course_key)})
             export_url = reverse('export_handler', kwargs={'course_key_string': six.text_type(course_key)})
+            export_markdown_url = reverse('openedx_export_plugins:plugin_export_handler', kwargs={'plugin_name': 'markdown', 'course_key_string': six.text_type(course_key)})
             settings_url = reverse('settings_handler', kwargs={'course_key_string': six.text_type(course_key)})
             grading_url = reverse('grading_handler', kwargs={'course_key_string': six.text_type(course_key)})
             advanced_settings_url = reverse('advanced_settings_handler', kwargs={'course_key_string': six.text_type(course_key)})
@@ -122,12 +123,15 @@
             <div class="wrapper wrapper-nav-sub">
               <div class="nav-sub">
                 <ul>
+                  <li class="nav-item nav-course-tools-export-markdown">
+                    <a href="${export_markdown_url}">${_("Export as Markdown")}</a>
+                  </li>                   
                   <li class="nav-item nav-course-tools-import">
                     <a href="${import_url}">${_("Import")}</a>
                   </li>
                   <li class="nav-item nav-course-tools-export">
                     <a href="${export_url}">${_("Export")}</a>
-                  </li>
+                  </li>              
                   % if settings.FEATURES.get('ENABLE_EXPORT_GIT') and context_course.giturl:
                   <li class="nav-item nav-course-tools-export-git">
                     <a href="${reverse('export_git', kwargs=dict(course_key_string=six.text_type(course_key)))}">${_("Export to Git")}</a>
