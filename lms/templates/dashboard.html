@@ -259,7 +259,7 @@ from student.models import CourseEnrollment
       <div class="side-container" role="complementary" aria-label="messages">
         %if display_sidebar_account_activation_message:
           <div class="sidebar-notification">
-            <%include file="${static.get_template_path('registration/account_activation_sidebar_notice.html')}" />
+            <%include file="${static.get_template_path('/registration/account_activation_sidebar_notice.html')}" />
           </div>
         %endif
 
@@ -287,7 +287,7 @@ from student.models import CourseEnrollment
           % endif
         </%block>
         % if settings.FEATURES.get('ENABLE_ANNOUNCEMENTS'):
-          <%include file='dashboard/_dashboard_announcements.html' />
+          <%include file='/dashboard/_dashboard_announcements.html' />
         % endif
 
         % if display_sidebar_on_dashboard:
@@ -298,7 +298,7 @@ from student.models import CourseEnrollment
             <div class="user-info">
               <ul>
 
-                <%include file="${static.get_template_path('dashboard/_dashboard_status_verification.html')}" />
+                <%include file="${static.get_template_path('/dashboard/_dashboard_status_verification.html')}" />
 
               </ul>
             </div>
