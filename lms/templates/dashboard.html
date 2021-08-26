@@ -27,6 +27,10 @@ from student.models import CourseEnrollment
   cert_name_long = settings.CERT_NAME_LONG
 %>
 
+<%
+  find_courses_target = get_global_settings().get('find_courses_dashboard_target', '/courses')
+%>
+
 
 <%block name="pagetitle">${_("Dashboard")}</%block>
 <%block name="bodyclass">view-dashboard is-authenticated</%block>
@@ -57,7 +61,7 @@ from student.models import CourseEnrollment
         dashboard: "${reverse('dashboard') | n, js_escaped_string}",
         signInUser: "${reverse('signin_user') | n, js_escaped_string}",
         changeEmailSettings: "${reverse('change_email_settings') | n, js_escaped_string}",
-        browseCourses: "${get_global_settings().get('og_image_use_course_images', '/courses') | n, js_escaped_string}"
+        browseCourses: "${marketing_link('COURSES') | n, js_escaped_string}"
       },
       isEdx: false
     });
@@ -69,7 +73,7 @@ from student.models import CourseEnrollment
       EntitlementUnenrollmentFactory({
         dashboardPath: "${reverse('dashboard') | n, js_escaped_string}",
         signInPath: "${reverse('signin_user') | n, js_escaped_string}",
-        browseCourses: "${get_global_settings().get('og_image_use_course_images', '/courses') | n, js_escaped_string}",
+        browseCourses: "${marketing_link('COURSES') | n, js_escaped_string}",
         isEdx: false
       });
     });
