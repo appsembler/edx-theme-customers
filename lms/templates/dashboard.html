@@ -227,7 +227,7 @@ from student.models import CourseEnrollment
                   <p class="custom-message">${empty_dashboard_message | n, decode.utf8}</p>
                 %endif
                 % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
-                  <a class="btn btn-primary" href="${get_global_settings().get('og_image_use_course_images', '/courses')}"
+                  <a class="btn btn-primary" href="${get_global_settings().get('find_courses_dashboard_target', '/courses')}">
                     ${_("Explore courses")}
                   </a>
                 %endif
