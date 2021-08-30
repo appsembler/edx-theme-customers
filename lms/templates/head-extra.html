@@ -10,11 +10,7 @@
 
 <link rel="icon" type="image/x-icon" href="${get_brand_favicon()['brand_favicon']}" />
 
-% if style_overrides_file:
-  <link rel="stylesheet" type="text/css" href="${get_current_site_configuration().get_css_url()}" />
-% else:
-  <link rel="stylesheet" type="text/css" href="${static('css/main.css')}">
-% endif
+<link rel="stylesheet" type="text/css" href="${static('css/main.css')}">
 
 % if request.session.get('is_hijacked_user', False):
   <link rel="stylesheet" type="text/css" href="${static('hijack/hijack-styles.css')}" />
