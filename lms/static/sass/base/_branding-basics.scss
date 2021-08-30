@@ -3,67 +3,67 @@
 //# leave this here as well.
 //#
 
-$brand-primary-color: #8e44ad;
-$brand-accent-color: #c13d00;
+$brand-primary-color: #2E3485;
+$brand-accent-color: #21A89D;
 $navbar-style: "white";  // brand or white
-$base-text-color: #111;
+$base-text-color: rgb(67, 72, 77);
 
-$primary-font-name: "Open Sans";
+$primary-font-name: "Roboto";
 $primary-font-weight-light: 300;
 $primary-font-weight-regular: 400;
 $primary-font-weight-bold: 700;
 $primary-font-weight-black: 800;
 $accent-font-name: "Bebas";
 
-$font-size-base-body: 16px;
-$line-height-base-body: 170%;
-$font-size-h1: 42px;
+$font-size-base-body: 14px;
+$line-height-base-body: 150%;
+$font-size-h1: 32px;
 $line-height-h1: 130%;
-$font-size-h2: 30px;
+$font-size-h2: 24px;
 $line-height-h2: 130%;
-$font-size-h3: 26px;
+$font-size-h3: 20px;
 $line-height-h3: 130%;
-$font-size-h4: 22px;
+$font-size-h4: 18px;
 $line-height-h4: 130%;
 
-$global-font-h1: "primary-font-bold";
-$global-font-h2: "primary-font-bold";
-$global-font-h3: "primary-font-bold";
+$global-font-h1: "primary-font-light";
+$global-font-h2: "primary-font-light";
+$global-font-h3: "primary-font-regular";
 $global-font-h4: "primary-font-bold";
 $global-font-base-body: "primary-font-regular";
 $global-font-header-links: "primary-font-regular";
 $global-font-cta-buttons: "primary-font-regular";
 
-$cta-button-bg: $brand-primary-color;
+$cta-button-bg: $brand-accent-color;
 $cta-button-text-color: #fff;
-$cta-button-border: 2px solid $brand-primary-color;
-$buttons-border-radius: calcRem(50);
+$cta-button-border: 2px solid $brand-accent-color;
+$buttons-border-radius: 0;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: calcRem(48);
-$header-padding-top: calcRem(15);
+$header-logo-height: calcRem(58);
+$header-padding-top: calcRem(10);
 $header-padding-bottom: $header-padding-top;
-$header-padding-sm-top: calcRem(15);
-$header-padding-sm-bottom: calcRem(15);
+$header-padding-sm-top: calcRem(10);
+$header-padding-sm-bottom: $header-padding-sm-top;
 $header-group-separation: calcRem(40);
 $header-font-size: calcRem(16);
-$header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
+$header-text-color: rgb(94,105,119);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
 $navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-accent-color);
-$navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-primary-color);
+$navbar-anchor-underline-color: calcNavbarUnderlineColor($navbar-style, $brand-accent-color);
 $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 
 $display-navbar-logo-positive: calcDisplayLogoPositive($navbar-style);
 $display-navbar-logo-negative: calcDisplayLogoNegative($navbar-style);
 
 $nav-toggle-bar-width: calcRem(36);
-$nav-toggle-bar-height: calcRem(4);
-$nav-toggle-bar-radius: calcRem(4);
+$nav-toggle-bar-height: 4px;
+$nav-toggle-bar-radius: 4px;
 $nav-toggle-bar-margin: calcRem(20);
 $nav-toggle-bar-color: $header-text-color;
 $nav-toggle-bar-separation: calcRem(10);
 $nav-toggle-bar-pulsar-color: $brand-primary-color;
-$nav-toggle-bar-pulsar-visible: false;
+$nav-toggle-bar-pulsar-visible: False;
 
 $slideout-menu-text-color: #fff;
 $slideout-menu-background-color: $brand-primary-color;
@@ -84,7 +84,7 @@ $footer-link-breathe-space: calcRem(15);
 $footer-logo-breathe-space: calcRem(30);
 $footer-logo-padding-vertical: calcRem(10);
 $footer-logo-width: calcRem(40);
-$footer-logo-opacity: 0.5;
+$footer-logo-opacity: 1;
 $footer-copyright-text-size: calcRem(12);
 $footer-copyright-text-color: lighten($footer-text-color, 15%);
 $footer-copyright-breathe-space: calcRem(10);
