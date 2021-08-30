@@ -23,4 +23,14 @@
   visibility: hidden;
 }
 
-@import "customer-sass-input";
+.isc--site-nav {
+
+  &__group-right {
+    flex-grow: 1;
+    flex-shrink: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: calcRem(40);
+  }
+}
