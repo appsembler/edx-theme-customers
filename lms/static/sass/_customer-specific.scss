@@ -23,14 +23,22 @@
   visibility: hidden;
 }
 
-.isc--site-nav {
+// Replace header menu content
+.window-wrap .global-header .main-header .nav-links {
 
-  &__group-right {
-    flex-grow: 1;
-    flex-shrink: 1;
+  .main, .secondary {
+    display: none;
+  }
+
+  &:after {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-left: calcRem(40);
+    content: 'Please close this window or tab to exit your course';
+    font-size: calcRem(16);
+    font-style: italic;
+    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
   }
 }
