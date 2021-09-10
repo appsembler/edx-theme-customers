@@ -5,12 +5,13 @@
 %>
 ${_render_hijack_notification((request))}
 
-% if (get_global_settings().get('customer_gtm_id') != ""):
-  <%
-    customerGtmId = get_global_settings().get('customer_gtm_id')
-  %>
+<%
+customer_gtm_id = get_global_settings().get('customer_gtm_id')
+%>
+
+% if customer_gtm_id:
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${customerGtmId | n, js_escaped_string}"
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${customer_gtm_id | n, js_escaped_string}"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 % endif
