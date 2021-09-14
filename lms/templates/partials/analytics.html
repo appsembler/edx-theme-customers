@@ -20,10 +20,11 @@
   endif
 %>
 
-% if (get_global_settings().get('customer_gtm_id') != ""):
-  <%
-    customerGtmId = get_global_settings().get('customer_gtm_id')
-  %>
+<%
+  customer_gtm_id = get_global_settings().get('customer_gtm_id')
+%>
+
+% if customer_gtm_id:
   <script>
     dataLayer = [{
       'visitorType': '${userType | n, js_escaped_string}',
@@ -35,7 +36,7 @@
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','${customerGtmId | n, js_escaped_string}');</script>
+  })(window,document,'script','dataLayer','${customer_gtm_id | n, js_escaped_string}');</script>
   <!-- End Google Tag Manager -->
 % endif
 
