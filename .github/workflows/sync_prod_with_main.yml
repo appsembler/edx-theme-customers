@@ -1,0 +1,17 @@
+name: Sync prod with main
+on:
+  push:
+    branches:
+      - juniper/tahoe
+jobs:
+  auto-pull-request:
+    name: PullRequestAction
+    runs-on: ubuntu-latest
+    steps:
+      - name: pull-request-action
+        uses: vsoch/pull-request-action@1.0.12
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_PREFIX: "juniper/tahoe"
+          PULL_REQUEST_BRANCH: "juniper/tahoe-prod"
+          PULL_REQUEST_TITLE: "Update from `main` (production)"
