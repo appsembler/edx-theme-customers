@@ -22,15 +22,36 @@
 
 <%
   customer_gtm_id = get_global_settings().get('customer_gtm_id')
+  customer_gtm_enable_pii = get_global_settings().get('customer_gtm_enable_pii', False)
 %>
 
 % if customer_gtm_id:
-  <script>
-    dataLayer = [{
-      'visitorType': '${userType | n, js_escaped_string}',
-      'courseName': '${courseName | n, js_escaped_string}'
-    }];
-  </script>
+  % if customer_gtm_enable_pii:
+    <%
+      if user.is_authenticated:
+        userEmail = user.email
+        userID = user.id
+      else:
+        userEmail = 'Not authenticated'
+        userID = 'Not authenticated'
+      endif
+    %>
+    <script>
+      dataLayer = [{
+        'visitorType': '${userType | n, js_escaped_string}',
+        'courseName': '${courseName | n, js_escaped_string}',
+        'userEmail': '${userEmail | n, js_escaped_string}',
+        'userID': '${userID | n, js_escaped_string}',
+      }];
+    </script>
+  % else:
+    <script>
+      dataLayer = [{
+        'visitorType': '${userType | n, js_escaped_string}',
+        'courseName': '${courseName | n, js_escaped_string}'
+      }];
+    </script>
+  % endif
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
