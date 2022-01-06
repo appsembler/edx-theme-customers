@@ -2,7 +2,6 @@
 <%! import urllib.parse %>
 <%! from django.urls import reverse %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
-<%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
 <%! from django.utils.encoding import force_text %>
 <%! from django.utils import translation %>
@@ -108,9 +107,9 @@
   <%
   return {
     'header_template' : '/design-templates/header/_header-appsembler-{}.html'.format(
-      get_current_site_configuration().page_elements.get('header', {}).get('type', '01')), ## required
+      get_current_site_configuration().get_page_content('header', {}).get('type', '01')), ## required
     'footer_template' : '/design-templates/footer/_footer-appsembler-{}.html'.format(
-      get_current_site_configuration().page_elements.get('footer', {}).get('type', '01')), ## required
+      get_current_site_configuration().get_page_content('footer', {}).get('type', '01')), ## required
   }
   %>
 </%def>
@@ -120,7 +119,7 @@
 
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
-    return get_current_site_configuration().page_elements.get('header', {}).get('loggedOutItems', [])
+    return get_current_site_configuration().get_page_content('header', {}).get('loggedOutItems', [])
   %>
 </%def>
 
@@ -129,7 +128,7 @@
 
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
-    return get_current_site_configuration().page_elements.get('header', {}).get('loggedInItems', [])
+    return get_current_site_configuration().get_page_content('header', {}).get('loggedInItems', [])
   %>
 </%def>
 
@@ -138,7 +137,7 @@
 
 <%def name="get_footer_menu_items()">
   <%
-    return get_current_site_configuration().page_elements.get('footer', {}).get('items', [])
+    return get_current_site_configuration().get_page_content('footer', {}).get('items', [])
   %>
 </%def>
 
@@ -147,7 +146,7 @@
 
 <%def name="get_footer_settings()">
   <%
-    footer_options = get_current_site_configuration().page_elements.get('footer', {}).get('options', {})
+    footer_options = get_current_site_configuration().get_page_content('footer', {}).get('options', {})
 
     def _default_copyright():
       return ugettext('{copy_sign} {year} {platform_name}. All rights reserved.').format(
@@ -175,7 +174,7 @@
 
 <%def name="get_index_content()">
   <%
-    return get_current_site_configuration().page_elements.get('index', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('index', {}).get('content', [])
   %>
 </%def>
 
@@ -184,7 +183,7 @@
 
 <%def name="get_course_about_content()">
   <%
-    return get_current_site_configuration().page_elements.get('course-about', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('course-about', {}).get('content', [])
   %>
 </%def>
 
@@ -193,7 +192,7 @@
 
 <%def name="get_course_catalogue_content()">
   <%
-    return get_current_site_configuration().page_elements.get('courses', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('courses', {}).get('content', [])
   %>
 </%def>
 
@@ -238,7 +237,7 @@
 
 <%def name="get_faq_content()">
   <%
-    return get_current_site_configuration().page_elements.get('faq', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('faq', {}).get('content', [])
   %>
 </%def>
 
@@ -247,7 +246,7 @@
 
 <%def name="get_tos_content()">
   <%
-    return get_current_site_configuration().page_elements.get('tos', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('tos', {}).get('content', [])
   %>
 </%def>
 
@@ -256,7 +255,7 @@
 
 <%def name="get_copyright_content()">
   <%
-    return get_current_site_configuration().page_elements.get('copyright', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('copyright', {}).get('content', [])
   %>
 </%def>
 
@@ -265,7 +264,7 @@
 
 <%def name="get_about_content()">
   <%
-    return get_current_site_configuration().page_elements.get('about', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('about', {}).get('content', [])
   %>
 </%def>
 
@@ -274,7 +273,7 @@
 
 <%def name="get_help_content()">
   <%
-    return get_current_site_configuration().page_elements.get('help', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('help', {}).get('content', [])
   %>
 </%def>
 
@@ -283,7 +282,7 @@
 
 <%def name="get_contact_content()">
   <%
-    return get_current_site_configuration().page_elements.get('contact', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('contact', {}).get('content', [])
   %>
 </%def>
 
@@ -291,7 +290,7 @@
 
 <%def name="get_blog_content()">
   <%
-    return get_current_site_configuration().page_elements.get('blog', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('blog', {}).get('content', [])
   %>
 </%def>
 
@@ -299,7 +298,7 @@
 
 <%def name="get_donate_content()">
   <%
-    return get_current_site_configuration().page_elements.get('donate', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('donate', {}).get('content', [])
   %>
 </%def>
 
@@ -307,7 +306,7 @@
 
 <%def name="get_honor_content()">
   <%
-    return get_current_site_configuration().page_elements.get('honor', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('honor', {}).get('content', [])
   %>
 </%def>
 
@@ -315,7 +314,7 @@
 
 <%def name="get_jobs_content()">
   <%
-    return get_current_site_configuration().page_elements.get('jobs', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('jobs', {}).get('content', [])
   %>
 </%def>
 
@@ -323,7 +322,7 @@
 
 <%def name="get_news_content()">
   <%
-    return get_current_site_configuration().page_elements.get('news', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('news', {}).get('content', [])
   %>
 </%def>
 
@@ -331,7 +330,7 @@
 
 <%def name="get_press_content()">
   <%
-    return get_current_site_configuration().page_elements.get('press', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('press', {}).get('content', [])
   %>
 </%def>
 
@@ -339,7 +338,7 @@
 
 <%def name="get_privacy_content()">
   <%
-    return get_current_site_configuration().page_elements.get('privacy', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('privacy', {}).get('content', [])
   %>
 </%def>
 
@@ -347,7 +346,7 @@
 
 <%def name="get_embargo_content()">
   <%
-    return get_current_site_configuration().page_elements.get('embargo', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('embargo', {}).get('content', [])
   %>
 </%def>
 
@@ -355,7 +354,7 @@
 
 <%def name="get_tracks_content()">
   <%
-    return get_current_site_configuration().page_elements.get('tracks', {}).get('content', [])
+    return get_current_site_configuration().get_page_content('tracks', {}).get('content', [])
   %>
 </%def>
 
