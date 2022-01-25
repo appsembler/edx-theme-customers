@@ -2,6 +2,7 @@
 <%! import urllib.parse %>
 <%! from django.urls import reverse %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
+<%! from openedx.core.djangoapps.site_configuration import tahoe_auth0_helpers %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
 <%! from django.utils.encoding import force_text %>
 <%! from django.utils import translation %>
@@ -48,6 +49,11 @@
   encoded_primary_font = urllib.parse.quote(get_value('primary-font', 'Roboto').encode('utf-8'))
   encoded_accent_font = urllib.parse.quote(get_value('accent-font', 'Delius Unicase').encode('utf-8'))
   latin_extended = "&amp;subset=latin-ext" if get_value('accent-font', False) else ""
+
+  # Support for github.com/appsembler/tahoe-auth0
+  register_url = reverse('tahoe_auth0:register_view') if tahoe_auth0_helpers.is_tahoe_auth0_enabled() else '/register'
+  login_url = reverse('social:begin', args=['tahoe-auth0']) if tahoe_auth0_helpers.is_tahoe_auth0_enabled() else '/login'
+
   return {
     'enable_registration_button' : get_value('enable_registration_button', True),
     'enable_registration_link_on_login' : get_value('enable_registration_link_on_login', True),
@@ -73,6 +79,8 @@
     'og_image_use_course_images': get_value('og_image_use_course_images', ''),
     'header_logo_target': get_value('header_logo_target', '/'),
     'find_courses_dashboard_target': get_value('find_courses_dashboard_target', '/courses'),
+    'register_url': register_url,
+    'login_url': login_url,
   }
   %>
 </%def>
