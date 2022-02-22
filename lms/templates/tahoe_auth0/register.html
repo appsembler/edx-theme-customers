@@ -51,8 +51,10 @@
         } else {
           // TODO: Add error handling when needed
           submitButton.prop('disabled', false);
-          console.error('Error: ' + resp.text);
-          alert(resp.text);
+          resp.text().then(function (text) {
+            console.error('Error: ' + text);
+            alert(text);
+          });
         }
       }).catch((error) => {
         console.error(error);
