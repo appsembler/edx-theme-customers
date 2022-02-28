@@ -36,6 +36,11 @@
 %></%def>
 
 
+<%!
+  def get_theme_version():
+    return get_value('THEME_VERSION', 'amc-v1')
+%>
+
 
 ## =======================================================
 ## this template is used to define content to be displayed
@@ -58,6 +63,7 @@
   else:
     login_url = '/login'
 
+
   return {
     'enable_registration_button' : get_value('enable_registration_button', True),
     'enable_registration_link_on_login' : get_value('enable_registration_link_on_login', True),
@@ -65,7 +71,7 @@
     'sso_disable_login_fields' : get_value('sso_disable_login_fields', False),
     'fonts_url' : 'https://fonts.googleapis.com/css?family={}|{}:300,300i,400,400i,700,700i,900{}'.format(
       encoded_accent_font, encoded_primary_font, latin_extended),
-    'apple_app_id' : '',
+    'apple_app_id' : '' if get_theme_version() == 'dashboard-v2 else 'something else',
     'page_status': get_value('page_status', {}),
     'course-catalogue_enabled': get_value('course-catalogue_enabled', True),
     'enable_course_catalogue_for_non-auth_users': get_value('enable_course_catalogue_for_non-auth_users', True),
