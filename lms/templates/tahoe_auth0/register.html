@@ -39,9 +39,8 @@
           email: $('#register-email').val(),
           password: $('#register-password').val(),
           // TODO: Add support for custom fields
-          metadata: {
-              extra_arg: "some value",
-              another_arg: "another value",
+          extra_registration_params: {
+              'source': 'auth0'
           }
         })
       }).then((resp) => {
