@@ -51,8 +51,12 @@
   latin_extended = "&amp;subset=latin-ext" if get_value('accent-font', False) else ""
 
   # Support for github.com/appsembler/tahoe-auth0
-  register_url = reverse('tahoe_auth0:register_view') if tahoe_auth0_helpers.is_tahoe_auth0_enabled() else '/register'
-  login_url = reverse('social:begin', args=['tahoe-auth0']) if tahoe_auth0_helpers.is_tahoe_auth0_enabled() else '/login'
+  is_tahoe_auth0_enabled = tahoe_auth0_helpers.is_tahoe_auth0_enabled()
+  register_url = reverse('tahoe_auth0:register_view') if is_tahoe_auth0_enabled else '/register'
+  if is_tahoe_auth0_enabled:
+    login_url = '{base}?auth_entry=login'.format(base=reverse('social:begin', args=['tahoe-auth0']))
+  else:
+    login_url = '/login'
 
   return {
     'enable_registration_button' : get_value('enable_registration_button', True),
