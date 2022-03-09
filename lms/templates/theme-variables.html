@@ -8,7 +8,6 @@
 <%! from django.utils import translation %>
 <%! from django.utils.translation import ugettext, ugettext_lazy as _ %>
 <%! from django.utils.functional import Promise %>
-<%! from django.utils import six %>
 <%! from django.utils.functional import lazy %>
 <%! from datetime import date %>
 
@@ -36,6 +35,11 @@
 %></%def>
 
 
+<%!
+  def get_theme_version():
+    return get_value('THEME_VERSION', 'amc-v1')
+%>
+
 
 ## =======================================================
 ## this template is used to define content to be displayed
@@ -46,9 +50,13 @@
 
 <%def name="get_global_settings()">
   <%
-  encoded_primary_font = urllib.parse.quote(get_value('primary-font', 'Roboto').encode('utf-8'))
-  encoded_accent_font = urllib.parse.quote(get_value('accent-font', 'Delius Unicase').encode('utf-8'))
-  latin_extended = "&amp;subset=latin-ext" if get_value('accent-font', False) else ""
+  if get_theme_version() == 'tahoe-v2':
+    encoded_primary_font = urllib.parse.quote(get_value('selected_font', 'Roboto').encode('utf-8'))
+    latin_extended = "&amp;subset=latin-ext"
+  else:
+    encoded_primary_font = urllib.parse.quote(get_value('primary-font', 'Roboto').encode('utf-8'))
+    encoded_accent_font = urllib.parse.quote(get_value('accent-font', 'Delius Unicase').encode('utf-8'))
+    latin_extended = "&amp;subset=latin-ext" if get_value('accent-font', False) else ""
 
   # Support for github.com/appsembler/tahoe-auth0
   is_tahoe_auth0_enabled = tahoe_auth0_helpers.is_tahoe_auth0_enabled()
@@ -57,6 +65,37 @@
     login_url = '{base}?auth_entry=login'.format(base=reverse('social:begin', args=['tahoe-auth0']))
   else:
     login_url = '/login'
+
+
+  if get_theme_version() == 'tahoe-v2':
+    return {
+      'enable_registration_button' : get_value('enable_site_nav_registration_button', True),
+      'enable_registration_link_on_login' : get_value('enable_site_registration_form', True),
+      'enable_registration_form' : get_value('enable_site_registration_form', True),
+      'sso_disable_login_fields' : get_value('sso_disable_login_fields', False),
+      'fonts_url' : 'https://fonts.googleapis.com/css?family={}:300,300i,400,400i,700,700i,900{}'.format(
+        encoded_primary_font, latin_extended),
+      'apple_app_id' : '',
+      'page_status': get_value('page_editor_v1_pages_status', {}),
+      'course-catalogue_enabled': get_value('enable_course_catalogue', True),
+      'enable_course_catalogue_for_non-auth_users': get_value('display_course_catalogue_to_non_auth_users', True),
+      'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
+      'appsembler_lms_tracking_code': "UA-18398802-26", ## our new GA property
+      'client_ga_code': get_value('integrations_ga_code', ""),
+      'allow_search_engine_indexing': get_value('allow_search_engine_indexing', True),
+      'custom_site_meta_tags': get_value('site_seo_tags', []),
+      'combine_privacy_and_tos': get_value('combine_privacy_and_tos', False),
+      'enable_legacy_courseware_nav': get_value('enable_legacy_courseware_nav', True),
+      'customer_gtm_enabled': get_value('integrations_gtm_enabled', False),
+      'customer_gtm_id': get_value('integrations_gtm_id', ""),
+      'customer_gtm_enable_pii': get_value('integrations_gtm_enable_pii', False),
+      'default_og_image': get_value('og_image', ''),
+      'og_image_use_course_images': get_value('use_course_image_for_og', ''),
+      'header_logo_target': get_value('header_logo_target', '/'),
+      'find_courses_dashboard_target': get_value('find_courses_dashboard_target', '/courses'),
+      'register_url': register_url,
+      'login_url': login_url,
+    }
 
   return {
     'enable_registration_button' : get_value('enable_registration_button', True),
@@ -94,6 +133,15 @@
 
 <%def name="get_brand_logos()">
   <%
+  if get_theme_version() == 'tahoe-v2':
+    return {
+      'logo_positive' : get_value('site_branding_full_logo') or static('images/branding/brand-logo.svg'), ## required
+      'logo_negative' : get_value('site_branding_full_logo') or static('images/branding/brand-logo-negative.svg'), ## required
+      'icon_color' : get_value('site_branding_logo_icon_only', '') or static('images/branding/icon-color.svg'), ## required
+      'icon_white' : get_value('footer_logo', '') or static('images/branding/icon-white.svg'), ## required
+      'icon_black' : get_value('footer_logo', '') or static('images/branding/icon-black.svg'), ## required
+    }
+
   return {
     'logo_positive' : get_value('logo_positive') or static('images/branding/brand-logo.svg'), ## required
     'logo_negative' : get_value('logo_negative') or static('images/branding/brand-logo-negative.svg'), ## required
@@ -106,6 +154,11 @@
 
 <%def name="get_brand_favicon()">
   <%
+  if get_theme_version() == 'tahoe-v2':
+    return {
+      'brand_favicon' : get_value('site_branding_favicon', '') or static('images/favicon.ico'),
+    }
+
   return {
     'brand_favicon' : get_value('brand_favicon', '') or static('images/favicon.ico'),
   }
@@ -117,6 +170,13 @@
 
 <%def name="get_header_footer_templates()">
   <%
+  if get_theme_version() == 'tahoe-v2':
+    return {
+      'header_template' : '/design-templates/header/_header-appsembler-01.html', ## required
+      'footer_template' : '/design-templates/footer/_footer-appsembler-01.html', ## required
+    }
+
+  # amc-v1 theme
   return {
     'header_template' : '/design-templates/header/_header-appsembler-{}.html'.format(
       get_current_site_configuration().get_page_content('header', {}).get('type', '01')), ## required
@@ -131,6 +191,8 @@
 
 <%def name="get_header_menu_logged_out_extra_items()">
   <%
+    if get_theme_version() == 'tahoe-v2':
+      return get_value('header_unauthenticated_items', [])
     return get_current_site_configuration().get_page_content('header', {}).get('loggedOutItems', [])
   %>
 </%def>
@@ -140,6 +202,8 @@
 
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
+    if get_theme_version() == 'tahoe-v2':
+      return get_value('header_unauthenticated_items', [])
     return get_current_site_configuration().get_page_content('header', {}).get('loggedInItems', [])
   %>
 </%def>
@@ -149,6 +213,8 @@
 
 <%def name="get_footer_menu_items()">
   <%
+    if get_theme_version() == 'tahoe-v2':
+      return get_value('footer_menu_items', [])
     return get_current_site_configuration().get_page_content('footer', {}).get('items', [])
   %>
 </%def>
@@ -158,17 +224,35 @@
 
 <%def name="get_footer_settings()">
   <%
-    footer_options = get_current_site_configuration().get_page_content('footer', {}).get('options', {})
 
     def _default_copyright():
-      return ugettext('{copy_sign} {year} {platform_name}. All rights reserved.').format(
-        copy_sign=u'©',
-        platform_name=force_text(get_value('PLATFORM_NAME', ugettext('Company Name'))),
-        year=date.today().strftime('%Y'),
-      )
+      if get_theme_version() == 'tahoe-v2':
+        return ugettext('{copy_sign} {year} {platform_name}. All rights reserved.').format(
+          copy_sign=u'©',
+          platform_name=force_text(get_value('site_name', ugettext('Company Name'))),
+          year=date.today().strftime('%Y'),
+        )
+      else:
+        return ugettext('{copy_sign} {year} {platform_name}. All rights reserved.').format(
+          copy_sign=u'©',
+          platform_name=force_text(get_value('PLATFORM_NAME', ugettext('Company Name'))),
+          year=date.today().strftime('%Y'),
+        )
 
-    default_copyright = lazy(_default_copyright, six.text_type)
+    default_copyright = lazy(_default_copyright, str)
 
+    if get_theme_version() == 'tahoe-v2':
+      return {
+        'footer_logo' : get_value('footer_logo', ''), ## leave as is, defined above. Can be changed to something custom if needed.
+        'footer_copyright_text' : translate(get_value('footer_copyright_text', ''), default=default_copyright()),
+        'display_edx_disclaimer' : get_value('display_footer_legal', True), ## bool value required
+        'edx_disclaimer' : translate(get_value('edx_disclaimer'), default=_('edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.')),
+        'display_poweredby' : get_value('display_footer_powered_by', True), ## bool value required
+        'display_app_link' : False,
+        'app_url' : ''
+      }
+
+    footer_options = get_current_site_configuration().get_page_content('footer', {}).get('options', {})  # amc-v1 theme
     return {
       'footer_logo' : get_brand_logos()['icon_black'], ## leave as is, defined above. Can be changed to something custom if needed.
       'footer_copyright_text' : translate(footer_options.get('footer_copyright_text'), default=default_copyright()),
@@ -374,37 +458,62 @@
 
 <%def name="get_certificates_settings(course_context={})">
   <%
-  cert_settings = {
-    'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
-    'header_logo': get_value('certificates', {}).get('header_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
-    'header_logo_width': get_value('certificates', {}).get('header_logo_width', '240px'),
-    'cert_logo': get_value('certificates', {}).get('cert_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
-    'logo_width': get_value('certificates', {}).get('cert_logo_width', '160px'),
-    'platform_name_amc': translate(get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', '')), default=_('Platform Name')),
-    'certificate_banner_text': translate(get_value('certificates', {}).get('certificate_banner_text', course_context.get('document_banner', ''))),
-    'header_text': translate(get_value('certificates', {}).get('header_text', ''), default=_('Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
-    'short_platform_description': translate(get_value('certificates', {}).get('short_platform_description', '')),
-    'we_hereby_text': translate(get_value('certificates', {}).get('we_hereby_text', ''), default=_('We hereby certify that:')),
-    'successfully_completed_text': translate(get_value('certificates', {}).get('successfully_completed_text', ''), default=_('successfully completed, received a passing grade, and was awarded this platform\'s Honor Code Certificate of Completion in:')),
-    'optional_cert_text': translate(get_value('certificates', {}).get('optional_cert_text', '')),
-    'footer_about_platform_text': translate(get_value('certificates', {}).get('footer_about_platform_text'), default=_('Our platform offers interactive online classes and MOOCs.')),
-    'footer_about_platform_url': get_value('certificates', {}).get('footer_about_platform_url', '#'),
-    'footer_about_accomplishments_text': translate(get_value('certificates', {}).get('footer_about_accomplishments_text'), default=_('Our platform acknowledges achievements through certificates, which are awarded for course activities that our platform students complete.')),
-    'footer_copyright_text': translate(get_value('certificates', {}).get('footer_copyright_text', "")),
-    'footer_tos_url': get_value('certificates', {}).get('footer_tos_url', "#"),
-    'footer_privacy_url': get_value('certificates', {}).get('footer_privacy_url', "#"),
-    'accomplishment_icon': get_value('certificates', {}).get('cert_accomplishment_icon', ''),
-    'accomplishment_icon_width': get_value('certificates', {}).get('cert_accomplishment_icon_width', '60px'),
-    'certificate_custom_org_name': translate(get_value('certificates', {}).get('certificate_custom_org_name', "")),
-    'certificate_show_url': get_value('certificates', {}).get('certificate_show_url', True),
-  }
+    if get_theme_version() == 'tahoe-v2':
+      cert_settings = {
+        'paper_orientation': get_value('certificates_certificate_orientation', 'landscape'),
+        'header_logo': get_value('certificates_certificate_header_area_logo', get_value('site_branding_full_logo', static('images/branding/brand-logo.svg'))),
+        'header_logo_width': get_value('certificates_certificate_header_area_logo_width', '240px'),
+        'cert_logo': get_value('certificates_certificate_logo_on_certificate', get_value('site_branding_full_logo', static('images/branding/brand-logo.svg'))),
+        'logo_width': get_value('certificates_certificate_logo_on_certificate_width', '160px'),
+        'platform_name_amc': translate(get_value('certificates_certificate_platform_name', get_value('site_title', '')), default=_('Platform Name')),
+        'certificate_banner_text': translate(('certificate_banner_text', course_context.get('document_banner', ''))),
+        'header_text': translate(get_value('certificates_certificate_page_message', ''), default=_('Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
+        'short_platform_description': translate(get_value('certificates_short_platform_description', '')),
+        'we_hereby_text': translate(get_value('certificates_we_hereby_text', ''), default=_('We hereby certify that:')),
+        'successfully_completed_text': translate(get_value('certificates_successfully_completed_text', ''), default=_('successfully completed, received a passing grade, and was awarded this platform\'s Honor Code Certificate of Completion in:')),
+        'optional_cert_text': translate(get_value('certificates_optional_certificate_text', '')),
+        'footer_about_platform_text': translate(get_value('certificates_about_platform_text'), default=_('Our platform offers interactive online classes and MOOCs.')),
+        'footer_about_platform_url': get_value('certificates_learn_more_about_platform_url', '#'),
+        'footer_about_accomplishments_text': translate(get_value('certificates_about_accomplishments_text'), default=_('Our platform acknowledges achievements through certificates, which are awarded for course activities that our platform students complete.')),
+        'footer_copyright_text': translate(get_value('certificates_footer_copyright_text', "")),
+        'footer_tos_url': get_value('certificates_tos_url', "#"),
+        'footer_privacy_url': get_value('certificates_privacy_policy_url', "#"),
+        'accomplishment_icon': get_value('certificates_accomplishment_icon_on_certificate', ''),
+        'accomplishment_icon_width': get_value('certificates_accomplishment_icon_on_certificate_width', '60px'),
+        'certificate_custom_org_name': translate(get_value('certificates_certificate_custom_organization', "")),
+        'certificate_show_url': get_value('certificates_show_certificate_url', True),
+      }
+    else:
+      cert_settings = {
+        'paper_orientation': get_value('certificates', {}).get('paper_orientation', 'landscape'),
+        'header_logo': get_value('certificates', {}).get('header_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
+        'header_logo_width': get_value('certificates', {}).get('header_logo_width', '240px'),
+        'cert_logo': get_value('certificates', {}).get('cert_logo', get_value('logo_positive', static('images/branding/brand-logo.svg'))),
+        'logo_width': get_value('certificates', {}).get('cert_logo_width', '160px'),
+        'platform_name_amc': translate(get_value('certificates', {}).get('platform_name', get_value('PLATFORM_NAME', '')), default=_('Platform Name')),
+        'certificate_banner_text': translate(get_value('certificates', {}).get('certificate_banner_text', course_context.get('document_banner', ''))),
+        'header_text': translate(get_value('certificates', {}).get('header_text', ''), default=_('Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
+        'short_platform_description': translate(get_value('certificates', {}).get('short_platform_description', '')),
+        'we_hereby_text': translate(get_value('certificates', {}).get('we_hereby_text', ''), default=_('We hereby certify that:')),
+        'successfully_completed_text': translate(get_value('certificates', {}).get('successfully_completed_text', ''), default=_('successfully completed, received a passing grade, and was awarded this platform\'s Honor Code Certificate of Completion in:')),
+        'optional_cert_text': translate(get_value('certificates', {}).get('optional_cert_text', '')),
+        'footer_about_platform_text': translate(get_value('certificates', {}).get('footer_about_platform_text'), default=_('Our platform offers interactive online classes and MOOCs.')),
+        'footer_about_platform_url': get_value('certificates', {}).get('footer_about_platform_url', '#'),
+        'footer_about_accomplishments_text': translate(get_value('certificates', {}).get('footer_about_accomplishments_text'), default=_('Our platform acknowledges achievements through certificates, which are awarded for course activities that our platform students complete.')),
+        'footer_copyright_text': translate(get_value('certificates', {}).get('footer_copyright_text', "")),
+        'footer_tos_url': get_value('certificates', {}).get('footer_tos_url', "#"),
+        'footer_privacy_url': get_value('certificates', {}).get('footer_privacy_url', "#"),
+        'accomplishment_icon': get_value('certificates', {}).get('cert_accomplishment_icon', ''),
+        'accomplishment_icon_width': get_value('certificates', {}).get('cert_accomplishment_icon_width', '60px'),
+        'certificate_custom_org_name': translate(get_value('certificates', {}).get('certificate_custom_org_name', "")),
+        'certificate_show_url': get_value('certificates', {}).get('certificate_show_url', True),
+      }
+    # Support override per-course via cert_html_view_overrides Advanced Setting.
+    # Note: None of the variables defined in get_certificate_settings and used in our
+    # custom certificate template are the original variables passed in context from
+    # certificates.views.webview.
+    cert_settings.update(course_context)
 
-  # Support override per-course via cert_html_view_overrides Advanced Setting.
-  # Note: None of the variables defined in get_certificate_settings and used in our
-  # custom certificate template are the original variables passed in context from
-  # certificates.views.webview.
-  cert_settings.update(course_context)
-
-  return cert_settings
+    return cert_settings
   %>
 </%def>
