@@ -219,7 +219,7 @@
 <%def name="get_header_menu_logged_in_extra_items()">
   <%
     if get_theme_version() == 'tahoe-v2':
-      return site_setting_v2().get('header_authenticated_items')
+      return get_current_site_configuration().get_page_content('header_authenticated_items', [])
     else:
       return get_current_site_configuration().get_page_content('header', {}).get('loggedInItems', [])
   %>
@@ -231,7 +231,7 @@
 <%def name="get_footer_menu_items()">
   <%
     if get_theme_version() == 'tahoe-v2':
-      return site_setting_v2().get('footer_menu_items')
+      return get_current_site_configuration().get_page_content('footer_menu_items', [])
     else:
       return get_current_site_configuration().get_page_content('footer', {}).get('items', [])
   %>
