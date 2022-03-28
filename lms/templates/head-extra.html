@@ -1,0 +1,40 @@
+## mako
+<%namespace name='static' file='/static_content.html'/>
+<%namespace file='/theme-variables.html' import="get_global_settings, get_brand_favicon" />
+<%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
+<%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%! from openedx.core.lib.courses import course_image_url %>
+<% style_overrides_file = get_value('css_overrides_file') %>
+
+<link rel="icon" type="image/x-icon" href="${get_brand_favicon()['brand_favicon']}" />
+
+<link rel="stylesheet" type="text/css" href="${static('css/main.css')}">
+
+<link rel="stylesheet" type="text/css" href="${static('font-awesome/css/font-awesome.min.css')}">
+<link href="${get_global_settings().get('fonts_url', 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800&subset=latin-ext')}" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+% if apple_app_id:
+  <meta name="apple-itunes-app" content="app-id=${get_global_settings().get('apple_app_id', '')}">
+% endif
+
+% if get_global_settings().get('custom_site_meta_tags'):
+  % for meta_tag in get_global_settings().get('custom_site_meta_tags'):
+    % if meta_tag.get('tagName'):
+      <meta name="${meta_tag['tagName']}" content="${meta_tag['tagContent']}" />
+    % elif meta_tag.get('tagProperty'):
+      <meta property="${meta_tag['tagProperty']}" content="${meta_tag['tagContent']}" />
+    % endif
+  % endfor
+% endif
+
+<%
+  og_image_use_course_images = get_global_settings().get('og_image_use_course_images', True);
+  default_og_image = get_global_settings().get('default_og_image', '');
+%>
+% if (og_image_use_course_images and course):
+  <meta name="og:image" content="${course_image_url(course)}" />
+% else:
+  <meta name="og:image" content="${default_og_image}" />
+% endif
+
+<%include file="/theme-google-analytics.html" />

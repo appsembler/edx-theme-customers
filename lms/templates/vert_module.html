@@ -2,13 +2,15 @@
 <%! from openedx.core.djangolib.markup import HTML %>
 
 % if show_bookmark_button:
-    <%include file='/bookmark_button.html' args="bookmark_id=bookmark_id, is_bookmarked=bookmarked"/>
+  <%include file='/bookmark_button.html' args="bookmark_id=bookmark_id, is_bookmarked=bookmarked"/>
 % endif
 
 <div class="vert-mod">
 % for idx, item in enumerate(items):
-  <div class="vert vert-${idx}" data-id="${item['id']}">
-    ${HTML(item['content'])}
-  </div>
+  % if item['content']:
+    <div class="vert vert-${idx}" data-id="${item['id']}">
+        ${HTML(item['content'])}
+    </div>
+  %endif
 % endfor
 </div>

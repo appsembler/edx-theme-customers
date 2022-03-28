@@ -15,9 +15,9 @@
 
 // Fix for "Hairline Element between Components" in Course content
 .a--courseware-wrapper__content .vert-mod .vert {
-  border-bottom: 0.1rem solid #ddd;
-  padding-bottom: 1rem;
-  margin: 1rem 0;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: calcRem(10);
+  margin: calcRem(10) 0;
 
   &:last-of-type {
     border: none;
@@ -57,11 +57,11 @@
 }
 
 .a--courseware-wrapper__content {
-  padding: 3rem 4rem;
+  padding: calcRem(30) calcRem(40);
 }
 
 .a--course-content__nav {
-  padding-top: 3rem;
+  padding-top: calcRem(30);
 }
 
 .course-outline .block-tree .outline-item .section-name h3 {

@@ -36,17 +36,17 @@ $global-font-cta-buttons: "primary-font-regular";
 
 $cta-button-bg: $brand-accent-color;
 $cta-button-text-color: $base-text-color;
-$cta-button-border: none;
-$buttons-border-radius: 0.2rem;
+$cta-button-border: 2px solid $brand-accent-color;
+$buttons-border-radius: 2px;
 
 $header-bg-color: calcNavbarBg($navbar-style, $brand-primary-color);
-$header-logo-height: 7rem;
-$header-padding-top: 1.5rem;
+$header-logo-height: calcRem(70);
+$header-padding-top: calcRem(15);
 $header-padding-bottom: $header-padding-top;
-$header-padding-sm-top: 1.5rem;
-$header-padding-sm-bottom: 1.5rem;
-$header-group-separation: 4rem;
-$header-font-size: 1.4rem;
+$header-padding-sm-top: calcRem(15);
+$header-padding-sm-bottom: calcRem(15);
+$header-group-separation: calcRem(40);
+$header-font-size: calcRem(14);
 $header-text-color: calcNavbarTextColor($navbar-style, $base-text-color);
 $navbar-button-border: calcNavbarButtonBorder($navbar-style);
 $navbar-button-bg: calcNavbarButtonBg($navbar-style, $brand-primary-color);
@@ -56,106 +56,123 @@ $navbar-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-un
 $display-navbar-logo-positive: calcDisplayLogoPositive($navbar-style);
 $display-navbar-logo-negative: calcDisplayLogoNegative($navbar-style);
 
-$nav-toggle-bar-width: 3.6rem;
-$nav-toggle-bar-height: 0.4rem;
-$nav-toggle-bar-radius: 0.4rem;
-$nav-toggle-bar-margin: 2rem;
+$nav-toggle-bar-width: calcRem(36);
+$nav-toggle-bar-height: 4px;
+$nav-toggle-bar-radius: 4px;
+$nav-toggle-bar-margin: calcRem(20);
 $nav-toggle-bar-color: $header-text-color;
-$nav-toggle-bar-separation: 1rem;
+$nav-toggle-bar-separation: calcRem(10);
 $nav-toggle-bar-pulsar-color: $brand-primary-color;
 $nav-toggle-bar-pulsar-visible: False;
 
 $slideout-menu-text-color: #fff;
 $slideout-menu-background-color: $brand-primary-color;
-$slideout-menu-text-size: 1.6rem;
-$slideout-menu-item-padding: 1.4rem;
+$slideout-menu-text-size: calcRem(16);
+$slideout-menu-item-padding: calcRem(14);
 
 $base-letter-spacing: 0;
 
 
-$footer-padding-top: 4rem;
+$footer-padding-top: calcRem(40);
 $footer-padding-bottom: 1.5*$footer-padding-top;
 $footer-bg-color: #eee;
 $footer-top-border: none;
 $footer-text-color: lighten($base-text-color, 15%);
 $footer-link-color: $footer-text-color;
 $footer-link-hover-color: lighten($footer-text-color, 15%);
-$footer-link-breathe-space: 1.5rem;
-$footer-logo-breathe-space: 3rem;
-$footer-logo-padding-vertical: 1rem;
-$footer-logo-width: 5rem;
+$footer-link-breathe-space: calcRem(15);
+$footer-logo-breathe-space: calcRem(30);
+$footer-logo-padding-vertical: calcRem(10);
+$footer-logo-width: calcRem(50);
 $footer-logo-opacity: 1;
-$footer-copyright-text-size: 1.2rem;
+$footer-copyright-text-size: calcRem(12);
 $footer-copyright-text-color: lighten($footer-text-color, 15%);
-$footer-copyright-breathe-space: 1rem;
+$footer-copyright-breathe-space: calcRem(10);
 
 
 // search elements settings
-$search-bar-vertical-margin: 3rem;
-$search-bar-wrapper-padding: 0 2rem;
-$search-bar-bottom-border: 0.1rem solid rgba($base-text-color, 0.25);
-$search-bar-inner-container-padding: 3rem 0;
-$search-bar-big-message-text-size: 2.4rem;
+$search-bar-vertical-margin: calcRem(30);
+$search-bar-wrapper-padding: 0 calcRem(20);
+$search-bar-bottom-border: 1px solid rgba($base-text-color, 0.25);
+$search-bar-inner-container-padding: calcRem(30) 0;
+$search-bar-big-message-text-size: calcRem(24);
 $search-bar-big-message-text-color: rgba($base-text-color, 0.7);
 $search-bar-icon-button-color: rgba($base-text-color, 0.7);
 $search-bar-icon-button-color-lighter: rgba($base-text-color, 0.3);
-$search-bar-icon-button-font-size: 2rem;
-$search-filter-padding: 1rem 1.5rem;
-$search-filter-margin: 0.75rem;
+$search-bar-icon-button-font-size: calcRem(20);
+$search-filter-padding: calcRem(10) calcRem(15);
+$search-filter-margin: calcRem(8);
 $search-filter-bg-color: rgba($base-text-color, 0.4);
 $search-filter-text-color: rgba($base-text-color, 0.8);
-$facets-big-heading-font-size: 2rem;
-$facets-big-heading-margin: 0 0 2rem;
+$facets-big-heading-font-size: calcRem(20);
+$facets-big-heading-margin: 0 0 calcRem(20);
 $facets-big-heading-padding: $facets-big-heading-margin;
-$facets-group-title-font-size: 1.6rem;
-$facets-group-title-margin: 1.5rem 0 1.5rem;
+$facets-group-title-font-size: calcRem(16);
+$facets-group-title-margin: calcRem(15) 0 calcRem(15);
 $facets-group-title-color: $brand-primary-color;
-$facets-group-list-padding: 0 0 1.5rem;
-$single-facet-bottom-border: 0.1rem solid rgba($base-text-color, 0.2);
-$single-facet-padding: 0.75rem 0;
+$facets-group-list-padding: 0 0 calcRem(15);
+$single-facet-bottom-border: 1px solid rgba($base-text-color, 0.2);
+$single-facet-padding: calcRem(8) 0;
 $single-facet-selected-opacity: 0.6;
-$facet-font-size: 1.6rem;
-$facet-results-count-font-size: 1.2rem;
+$facet-font-size: calcRem(16);
+$facet-results-count-font-size: calcRem(12);
 $facet-results-count-bg-color: $brand-accent-color;
 $facet-results-count-text-color: #fff;
-$facet-results-count-padding: 0.3rem 0.8rem;
-$facet-results-count-border-radius: 1rem;
+$facet-results-count-padding: 3px 8px;
+$facet-results-count-border-radius: calcRem(10);
 
 
 // login-register settings
-$login-register-wrapper-margin: 3rem auto 5rem;
-$login-register-section-title-spacing: 4rem;
-$login-register-section-title-border-bottom: 0.1rem solid rgba($base-text-color, 0.2);
-$login-register-section-title-font-size: 4.2rem;
+$login-register-wrapper-margin: calcRem(30) auto calcRem(50);
+$login-register-section-title-spacing: calcRem(40);
+$login-register-section-title-border-bottom: 1px solid rgba($base-text-color, 0.2);
+$login-register-section-title-font-size: calcRem(42);
 $login-register-section-title-color: $brand-primary-color;
 $login-register-section-title-alignment: center;
-$login-register-single-input-wrapper-margin: 1rem 0 2rem;
-$login-register-label-font-size: 1.4rem;
-$login-register-input-padding: 1rem 0.5rem;
-$login-register-input-border: 0.1rem solid rgba($base-text-color, 0.4);
+$login-register-single-input-wrapper-margin: calcRem(10) 0 calcRem(20);
+$login-register-label-font-size: calcRem(14);
+$login-register-input-padding: calcRem(10) calcRem(5);
+$login-register-input-border: 1px solid rgba($base-text-color, 0.4);
 $login-register-input-border-bottom: $login-register-input-border;
 $login-register-input-border-top: none;
 $login-register-input-border-left: none;
 $login-register-input-border-right: none;
 $login-register-hover-border-color: $brand-accent-color;
-$login-register-textarea-min-height: 10rem;
-$login-register-input-text-size: 1.4rem;
+$login-register-textarea-min-height: calcRem(100);
+$login-register-input-text-size: calcRem(14);
 $login-register-tip-text-color: rgba($base-text-color, 0.7);
-$login-register-tip-top-spacing: 1rem;
+$login-register-tip-top-spacing: calcRem(10);
 $login-register-field-link-font-size: $login-register-input-text-size;
 $login-register-field-link-color: $brand-primary-color;
-$login-register-toggle-title-font-size: 2rem;
+$login-register-toggle-title-font-size: calcRem(20);
 $login-register-toggle-title-color: rgba($base-text-color, 0.7);
 
 
 // courseware
 
-$courseware-top-nav-top-margin: 1rem;
-$courseware-top-nav-bottom-margin: 2rem;
+$courseware-top-nav-top-margin: calcRem(10);
+$courseware-top-nav-bottom-margin: calcRem(20);
 
-$sequence-nav-bottom-padding: 1.6rem;
+$sequence-nav-bottom-padding: calcRem(16);
 $courseware-content-bottom-nav-width: 30%;
 
 $courseware-link-hover: "expanding-underline";  // can be "hover-pop", "expanding-underline", "brand-color" or "opacity"
 $courseware-content-font-size: 16px;
 $courseware-content-line-height: 20px;
+
+
+$hide-linked-accounts-tab: false;
+
+// new stuff
+$base-container-width: calcRem(1200);
+$base-learning-container-width: calcRem(1000);
+$courseware-content-container-side-padding: calcRem(100);
+$courseware-content-container-sidebar-width: calcRem(240);
+$courseware-content-container-width: $base-learning-container-width;
+$site-nav-width: $base-container-width;
+$inline-link-color: $brand-primary-color;
+$light-border-color: #dedede;
+$font-size-base-courseware: calcRem(18);
+$line-height-base-courseware: 200%;
+$in-app-container-border-radius: calcRem(15);
+$login-register-container-width: calcRem(480);

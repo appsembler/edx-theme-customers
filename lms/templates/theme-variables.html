@@ -1,6 +1,6 @@
 ## mako
 <%! import urllib %>
-<%! from django.core.urlresolvers import reverse %>
+<%! from django.urls import reverse %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangoapps.site_configuration.models import SiteConfiguration %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
@@ -24,7 +24,7 @@
     if not translations_object:
       return default
 
-    if isinstance(translations_object, (basestring, Promise)):
+    if isinstance(translations_object, (str, Promise)):
       translations_object = {fallback_language: translations_object}
 
     default_text = default if default else force_text(translations_object.get(fallback_language, ''))
@@ -93,7 +93,7 @@
 <%def name="get_header_footer_templates()">
   <%
   return {
-    'header_template' : '/customer-specific/_psu-header-01.html', ## required
+    'header_template' : '/customer-specific/_header-appsembler-01.html', ## required
     'footer_template' : 'design-templates/footer/_footer-appsembler-01.html' ## required
   }
   %>

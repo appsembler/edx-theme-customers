@@ -5,7 +5,7 @@
   }
 
   &--wrapper {
-    margin-bottom: 2.5rem;
+    margin-bottom: calcRem(25);
     width: 100%;
     font-size: 4px;
     background-color: #f0f0f0;
@@ -16,8 +16,8 @@
 
     &>.a--container {
       @media (max-width: 639px) {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
+        padding-left: 5px;
+        padding-right: 5px;
       }
     }
   }
@@ -28,7 +28,7 @@
 
     @media screen {
       position: relative;
-      top: -3rem;
+      top: calcRem(-30);
     }
 
     @media (min-width: 900px) {
