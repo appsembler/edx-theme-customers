@@ -2,7 +2,7 @@
 <%! import urllib.parse %>
 <%! from django.urls import reverse %>
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
-<%! from openedx.core.djangoapps.site_configuration import tahoe_auth0_helpers %>
+<%! from openedx.core.djangoapps.site_configuration import tahoe_idp_helpers %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
 <%! from django.utils.encoding import force_text %>
 <%! from django.utils import translation %>
@@ -58,14 +58,13 @@
     encoded_accent_font = urllib.parse.quote(get_value('accent-font', 'Delius Unicase').encode('utf-8'))
     latin_extended = "&amp;subset=latin-ext" if get_value('accent-font', False) else ""
 
-  # Support for github.com/appsembler/tahoe-auth0
-  is_tahoe_auth0_enabled = tahoe_auth0_helpers.is_tahoe_auth0_enabled()
-  register_url = reverse('tahoe_auth0:register_view') if is_tahoe_auth0_enabled else '/register'
-  if is_tahoe_auth0_enabled:
-    login_url = '{base}?auth_entry=login'.format(base=reverse('social:begin', args=['tahoe-auth0']))
+  # Support for github.com/appsembler/tahoe-idp
+  is_tahoe_idp_enabled = tahoe_idp_helpers.is_tahoe_idp_enabled()
+  register_url = reverse('tahoe_idp:register_view') if is_tahoe_idp_enabled else '/register'
+  if is_tahoe_idp_enabled:
+    login_url = '{base}?auth_entry=login'.format(base=reverse('social:begin', args=['tahoe-idp']))
   else:
     login_url = '/login'
-
 
   if get_theme_version() == 'tahoe-v2':
     return {

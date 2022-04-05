@@ -18,7 +18,7 @@
 <script>
   jQuery(function ($) {
     var form = $('.register-form');
-    var auth0LoginLink = $('.auth0-login-link');
+    var tahoeIdpLoginLink = $('.tahoe-idp-login-link');
     var submitButton = $('.js-register');
 
     form.submit(function (e) {
@@ -47,7 +47,7 @@
       }).then((resp) => {
         if (resp.ok){
           alert('Congrats! you have created your account. You will be redirected to the login page.')
-          window.location.href = auth0LoginLink.attr('href');
+          window.location.href = tahoeIdpLoginLink.attr('href');
         } else {
           // TODO: Add error handling when needed
           submitButton.prop('disabled', false);
@@ -78,7 +78,7 @@
         <div class="js-form-feedback" aria-live="assertive" tabindex="-1"></div>
         <div class="toggle-form">
           <span class="text">${_("Already have an {platform_name} account?").format(platform_name=organization_name)}</span>
-          <a href="${add_login_query(get_global_settings()['login_url'], '/dashboard')}" class="auth0-login-link form-toggle" data-type="login">${_("Sign in.")}</a>
+          <a href="${add_login_query(get_global_settings()['login_url'], '/dashboard')}" class="tahoe-idp-login-link form-toggle" data-type="login">${_("Sign in.")}</a>
         </div>
         <form
           id="register"
@@ -86,7 +86,7 @@
           autocomplete="off"
           tabindex="-1"
           method="POST"
-          data-action="${reverse('tahoe_auth0:register_api')}"
+          data-action="${reverse('tahoe_idp:register_api')}"
         >
           <h2>${_("Create an Account")}</h2>
           <div class="required-fields">
