@@ -49,6 +49,460 @@
   font-weight: 600;
 }
 
+.button-reset, .light-button, div.history-controls input[type="submit"], a.light-button, .gray-button, input[type="reset"], input[type="submit"], input[type="button"], button, .button, form input[type="reset"], form input[type="submit"], form input[type="button"], form button, form .button, .xmodule_display.xmodule_LTIModule div.lti .wrapper-lti-link .lti-link .link_lti_new_window, .blue-button, .xmodule_display.xmodule_CapaModule div.problem .action .save, .xmodule_display.xmodule_ConditionalModule div.problem .action .save, .pink-button, .instructor-dashboard-content-2 input[type="button"], .idash-section .message-actions .action-primary, .instructor-dashboard-wrapper-2 section.idash-section#membership .member-lists-management .auth-list-container .member-list-widget input[type="button"].add, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .form-submit, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .cohort-management-nav .action-create, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .cohort-management .message .action-create, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .cohort-management-group-header .action-edit-name, .instructor-dashboard-wrapper-2 section.idash-section#cohort_management .file-upload-form .action-submit, .ecommerce-wrapper span.tip .add, #e-commerce #add-coupon-modal input[type="button"]#update_coupon_button, #e-commerce #add-coupon-modal input[type="button"]#add_coupon_button, #e-commerce #add-coupon-modal input[type="button"]#set_course_button, #e-commerce #add-coupon-modal input[type="button"]#lookup_regcode, #e-commerce #invalidate_registration_code_modal input[type="button"]#update_coupon_button, #e-commerce #invalidate_registration_code_modal input[type="button"]#add_coupon_button, #e-commerce #invalidate_registration_code_modal input[type="button"]#set_course_button, #e-commerce #invalidate_registration_code_modal input[type="button"]#lookup_regcode, #e-commerce #edit-coupon-modal input[type="button"]#update_coupon_button, #e-commerce #edit-coupon-modal input[type="button"]#add_coupon_button, #e-commerce #edit-coupon-modal input[type="button"]#set_course_button, #e-commerce #edit-coupon-modal input[type="button"]#lookup_regcode, #e-commerce #set-course-mode-price-modal input[type="button"]#update_coupon_button, #e-commerce #set-course-mode-price-modal input[type="button"]#add_coupon_button, #e-commerce #set-course-mode-price-modal input[type="button"]#set_course_button, #e-commerce #set-course-mode-price-modal input[type="button"]#lookup_regcode, #e-commerce #registration_code_generation_modal input[type="button"]#update_coupon_button, #e-commerce #registration_code_generation_modal input[type="button"]#add_coupon_button, #e-commerce #registration_code_generation_modal input[type="button"]#set_course_button, #e-commerce #registration_code_generation_modal input[type="button"]#lookup_regcode, #e-commerce #add-coupon-modal input[name="generate-registration-codes-csv"], #e-commerce #invalidate_registration_code_modal input[name="generate-registration-codes-csv"], #e-commerce #edit-coupon-modal input[name="generate-registration-codes-csv"], #e-commerce #set-course-mode-price-modal input[name="generate-registration-codes-csv"], #e-commerce #registration_code_generation_modal input[name="generate-registration-codes-csv"], .proctoring-wrapper span.tip .add, .ecommerce-wrapper span.code_tip .add, .proctoring-wrapper span.code_tip .add, .ecommerce-wrapper span.invalid_sale .add, .proctoring-wrapper span.invalid_sale .add {
+  letter-spacing: 0.1rem;
+}
+
+.vert-mod .vert {
+  border-bottom: 0.1rem solid #d9d1d1;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+// discussions quickfix (temp only)
+
+.discussion-module .discussion-response {
+  position: relative;
+}
+
+.xmodule_display.xmodule_HtmlModule table td, .xmodule_display.xmodule_HtmlModule table th {
+  font-size: 1.4rem;
+}
+
+.xmodule_display.xmodule_StaticTabModule table td {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #c8c8c8;
+  font-size: 14px;
+}
+
+.xmodule_display.xmodule_StaticTabModule table th {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #c8c8c8;
+  font-size: 14px;
+}
+
+.xmodule_display.xmodule_StaticTabModule th {
+  background: #eee;
+  font-weight: bold;
+}
+
+.a--course-content__main-content, .a--course-content__main-content .course-content, .a--course-static-page, .xmodule_display.xmodule_StaticTabModule {
+
+  h1 {
+    margin: 24px 0 32px 0;
+  }
+
+  h2 {
+    margin: 24px 0 30px 0;
+    -webkit-font-smoothing: initial;
+  }
+
+  h3 {
+    margin: 24px 0 32px 0;
+  }
+
+  h4 {
+    margin: 24px 0 30px 0;
+  }
+
+  h5 {
+    margin: 24px 0 28px 0;
+  }
+
+  h6 {
+    margin: 24px 0 26px 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $brand-primary-color;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  h2.unit-title {
+    font-size: 2.1em;
+  }
+
+  h2.unit-title:first-of-type {
+    margin: 2.4rem 0 1rem;
+  }
+
+  p, .problem {
+    font-size: 1.6rem;
+    line-height: 2.2rem !important;
+  }
+
+  .xblock h3.hd, h3.discussion-module-title {
+    @include fontVariantInclude($global-font-h2);
+    font-size: $font-size-h2;
+    line-height: $line-height-h2;
+    color: $brand-primary-color;
+    margin: 2.1rem 0;
+  }
+
+  h3.problem-header {
+    @include fontVariantInclude($global-font-h4);
+    font-size: 1.7rem;
+    line-height: $line-height-h3;
+    color: $brand-primary-color;
+    margin: $font-size-h3 0;
+  }
+
+  ul li, ol li {
+    line-height: 2.2rem;
+  }
+}
+
+.a--courseware--updates-article {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+
+  &__date {
+    font-size: 1.6rem;
+  }
+}
+
+.a--courseware-wrapper__content p, div.book-wrapper p {
+  line-height: 2.2rem;
+}
+
+/** discussion forums fix **/
+
+.content-wrapper .page-header .page-description, body.discussion .discussion-post .post-body, body.discussion .discussion-article .post-body, body.view-in-course .discussion-post .post-body, body.view-in-course .discussion-article .post-body {
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+
+  p {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+}
+
+.forum-nav-thread.is-unread .forum-nav-thread-comments-count {
+  background-color: lightblue;
+  color: #006196;
+  font-weight: 900;
+}
+
+.discussion.container .action-button, .discussion-module .action-button, .discussion-user-threads .action-button {
+  color: darkslategrey;
+}
+
+.discussion.container .action-button .action-icon, .discussion-module .action-button .action-icon, .discussion-user-threads .action-button .action-icon {
+  color: darkslategrey;
+}
+
+.instructor-dashboard-content-2 {
+
+  .member-list-widget {
+
+    .member-list {
+
+      table {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+.xmodule_display.xmodule_HtmlModule table {
+  td, th {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
+}
+
+// RTL Fixes (Hacks?) for Mixed-language courses in both courseware and discussion
+
+@mixin mixed-language-plain-text() {
+  // A reusable mixin for plain text and simple fields such as titles.
+
+  unicode-bidi: plaintext;  // This is similar to dir=auto attribute
+  text-align: initial;  // Undo edX styles that is suitable only for single-language courses
+}
+
+@mixin mixed-language-rich-content() {
+  // A reusable mixin for elements that contain rich text such as tables and headers and simple fields such as titles.
+
+  h1, h2, h3, h4, h5, h6, p, label, blockquote, ol, ul {
+    @include mixed-language-plain-text();
+  }
+
+  ol, ul {
+    li {
+      @include mixed-language-plain-text();
+    }
+  }
+
+  table {
+    th, td {
+      @include mixed-language-plain-text();
+    }
+  }
+}
+
+#seq_content {
+  @include mixed-language-rich-content();
+}
+
+body.discussion, .xblock-student_view-discussion {
+  // Note: It might be a good idea not include `.discussion-module-title` since it's not on it's own line.
+
+  .post-title, .forum-nav-thread-title {
+    @include mixed-language-plain-text();
+  }
+
+  .thread-preview-body, .wmd-input {
+    @include mixed-language-plain-text();
+  }
+
+  .post-body, .response-body {
+    @include mixed-language-rich-content();
+  }
+}
+
+
+// inline discussions fix
+
+.discussion-module {
+
+  .discussion-show.btn {
+    padding: 1rem 3rem;
+    width: auto;
+    height: auto;
+    color: $brand-primary-color;
+    border: 0.1rem solid $brand-primary-color;
+    border-radius: 0.4rem;
+
+    &:hover, &:focus {
+      background-color: $brand-primary-color;
+      color: #fff;
+    }
+  }
+
+  .add_post_btn_container {
+    padding: 1rem 0;
+    margin: 0 0 2rem;
+  }
+
+  .btn-link.new-post-btn {
+    padding: 1rem 3rem;
+    width: auto;
+    height: auto;
+    color: #fff;
+    background-color: $brand-primary-color;
+    border: 0.1rem solid $brand-primary-color;
+    border-radius: 0.4rem;
+
+    &:hover, &:focus {
+      background-color: darken($brand-primary-color, 15%) !important;
+      color: #fff;
+    }
+  }
+
+  .inline-discussion-thread-container {
+
+    a.forum-nav-thread-link {
+      @include display(flex);
+      width: 100%;
+    }
+  }
+}
+
+
+// discussions responsiveness fixes
+
+
+// Hide completion green checkmark
+.complete-checkmark, #sequence-list .fa-check-circle {
+  display: none !important;
+}
+
+
+// Spacing Fixes
+
+.a--course-content__main-content .course-content #seq_content {
+      padding-top: 0px !important;
+}
+
+.a--courseware-wrapper__content .wrap-instructor-info.studio-view {
+      margin: 0;
+      padding: 10px;
+      border-bottom: none;
+}
+
+.a--course-content__main-content h2.unit-title:first-of-type, .a--course-content__main-content .course-content h2.unit-title:first-of-type {
+  margin: 0px ;
+}
+
+// Course updates line height and spacing fixes
+.all-updates .updates-article .article-content {
+  margin-top: 30px !important;
+}
+
+.all-updates .updates-article .article-content p{
+    line-height: 1.5;
+    width: 70%;
+}
+
+.response-body p {
+  line-height: 1.3 !important;
+}
+.xblock-student_view.xblock-student_view-vertical {
+  padding-top: 20px;
+}
+.wrap-instructor-info.studio-view {
+  padding-top: 0px !important;
+}
+
+.forum-nav {
+  @media (min-width: 768px) {
+    max-width: 320px;
+    width: 29%;
+  }
+}
+
+.forum-nav-thread .forum-nav-thread-link {
+  width: 90% !important;
+  background: transparent !important;
+}
+
+.a--container,
+#discussion-container, .content-wrapper .page-content-container {
+  @media (min-width: 1440px) {
+    width: 1280px;
+  }
+
+  @media (max-width: 1200px) and (min-width: 992px) {
+    width: 1170px;
+  }
+
+  @media (max-width: 992px) and (min-width: 768px) {
+    width: 970px;
+  }
+
+  @media (max-width: 768px) {
+    width: 750px;
+  }
+}
+
+.xmodule_display.xmodule_SequenceModule .sequence-nav-button {
+  @media (min-width: 768px){
+    min-width: 40px;
+  }
+}
+
+// #discussion-container {
+//   @media (min-width: 1400px){
+//     width: 1280 px;
+//   }
+// }
+
+.discussion-body .forum-nav .forum-nav-browse-menu-wrapper, .discussion-thread-list-container .forum-nav-thread-list {
+  border: 1px solid #aaa;
+}
+
+.a--courseware-wrapper__content .wrap-instructor-info {
+  margin: 3rem 0 -6rem !important;
+  border-bottom: none;
+}
+
+.btn-link.forum-nav-load-more-link {
+  border: none;
+}
+
+.forum-nav-load-more {
+  margin: 0;
+}
+
+.login-register, .a--plain-content, .wrapper-account-settings {
+
+  a, a:visited, a:not(.btn), a:visited:not(.btn), .btn-link {
+    text-decoration: none;
+    color: #e21481;
+    cursor: pointer;
+    @include transition(all 0.3s ease-in-out);
+  
+    &:hover, &:focus {
+      color: shade(#e21481, 20%);
+      text-decoration: none;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+  
+  p {
+    a, a:visited, a:not(.btn), a:visited:not(.btn), .btn-link {
+      text-decoration: none;
+      color: #e21481;
+      cursor: pointer;
+      @include transition(all 0.3s ease-in-out);
+    
+      &:hover, &:focus {
+        color: shade(#e21481, 20%);
+        text-decoration: none;
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.a--course-content {
+
+  .accordion {
+
+    .course-navigation {
+
+      .button-chapter {
+        border-bottom: 0.1rem solid #d9d1d1;
+      }
+
+      .chapter-content-container {
+
+        &.is-open {
+          border-bottom: 0.1rem solid #d9d1d1;
+        }
+      }
+    }
+  }
+}
+
+.a--course-progress__info {
+  border-color: #d9d1d1;
+}
+
+.a--course-progress__chapter__info {
+  border-color: #d9d1d1;
+}
+
+.grade-detail-graph {
+
+  .tickLabels {
+
+    .tickLabel {
+      font-size: 1.68rem;
+      line-height: 1.6rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .xAxis .tickLabel {
+      font-size: 1.1rem;
+      margin-top: 3rem;
+    }
+  }
+}
+
+.a--course-progress__chapter__data .chapter-scores ol li {
+  font-weight: 600;
+}
+
 .button-reset,
 .light-button,
 div.history-controls input[type="submit"],
@@ -113,8 +567,8 @@ form .button,
 
 .vert-mod .vert {
   border-bottom: 0.1rem solid #d9d1d1;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 // discussions quickfix (temp only)
@@ -415,161 +869,6 @@ body.discussion,
 
 
 // discussions responsiveness fixes
-
-
-// Hide completion green checkmark
-.complete-checkmark,
-#sequence-list .fa-check-circle {
-  display: none !important;
-}
-
-
-// Spacing Fixes
-
-.a--course-content__main-content .course-content #seq_content {
-  padding-top: 0px !important;
-}
-
-.a--courseware-wrapper__content .wrap-instructor-info.studio-view {
-  margin: 0;
-  padding: 10px;
-  border-bottom: none;
-}
-
-.a--course-content__main-content h2.unit-title:first-of-type,
-.a--course-content__main-content .course-content h2.unit-title:first-of-type {
-  margin: 0px;
-}
-
-// Course updates line height and spacing fixes
-.all-updates .updates-article .article-content {
-  margin-top: 30px !important;
-}
-
-.all-updates .updates-article .article-content p {
-  line-height: 1.5;
-  width: 70%;
-}
-
-.response-body p {
-  line-height: 1.3 !important;
-}
-
-.xblock-student_view.xblock-student_view-vertical {
-  padding-top: 20px;
-}
-
-.wrap-instructor-info.studio-view {
-  padding-top: 0px !important;
-}
-
-.forum-nav {
-  @media (min-width: 768px) {
-    max-width: 320px;
-    width: 29%;
-  }
-}
-
-.forum-nav-thread .forum-nav-thread-link {
-  width: 90% !important;
-  background: transparent !important;
-}
-
-.a--container,
-#discussion-container,
-.content-wrapper .page-content-container {
-  @media (min-width: 1440px) {
-    width: 1280px;
-  }
-
-  @media (max-width: 1200px) and (min-width: 992px) {
-    width: 1170px;
-  }
-
-  @media (max-width: 992px) and (min-width: 768px) {
-    width: 970px;
-  }
-
-  @media (max-width: 768px) {
-    width: 750px;
-  }
-}
-
-.xmodule_display.xmodule_SequenceModule .sequence-nav-button {
-  @media (min-width: 768px) {
-    min-width: 40px;
-  }
-}
-
-// #discussion-container {
-//   @media (min-width: 1400px){
-//     width: 1280 px;
-//   }
-// }
-
-.discussion-body .forum-nav .forum-nav-browse-menu-wrapper,
-.discussion-thread-list-container .forum-nav-thread-list {
-  border: 1px solid #aaa;
-}
-
-.a--courseware-wrapper__content .wrap-instructor-info {
-  margin: 3rem 0 -6rem !important;
-  border-bottom: none;
-}
-
-.btn-link.forum-nav-load-more-link {
-  border: none;
-}
-
-.forum-nav-load-more {
-  margin: 0;
-}
-
-.login-register,
-.a--plain-content,
-.wrapper-account-settings {
-
-  a,
-  a:visited,
-  a:not(.btn),
-  a:visited:not(.btn),
-  .btn-link {
-    text-decoration: none;
-    color: #e21481;
-    cursor: pointer;
-    @include transition(all 0.3s ease-in-out);
-
-    &:hover,
-    &:focus {
-      color: shade(#e21481, 20%);
-      text-decoration: none;
-      outline: none;
-      box-shadow: none;
-    }
-  }
-
-  p {
-
-    a,
-    a:visited,
-    a:not(.btn),
-    a:visited:not(.btn),
-    .btn-link {
-      text-decoration: none;
-      color: #e21481;
-      cursor: pointer;
-      @include transition(all 0.3s ease-in-out);
-
-      &:hover,
-      &:focus {
-        color: shade(#e21481, 20%);
-        text-decoration: none;
-        outline: none;
-        box-shadow: none;
-      }
-    }
-  }
-}
 
 .search-result-list {
   li.search-results-item {
