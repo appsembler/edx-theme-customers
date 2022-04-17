@@ -451,3 +451,11 @@ body.discussion, .xblock-student_view-discussion {
     }
   }
 }
+
+.search-result-list {
+  li.search-results-item {
+    .result-type {
+      bottom: 0px !important;
+    }
+  }
+}
