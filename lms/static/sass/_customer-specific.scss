@@ -68,6 +68,12 @@
   font-size: 20px !important;
 }
 
+
+// reduce html module paragraph line-spacing
+.xmodule_display.xmodule_HtmlBlock.xblock-student_view-html p {
+  line-height: 1.8em !important;
+}
+
 // Tahoe-style certificates
 
 body.certificate {
