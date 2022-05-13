@@ -1,7 +1,9 @@
+## mako
 <%namespace name='static' file='/static_content.html'/>
-<%namespace file='/theme-variables.html' import="get_global_settings" />
+<%namespace file='/theme-variables.html' import="get_global_settings, get_brand_favicon" />
 <%! from django.utils.translation import ugettext as _ %>
-<%! from openedx.core.djangoapps.site_configuration.helpers import get_value %>
+<%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration %>
+<%! from django.contrib.staticfiles.templatetags.staticfiles import static as djstatic %>
 
 <%
 # set doc language direction
@@ -10,12 +12,7 @@ dir_rtl = 'rtl' if get_language_bidi() else 'ltr'
 course_mode_class = course_mode if course_mode else ''
 %>
 
-<%
-style_overrides_file = get_value('css_overrides_file')
-if style_overrides_file:
-  style_overrides_file = 'customer_themes/' + style_overrides_file
-endif
-%>
+<% site_configuration = get_current_site_configuration() %>
 
 <!DOCTYPE html>
 <html class="certs-page no-js" lang="en">
@@ -23,15 +20,18 @@ endif
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex,nofollow" />
 
     <title>${document_title}</title>
 
+    <link rel="icon" type="image/x-icon" href="${get_brand_favicon()['brand_favicon']}" />
+
     <%static:css group='style-certificates'/>
 
-    % if style_overrides_file:
-      <link rel="stylesheet" type="text/css" href="${static.url(style_overrides_file)}" />
+    % if site_configuration:
+      <link rel="stylesheet" type="text/css" href="${site_configuration.get_css_url()}" />
     % else:
-      <link rel="stylesheet" type="text/css" href="${static.url('css/main.css')}">
+      <link rel="stylesheet" type="text/css" href="${djstatic('css/main.css')}">
     % endif
     <link href="${get_global_settings()['fonts_url']}" rel="stylesheet" />
 </head>
@@ -40,13 +40,15 @@ endif
 
     <div class="wrapper-view" dir="${dir_rtl}">
 
+        <%include file="_accomplishment-header.html" />
+
         <hr class="divider sr-only">
 
         ${self.body()}
 
         <hr class="divider sr-only">
 
-        <%include file="/certificates/_accomplishment-footer.html" />
+        <%include file="_accomplishment-footer.html" />
     </div>
 
     <%include file="/certificates/_assets-secondary.html" />
