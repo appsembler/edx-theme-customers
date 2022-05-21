@@ -60,7 +60,7 @@
 
   # Support for github.com/appsembler/tahoe-idp
   is_tahoe_idp_enabled = tahoe_idp_helpers.is_tahoe_idp_enabled()
-  register_url = reverse('tahoe_idp:register_view') if is_tahoe_idp_enabled else '/register'
+  register_url = '/register-use-fa-form' if is_tahoe_idp_enabled else '/register'
   if is_tahoe_idp_enabled:
     login_url = '{base}?auth_entry=login'.format(base=reverse('social:begin', args=['tahoe-idp']))
   else:
