@@ -1,0 +1,53 @@
+.course-grading-completion-details {
+  padding: calcRem(20) calcRem(30);
+  border-top: 1px solid #ddd;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: calcRem(40);
+
+  .details-title {
+    font-weight: bold;
+    color: #999;
+  }
+
+  p {
+    color: #555;
+    font-size: calcRem(12);
+  }
+
+  .completion-graph-container {
+    margin-top: calcRem(15);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    grid-gap: calcRem(10);
+
+    .completion-current-value {
+      display: block;
+      font-size: calcRem(16);
+      font-weight: bold;
+      color: #555;
+    }
+
+    .completion-graph {
+      width: 100%;
+      height: 6px;
+      background-color: #aaa;
+      border-radius: 10px;
+
+      .completion-graph-line {
+        display: block;
+        height: 100%;
+        border-radius: 10px;
+        background-color: $brand-primary-color;
+      }
+    }
+  }
+
+  .grading-details {
+    
+    .larger-paragraph {
+      font-size: calcRem(14);
+    }
+  }
+}
