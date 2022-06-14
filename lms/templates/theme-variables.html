@@ -59,11 +59,11 @@
     latin_extended = "&amp;subset=latin-ext" if get_value('accent-font', False) else ""
 
   # Support for github.com/appsembler/tahoe-idp
-  is_tahoe_idp_enabled = tahoe_idp_helpers.is_tahoe_idp_enabled()
-  register_url = reverse('tahoe_idp:register_view') if is_tahoe_idp_enabled else '/register'
-  if is_tahoe_idp_enabled:
-    login_url = '{base}?auth_entry=login'.format(base=reverse('social:begin', args=['tahoe-idp']))
+  if tahoe_idp_helpers.is_tahoe_idp_enabled():
+    login_url = tahoe_idp_helpers.get_idp_login_url()
+    register_url = tahoe_idp_helpers.get_idp_register_url()
   else:
+    register_url = '/register'
     login_url = '/login'
 
   if get_theme_version() == 'tahoe-v2':

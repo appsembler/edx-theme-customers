@@ -5,12 +5,10 @@
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
 <%! from openedx.core.lib.courses import course_image_url %>
-<% site_configuration = get_current_site_configuration() %>
-<% style_overrides_file = get_value('css_overrides_file') %>
 
 <link rel="icon" type="image/x-icon" href="${get_brand_favicon()['brand_favicon']}" />
 
-% if style_overrides_file:
+% if get_current_site_configuration():
   <link rel="stylesheet" type="text/css" href="${get_current_site_configuration().get_css_url()}" />
 % else:
   <link rel="stylesheet" type="text/css" href="${static('css/main.css')}">
@@ -26,9 +24,9 @@
   <meta name="robots" content="noindex" />
 % endif
 % if apple_app_id:
-  <meta name="apple-itunes-app" content="app-id=${get_global_settings()['apple_app_id']}">
+  <meta name="apple-itunes-app" content="app-id=${get_global_settings().get('apple_app_id', '')}">
 % endif
-% if get_global_settings().get('custom_site_meta_tags'):
+% if get_global_settings().get('custom_site_meta_tags', False):
   % for meta_tag in get_global_settings().get('custom_site_meta_tags'):
     % if meta_tag.get('tagName'):
       <meta name="${meta_tag['tagName']}" content="${meta_tag['tagContent']}" />
