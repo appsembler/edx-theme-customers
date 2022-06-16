@@ -177,6 +177,44 @@ from xmodule.modulestore.django import modulestore
                         % endif
                 </div>
             % endif
+
+          <!-- Newly added progress/grading display for course -->
+          <%
+            completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
+            collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
+            descriptor = modulestore().get_course(enrollment.course_id)
+            grading_policy = descriptor.grading_policy
+            grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
+            course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure)
+            if completion_summary['incomplete_count'] > 0:
+              completion_percent = 100 * float(completion_summary['complete_count'])/float(completion_summary['incomplete_count'])
+            else:
+              completion_percent = 0
+          %>
+          <div class="course-grading-completion-details">
+            <div class="completion-details">
+              <div>
+                <span class="details-title">Course completion</span>
+              </div>
+              <div class="completion-graph-container">
+                <span class="completion-current-value">${round(completion_percent, 1)}%</span>
+                <div class="completion-graph">
+                  <span class="completion-graph-line" style="width:${str(round(completion_percent, 1))}%"></span>
+                </div>
+              </div>
+            </div>
+            <div class="grading-details">
+              <div>
+                <span class="details-title">Course grade</span>
+                % if course_grade.passed:
+                  <p class="larger-paragraph">You have passed this course and obtained the <strong>${course_grade.letter_grade}</strong> grade.</p>
+                % else:
+                  <p><em>The grade cutoff for passing this course is ${round(grade_cutoff_percent, 0)}%. You have not passed this course yet. Your current weighted grade is <strong>${course_grade.percent}%</strong></em></p>
+                % endif
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="wrapper-course-actions">
           <div class="course-actions">
@@ -316,43 +354,7 @@ from xmodule.modulestore.django import modulestore
         </div>
       </div>
   </section>
-  <!-- Newly added progress/grading display for course -->
-  <%
-    completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
-    collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
-    descriptor = modulestore().get_course(enrollment.course_id)
-    grading_policy = descriptor.grading_policy
-    grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
-    course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure)
-    if completion_summary['incomplete_count'] > 0:
-      completion_percent = 100 * float(completion_summary['complete_count'])/float(completion_summary['incomplete_count'])
-    else:
-      completion_percent = 0
-  %>
-  <div class="course-grading-completion-details">
-    <div class="completion-details">
-      <div>
-        <span class="details-title">Course completion</span>
-        <p><em>This represents how much of the course you have completed.</em></p>
-      </div>
-      <div class="completion-graph-container">
-        <span class="completion-current-value">${round(completion_percent, 1)}%</span>
-        <div class="completion-graph">
-          <span class="completion-graph-line" style="width:${str(round(completion_percent, 1))}%"></span>
-        </div>
-      </div>
-    </div>
-    <div class="grading-details">
-      <div>
-        <span class="details-title">Course grade</span>
-        % if course_grade.passed:
-          <p class="larger-paragraph">You have passed this course and obtained the <strong>${course_grade.letter_grade}</strong> grade.</p>
-        % else:
-          <p><em>The grade cutoff for passing this course is ${round(grade_cutoff_percent, 0)}%. You have not passed this course yet. Your current weighted grade is <strong>${course_grade.percent}%</strong></em></p>
-        % endif
-      </div>
-    </div>
-  </div>
+  
   <footer class="wrapper-messages-primary">
     <div class="messages-list">
 

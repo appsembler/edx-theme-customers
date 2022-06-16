@@ -1,12 +1,26 @@
+.content-wrapper .dashboard .main-container .my-courses .listing-courses .course-item .course .details .wrapper-course-details .course-title {
+  margin-bottom: calcRem(6);
+}
+
+.content-wrapper .dashboard .main-container .my-courses .listing-courses .course-item .course .details .wrapper-course-details {
+  grid-template-columns: 1fr calcRem(180);
+}
+
+.content-wrapper .dashboard .main-container .my-courses .listing-courses .course-item .course .details .wrapper-course-details .wrapper-course-actions .enter-course, .wrapper-messages-primary .message.message-status.course-status-certavailable .actions-primary .action-certificate .btn {
+  padding: calcRem(10);
+}
+
 .course-grading-completion-details {
-  padding: calcRem(20) calcRem(30);
+  padding-top: calcRem(15);
+  margin-top: calcRem(15);
   border-top: 1px solid #ddd;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-column-gap: calcRem(40);
+  grid-template-columns: 1fr;
+  grid-gap: calcRem(10);
 
   .details-title {
     font-weight: bold;
+    font-size: calcRem(15);
     color: #999;
   }
 
@@ -16,7 +30,6 @@
   }
 
   .completion-graph-container {
-    margin-top: calcRem(15);
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
