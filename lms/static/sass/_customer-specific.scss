@@ -26,3 +26,50 @@
 @import "customer-sass-input";
 
 @import "specific/dashboard-progress";
+
+
+// override some styling dumbness that's Apple-specific
+
+.dashboard {
+
+  .main-container {
+
+    .my-courses {
+
+      // UI: individual course item
+      .course {
+
+        .details {
+
+          .wrapper-course-details {
+
+            .course-title {
+
+              a,
+              span {
+                font: inherit !important;
+              }
+            }
+
+            .course-info {
+              [class*="info-"] {
+                font: inherit !important;
+              }
+
+              .info-date-block-container {
+
+                .info-date-block {
+                  font: inherit !important;
+                }
+              }
+            }
+          }
+
+          .enter-course {
+            font: inherit !important;
+          }
+        }
+      }
+    }
+  }
+}
