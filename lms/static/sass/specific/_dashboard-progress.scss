@@ -1,0 +1,66 @@
+.content-wrapper .dashboard .main-container .my-courses .listing-courses .course-item .course .details .wrapper-course-details .course-title {
+  margin-bottom: calcRem(6);
+}
+
+.content-wrapper .dashboard .main-container .my-courses .listing-courses .course-item .course .details .wrapper-course-details {
+  grid-template-columns: 1fr calcRem(180);
+}
+
+.content-wrapper .dashboard .main-container .my-courses .listing-courses .course-item .course .details .wrapper-course-details .wrapper-course-actions .enter-course, .wrapper-messages-primary .message.message-status.course-status-certavailable .actions-primary .action-certificate .btn {
+  padding: calcRem(10);
+}
+
+.course-grading-completion-details {
+  padding-top: calcRem(15);
+  margin-top: calcRem(15);
+  border-top: 1px solid #ddd;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: calcRem(10);
+
+  .details-title {
+    font-weight: bold;
+    font-size: calcRem(15);
+    color: #999;
+  }
+
+  p {
+    color: #555;
+    font-size: calcRem(12);
+  }
+
+  .completion-graph-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    grid-gap: calcRem(10);
+
+    .completion-current-value {
+      display: block;
+      font-size: calcRem(16);
+      font-weight: bold;
+      color: #555;
+    }
+
+    .completion-graph {
+      width: 100%;
+      height: 6px;
+      background-color: #aaa;
+      border-radius: 10px;
+
+      .completion-graph-line {
+        display: block;
+        height: 100%;
+        border-radius: 10px;
+        background-color: $brand-primary-color;
+      }
+    }
+  }
+
+  .grading-details {
+    
+    .larger-paragraph {
+      font-size: calcRem(14);
+    }
+  }
+}
