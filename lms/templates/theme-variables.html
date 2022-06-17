@@ -134,11 +134,11 @@
   <%
   if get_theme_version() == 'tahoe-v2':
     return {
-      'logo_positive' : get_value('site_branding_full_logo') or static('images/branding/brand-logo.svg'), ## required
-      'logo_negative' : get_value('site_branding_full_logo') or static('images/branding/brand-logo-negative.svg'), ## required
-      'icon_color' : get_value('site_branding_logo_icon_only', '') or static('images/branding/icon-color.svg'), ## required
-      'icon_white' : get_value('footer_logo', '') or static('images/branding/icon-white.svg'), ## required
-      'icon_black' : get_value('footer_logo', '') or static('images/branding/icon-black.svg'), ## required
+      'logo_positive' : get_value('logos_full_logo') or static('images/branding/brand-logo.svg'), ## required
+      'logo_negative' : get_value('logos_full_logo') or static('images/branding/brand-logo-negative.svg'), ## required
+      'icon_color' : get_value('logos_icon_only', '') or static('images/branding/icon-color.svg'), ## required
+      'icon_white' : get_value('footer_logo_image', '') or static('images/branding/icon-white.svg'), ## required
+      'icon_black' : get_value('footer_logo_image', '') or static('images/branding/icon-black.svg'), ## required
     }
 
   return {
@@ -242,7 +242,7 @@
 
     if get_theme_version() == 'tahoe-v2':
       return {
-        'footer_logo' : get_value('footer_logo', ''), ## leave as is, defined above. Can be changed to something custom if needed.
+        'footer_logo' : get_value('footer_logo_image', ''), ## leave as is, defined above. Can be changed to something custom if needed.
         'footer_copyright_text' : translate(get_value('footer_copyright_text', ''), default=default_copyright()),
         'display_edx_disclaimer' : get_value('display_footer_legal', True), ## bool value required
         'edx_disclaimer' : translate(get_value('edx_disclaimer'), default=_('edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.')),
