@@ -212,7 +212,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
                   % if course_grade.passed:
                     <p class="larger-paragraph">You have passed this course and obtained the <strong>${course_grade.letter_grade}</strong> grade.</p>
                   % else:
-                    <p><em>The grade cutoff for passing this course is ${round(grade_cutoff_percent, 0)}%. You have not passed this course yet. Your current weighted grade is <strong>${course_grade.percent}%</strong></em></p>
+                    <p><em>The grade cutoff for passing this course is ${round(grade_cutoff_percent, 0)}%. You have not passed this course yet. Your current weighted grade is <strong>${course_grade.percent * 100}%</strong></em></p>
                   % endif
                 </div>
               </div>
