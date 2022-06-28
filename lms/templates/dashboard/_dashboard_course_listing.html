@@ -189,7 +189,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
             grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
             course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure)
             if completion_summary['incomplete_count'] > 0:
-              completion_percent = 100 * float(completion_summary['incomplete_count'])/(float(completion_summary['complete_count'])+float(completion_summary['incomplete_count']))
+              completion_percent = 100 * float(completion_summary['complete_count'])/(float(completion_summary['complete_count'])+float(completion_summary['incomplete_count']))
             else:
               completion_percent = 0
           %>
