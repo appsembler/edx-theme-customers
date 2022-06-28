@@ -186,7 +186,10 @@ from lms.djangoapps.courseware.courses import get_course_with_access
             collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
             descriptor = modulestore().get_course(enrollment.course_id)
             grading_policy = descriptor.grading_policy
-            grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
+            if grading_policy.get('GRADE_CUTOFFS', False):
+              grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
+            else:
+              grade_cutoff_percent = 0
             course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure)
             if completion_summary['incomplete_count'] > 0:
               completion_percent = 100 * float(completion_summary['complete_count'])/(float(completion_summary['complete_count'])+float(completion_summary['incomplete_count']))
@@ -205,7 +208,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
                 </div>
               </div>
             </div>
-            % if not course.no_grade:
+            % if not (course.no_grade or (grade_cutoff_percent == 0)):
               <div class="grading-details">
                 <div>
                   <span class="details-title">Course grade</span>
