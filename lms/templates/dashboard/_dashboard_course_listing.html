@@ -186,7 +186,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
             collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
             descriptor = modulestore().get_course(enrollment.course_id)
             grading_policy = descriptor.grading_policy
-            if grading_policy['GRADE_CUTOFFS']:
+            if grading_policy.get('GRADE_CUTOFFS', False):
               grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
             else:
               grade_cutoff_percent = 0
