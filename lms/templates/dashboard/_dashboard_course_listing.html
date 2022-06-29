@@ -192,7 +192,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
                 grade_cutoff_percent = str(grading_policy['GRADE_CUTOFFS']['Pass']*100) + "%"
               else:
                 sorted_cutoff = OrderedDict(sorted(grading_policy['GRADE_CUTOFFS'].items()))
-                grade_cutoff_letters = ', '.join(['{}: {}%'.format(k,(round(float(v)*100))) for k,v in sorted_cutoff.items()])
+                grade_cutoff_percent = ', '.join(['{}: {}%'.format(k,(round(float(v)*100))) for k,v in sorted_cutoff.items()])
 
             else:
               grade_cutoff_percent = 0
