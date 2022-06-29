@@ -187,7 +187,10 @@ from lms.djangoapps.courseware.courses import get_course_with_access
             descriptor = modulestore().get_course(enrollment.course_id)
             grading_policy = descriptor.grading_policy
             if grading_policy.get('GRADE_CUTOFFS', False):
-              grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
+              if grading_policy['GRADE_CUTOFFS'].has_key('Pass')
+                grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
+              else:
+                grade_cutoff_percent = ", ".join(f"{key}: {round(val*100)}" for key, val in grading_policy['GRADE_CUTOFFS'].items())
             else:
               grade_cutoff_percent = 0
             course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure)
@@ -309,7 +312,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
                       ${course_overview.display_name_with_default}
                     </span>
                     <span class="fa fa-cog" aria-hidden="true"></span>
-                  </button> 
+                  </button>
               % endif
             <!-- end of logic to show gear button if can_unenroll or show_email_settings -->
                   <div class="actions-dropdown" id="actions-dropdown-${dashboard_index}" tabindex="-1">
@@ -361,7 +364,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
         </div>
       </div>
   </section>
-  
+
   <footer class="wrapper-messages-primary">
     <div class="messages-list">
 
