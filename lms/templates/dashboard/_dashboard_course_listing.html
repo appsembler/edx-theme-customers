@@ -2,6 +2,7 @@
 
 <%!
 import six
+from collections import OrderedDict
 
 from django.utils.http import urlencode, urlquote_plus
 from django.utils.translation import ugettext as _
@@ -26,7 +27,7 @@ from openedx.core.djangoapps.appsembler.html_certificates.helpers import get_cou
 from openedx.core.djangoapps.content.block_structure.api import get_block_structure_manager
 from lms.djangoapps.grades.api import CourseGradeFactory
 from xmodule.modulestore.django import modulestore
-from lms.djangoapps.courseware.courses import get_course_with_access
+from lms.djangoapps.courseware.courses import get_course_by_id
 %>
 
 <%
@@ -181,18 +182,24 @@ from lms.djangoapps.courseware.courses import get_course_with_access
 
           <!-- Newly added progress/grading display for course -->
           <%
-            course = get_course_with_access(user, 'load', enrollment.course_id)
+            course = get_course_by_id(enrollment.course_id, depth=1)
             completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
             collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
             descriptor = modulestore().get_course(enrollment.course_id)
             grading_policy = descriptor.grading_policy
             if grading_policy.get('GRADE_CUTOFFS', False):
-              grade_cutoff_percent = grading_policy['GRADE_CUTOFFS']['Pass']*100
+              if grading_policy['GRADE_CUTOFFS'].get('Pass', False):
+                grade_cutoff_percent = str(grading_policy['GRADE_CUTOFFS']['Pass']*100) + "%"
+              else:
+                sorted_cutoff = OrderedDict(sorted(grading_policy['GRADE_CUTOFFS'].items()))
+                grade_cutoff_percent = ', '.join(['{}: {}%'.format(k,(round(float(v)*100))) for k,v in sorted_cutoff.items()])
+
             else:
               grade_cutoff_percent = 0
             course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure)
-            if completion_summary['incomplete_count'] > 0:
-              completion_percent = 100 * float(completion_summary['complete_count'])/(float(completion_summary['complete_count'])+float(completion_summary['incomplete_count']))
+            total_completion_units = float(completion_summary['complete_count'])+float(completion_summary['incomplete_count'])
+            if total_completion_units > 0:
+              completion_percent = 100 * float(completion_summary['complete_count'])/total_completion_units
             else:
               completion_percent = 0
           %>
@@ -208,14 +215,14 @@ from lms.djangoapps.courseware.courses import get_course_with_access
                 </div>
               </div>
             </div>
-            % if not (course.no_grade or (grade_cutoff_percent == 0)):
+            % if not (course.no_grade):
               <div class="grading-details">
                 <div>
                   <span class="details-title">Course grade</span>
                   % if course_grade.passed:
                     <p class="larger-paragraph">You have passed this course and obtained the <strong>${course_grade.letter_grade}</strong> grade.</p>
                   % else:
-                    <p><em>The grade cutoff for passing this course is ${round(grade_cutoff_percent, 0)}%. You have not passed this course yet. Your current weighted grade is <strong>${course_grade.percent * 100}%</strong></em></p>
+                    <p><em>The grade cutoff for passing this course is ${grade_cutoff_percent}. You have not passed this course yet. Your current weighted grade is <strong>${course_grade.percent * 100}%</strong></em></p>
                   % endif
                 </div>
               </div>
@@ -309,7 +316,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
                       ${course_overview.display_name_with_default}
                     </span>
                     <span class="fa fa-cog" aria-hidden="true"></span>
-                  </button> 
+                  </button>
               % endif
             <!-- end of logic to show gear button if can_unenroll or show_email_settings -->
                   <div class="actions-dropdown" id="actions-dropdown-${dashboard_index}" tabindex="-1">
@@ -361,7 +368,7 @@ from lms.djangoapps.courseware.courses import get_course_with_access
         </div>
       </div>
   </section>
-  
+
   <footer class="wrapper-messages-primary">
     <div class="messages-list">
 
