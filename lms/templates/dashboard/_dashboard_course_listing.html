@@ -182,7 +182,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 
           <!-- Newly added progress/grading display for course -->
           <%
-            course = get_course_by_id(enrollment.course_id)
+            course = get_course_by_id(enrollment.course_id, depth=1)
             completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
             collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
             descriptor = modulestore().get_course(enrollment.course_id)
