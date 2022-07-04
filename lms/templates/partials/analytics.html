@@ -21,9 +21,9 @@
 %>
 
 <%
-  customer_gtm_id = get_global_settings().get('customer_gtm_id')
+  customer_gtm_id = get_global_settings().get('customer_gtm_id', '')
   customer_gtm_enable_pii = get_global_settings().get('customer_gtm_enable_pii', False)
-  customer_gtm_enabled = get_global_settings().get('customer_gtm_enabled')
+  customer_gtm_enabled = get_global_settings().get('customer_gtm_enabled', False)
 %>
 
 % if customer_gtm_id and customer_gtm_enabled:
