@@ -183,7 +183,13 @@ from lms.djangoapps.courseware.courses import get_course_by_id
           <!-- Newly added progress/grading display for course -->
           <%
             course = get_course_by_id(enrollment.course_id, depth=1)
-            completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
+            try:
+              completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
+            except Exception:
+              completion_summary = {
+                'complete_count': 0,
+                'incomplete_count': 0,
+              }
             collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
             descriptor = modulestore().get_course(enrollment.course_id)
             grading_policy = descriptor.grading_policy
@@ -196,7 +202,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 
             else:
               grade_cutoff_percent = 0
-            course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure)
+            course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure, create_if_needed=False)
             total_completion_units = float(completion_summary['complete_count'])+float(completion_summary['incomplete_count'])
             if total_completion_units > 0:
               completion_percent = 100 * float(completion_summary['complete_count'])/total_completion_units
@@ -215,7 +221,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
                 </div>
               </div>
             </div>
-            % if not (course.no_grade):
+            % if not (course.no_grade) and course_grade is not None:
               <div class="grading-details">
                 <div>
                   <span class="details-title">Course grade</span>
