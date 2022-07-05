@@ -49,8 +49,8 @@
 <%include file="partials/analytics.html" />
 
 <%
-  appsembler_ga_code = get_global_settings()['appsembler_ga_code'];
-  client_ga_code = get_global_settings().get('client_ga_code', "");
+  appsembler_ga_code = get_global_settings().get('appsembler_ga_code', '');
+  client_ga_code = get_global_settings().get('client_ga_code', '');
   client_ga_enabled = get_global_settings().get('client_ga_enabled', True);
 %>
 % if SHOW_GOOGLE_ANALYTICS:
@@ -61,4 +61,9 @@
     % endif
   </script>
   <!-- /Google Analytics code -->
+% endif
+
+${get_global_settings().get('default_additional_site_head_content', '')}
+% if request.COOKIES.get('cookieconsent_status', '') == 'dismiss':
+  ${get_global_settings().get('cookie_accepted_additional_site_head_content', '')}
 % endif

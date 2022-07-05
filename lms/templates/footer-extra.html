@@ -1,0 +1,15 @@
+<%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%namespace file='/theme-variables.html' import="get_global_settings" />
+## mako
+
+<!-- Include jQuery -->
+<script src="${static('js/jquery.mobile.custom.min.js')}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="${static('js/bootstrap.min.js')}"></script>
+<!-- Custom base JavaScript -->
+<script src="${static('js/base.js')}"></script>
+
+${get_global_settings().get('default_additional_site_foot_content', '')}
+% if request.COOKIES.get('cookieconsent_status', '') == 'dismiss':
+  ${get_global_settings().get('cookie_accepted_additional_site_foot_content', '')}
+% endif
