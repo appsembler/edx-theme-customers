@@ -23,7 +23,6 @@ from student.helpers import (
   DISABLE_UNENROLL_CERT_STATES,
 )
 from util.course import get_link_for_about_page, get_encoded_course_sharing_utm_params
-from openedx.core.djangoapps.appsembler.html_certificates.helpers import get_course_blocks_completion_summary
 from openedx.core.djangoapps.content.block_structure.api import get_block_structure_manager
 from lms.djangoapps.grades.api import CourseGradeFactory
 from xmodule.modulestore.django import modulestore
@@ -183,13 +182,6 @@ from lms.djangoapps.courseware.courses import get_course_by_id
           <!-- Newly added progress/grading display for course -->
           <%
             course = get_course_by_id(enrollment.course_id, depth=1)
-            try:
-              completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
-            except Exception:
-              completion_summary = {
-                'complete_count': 0,
-                'incomplete_count': 0,
-              }
             collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
             descriptor = modulestore().get_course(enrollment.course_id)
             grading_policy = descriptor.grading_policy
@@ -203,24 +195,8 @@ from lms.djangoapps.courseware.courses import get_course_by_id
             else:
               grade_cutoff_percent = 0
             course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure, create_if_needed=False)
-            total_completion_units = float(completion_summary['complete_count'])+float(completion_summary['incomplete_count'])
-            if total_completion_units > 0:
-              completion_percent = 100 * float(completion_summary['complete_count'])/total_completion_units
-            else:
-              completion_percent = 0
           %>
           <div class="course-grading-completion-details">
-            <div class="completion-details">
-              <div>
-                <span class="details-title">Course completion</span>
-              </div>
-              <div class="completion-graph-container">
-                <span class="completion-current-value">${round(completion_percent, 1)}%</span>
-                <div class="completion-graph">
-                  <span class="completion-graph-line" style="width:${str(round(completion_percent, 1))}%"></span>
-                </div>
-              </div>
-            </div>
             % if not (course.no_grade) and course_grade is not None:
               <div class="grading-details">
                 <div>
