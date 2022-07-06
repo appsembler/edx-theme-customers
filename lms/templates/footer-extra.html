@@ -9,7 +9,12 @@
 <!-- Custom base JavaScript -->
 <script src="${static('js/base.js')}"></script>
 
-${get_global_settings().get('default_additional_site_foot_content', '')}
-% if request.COOKIES.get('cookieconsent_status', '') == 'dismiss':
-  ${get_global_settings().get('cookie_accepted_additional_site_foot_content', '')}
+% if get_global_settings().get('default_additional_site_foot_content', ''):
+  ${get_global_settings().get('default_additional_site_foot_content')}
+% endif
+
+% if get_global_settings().get('cookie_accepted_additional_site_foot_content', ''):
+  % if request.COOKIES.get('cookieconsent_status', '') == 'dismiss':
+    ${get_global_settings().get('cookie_accepted_additional_site_foot_content')}
+  % endif
 % endif
