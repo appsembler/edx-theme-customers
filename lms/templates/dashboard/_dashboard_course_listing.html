@@ -183,7 +183,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
           <!-- Newly added progress/grading display for course -->
           <%
             course = get_course_by_id(enrollment.course_id, depth=1)
-            if staff_access:
+            if not staff_access:
               try:
                 completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
               except Exception:
@@ -204,7 +204,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
             else:
               grade_cutoff_percent = 0
             course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure, create_if_needed=False)
-            if staff_access:
+            if not staff_access:
               total_completion_units = float(completion_summary['complete_count'])+float(completion_summary['incomplete_count'])
               if total_completion_units > 0:
                 completion_percent = 100 * float(completion_summary['complete_count'])/total_completion_units
