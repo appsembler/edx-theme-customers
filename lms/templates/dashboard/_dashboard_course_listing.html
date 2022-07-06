@@ -28,6 +28,7 @@ from openedx.core.djangoapps.content.block_structure.api import get_block_struct
 from lms.djangoapps.grades.api import CourseGradeFactory
 from xmodule.modulestore.django import modulestore
 from lms.djangoapps.courseware.courses import get_course_by_id
+from lms.djangoapps.courseware.access import has_access
 %>
 
 <%
@@ -182,8 +183,8 @@ from lms.djangoapps.courseware.courses import get_course_by_id
 
           <!-- Newly added progress/grading display for course -->
           <%
-            course = get_course_by_id(enrollment.course_id, depth=1)
-            if not user.userorganizationmapping_set.first().is_amc_admin:
+            if not (user.userorganizationmapping_set.first().is_amc_admin or has_access(user, 'staff', enrollment.course_id)):
+              course = get_course_by_id(enrollment.course_id, depth=1)
               try:
                 completion_summary = get_course_blocks_completion_summary(enrollment.course_id, user)
               except Exception:
@@ -195,20 +196,20 @@ from lms.djangoapps.courseware.courses import get_course_by_id
               if total_completion_units > 0:
                 completion_percent = 100 * float(completion_summary['complete_count'])/total_completion_units
               else:
-                completion_percent = 0
-            collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
-            descriptor = modulestore().get_course(enrollment.course_id)
-            grading_policy = descriptor.grading_policy
-            if grading_policy.get('GRADE_CUTOFFS', False):
-              if grading_policy['GRADE_CUTOFFS'].get('Pass', False):
-                grade_cutoff_percent = str(grading_policy['GRADE_CUTOFFS']['Pass']*100) + "%"
-              else:
-                sorted_cutoff = OrderedDict(sorted(grading_policy['GRADE_CUTOFFS'].items()))
-                grade_cutoff_percent = ', '.join(['{}: {}%'.format(k,(round(float(v)*100))) for k,v in sorted_cutoff.items()])
+                  completion_percent = 0
+              collected_block_structure = get_block_structure_manager(enrollment.course_id).get_collected()
+              descriptor = modulestore().get_course(enrollment.course_id)
+              grading_policy = descriptor.grading_policy
+              if grading_policy.get('GRADE_CUTOFFS', False):
+                if grading_policy['GRADE_CUTOFFS'].get('Pass', False):
+                  grade_cutoff_percent = str(grading_policy['GRADE_CUTOFFS']['Pass']*100) + "%"
+                else:
+                  sorted_cutoff = OrderedDict(sorted(grading_policy['GRADE_CUTOFFS'].items()))
+                  grade_cutoff_percent = ', '.join(['{}: {}%'.format(k,(round(float(v)*100))) for k,v in sorted_cutoff.items()])
 
-            else:
-              grade_cutoff_percent = 0
-            course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure, create_if_needed=False)
+              else:
+                grade_cutoff_percent = 0
+              course_grade = CourseGradeFactory().read(user, collected_block_structure=collected_block_structure, create_if_needed=False)
           %>
           <div class="course-grading-completion-details">
             <div class="completion-details">
@@ -216,7 +217,7 @@ from lms.djangoapps.courseware.courses import get_course_by_id
                 <span class="details-title">Course completion</span>
               </div>
               <div class="completion-graph-container">
-                % if user.userorganizationmapping_set.first().is_amc_admin:
+                % if user.userorganizationmapping_set.first().is_amc_admin or has_access(user, 'staff', enrollment.course_id):
                   <span class="completion-current-value" style="font-weight:normal; opacity:0.7"><em>Not available for staff users</em></span>
                 % else:
                   <span class="completion-current-value">${round(completion_percent, 1)}%</span>
@@ -226,17 +227,26 @@ from lms.djangoapps.courseware.courses import get_course_by_id
                 % endif
               </div>
             </div>
-            % if not (course.no_grade) and course_grade is not None:
+            % if user.userorganizationmapping_set.first().is_amc_admin or has_access(user, 'staff', enrollment.course_id):
               <div class="grading-details">
                 <div>
                   <span class="details-title">Course grade</span>
-                  % if course_grade.passed:
-                    <p class="larger-paragraph">You have passed this course and obtained the <strong>${course_grade.letter_grade}</strong> grade.</p>
-                  % else:
-                    <p><em>The grade cutoff for passing this course is ${grade_cutoff_percent}. You have not passed this course yet. Your current weighted grade is <strong>${course_grade.percent * 100}%</strong></em></p>
-                  % endif
+                  <p style="font-weight:normal; opacity:0.7"><em>Not available for staff users</em></p>
                 </div>
               </div>
+            % else:
+              % if not (course.no_grade) and course_grade is not None:
+                <div class="grading-details">
+                  <div>
+                    <span class="details-title">Course grade</span>
+                    % if course_grade.passed:
+                      <p class="larger-paragraph">You have passed this course and obtained the <strong>${course_grade.letter_grade}</strong> grade.</p>
+                    % else:
+                      <p><em>The grade cutoff for passing this course is ${grade_cutoff_percent}. You have not passed this course yet. Your current weighted grade is <strong>${course_grade.percent * 100}%</strong></em></p>
+                    % endif
+                  </div>
+                </div>
+              % endif
             % endif
           </div>
 
