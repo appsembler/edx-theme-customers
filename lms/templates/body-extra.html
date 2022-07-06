@@ -17,7 +17,7 @@
           %endif
           email: "${user.email }", // Email address
           created_at: ${user.date_joined.strftime("%s")}, // Signup date as a Unix timestamp
-          user_hash: "${user_hash}",
+          user_hash: "${intercom_user_hash}",
         %endif
         app_id: "${intercom_app_id}",
         "LMS_URL": "${intercom_lms_url}"
