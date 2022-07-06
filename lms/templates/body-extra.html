@@ -2,48 +2,53 @@
 <%! import hmac %>
 <%! import hashlib %>
 
-<%
-  integrations_intercom_enabled = get_global_settings().get('integrations_intercom_enabled', False)
-  integrations_intercom_app_id = get_global_settings().get('integrations_intercom_app_id', '')
-%>
+## Renders when Cookie Banner is disabled or when it is enabled and user has dismissed (accepted) it:
+% if not (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') != 'dismiss')):
 
-% if show_intercom_widget:
-  <!-- Appsembler Intercom widget for Staff -->
-  <script>
-    window.intercomSettings = {
-        % if user.is_authenticated:
-          %if user.get_full_name():
-            name: "${user.get_full_name() }", // Full name
+  <%
+    integrations_intercom_enabled = get_global_settings().get('integrations_intercom_enabled', False)
+    integrations_intercom_app_id = get_global_settings().get('integrations_intercom_app_id', '')
+  %>
+
+  % if show_intercom_widget:
+    <!-- Appsembler Intercom widget for Staff -->
+    <script>
+      window.intercomSettings = {
+          % if user.is_authenticated:
+            %if user.get_full_name():
+              name: "${user.get_full_name() }", // Full name
+            %endif
+            email: "${user.email }", // Email address
+            created_at: ${user.date_joined.strftime("%s")}, // Signup date as a Unix timestamp
+            user_hash: "${intercom_user_hash}",
           %endif
-          email: "${user.email }", // Email address
-          created_at: ${user.date_joined.strftime("%s")}, // Signup date as a Unix timestamp
-          user_hash: "${intercom_user_hash}",
-        %endif
-        app_id: "${intercom_app_id}",
-        "LMS_URL": "${intercom_lms_url}"
-      };
-  </script>
-  <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/e4awi275';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
-% elif integrations_intercom_enabled:
-  <!-- Customer Intercom widget -->
-  <script>
-    window.intercomSettings = {
-        % if user.is_authenticated:
-          <%
-            user_hash_calculated = hmac.new(
-              str(settings.INTERCOM_APP_SECRET).encode('utf-8'),
-              str(user.email).encode('utf-8'),
-              digestmod=hashlib.sha256).hexdigest()
-          %>
-          user_hash: "${user_hash_calculated}",
-          %if user.get_full_name():
-            name: "${user.get_full_name() }", // Full name
+          app_id: "${intercom_app_id}",
+          "LMS_URL": "${intercom_lms_url}"
+        };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/e4awi275';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+  % elif integrations_intercom_enabled:
+    <!-- Customer Intercom widget -->
+    <script>
+      window.intercomSettings = {
+          % if user.is_authenticated:
+            <%
+              user_hash_calculated = hmac.new(
+                str(settings.INTERCOM_APP_SECRET).encode('utf-8'),
+                str(user.email).encode('utf-8'),
+                digestmod=hashlib.sha256).hexdigest()
+            %>
+            user_hash: "${user_hash_calculated}",
+            %if user.get_full_name():
+              name: "${user.get_full_name() }", // Full name
+            %endif
+            email: "${user.email }", // Email address
+            created_at: ${user.date_joined.strftime("%s")}, // Signup date as a Unix timestamp
           %endif
-          email: "${user.email }", // Email address
-          created_at: ${user.date_joined.strftime("%s")}, // Signup date as a Unix timestamp
-        %endif
-        app_id: "${integrations_intercom_app_id}",
-      };
-  </script>
-  <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/e4awi275';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+          app_id: "${integrations_intercom_app_id}",
+        };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/e4awi275';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
+  % endif
+
 % endif
