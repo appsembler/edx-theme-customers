@@ -49,15 +49,26 @@
 <%include file="partials/analytics.html" />
 
 <%
-  appsembler_ga_code = get_global_settings()['appsembler_ga_code'];
-  client_ga_code = get_global_settings().get('client_ga_code', "");
+  appsembler_ga_code = get_global_settings().get('appsembler_ga_code', '');
+  client_ga_code = get_global_settings().get('client_ga_code', '');
+  client_ga_enabled = get_global_settings().get('client_ga_enabled', True);
 %>
 % if SHOW_GOOGLE_ANALYTICS:
   <script>
-    % if get_global_settings().get('client_ga_code'):
+    % if client_ga_code and client_ga_enabled:
       ga('create', '${client_ga_code}', 'auto', 'clientTracker');
       ga('clientTracker.send', 'pageview');
     % endif
   </script>
   <!-- /Google Analytics code -->
+% endif
+
+% if get_global_settings().get('default_additional_site_head_content', ''):
+  ${get_global_settings().get('default_additional_site_head_content')}
+% endif
+
+% if get_global_settings().get('cookie_accepted_additional_site_head_content', ''):
+  % if request.COOKIES.get('cookieconsent_status', '') == 'dismiss':
+    ${get_global_settings().get('cookie_accepted_additional_site_head_content')}
+  % endif
 % endif
