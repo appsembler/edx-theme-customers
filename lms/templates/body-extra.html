@@ -30,11 +30,12 @@
     window.intercomSettings = {
         % if user.is_authenticated:
           <%
-            user_hash = hmac.new(
+            user_hash_calculated = hmac.new(
               str(settings.INTERCOM_APP_SECRET).encode('utf-8'),
               str(user.email).encode('utf-8'),
               digestmod=hashlib.sha256).hexdigest()
           %>
+          user_hash: "${user_hash_calculated}",
           %if user.get_full_name():
             name: "${user.get_full_name() }", // Full name
           %endif
