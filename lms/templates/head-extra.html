@@ -63,7 +63,12 @@
   <!-- /Google Analytics code -->
 % endif
 
-${get_global_settings().get('default_additional_site_head_content', '')}
-% if request.COOKIES.get('cookieconsent_status', '') == 'dismiss':
-  ${get_global_settings().get('cookie_accepted_additional_site_head_content', '')}
+% if get_global_settings().get('default_additional_site_head_content', ''):
+  ${get_global_settings().get('default_additional_site_head_content')}
+% endif
+
+% if get_global_settings().get('cookie_accepted_additional_site_head_content', ''):
+  % if request.COOKIES.get('cookieconsent_status', '') == 'dismiss':
+    ${get_global_settings().get('cookie_accepted_additional_site_head_content')}
+  % endif
 % endif
