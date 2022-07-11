@@ -3,7 +3,7 @@
 <%! from openedx.core.djangolib.js_utils import js_escaped_string %>
 
 ## Renders when Cookie Banner is disabled or when it is enabled and user has dismissed (accepted) it:
-% if not (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') != 'dismiss')):
+% if (not get_global_settings().get('cookie_notification_enabled', False)) or (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') == 'dismiss')):
   
   <%
     siteOrganization = get_value('course_org_filter');
