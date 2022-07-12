@@ -3,7 +3,7 @@
 <%! import hashlib %>
 
 ## Renders when Cookie Banner is disabled or when it is enabled and user has dismissed (accepted) it:
-% if not (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') != 'dismiss')):
+% if (not get_global_settings().get('cookie_notification_enabled', False)) or (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') == 'dismiss')):
 
   <%
     integrations_intercom_enabled = get_global_settings().get('integrations_intercom_enabled', False)

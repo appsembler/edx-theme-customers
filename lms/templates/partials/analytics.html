@@ -2,8 +2,9 @@
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
 <%! from openedx.core.djangolib.js_utils import js_escaped_string %>
 
+
 ## Renders when Cookie Banner is disabled or when it is enabled and user has dismissed (accepted) it:
-% if not (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') != 'dismiss')):
+% if (not get_global_settings().get('cookie_notification_enabled', False)) or (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') == 'dismiss')):
   
   <%
     siteOrganization = get_value('course_org_filter');
@@ -23,10 +24,13 @@
     endif
   %>
 
+  ## NOTE: we presume customer_gtm_enabled is True as AMC is missing this setting (for some reason).
+  ## Once we completely migrate to 2.0 we will change this.
+
   <%
     customer_gtm_id = get_global_settings().get('customer_gtm_id', '')
     customer_gtm_enable_pii = get_global_settings().get('customer_gtm_enable_pii', False)
-    customer_gtm_enabled = get_global_settings().get('customer_gtm_enabled', False)
+    customer_gtm_enabled = get_global_settings().get('customer_gtm_enabled', True)
   %>
 
   % if customer_gtm_id and customer_gtm_enabled:

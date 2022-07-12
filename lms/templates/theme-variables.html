@@ -124,7 +124,9 @@
     'custom_site_meta_tags': get_value('site_seo_tags', []),
     'combine_privacy_and_tos': get_value('combine_privacy_and_tos', False),
     'enable_legacy_courseware_nav': get_value('enable_legacy_courseware_nav', True),
-    'customer_gtm_enabled': get_value('customer_gtm_enabled', False),
+    ## NOTE: we presume customer_gtm_enabled is True as AMC is missing this setting (for some reason).
+    ## Once we completely migrate to 2.0 we will change this.
+    'customer_gtm_enabled': get_value('customer_gtm_enabled', True),
     'customer_gtm_id': get_value('customer_gtm_id', ""),
     'customer_gtm_enable_pii': get_value('customer_gtm_enable_pii', False),
     'default_og_image': get_value('default_og_image', ''),
