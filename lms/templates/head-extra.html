@@ -81,33 +81,32 @@
 <!-- Add JavaScript for handling the Preview Environment -->
 <script defer>
   function getCookie(name) {
-      const value = `; ${document.cookie}`;
-      const parts = value.split(`; ${name}=`);
-      if (parts.length === 2) return parts.pop().split(';').shift();
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
   }
   document.addEventListener('DOMContentLoaded', function() {
   const currentSearchParams = new URLSearchParams(window.location.search);
-      if (currentSearchParams.get('preview') === 'true') {
-          let notificationContent;
-          if (getCookie('edxloggedin')) {
-              notificationContent = document.createTextNode('You are viewing the site in Preview environment.')
-          } else {
-              notificationContent = document.createTextNode('To view the site in Preview environment you need to be signed in.')
-          }
-          var notificationElement = document.createElement('div');
-          notificationElement.appendChild(notificationContent);
-          notificationElement.style.cssText = 'position:fixed;width:200px;left:30px;bottom:30px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:1000;background:rgba(0,0,0,0.7);font-size:14px;padding:20px;border-radius:12px;color:#fff;';
-          document.body.appendChild(notificationElement);
-          console.log(getCookie('edxloggedin'));
-          [...document.querySelectorAll('a')].forEach(e=>{
-              console.log('aaaa');
-              const url = new URL(e.href)
-              for (let [k,v] of new URLSearchParams(window.location.search).entries()){
-                  url.searchParams.set(k,v)
-              }
-              url.searchParams.set('preview', 'true');
-              e.href = url.toString();
-          })
+    if (currentSearchParams.get('preview') === 'true') {
+      let notificationContent;
+      if (getCookie('edxloggedin')) {
+        notificationContent = document.createTextNode('You are viewing the site in Preview environment.')
+      } else {
+        notificationContent = document.createTextNode('To view the site in Preview environment you need to be signed in.')
       }
+      var notificationElement = document.createElement('div');
+      notificationElement.appendChild(notificationContent);
+      notificationElement.style.cssText = 'position:fixed;width:200px;left:30px;bottom:30px;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);z-index:1000;background:rgba(0,0,0,0.7);font-size:14px;padding:20px;border-radius:12px;color:#fff;';
+      document.body.appendChild(notificationElement);
+      console.log(getCookie('edxloggedin'));
+      [...document.querySelectorAll('a')].forEach(e=>{
+        const url = new URL(e.href)
+        for (let [k,v] of new URLSearchParams(window.location.search).entries()){
+            url.searchParams.set(k,v)
+        }
+        url.searchParams.set('preview', 'true');
+        e.href = url.toString();
+      })
+    }
   }, false);
 </script>
