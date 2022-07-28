@@ -28,7 +28,10 @@
 -->
 
 <%
-  if user.is_authenticated:
+  if user.is_staff or user.is_superuser:
+    userType = 'Superuser'
+    userOrganization = 'Appsembler'
+  elif user.is_authenticated:
     userType = 'Staff'
     userOrganization = request.user.organizations.first().name
   else:
