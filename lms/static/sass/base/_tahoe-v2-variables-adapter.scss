@@ -80,7 +80,7 @@ $footer-link-hover-color: lighten($footer_links_color, 15%);
 $footer-link-breathe-space: calcRem(15);
 $footer-logo-breathe-space: calcRem(30);
 $footer-logo-padding-vertical: calcRem(10);
-$footer-logo-width: calcRem($footer_logo_height);
+$footer-logo-width: calcRem($footer_logo_width);
 $footer-logo-opacity: 1;
 $footer-copyright-text-size: calcRem(12);
 $footer-copyright-text-color: $footer_copyright_text_color;
