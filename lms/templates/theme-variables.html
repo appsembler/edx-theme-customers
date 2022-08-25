@@ -477,7 +477,7 @@
         'cert_logo': get_value('certificates_certificate_logo_on_certificate', get_value('site_branding_full_logo', static('images/branding/brand-logo.svg'))),
         'logo_width': get_value('certificates_certificate_logo_on_certificate_width', '160px'),
         'platform_name_amc': translate(get_value('certificates_certificate_platform_name', get_value('site_title', '')), default=_('Platform Name')),
-        'certificate_banner_text': translate(('certificate_banner_text', course_context.get('document_banner', ''))),
+        'certificate_banner_text': translate(get_value('certificate_banner_text', course_context.get('document_banner', ''))),
         'header_text': translate(get_value('certificates_certificate_page_message', ''), default=_('Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
         'short_platform_description': translate(get_value('certificates_short_platform_description', '')),
         'we_hereby_text': translate(get_value('certificates_we_hereby_text', ''), default=_('We hereby certify that:')),
