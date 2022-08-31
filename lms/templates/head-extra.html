@@ -42,8 +42,10 @@
 %>
 % if (og_image_use_course_images and course):
   <meta name="og:image" content="${course_image_url(course)}" />
+  <meta name="image" property="og:image" content="${course_image_url(course)}" />
 % else:
   <meta name="og:image" content="${default_og_image}" />
+  <meta name="image" property="og:image" content="${default_og_image}" />
 % endif
 
 <%include file="partials/analytics.html" />
