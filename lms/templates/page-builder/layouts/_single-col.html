@@ -9,7 +9,13 @@
   layout_style = layout_style + "color: " + options['text-color'] + "; background-color: " + options['bg-color']
 %>
 
-<section class="amc--layout amc--layout--single-column amc--style-classes ${options['align-content']} ${options['text-alignment']} ${options['padding-top']} ${options['padding-right']} ${options['padding-bottom']} ${options['padding-left']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']} ${options['layout-bg-image-size']}" style="${layout_style}">
+<section
+  class="amc--layout amc--layout--single-column amc--style-classes ${options['align-content']} ${options['text-alignment']} ${options['padding-top']} ${options['padding-right']} ${options['padding-bottom']} ${options['padding-left']} ${options['margin-top']} ${options['margin-right']} ${options['margin-bottom']} ${options['margin-left']} ${options['layout-bg-image-size']}"
+  style="${layout_style}"
+  % if options.get('element-id'):
+    id="${options.get('element-id')}"
+  % endif  
+>
   <div class="a--container bs-container amc--layout__container">
     <div class="amc--layout__column amc--layout--single-column__column">
       % for element in children['column-1']:
