@@ -3,10 +3,11 @@
 <%!
 import six
 from django.utils.translation import ugettext as _
+from openedx.core.djangoapps.appsembler.future_releases_hacks.helpers import replace_jump_with_resume
 %>
 
 % if resume_button_url != '':
-  <a href="${resume_button_url}"
+  <a href="${replace_jump_with_resume(resume_button_url)}"
       class="course-target-link enter-course ${'hidden' if is_unfulfilled_entitlement else ''}"
       data-course-key="${enrollment.course_id}">
     ${_('Resume Course')}
