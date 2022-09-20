@@ -77,7 +77,7 @@
 
           gtag('config', '${client_ga_code}');
         </script>
-      % else
+      % else:
         <script>
           ga('create', '${client_ga_code}', 'auto', 'clientTracker');
           ga('clientTracker.send', 'pageview');
