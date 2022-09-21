@@ -40,6 +40,27 @@
     return get_value('THEME_VERSION', 'amc-v1')
 %>
 
+<%!
+def get_css_tahoe_v2_value(name, default):
+    """
+    Get individual Tahoe v2 CSS value.
+
+    TODO: This helper should be moved into `site_config_client.openedx.api`.
+    """
+    current_config = get_current_site_configuration()
+    if current_config and current_config.api_adapter:
+        adapter = current_config.api_adapter
+        return adapter.get_value_of_type(adapter.TYPE_CSS, name, default)
+    return default
+
+def get_tahoe_v2_primary_font(default):
+    """
+    Get cleaned tahoe v2 primary font useful for HTML purposes.
+    """
+    font = get_css_tahoe_v2_value('selected_font', default=default) or ""
+    return font.strip('"')  # Remove unneeded Sass-only quotes
+%>
+
 
 ## =======================================================
 ## this template is used to define content to be displayed
@@ -51,7 +72,7 @@
 <%def name="get_global_settings()">
   <%
   if get_theme_version() == 'tahoe-v2':
-    encoded_primary_font = urllib.parse.quote(get_value('selected_font', 'Roboto').encode('utf-8'))
+    encoded_primary_font = urllib.parse.quote(get_tahoe_v2_primary_font(default='Roboto').encode('utf-8'))
     latin_extended = "&amp;subset=latin-ext"
   else:
     encoded_primary_font = urllib.parse.quote(get_value('primary-font', 'Roboto').encode('utf-8'))
