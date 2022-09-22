@@ -264,7 +264,7 @@ def get_tahoe_v2_primary_font(default):
       if get_theme_version() == 'tahoe-v2':
         return ugettext('{copy_sign} {year} {platform_name}. All rights reserved.').format(
           copy_sign=u'©',
-          platform_name=force_text(get_value('site_name', ugettext('Company Name'))),
+          platform_name=force_text(get_value('PLATFORM_NAME', ugettext('Company Name'))),
           year=date.today().strftime('%Y'),
         )
       else:
