@@ -278,7 +278,7 @@ def get_tahoe_v2_primary_font(default):
 
     if get_theme_version() == 'tahoe-v2':
       return {
-        'footer_logo' : get_value('footer_logo_image', ''), ## leave as is, defined above. Can be changed to something custom if needed.
+        'footer_logo' : get_value('footer_logo_image') or static('images/branding/icon-color.svg'),
         'footer_copyright_text' : translate(get_value('footer_copyright_text', ''), default=default_copyright()),
         'display_edx_disclaimer' : get_value('display_footer_legal', True), ## bool value required
         'edx_disclaimer' : translate(get_value('edx_disclaimer'), default=_('edX, Open edX and the edX and Open edX logos are trademarks or registered trademarks of edX Inc.')),
