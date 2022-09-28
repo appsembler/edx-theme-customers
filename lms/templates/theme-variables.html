@@ -93,8 +93,8 @@ def get_tahoe_v2_primary_font(default):
       'enable_registration_link_on_login' : get_value('enable_site_registration_form', True),
       'enable_registration_form' : get_value('enable_site_registration_form', True),
       'sso_disable_login_fields' : get_value('sso_disable_login_fields', False),
-      'fonts_url' : 'https://fonts.googleapis.com/css?family={}:300,300i,400,400i,700,700i,900{}'.format(
-        encoded_primary_font, latin_extended),
+      'fonts_url' : get_value('selected_font_stylesheet', 'https://fonts.googleapis.com/css?family={}:300,300i,400,400i,700,700i,900{}'.format(
+        encoded_primary_font, latin_extended)),
       'apple_app_id' : '',
       'page_status': get_value('page_editor_v1_pages_status', {}),
       'course-catalogue_enabled': get_value('enable_course_catalogue', True),
