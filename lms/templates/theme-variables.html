@@ -93,8 +93,8 @@ def get_tahoe_v2_primary_font(default):
       'enable_registration_link_on_login' : get_value('enable_site_registration_form', True),
       'enable_registration_form' : get_value('enable_site_registration_form', True),
       'sso_disable_login_fields' : get_value('sso_disable_login_fields', False),
-      'fonts_url' : 'https://fonts.googleapis.com/css?family={}:300,300i,400,400i,700,700i,900{}'.format(
-        encoded_primary_font, latin_extended),
+      'fonts_url' : get_value('selected_font_stylesheet', 'https://fonts.googleapis.com/css?family={}:300,300i,400,400i,700,700i,900{}'.format(
+        encoded_primary_font, latin_extended)),
       'apple_app_id' : '',
       'page_status': get_value('page_editor_v1_pages_status', {}),
       'course-catalogue_enabled': get_value('enable_course_catalogue', True),
@@ -128,6 +128,7 @@ def get_tahoe_v2_primary_font(default):
       'cookie_accepted_additional_site_head_content': get_value('cookie_accepted_additional_site_head_content', ''),
       'default_additional_site_foot_content': get_value('default_additional_site_foot_content', ''),
       'cookie_accepted_additional_site_foot_content': get_value('cookie_accepted_additional_site_foot_content', ''),
+      'lms_dropdown_displayname_setting': get_value('lms_dropdown_displayname_setting', 'username'),
     }
 
   return {
@@ -500,7 +501,7 @@ def get_tahoe_v2_primary_font(default):
         'header_logo_width': get_value('certificates_certificate_header_area_logo_width', '240px'),
         'cert_logo': get_value('certificates_certificate_logo_on_certificate', get_value('site_branding_full_logo', static('images/branding/brand-logo.svg'))),
         'logo_width': get_value('certificates_certificate_logo_on_certificate_width', '160px'),
-        'platform_name_amc': translate(get_value('certificates_certificate_platform_name', get_value('site_title', '')), default=_('Platform Name')),
+        'platform_name_amc': translate(get_value('certificates_certificate_platform_name', get_value('site_title', '')), default=get_value('PLATFORM_NAME', _('Platform Name'))),
         'certificate_banner_text': translate(get_value('certificate_banner_text', course_context.get('document_banner', ''))),
         'header_text': translate(get_value('certificates_certificate_page_message', ''), default=_('Congratulations! This page summarizes what you accomplished. Show it off to family, friends, and colleagues in your social and professional networks.')),
         'short_platform_description': translate(get_value('certificates_short_platform_description', '')),
