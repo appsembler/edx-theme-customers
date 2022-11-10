@@ -144,3 +144,11 @@ body.certificate {
     }
   }
 }
+
+// Make legend text similar to <p> text
+.xmodule_display.xmodule_ProblemBlock div.problem .choicegroup legend {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.125rem;
+}
