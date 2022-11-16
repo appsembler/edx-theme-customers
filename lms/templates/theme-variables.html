@@ -87,6 +87,14 @@ def get_tahoe_v2_primary_font(default):
     register_url = '/register'
     login_url = '/login'
 
+  # RED-3596: Search engine indexing is disabled for trial and expired sites
+  allow_search_indexing = False
+  if request:
+    request_session = getattr(request, 'session', {})
+    tier_name = request_session.get('TIER_NAME')
+    if tier_name and tier_name.lower() != 'trial':
+      allow_search_indexing = get_value('allow_search_engine_indexing', True)
+
   if get_theme_version() == 'tahoe-v2':
     return {
       'enable_registration_button' : get_value('enable_site_nav_registration_button', True),
@@ -104,7 +112,7 @@ def get_tahoe_v2_primary_font(default):
       'client_ga_code': get_value('integrations_ga_code', ""),
       'client_ga_enabled': get_value('integrations_ga_enabled', False),
       'client_ga_version': get_value('integrations_ga_version', 'v3'),
-      'allow_search_engine_indexing': get_value('allow_search_engine_indexing', True),
+      'allow_search_engine_indexing': allow_search_indexing,
       'custom_site_meta_tags': get_value('site_seo_tags', []),
       'combine_privacy_and_tos': get_value('combine_privacy_and_tos', False),
       'enable_legacy_courseware_nav': get_value('enable_legacy_courseware_nav', True),
@@ -145,7 +153,7 @@ def get_tahoe_v2_primary_font(default):
     'appsembler_ga_code': "UA-18398802-14", ## need to enter correct one
     'appsembler_lms_tracking_code': "UA-18398802-26", ## our new GA property
     'client_ga_code': get_value('client_ga_code', ""),
-    'allow_search_engine_indexing': get_value('allow_search_engine_indexing', True),
+    'allow_search_engine_indexing': allow_search_indexing,
     'custom_site_meta_tags': get_value('site_seo_tags', []),
     'combine_privacy_and_tos': get_value('combine_privacy_and_tos', False),
     'enable_legacy_courseware_nav': get_value('enable_legacy_courseware_nav', True),
