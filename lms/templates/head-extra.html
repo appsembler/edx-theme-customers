@@ -3,7 +3,7 @@
 <%namespace name='static' file='/static_content.html'/>
 <%namespace file='/theme-variables.html' import="get_global_settings, get_brand_favicon" />
 <%! from openedx.core.djangoapps.site_configuration.helpers import get_current_site_configuration, get_value %>
-<%! from django.contrib.staticfiles.templatetags.staticfiles import static %>
+<%! from django.templatetags.static import static %>
 <%! from openedx.core.lib.courses import course_image_url %>
 
 <link rel="icon" type="image/x-icon" href="${get_brand_favicon()['brand_favicon']}" />
