@@ -8,6 +8,7 @@ from django.utils.http import urlencode, urlquote_plus
 from django.utils.translation import ugettext as _
 from django.utils.translation import ungettext
 from django.urls import reverse
+import tahoe_sites.api
 from course_modes.models import CourseMode
 from course_modes.helpers import enrollment_mode_display
 from openedx.core.djangolib.js_utils import dump_js_escaped_json, js_escaped_string
@@ -43,6 +44,19 @@ from lms.djangoapps.courseware.access import has_access
   billing_email = settings.PAYMENT_SUPPORT_EMAIL
 
   is_course_expired = hasattr(show_courseware_link, 'error_code') and show_courseware_link.error_code == 'audit_expired'
+
+  def should_display_learner_progress(user, course_id):
+    """
+    Learner-related progress shouldn't be displayed for superusers, course staff or Site admins.
+    """
+    if has_access(user, 'staff', course_id):
+      return False  # Course admins, or superusers
+
+    organization = tahoe_sites.api.get_organization_by_course(course_id)
+    if tahoe_sites.api.is_active_admin_on_organization(user, organization):
+      return False  # Site admin
+
+    return True  # Is a learner
 %>
 
 <%namespace name='static' file='/static_content.html'/>
@@ -183,7 +197,7 @@ from lms.djangoapps.courseware.access import has_access
 
           <!-- Newly added progress/grading display for course -->
           <%
-            if not (user.userorganizationmapping_set.first().is_amc_admin or has_access(user, 'staff', course_overview.id)):
+            if should_display_learner_progress(user, course_overview.id):
               course = get_course_by_id(course_overview.id, depth=1)
               try:
                 completion_summary = get_course_blocks_completion_summary(course_overview.id, user)
@@ -217,7 +231,7 @@ from lms.djangoapps.courseware.access import has_access
                 <span class="details-title">Course completion</span>
               </div>
               <div class="completion-graph-container">
-                % if user.userorganizationmapping_set.first().is_amc_admin or has_access(user, 'staff', course_overview.id):
+                % should_display_learner_progress(user, course_overview.id):
                   <span class="completion-current-value" style="font-weight:normal; opacity:0.7"><em>Not available for staff users</em></span>
                 % else:
                   <span class="completion-current-value">${round(completion_percent, 1)}%</span>
@@ -227,7 +241,7 @@ from lms.djangoapps.courseware.access import has_access
                 % endif
               </div>
             </div>
-            % if user.userorganizationmapping_set.first().is_amc_admin or has_access(user, 'staff', course_overview.id):
+            % if should_display_learner_progress(user, course_overview.id):
               <div class="grading-details">
                 <div>
                   <span class="details-title">Course grade</span>
