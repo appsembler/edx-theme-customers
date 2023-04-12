@@ -65,7 +65,7 @@ cert_org_name = get_certificates_settings().get('certificate_custom_org_name') i
         </div>
         % if (get_certificates_settings()['certificate_show_url']):
           <div class="info-bottom">
-            Verify the authenticity of this certificate at <a href="https://${request.site}/certificates/${certificate_id_number}">https://${request.site}/certificates/${certificate_id_number}</a>
+            Verify the authenticity of this certificate at <a style="color:#fff !important;" href="https://${request.site}/certificates/${certificate_id_number}">https://${request.site}/certificates/${certificate_id_number}</a>
           </div>
         % endif
       </div>
