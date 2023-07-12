@@ -97,6 +97,35 @@
       Dimension3: Visited course name
       Dimension4: LMS or Studio
     -->
+    <%
+    appsembler_ga_code = get_global_settings().get('appsembler_ga_code', '');
+    client_ga_code = get_global_settings().get('client_ga_code', '');
+    client_ga_enabled = get_global_settings().get('client_ga_enabled', True);
+    client_ga_version = get_global_settings().get('client_ga_version', 'v3');
+    %>
+
+    % if SHOW_GOOGLE_ANALYTICS:
+    % if client_ga_code and client_ga_enabled:
+      ## for now Appsembler is still using v3 Universal Analytics and some customers do too.
+      ## once Appsembler and all customers shift to v4 we remove this condition
+      % if client_ga_version == 'v4':
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=${client_ga_code}"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${client_ga_code}');
+        </script>
+      % else:
+        <script>
+          ga('create', '${client_ga_code}', 'auto', 'clientTracker');
+          ga('clientTracker.send', 'pageview');
+        </script>
+      % endif
+    % endif
+    <!-- /Google Analytics code -->
+    % endif
 
     <%
       appsemblerLmsTrackingCode = get_global_settings().get('appsembler_lms_tracking_code')
@@ -119,4 +148,11 @@
     <!-- /new analytics -->
   % endif
 
+% endif
+
+% if customer_gtm_id:
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${customer_gtm_id | n, js_escaped_string}"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 % endif

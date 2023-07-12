@@ -2,6 +2,8 @@
 <%! import hmac %>
 <%! import hashlib %>
 
+<%include file="partials/analytics.html" />
+
 ## Renders when Cookie Banner is disabled or when it is enabled and user has dismissed (accepted) it:
 % if (not get_global_settings().get('cookie_notification_enabled', False)) or (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') == 'dismiss')):
 
@@ -49,18 +51,6 @@
         };
     </script>
     <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/e4awi275';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
-  % endif
-
-  <%! from openedx.core.djangolib.js_utils import js_escaped_string %>
-  <%
-  customer_gtm_id = get_global_settings().get('customer_gtm_id')
-  %>
-
-  % if customer_gtm_id:
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${customer_gtm_id | n, js_escaped_string}"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
   % endif
 
 % endif
