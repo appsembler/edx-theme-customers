@@ -48,7 +48,6 @@
   <meta name="image" property="og:image" content="${default_og_image}" />
 % endif
 
-<%include file="partials/analytics.html" />
 
 % if get_global_settings().get('default_additional_site_head_content', ''):
   ${get_global_settings().get('default_additional_site_head_content')}
@@ -56,36 +55,6 @@
 
 ## Renders when Cookie Banner is disabled or when it is enabled and user has dismissed (accepted) it:
 % if (not get_global_settings().get('cookie_notification_enabled', False)) or (get_global_settings().get('cookie_notification_enabled', False) and (request.COOKIES.get('cookieconsent_status', '') == 'dismiss')):
-
-  <%
-    appsembler_ga_code = get_global_settings().get('appsembler_ga_code', '');
-    client_ga_code = get_global_settings().get('client_ga_code', '');
-    client_ga_enabled = get_global_settings().get('client_ga_enabled', True);
-    client_ga_version = get_global_settings().get('client_ga_version', 'v3');
-  %>
-  % if SHOW_GOOGLE_ANALYTICS:
-    % if client_ga_code and client_ga_enabled:
-      ## for now Appsembler is still using v3 Universal Analytics and some customers do too.
-      ## once Appsembler and all customers shift to v4 we remove this condition
-      % if client_ga_version == 'v4':
-        <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=${client_ga_code}"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-
-          gtag('config', '${client_ga_code}');
-        </script>
-      % else:
-        <script>
-          ga('create', '${client_ga_code}', 'auto', 'clientTracker');
-          ga('clientTracker.send', 'pageview');
-        </script>
-      % endif
-    % endif
-    <!-- /Google Analytics code -->
-  % endif
 
   % if get_global_settings().get('cookie_accepted_additional_site_head_content', ''):
     % if request.COOKIES.get('cookieconsent_status', '') == 'dismiss':
