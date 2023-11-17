@@ -73,3 +73,12 @@
     }
   }
 }
+
+// Targeting RTL language (e.g., Arabic)
+body.rtl {
+    .window-wrap .global-header .main-header .nav-links .nav-item.nav-item-dropdown .dropdown-user-menu {
+        right: auto; // Reset the right property
+        left: 0;    // Set left to 0 for RTL layout
+    }
+}
+
